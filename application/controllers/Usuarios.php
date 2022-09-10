@@ -6,38 +6,36 @@ class Usuarios extends CI_Controller {
 
 	public function index()
 	{
-                if ($this->session->userdata('login'))
-                {
-                                //Usuario logueado
-                         redirect('usuarios/panel','refresh');
+                if ($this->session->userdata('nombreusuario'))
+                {//Usuario logueado
+                        redirect('usuarios/panel','refresh');
                 }
-                else{
-                                //Usuario no logueado
-                         $this->load->view('login/vwheaderlogin');
-                         $this->load->view('login/vwlogin');
-                         $this->load->view('login/vwfooterlogin');
+                else
+                {//Usuario no logueado
+                        $this->load->view('login/login_header');
+                        $this->load->view('login/login_view');
+                        $this->load->view('login/login_footer');
                 } 
         }
 
         public function inicio()
         {
-
-                if($this->session->userdata('tipo')=='admin')
+                if($this->session->userdata('rol')=='admin')
                 {
-                $lista=$this->usuario_model->listausuarios();
-                $data['usuario']=$lista;
-                $listadeshabilitados=$this->usuario_model->listausuariosdeshabilitados();
-                $data['usuariodeshabilitados']=$listadeshabilitados;
-                $this->load->view('inc/headergentelella');
-                $this->load->view('inc/sidebargentelella');
-                $this->load->view('inc/topbargentelella');
-                $this->load->view('usuario/usuario_read',$data);
-                $this->load->view('inc/creditosgentelella');
-                $this->load->view('inc/footergentelella');
-        }
+                        $lista=$this->usuario_model->listausuarios();
+                        $data['usuario']=$lista;
+                        $listadeshabilitados=$this->usuario_model->listausuariosdeshabilitados();
+                        $data['usuariodeshabilitados']=$listadeshabilitados;
+                        $this->load->view('inc/headergentelella');
+                        $this->load->view('inc/sidebargentelella');
+                        $this->load->view('inc/topbargentelella');
+                        $this->load->view('usuario/usuario_read',$data);
+                        $this->load->view('inc/creditosgentelella');
+                        $this->load->view('inc/footergentelella');
+                }
                 else
                 {
-                    redirect('usuarios/panel','refresh');
+                        redirect('usuarios/panel','refresh');
                 }   
         }
 
@@ -55,54 +53,105 @@ class Usuarios extends CI_Controller {
 
         public function agregar()
         {
-                $this->load->view('inc/headergentelella');
-                $this->load->view('inc/sidebargentelella');
-                $this->load->view('inc/topbargentelella');
-                $this->load->view('usuario/usuario_insert',$data);
-                $this->load->view('inc/creditosgentelella');
-                $this->load->view('inc/footergentelella');    
+                $lista=$this->departamento_model->listadepartamentos();
+                $data['departamento']=$lista;
+                $this->load->view('login/login_header');
+                $this->load->view('login/register_view',$data);
+                $this->load->view('login/login_footer');  
         }
         public function agregarbd()
         {
                 $this->load->library('form_validation');
                 $this->form_validation->set_rules(
-                'login',
-                'Username del Usuario',
-                'required|min_length[3]|max_length[50]|alpha',
-                array(
-                'required'=>'Se requiere ingresar el nombre de usuario!.',
-                'min_length'=>'El usuario debe tener al menos 3 caracteres.',
-                'max_length'=>'¡El usuario no debe contener más de 50 caracteres!.',
-                'alpha'=>'¡El login solo debe contener letras!.'
-                )
+                        'nombreusuario',
+                        'Username del Usuario',
+                        'required|min_length[3]|max_length[50]|alpha',
+                        array(
+                        'required'=>'Se requiere ingresar el nombre de usuario!.',
+                        'min_length'=>'El usuario debe tener al menos 3 caracteres.',
+                        'max_length'=>'¡El usuario no debe contener más de 50 caracteres!.',
+                        'alpha'=>'¡El login solo debe contener letras!.'
+                        )
                 );        
                 $this->form_validation->set_rules(
-                'password',
-                'Contraseña del Usuario',
-                'required|min_length[8]',
-                array(
-                'required'=>'Se requiere ingresar la contraseña del usuario.',
-                'min_length'=>'¡La contraseña debe tener al menos 8 caracteres!.'
-                )
+                        'contrasenha',
+                        'Contraseña del Usuario',
+                        'required|min_length[8]',
+                        array(
+                        'required'=>'Se requiere ingresar la contraseña del usuario.',
+                        'min_length'=>'¡La contraseña debe tener al menos 8 caracteres!.'
+                        )
                 );
+                $this->form_validation->set_rules(
+                        'nombres',
+                        'Nombre del usuario',
+                        'required|min_length[4]|max_length[30]',
+                        array('required'=>'¡Se requiere ingresar sus nombres!',
+                        'min_length'=>'El nombre debe tener al menos 4 caracteres.',
+                        'max_length'=>'¡El nombre no debe contener más de 30 caracteres!.'
+                        )
+                );
+                $this->form_validation->set_rules(
+                        'primerapellido',
+                        'Primer apellido del usuario',
+                        'required|min_length[4]|max_length[30]|alpha',
+                        array('required'=>'¡El primer apellido es obligatorio!.',
+                        'min_length'=>'El apellido debe tener al menos 4 caracteres.',
+                        'max_length'=>'¡El apellido no debe contener más de 30 caracteres!.',
+                        'alpha'=>'¡El apellido solo debe contener letras!.'
+                        )
+                );
+                $this->form_validation->set_rules(
+                    'segundoapellido',
+                    'Segundo apellido del usuario',
+                    'min_length[4]|max_length[30]|alpha',
+                    array('min_length'=>'El apellido debe tener al menos 4 caracteres.',
+                        'max_length'=>'¡El apellido no debe contener más de 30 caracteres!.',
+                        'alpha'=>'¡El apellido solo debe contener letras!.'
+                        )
+                    );
+                $this->form_validation->set_rules(
+                    'numerocelular',
+                    'Número de Celular del usuario',
+                    'required|exact_length[8]|is_natural',
+                    array('required'=>'¡El número de celular es obligatorio!',
+                        'exact_length'=>'¡Ingrese un número de celular válido!.',
+                        'is_natural'=>'¡No ingrese caracteres que no sean números!.'
+                        )
+                    );
+                $this->form_validation->set_rules(
+                    'numeroci',
+                    'Número de Carnet del usuario',
+                    'required|min_length[6]|max_length[8]|is_natural',
+                    array('required'=>'¡El número de carnet es obligatorio!',
+                        'min_length'=>'¡Ingrese un número de carnet válido!.',
+                        'max_length'=>'¡El número de carnet no contiene más de 8 caracteres!.',
+                        'is_natural'=>'¡No ingrese caracteres que no sean números!.'
+                        )
+                    );
                 if($this->form_validation->run()==FALSE)
                 {
-                        $lista=$this->empleado_model->listaempleados();
-                        $data['empleado']=$lista;
-                        $this->load->view('inc/headergentelella');
-                        $this->load->view('inc/sidebargentelella');
-                        $this->load->view('inc/topbargentelella');
-                        $this->load->view('usuario/usuario_formulario_insert',$data);
-                        $this->load->view('inc/creditosgentelella');
-                        $this->load->view('inc/footergentelella'); 
+                        $lista=$this->departamento_model->listadepartamentos();
+                        $data['departamento']=$lista;
+                        $this->load->view('login/login_header');
+                        $this->load->view('login/register_view',$data);
+                        $this->load->view('login/login_footer'); 
                 }
                 else{
-                        $data['login']=strtolower($_POST['login']);
-                        $data['password']=md5($_POST['password']);
-                        $data['idEmpleado']=$_POST['idempleado'];
-                        $data['tipo']=$_POST['tipo'];
+                        $data['idDepartamento']=$_POST['iddepartamento'];
+                        $data['nombres']=$_POST['nombres'];
+                        $data['primerApellido']=$_POST['primerapellido'];
+                        $data['segundoApellido']=$_POST['segundoapellido'];
+                        $data['numeroCelular']=$_POST['numerocelular'];
+                        $data['numeroCI']=$_POST['numeroci'];
+                        $data['sexo']=$_POST['sexo'];
+                        $data['correo']=$_POST['correo'];
+                        $data['nombreUsuario']=strtolower($_POST['nombreusuario']);
+                        $data['contrasenha']=md5($_POST['contrasenha']);
+                        $data['foto']='1user.jpg';
+                        $data['rol']='usuario';
                         $this->usuario_model->agregarusuarios($data);
-                        redirect('usuarios/inicio','refresh');
+                        redirect('usuarios/index','refresh');
                 }
         }
 
@@ -213,8 +262,10 @@ class Usuarios extends CI_Controller {
                                 //validacion efectiva
                                 foreach ($consulta->result() as $row) {
                                         $this->session->set_userdata('idusuario',$row->idUsuario);
-                                        $this->session->set_userdata('login',$row->login);
-                                        $this->session->set_userdata('tipo',$row->tipo);
+                                        $this->session->set_userdata('nombreusuario',$row->nombreUsuario);
+                                        $this->session->set_userdata('correo',$row->correo);
+                                        $this->session->set_userdata('foto',$row->foto);
+                                        $this->session->set_userdata('rol',$row->rol);
                                         redirect('usuarios/panel','refresh');
                                 }            
                 }
@@ -229,23 +280,24 @@ class Usuarios extends CI_Controller {
 
         public function panel()
         {
-                if ($this->session->userdata('login'))
+                if ($this->session->userdata('nombreusuario'))
                 {
-
-                        if ($this->session->userdata('tipo')=='admin'){
+                        if($this->session->userdata('rol')=='admin'){
                                 //cargo admin
-                                redirect('producto/index','refresh');
+                                redirect('usuarios/inicio','refresh');
 
-                        }else{
+                        }
+                        elseif($this->session->userdata('rol')=='usuario'){
+                                redirect('producto/index','refresh');
+                        }
+                        else{
                                 //cargo guest
                                 redirect('producto/guest','refresh');
                         }
                 }
-                else{
-
-                                //USUARIO NO LOGUEADO
-                                
-                                redirect('usuarios/index','refresh');
+                else
+                {//USUARIO NO LOGUEADO 
+                        redirect('usuarios/index','refresh');
                 } 
 
 

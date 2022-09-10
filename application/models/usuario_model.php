@@ -8,9 +8,10 @@ class Usuario_model extends CI_Model {
 	{
         $this->db->select('*'); //select *
         $this->db->from('usuario'); //tabla
-        $this->db->where('login',$login);
-        $this->db->where('password',$password);
+        $this->db->where('nombreUsuario',$login);
+        $this->db->where('contrasenha',$password);
         $this->db->where('estado','1');
+        $this->db->or_where('correo',$login);
         return $this->db->get(); //devolucion del resultado de la consulta
 	}
 

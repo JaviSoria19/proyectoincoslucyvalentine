@@ -1,21 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Venta extends CI_Controller {
+class Departamento extends CI_Controller {
 
 	public function index()
 	{
-
         if($this->session->userdata('tipo')=='admin')
         {
-            $lista=$this->venta_model->listaventas();
-            $data['venta']=$lista;
-            $listadeshabilitados=$this->venta_model->listaventasdeshabilitados();
-            $data['ventadeshabilitados']=$listadeshabilitados;
+            $lista=$this->departamento_model->listadepartamentos();
+            $data['departamento']=$lista;
+            $listadeshabilitados=$this->departamento_model->listadepartamentosdeshabilitados();
+            $data['departamentodeshabilitados']=$listadeshabilitados;
 
             $this->load->view('inc/headergentelella');
             $this->load->view('inc/sidebargentelella');
             $this->load->view('inc/topbargentelella');
-            $this->load->view('venta/venta_read',$data);
+            $this->load->view('departamento/departamento_read',$data);
             $this->load->view('inc/creditosgentelella');
             $this->load->view('inc/footergentelella');
         }
@@ -23,7 +22,6 @@ class Venta extends CI_Controller {
         {
             redirect('usuarios/panel','refresh');
         }
-		
 	}
     public function agregar()
 	{
@@ -31,7 +29,7 @@ class Venta extends CI_Controller {
         $this->load->view('inc/headergentelella');
         $this->load->view('inc/sidebargentelella');
         $this->load->view('inc/topbargentelella');
-        $this->load->view('venta/venta_insert',);
+        $this->load->view('departamento/departamento_insert',);
         $this->load->view('inc/creditosgentelella');
         $this->load->view('inc/footergentelella');
 	}
@@ -40,8 +38,8 @@ class Venta extends CI_Controller {
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
-            'nombreventa',
-            'Nombre de Venta',
+            'nombredepartamento',
+            'Nombre de Departamento',
             'required|min_length[2]|max_length[30]|alpha',
             array(
                 'required'=>'Se requiere ingresar la categoría del producto.',
@@ -55,32 +53,32 @@ class Venta extends CI_Controller {
             $this->load->view('inc/headergentelella');
             $this->load->view('inc/sidebargentelella');
             $this->load->view('inc/topbargentelella');
-            $this->load->view('venta/venta_insert',);
+            $this->load->view('departamento/departamento_insert',);
             $this->load->view('inc/creditosgentelella');
             $this->load->view('inc/footergentelella');
         }
         else{
-            $data['nombreVenta']=$_POST['nombreventa'];
-            $this->venta_model->agregarventas($data);
-            redirect('venta/index','refresh');
+            $data['nombreDepartamento']=$_POST['nombredepartamento'];
+            $this->departamento_model->agregardepartamentos($data);
+            redirect('departamento/index','refresh');
         }
     }
 
         public function eliminarbd()
     {
-        $idventa=$_POST['idventa'];
-        $this->venta_model->eliminarventas($idventa);
-        redirect('venta/index','refresh');
+        $iddepartamento=$_POST['iddepartamento'];
+        $this->departamento_model->eliminardepartamentos($iddepartamento);
+        redirect('departamento/index','refresh');
         
     }
         public function modificar()
     {
-        $idventa=$_POST['idventa'];
-        $data['infoventa']=$this->venta_model->recuperarventas($idventa);
+        $iddepartamento=$_POST['iddepartamento'];
+        $data['infodepartamento']=$this->departamento_model->recuperardepartamentos($iddepartamento);
         $this->load->view('inc/headergentelella');
         $this->load->view('inc/sidebargentelella');
         $this->load->view('inc/topbargentelella');
-        $this->load->view('venta/venta_update',$data);
+        $this->load->view('departamento/departamento_update',$data);
         $this->load->view('inc/creditosgentelella');
         $this->load->view('inc/footergentelella');
     }
@@ -89,8 +87,8 @@ class Venta extends CI_Controller {
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
-            'nombreventa',
-            'Nombre de Venta',
+            'nombredepartamento',
+            'Nombre de Departamento',
             'required|min_length[2]|max_length[30]|alpha',
             array(
                 'required'=>'Se requiere ingresar la categoría del producto.',
@@ -101,49 +99,49 @@ class Venta extends CI_Controller {
             );
         if($this->form_validation->run()==FALSE)
         {
-            $idventa=$_POST['idventa'];
-            $data['infoventa']=$this->venta_model->recuperarventas($idventa);
+            $iddepartamento=$_POST['iddepartamento'];
+            $data['infodepartamento']=$this->departamento_model->recuperardepartamentos($iddepartamento);
             $this->load->view('inc/headergentelella');
             $this->load->view('inc/sidebargentelella');
             $this->load->view('inc/topbargentelella');
-            $this->load->view('venta/venta_update',$data);
+            $this->load->view('departamento/departamento_update',$data);
             $this->load->view('inc/creditosgentelella');
             $this->load->view('inc/footergentelella');
         }
         else
         {
-            $idventa=$_POST['idventa'];
-            $data['nombreVenta']=$_POST['nombreventa'];
+            $iddepartamento=$_POST['iddepartamento'];
+            $data['nombreDepartamento']=$_POST['nombredepartamento'];
             $data['fechaActualizacion']=date('Y-m-d H:i:s');
-            $this->venta_model->modificarventas($idventa,$data);
-            redirect('venta/index','refresh');
+            $this->departamento_model->modificardepartamentos($iddepartamento,$data);
+            redirect('departamento/index','refresh');
         }
     }
 
-        public function deshabilitarbd($idventa)
+        public function deshabilitarbd($iddepartamento)
     {
         $data['estado']='0';
-        $this->venta_model->modificarventas($idventa,$data);
-        redirect('venta/index','refresh');
+        $this->departamento_model->modificardepartamentos($iddepartamento,$data);
+        redirect('departamento/index','refresh');
     }
 
         public function habilitarbd()
     {
-        $idventa=$_POST['idventa'];
+        $iddepartamento=$_POST['iddepartamento'];
         $data['estado']='1';
-        $this->venta_model->modificarventas($idventa,$data);
-        redirect('venta/index','refresh');
+        $this->departamento_model->modificardepartamentos($iddepartamento,$data);
+        redirect('departamento/index','refresh');
     }
 
     /*queda pendiente modificar esta funcion*/
     public function guest()
     {
-        $lista=$this->venta_model->listaventas();
-        $data['venta']=$lista;
+        $lista=$this->departamento_model->listadepartamentos();
+        $data['departamento']=$lista;
         $this->load->view('inc/headergentelella');
         $this->load->view('inc/sidebargentelella');
         $this->load->view('inc/topbargentelella');
-        $this->load->view('venta/producto_guest',$data);
+        $this->load->view('departamento/producto_guest',$data);
         $this->load->view('inc/creditosgentelella');
         $this->load->view('inc/footergentelella');        
     }
