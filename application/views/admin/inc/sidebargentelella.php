@@ -27,43 +27,6 @@
               <ul class="nav side-menu">
                 <li>
                   <a>
-                    <i class="fa fa-dashboard"></i>Inicio X
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                        <?php echo form_open_multipart('dashboard/index');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Inicio
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
-                    <i class="fa fa-suitcase"></i>Empleados
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                        <?php echo form_open_multipart('empleado/index');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Empleados
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('sucursal/index');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Sucursales
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
                     <i class="fa fa-users"></i>Usuarios
                     <span class="fa fa-chevron-down"></span>
                   </a>

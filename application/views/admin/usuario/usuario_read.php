@@ -26,7 +26,7 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <?php 
-                                        echo form_open_multipart('usuarios/agregar');
+                                        echo form_open_multipart('usuarios/adminAgregar');
                                     ?>
                                         <button type="submit" class="btn btn-success">
                                         <i class="fa fa-plus-circle"></i> Insertar Usuario
@@ -37,11 +37,11 @@
                                     <br>
                                     <p class="text-muted font-13 m-b-30">
                                         Actualmente contamos con <?php echo $usuario->num_rows(); ?>
-                                        usuarios registrados en sistema!<br>
+                                        usuarios activos en sistema!<br>
                                         Estimado administrador, recuerde verificar todas las medidas de seguridad de una Cédula de Identidad para validar a un usuario.
                                     </p>
 
-            <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+            <table id="datatable-buttons" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">
                         <th>Foto</th>
@@ -67,19 +67,8 @@
                     <td class="text-center">
                         <?php
                             $foto=$row->foto;
-                            if($foto=="")
-                            {
                         ?>
-                        <i class="fa fa-image" data-toggle="tooltip" data-placement="top" title="Actualmente este usuario no cuenta con una imagen."></i>
-                        <?php
-                            }
-                            else
-                            {
-                        ?>
-                        <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" height="35px" class="mx-auto d-block">
-                        <?php
-                            }
-                        ?>   
+                        <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" height="35px" class="mx-auto d-block gallery-item" alt="<?php echo $row->numeroCI; ?>">
                     </td>
                     <td><?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?></td>
                     <td><?php echo $row->numeroCI; ?></td>
@@ -182,5 +171,27 @@
             var url = '<?php echo base_url() . "index.php/usuarios/undoverificarbd/"; ?>';
             $("#url-delete-two").attr('href', url + id);
             $('#modalDeshacer').modal('show');
+        } 
+</script>
+
+<div class="modal fade" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-bold">Foto subida por el usuario:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" align="center">
+         <img src="<?php echo base_url();?>/uploads/user.png" class="modal-img img-thumbnail">
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+     function modal_gallery() 
+        {
+            $('#gallery-modal').modal('show');
         } 
 </script>
