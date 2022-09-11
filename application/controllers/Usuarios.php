@@ -24,14 +24,12 @@ class Usuarios extends CI_Controller {
                 {
                         $lista=$this->usuario_model->listausuarios();
                         $data['usuario']=$lista;
-                        $listadeshabilitados=$this->usuario_model->listausuariosdeshabilitados();
-                        $data['usuariodeshabilitados']=$listadeshabilitados;
-                        $this->load->view('inc/headergentelella');
-                        $this->load->view('inc/sidebargentelella');
-                        $this->load->view('inc/topbargentelella');
-                        $this->load->view('usuario/usuario_read',$data);
-                        $this->load->view('inc/creditosgentelella');
-                        $this->load->view('inc/footergentelella');
+                        $this->load->view('admin/inc/headergentelella');
+                        $this->load->view('admin/inc/sidebargentelella');
+                        $this->load->view('admin/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read',$data);
+                        $this->load->view('admin/inc/creditosgentelella');
+                        $this->load->view('admin/inc/footergentelella');
                 }
                 else
                 {
@@ -43,12 +41,12 @@ class Usuarios extends CI_Controller {
         {
                 $idusuario=$this->session->userdata('idusuario');
                 $data['infousuario']=$this->usuario_model->recuperarusuarios($idusuario);
-                $this->load->view('inc/headergentelella');
-                $this->load->view('inc/sidebargentelella');
-                $this->load->view('inc/topbargentelella');
-                $this->load->view('usuario/usuario_perfil',$data);
-                $this->load->view('inc/creditosgentelella');
-                $this->load->view('inc/footergentelella'); 
+                $this->load->view('admin/inc/headergentelella');
+                $this->load->view('admin/inc/sidebargentelella');
+                $this->load->view('admin/inc/topbargentelella');
+                $this->load->view('admin/usuario/usuario_perfil',$data);
+                $this->load->view('admin/inc/creditosgentelella');
+                $this->load->view('admin/inc/footergentelella'); 
         }
 
         public function agregar()
@@ -239,6 +237,18 @@ class Usuarios extends CI_Controller {
         public function deshabilitarbd($idusuario)
         {
                 $data['estado']='0';
+                $this->usuario_model->modificarusuarios($idusuario,$data);
+                redirect('usuarios/inicio','refresh');
+        }
+        public function verificarbd($idusuario)
+        {
+                $data['estado']='2';
+                $this->usuario_model->modificarusuarios($idusuario,$data);
+                redirect('usuarios/inicio','refresh');
+        }
+        public function undoverificarbd($idusuario)
+        {
+                $data['estado']='1';
                 $this->usuario_model->modificarusuarios($idusuario,$data);
                 redirect('usuarios/inicio','refresh');
         }

@@ -33,27 +33,21 @@
                                         {
                                     ?>
                                     <div class="col-md-4">
-                                           <?php
-                                            $foto=$row->foto;
-                                            if($foto=="")
-                                            {
-                                        ?>
-                                        <i class="fa fa-image" data-toggle="tooltip" data-placement="top" title="Actualmente este usuario no cuenta con una imagen."></i>
                                         <?php
-                                            }
-                                            else
-                                            {
+                                            $fotoperfil=$this->session->userdata('foto');
                                         ?>
-                                        <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" class="img-circle mx-auto d-block w-75">
-                                        <?php
-                                            }
-                                        ?> 
+                                        <img src="<?php echo base_url();?>/uploads/<?php echo $fotoperfil;?>" class="img-circle mx-auto d-block w-75">
                                     </div>
                                     <div class="card col-md-8">
                                         <div class="card-body">
-                                            <h1><i class="fa fa-list-alt" data-toggle="tooltip" data-placement="top" title="Nombre"></i> <?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?></h1>
-                                            <h3><i class="fa fa-user" data-toggle="tooltip" data-placement="top" title="Nombre de Usuario"></i> <?php echo $row->login; ?></h3>
-                                            <h3><i class="fa fa-star" data-toggle="tooltip" data-placement="top" title="Cargo"></i> <?php echo ucfirst($row->tipo); ?></h3>
+                                            <h1><i class="fa fa-list-alt" data-toggle="tooltip" data-placement="top" title="Nombre"></i> <?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?> 
+                                            <?php if ($row->estado=='2'): ?>
+                                                <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>
+                                            <?php endif ?>
+                                        </h1>
+                                            <h3><i class="fa fa-user" data-toggle="tooltip" data-placement="top" title="Nombre de Usuario"></i> <?php echo $row->nombreUsuario; ?>
+                                            </h3>
+                                            <h3><i class="fa fa-star" data-toggle="tooltip" data-placement="top" title="Cargo"></i> <?php echo ucfirst($row->rol); ?></h3>
                                             <h3><i class="fa fa-calendar" data-toggle="tooltip" data-placement="top" title="Fecha de Ingreso"></i> <?php echo formatearsoloFecha($row->fechaRegistro); ?></h3>
                                             <h3>
                                                 <?php if ($row->sexo=='M')
@@ -69,6 +63,7 @@
                                             </h3>
                                             <h3><i class="fa fa-list-alt" data-toggle="tooltip" data-placement="top" title="C.I."></i> <?php echo ucfirst($row->numeroCI); ?></h3>
                                             <h3><i class="fa fa-mobile-phone" data-toggle="tooltip" data-placement="top" title="Celular"></i> <?php echo ucfirst($row->numeroCelular); ?></h3>
+                                            <h3><i class="fa fa-envelope-o" data-toggle="tooltip" data-placement="top" title="Correo"></i> <?php echo $row->correo; ?></h3>
                                         </div>
                                     </div>
 

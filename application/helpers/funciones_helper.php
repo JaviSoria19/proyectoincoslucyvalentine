@@ -57,5 +57,17 @@ function formatearGenero($genero)
         return 'Femenino';
     } 
 }
+function formatearEstado($estado)
+{
+    if ($estado=='1') 
+    {
+        return '<span class="badge badge-warning">No Verificado</span>';
+    }
+    elseif ($estado=='2') {
+        return '<span class="badge badge-success">Verificado</span>';
+    }else{
+        return '<span class="badge badge-warning">Deshabilitado</span>';
+    } 
+}
 
 ?>

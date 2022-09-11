@@ -6,23 +6,23 @@ class Usuario_model extends CI_Model {
 
 	public function validar($login,$password)
 	{
-        $this->db->select('*'); //select *
-        $this->db->from('usuario'); //tabla
+        $this->db->select('*');
+        $this->db->from('usuario');
         $this->db->where('nombreUsuario',$login);
         $this->db->where('contrasenha',$password);
         $this->db->where('estado','1');
+        $this->db->or_where('estado','2');
         $this->db->or_where('correo',$login);
         return $this->db->get(); //devolucion del resultado de la consulta
 	}
 
     public function listausuarios()//select
     {
-        $this->db->select('idUsuario,foto,login,password,tipo,usuario.estado,usuario.fechaRegistro,usuario.fechaActualizacion,usuario.idEmpleado,empleado.idSucursal,nombreSucursal,nombres,primerApellido,segundoApellido'); //select *
-        $this->db->from('usuario'); //tabla productos
-        $this->db->where('usuario.estado','1'); //condición where estado = 1
-        $this->db->join('empleado', 'usuario.idEmpleado = empleado.idEmpleado');
-        $this->db->join('persona', 'empleado.idPersona = persona.idPersona');
-        $this->db->join('sucursal', 'empleado.idSucursal = sucursal.idSucursal');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->from('usuario AS u');
+        $this->db->where('u.estado','1');
+        $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
+        $this->db->or_where('u.estado','2');
         //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
@@ -40,12 +40,10 @@ class Usuario_model extends CI_Model {
 
     public function recuperarusuarios($idusuario)//get
     {
-        $this->db->select('foto,login,password,tipo,usuario.estado,usuario.fechaRegistro,usuario.fechaActualizacion,usuario.idEmpleado,empleado.idSucursal,nombreSucursal,nombres,primerApellido,segundoApellido,sexo,numeroCI,numeroCelular'); //select *
-        $this->db->from('usuario'); //tabla
-        $this->db->where('idUsuario',$idusuario); //condición where id
-        $this->db->join('empleado', 'usuario.idEmpleado = empleado.idEmpleado');
-        $this->db->join('persona', 'empleado.idPersona = persona.idPersona');
-        $this->db->join('sucursal', 'empleado.idSucursal = sucursal.idSucursal');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->from('usuario AS u');
+        $this->db->where('u.idUsuario',$idusuario);
+        $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
         return $this->db->get(); //devolucion del resultado de la consulta
     }
 
@@ -57,12 +55,10 @@ class Usuario_model extends CI_Model {
 
     public function listausuariosdeshabilitados()//select
     {
-        $this->db->select('idUsuario,foto,login,password,tipo,usuario.estado,usuario.fechaRegistro,usuario.fechaActualizacion,usuario.idEmpleado,empleado.idSucursal,nombreSucursal,nombres,primerApellido,segundoApellido'); //select *
-        $this->db->from('usuario'); //tabla productos
-        $this->db->where('usuario.estado','0'); //condición where estado = 1
-        $this->db->join('empleado', 'usuario.idEmpleado = empleado.idEmpleado');
-        $this->db->join('persona', 'empleado.idPersona = persona.idPersona');
-        $this->db->join('sucursal', 'empleado.idSucursal = sucursal.idSucursal');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->from('usuario AS u');
+        $this->db->where('u.estado','0'); //condición where estado = 1
+        $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
         //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
