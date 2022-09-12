@@ -11,10 +11,11 @@
           break;
         
         default:
-          $mensaje="";
+          $mensaje='<p class="text-danger font-weight-bold">Acceso no válido, primero inicie sesión</p>';
           break;
         } 
       ?>
+      
       <?php 
         echo form_open_multipart(
           'Usuarios/validar',

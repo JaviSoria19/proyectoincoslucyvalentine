@@ -5,12 +5,6 @@
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
                         <h2><i class="fa fa-users"></i> Mi Perfil.</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-close"></i></a>
-                            </li>
-                            </ul>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -32,18 +26,16 @@
                                         foreach($infousuario->result() as $row)
                                         {
                                     ?>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 align-self-center">
                                         <?php
                                             $fotoperfil=$this->session->userdata('foto');
                                         ?>
-                                        <img src="<?php echo base_url();?>/uploads/<?php echo $fotoperfil;?>" class="img-circle mx-auto d-block w-75">
+                                        <img src="<?php echo base_url();?>/uploads/<?php echo $fotoperfil;?>" class="img-thumbnail rounded mx-auto d-block">
                                     </div>
-                                    <div class="card col-md-8">
+                                    <div class="card col-md-8 bg-dark text-light">
                                         <div class="card-body">
                                             <h1><i class="fa fa-list-alt" data-toggle="tooltip" data-placement="top" title="Nombre"></i> <?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?> 
-                                            <?php if ($row->estado=='2'): ?>
-                                                <i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>
-                                            <?php endif ?>
+                                            <?php echo formatearVerificado($row->estado);?>
                                         </h1>
                                             <h3><i class="fa fa-user" data-toggle="tooltip" data-placement="top" title="Nombre de Usuario"></i> <?php echo $row->nombreUsuario; ?>
                                             </h3>

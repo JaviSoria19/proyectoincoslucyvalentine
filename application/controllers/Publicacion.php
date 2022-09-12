@@ -61,7 +61,6 @@ class Publicacion extends CI_Controller {
         $this->load->view('publicacion/publicacion_insert',);
         $this->load->view('inc/creditosgentelella');
         $this->load->view('inc/footergentelella');
-		
 	}
 
     public function agregarbd()

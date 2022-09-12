@@ -62,6 +62,21 @@
                     </li>
                   </ul>
                 </li>
+                <li>
+                  <a>
+                    <i class="fa fa-folder-open-o"></i>Denuncias
+                    <span class="fa fa-chevron-down"></span>
+                  </a>
+                  <ul class="nav child_menu">
+                    <li>
+                        <?php echo form_open_multipart('denuncia/inicio');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Denuncias
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>

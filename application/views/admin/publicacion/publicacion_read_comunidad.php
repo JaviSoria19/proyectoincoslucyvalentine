@@ -4,7 +4,7 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2><i class="fa fa-newspaper-o"></i> Publicaciones Oficiales.</h2>
+                        <h2><i class="fa fa-users"></i> Comunidad.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -23,10 +23,7 @@
                                     ?>
                                     <br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        BIENVENIDO! AQUÍ PUEDE ENCONTRAR INFORMACIÓN OFICIAL BRINDADA POR LA DEFENSORÍA Y LA FUERZA POLICIAL DEL PAÍS.
-                                        <?php $valor=55;
-                                        echo 'cadena/'.$valor;?>
-
+                                        Estimad@ usuari@, recuerde seguir las normas de convivencia pacífica y sobretodo brindar respeto para una buena experiencia dentro de la comunidad.
                                     </p>
 
                     <?php

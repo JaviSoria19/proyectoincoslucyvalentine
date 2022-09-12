@@ -11,6 +11,7 @@ class Publicacion_model extends CI_Model {
         $this->db->where('p.estado','1'); //condición where estado = 1
         $this->db->where('u.rol','admin');
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
+        $this->db->order_by('p.fechaRegistro', 'DESC');
         //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
@@ -21,6 +22,7 @@ class Publicacion_model extends CI_Model {
         $this->db->where('p.estado','1'); //condición where estado = 1
         $this->db->where('u.rol','usuario');
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
+        $this->db->order_by('p.fechaRegistro', 'DESC');
         //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
