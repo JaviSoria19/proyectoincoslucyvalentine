@@ -69,5 +69,12 @@ function formatearEstado($estado)
         return '<span class="badge badge-warning">Deshabilitado</span>';
     } 
 }
+function formatearVerificado($estado)
+{
+    if ($estado=='2') 
+    {
+        return '<i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>';
+    }
+}
 
 ?>

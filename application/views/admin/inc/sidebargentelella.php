@@ -1,8 +1,8 @@
 <div class="main_container">
   <div class="col-md-3 left_col">
-    <div class="left_col scroll-view">
-      <div class="navbar nav_title" style="border: 0;">
-        <a href="<?php echo base_url(); ?>gentelella/index.html" class="site_title"><i class="fa fa-female"></i> <span>LCV</span></a>
+    <div class="left_col scroll-view bg-dark">
+      <div class="navbar nav_title bg-dark" style="border:0;">
+        <a href="<?php echo base_url(); ?>index.php/usuarios/inicio" class="site_title"><i class="fa fa-female"></i> <span>LCV</span></a>
       </div>
       <div class="clearfix"></div>
             <!-- menu profile quick info -->
@@ -42,58 +42,21 @@
                 </li>
                 <li>
                   <a>
-                    <i class="fa fa-cubes"></i>Productos
+                    <i class="fa fa-newspaper-o"></i>Publicaciones
                     <span class="fa fa-chevron-down"></span>
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('producto/index');?>
+                        <?php echo form_open_multipart('publicacion/indexStaff');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Productos
+                            Publicaciones Oficiales
                           </button>
                         <?php echo form_close();?>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('categoria/index');?>
+                        <?php echo form_open_multipart('publicacion/indexComunidad');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Categorías
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('marca/index');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Marcas
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
-                    <i class="fa fa-male"></i>Clientes
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                        <?php echo form_open_multipart('cliente/index');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Clientes
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
-                    <i class="fa fa-shopping-cart"></i>Ventas X
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                        <?php echo form_open_multipart('venta/index');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Ventas
+                            Comunidad
                           </button>
                         <?php echo form_close();?>
                     </li>

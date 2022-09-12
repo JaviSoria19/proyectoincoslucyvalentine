@@ -4,7 +4,7 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2><i class="fa fa-users"></i> Usuarios.</h2>
+                        <h2><i class="fa fa-newspaper-o"></i> Publicaciones Oficiales.</h2>
                             <ul class="nav navbar-right panel_toolbox">
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
@@ -29,77 +29,45 @@
                                         echo form_open_multipart('usuarios/adminAgregar');
                                     ?>
                                         <button type="submit" class="btn btn-success">
-                                        <i class="fa fa-plus-circle"></i> Insertar Usuario
+                                        <i class="fa fa-plus-circle"></i> Nueva Publicación
                                         </button>
                                     <?php 
                                         echo form_close();
                                     ?>
                                     <br>
-                                    <p class="text-muted font-13 m-b-30">
-                                        Actualmente contamos con <?php echo $usuario->num_rows(); ?>
-                                        usuarios activos en sistema!<br>
-                                        Estimado administrador, recuerde verificar todas las medidas de seguridad de una Cédula de Identidad para validar a un usuario.
+                                    <p class="text-dark font-weight-bold font-13 m-b-30">
+                                        BIENVENIDO! AQUÍ PUEDE ENCONTRAR INFORMACIÓN OFICIAL BRINDADA POR LA DEFENSORÍA Y LA FUERZA POLICIAL DEL PAÍS.
                                     </p>
 
-            <table id="datatable-buttons" class="table table-striped table-dark table-bordered" style="width:100%">
-                <thead>
-                    <tr class="text-center">
-                        <th>Foto</th>
-                        <th>Nombre</th>
-                        <th>Nro. C.I.</th>
-                        <th>Nro. Celular</th>
-                        <th>Género</th>
-                        <th>Usuario</th>
-                        <th>Correo</th>
-                        <th>Rol</th>
-                        <th>Creado</th>
-                        <th>Modificado</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
                     <?php
-                        foreach ($usuario->result() as $row)
+                        foreach ($publicacion->result() as $row)
                         {
+                            $foto=$row->fotoPublicacion;
                     ?>
-                    <tr>
-                    <td class="text-center">
-                        <?php
-                            $foto=$row->foto;
-                        ?>
-                        <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" height="35px" class="rounded mx-auto d-block gallery-item" alt="<?php echo $row->numeroCI; ?>">
-                    </td>
-                    <td><?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?></td>
-                    <td><?php echo $row->numeroCI; ?></td>
-                    <td><?php echo $row->numeroCelular; ?></td>
-                    <td><?php echo formatearGenero($row->sexo); ?></td>
-                    <td><?php echo $row->nombreUsuario; ?></td>
-                    <td><?php echo $row->correo; ?></td>
-                    <td><?php echo ucfirst($row->rol); ?></td>
-                    <td class="text-center"><?php echo formatearFechaMasHora($row->fechaRegistro); ?></td>
-                    <td class="text-center"><?php echo formatearFechaMasHora($row->fechaActualizacion); ?></td>
-                    <td class="text-center"><?php echo formatearEstado($row->estado);?></td>
-                    <td class="text-center">
-                        <div class="btn-group">
-                            <?php echo form_open_multipart('usuarios/modificar');?>
-                            <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario;?>">
-                            <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar">
-                            <i class="fa fa-edit"></i>
-                            </button>
-                            <?php echo form_close();?>
-                            <?php if ($row->estado=='1'): ?>
-                                <button class="btn btn-outline-success" data-toggle="tooltip"  onclick="return confirm_modal_verificar(<?php echo $row->idUsuario; ?>)"  data-placement="top" title="Verificar">
-                                <i class="fa fa-toggle-on"></i>
-                                </button>
-                            <?php else: ?>
-                                <button class="btn btn-outline-warning" data-toggle="tooltip"  onclick="return confirm_modal_deshacer_verificar(<?php echo $row->idUsuario; ?>)"  data-placement="top" title="Quitar Verificado">
-                                <i class="fa fa-toggle-off"></i>
-                                </button>
-                            <?php endif ?>
+                    <div class="item bg-dark rounded">
+                        <div class="col-md-2 bg-dark rounded align-self-center">
+                            <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" class="rounded mx-auto d-block img-thumbnail">
+                            
                         </div>
-                    </td>
-                    </tr>
+                        <div class="card col-md-10 bg-dark">
+                            <div class="card-body text-light">
+                                <h3 class="font-weight-bold"><?php echo $row->titulo;?></h3><br>
+                                <p style="display: block; white-space: nowrap;width: 90%;overflow: hidden;text-overflow: ellipsis; text-align: justify;">
+                                    <?php echo $row->contenido;?>        
+                                </p>
+                                <p>Publicado por <?php echo $row->nombreUsuario;?> <?php echo formatearVerificado($row->estadoUsuario);?> el <?php echo formatearsoloFecha($row->fechaRegistro);?></p>
+                                <?php echo form_open_multipart('publicacion/visualizar_post');?>
+                                    <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
+                                    <button class="btn btn-primary">
+                                        Ver Publicación
+                                    <i class="fa fa-eye"></i>
+                                    </button>
+                                <?php echo form_close();?>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
                     <?php 
                         } 
                     ?>
