@@ -2,6 +2,20 @@
   <div class="animate form login_form">
     <section class="login_content">
       <?php 
+        switch ($msg) {
+        case '1':
+          $mensaje='<p class="text-success font-weight-bold">Gracias por usar el sistema!</p>';
+          break;
+        case '2':
+          $mensaje='<p class="text-danger font-weight-bold">Usuario o contraseña no válidos.</p>';
+          break;
+        
+        default:
+          $mensaje="";
+          break;
+        } 
+      ?>
+      <?php 
         echo form_open_multipart(
           'Usuarios/validar',
           array(
@@ -15,6 +29,7 @@
         <img class="img-fluid rounded w-50" src="<?php echo base_url()?>img/lucyvalentine.png">
       </div>
       <br>
+      <?php echo $mensaje; ?>
       <div class="col-md-12 form-group has-feedback">
         <input type="text" class="form-control has-feedback-left"  name="login" placeholder="Usuario / Correo" required>
         <span class="fa fa-user form-control-feedback left" aria-hidden="true">

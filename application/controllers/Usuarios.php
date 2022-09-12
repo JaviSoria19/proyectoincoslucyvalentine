@@ -6,6 +6,7 @@ class Usuarios extends CI_Controller {
 
 	public function index()
 	{
+                $data['msg']=$this->uri->segment(3);
                 if ($this->session->userdata('nombreusuario'))
                 {//Usuario logueado
                         redirect('usuarios/panel','refresh');
@@ -13,7 +14,7 @@ class Usuarios extends CI_Controller {
                 else
                 {//Usuario no logueado
                         $this->load->view('login/login_header');
-                        $this->load->view('login/login_view');
+                        $this->load->view('login/login_view',$data);
                         $this->load->view('login/login_footer');
                 } 
         }
@@ -378,20 +379,20 @@ class Usuarios extends CI_Controller {
                 
                 if($consulta->num_rows()>0)
                 {
-                                //validacion efectiva
-                                foreach ($consulta->result() as $row) {
-                                        $this->session->set_userdata('idusuario',$row->idUsuario);
-                                        $this->session->set_userdata('nombreusuario',$row->nombreUsuario);
-                                        $this->session->set_userdata('correo',$row->correo);
-                                        $this->session->set_userdata('foto',$row->foto);
-                                        $this->session->set_userdata('rol',$row->rol);
-                                        redirect('usuarios/panel','refresh');
-                                }            
+                        //validacion efectiva
+                        foreach ($consulta->result() as $row) {
+                        $this->session->set_userdata('idusuario',$row->idUsuario);
+                        $this->session->set_userdata('nombreusuario',$row->nombreUsuario);
+                        $this->session->set_userdata('correo',$row->correo);
+                        $this->session->set_userdata('foto',$row->foto);
+                        $this->session->set_userdata('rol',$row->rol);
+                        redirect('usuarios/panel','refresh');
+                        }            
                 }
                 else
                 {
-                                //error al validar redirigimos al login
-                                redirect('usuarios/index','refresh');
+                        //error al validar redirigimos al login
+                        redirect('usuarios/index/2','refresh');
                 }
 
 
@@ -426,7 +427,7 @@ class Usuarios extends CI_Controller {
         public function logout()
         {
                 $this->session->sess_destroy();
-                redirect('usuarios/index','refresh');
+                redirect('usuarios/index/1','refresh');
         }
 
 }

@@ -4,7 +4,6 @@ class Comentario extends CI_Controller {
 
     public function agregarbd()
     {
-        $idpublicacion=$_POST['comentario'];
         $data['idUsuario']=$this->session->userdata('idusuario');
         $data['idPublicacion']=$_POST['idpublicacion'];
         $data['comentario']=$_POST['comentario'];

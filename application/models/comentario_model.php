@@ -12,6 +12,7 @@ class Comentario_model extends CI_Model {
         $this->db->where('c.idPublicacion',$idPublicacion);
         $this->db->join('publicacion AS p', 'c.idPublicacion = p.idPublicacion');
         $this->db->join('usuario AS u', 'c.idUsuario = u.idUsuario');
+        $this->db->order_by('c.fechaRegistro', 'DESC');
         //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
 	}
