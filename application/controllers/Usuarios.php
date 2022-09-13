@@ -23,12 +23,31 @@ class Usuarios extends CI_Controller {
         {
                 if($this->session->userdata('rol')=='admin')
                 {
-                        $lista=$this->usuario_model->listausuarios();
+                        $lista=$this->usuario_model->listaUsuariosNoVerificados();
                         $data['usuario']=$lista;
                         $this->load->view('admin/inc/headergentelella');
                         $this->load->view('admin/inc/sidebargentelella');
                         $this->load->view('admin/inc/topbargentelella');
-                        $this->load->view('admin/usuario/usuario_read',$data);
+                        $this->load->view('admin/usuario/usuario_read_comunidad',$data);
+                        $this->load->view('admin/inc/creditosgentelella');
+                        $this->load->view('admin/inc/footergentelella');
+                }
+                else
+                {
+                        redirect('usuarios/panel','refresh');
+                }   
+        }
+
+        public function adminVerStaff()
+        {
+                if($this->session->userdata('rol')=='admin')
+                {
+                        $lista=$this->usuario_model->listaUsuariosStaff();
+                        $data['usuario']=$lista;
+                        $this->load->view('admin/inc/headergentelella');
+                        $this->load->view('admin/inc/sidebargentelella');
+                        $this->load->view('admin/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read_staff',$data);
                         $this->load->view('admin/inc/creditosgentelella');
                         $this->load->view('admin/inc/footergentelella');
                 }
@@ -260,7 +279,7 @@ class Usuarios extends CI_Controller {
                         $data['rol']=$_POST['rol'];
                         $data['estado']='2';
                         $this->usuario_model->agregarusuarios($data);
-                        redirect('usuarios/index','refresh');
+                        redirect('usuarios/adminVerStaff','refresh');
                 }
         }
         public function modificar()
@@ -356,11 +375,23 @@ class Usuarios extends CI_Controller {
                 $this->usuario_model->modificarusuarios($idusuario,$data);
                 redirect('usuarios/inicio','refresh');
         }
+        public function verificarstaffbd($idusuario)
+        {
+                $data['estado']='2';
+                $this->usuario_model->modificarusuarios($idusuario,$data);
+                redirect('usuarios/adminVerStaff','refresh');
+        }
         public function undoverificarbd($idusuario)
         {
                 $data['estado']='1';
                 $this->usuario_model->modificarusuarios($idusuario,$data);
                 redirect('usuarios/inicio','refresh');
+        }
+        public function undoverificarstaffbd($idusuario)
+        {
+                $data['estado']='1';
+                $this->usuario_model->modificarusuarios($idusuario,$data);
+                redirect('usuarios/adminVerStaff','refresh');
         }
 
         public function habilitarbd()
@@ -382,6 +413,7 @@ class Usuarios extends CI_Controller {
                         //validacion efectiva
                         foreach ($consulta->result() as $row) {
                         $this->session->set_userdata('idusuario',$row->idUsuario);
+                        $this->session->set_userdata('estado',$row->estado);
                         $this->session->set_userdata('nombreusuario',$row->nombreUsuario);
                         $this->session->set_userdata('correo',$row->correo);
                         $this->session->set_userdata('foto',$row->foto);

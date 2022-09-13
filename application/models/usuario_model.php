@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Usuario_model extends CI_Model {
 
-
 	public function validar($login,$password)
 	{
         $this->db->select('*');
@@ -20,14 +19,24 @@ class Usuario_model extends CI_Model {
 
         return $this->db->get(); //devolucion del resultado de la consulta
 	}
-
-    public function listausuarios()//select
+    public function listaUsuariosNoVerificados()//select
     {
         $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
         $this->db->from('usuario AS u');
         $this->db->where('u.estado','1');
+        $this->db->where('rol','usuario');
         $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
-        $this->db->or_where('u.estado','2');
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
+    public function listaUsuariosStaff()//select
+    {
+        $estados = array('1', '2');
+        $roles = array('admin', 'policia', 'autoridad');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->from('usuario AS u');
+        $this->db->where_in('u.estado', $estados);
+        $this->db->where_in('rol', $roles);
+        $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
         //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }

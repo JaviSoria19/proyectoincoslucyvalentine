@@ -53,92 +53,44 @@ class Publicacion extends CI_Controller {
         $this->load->view('admin/inc/creditosgentelella');
         $this->load->view('admin/inc/footergentelella');
     }
-    public function agregar()
+    public function adminAgregar()
 	{
-        $this->load->view('inc/headergentelella');
-        $this->load->view('inc/sidebargentelella');
-        $this->load->view('inc/topbargentelella');
-        $this->load->view('publicacion/publicacion_insert',);
-        $this->load->view('inc/creditosgentelella');
-        $this->load->view('inc/footergentelella');
+        $this->load->view('admin/inc/headergentelella');
+        $this->load->view('admin/inc/sidebargentelella');
+        $this->load->view('admin/inc/topbargentelella');
+        $this->load->view('admin/publicacion/publicacion_insert_staff',);
+        $this->load->view('admin/inc/creditosgentelella');
+        $this->load->view('admin/inc/footergentelella');
 	}
 
-    public function agregarbd()
+    public function adminAgregarStaffbd()
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
-            'nombrepublicacion',
-            'Nombre del publicacion',
-            'required|min_length[3]|max_length[30]',
+            'titulo',
+            'Titulo de la publicación',
+            'required',
             array(
-                'required'=>'Se requiere ingresar el nombre del publicacion.',
-                'min_length'=>'El nombre debe tener al menos 3 caracteres.',
-                'max_length'=>'¡El nombre no debe contener más de 30 caracteres!.'
-                )
-            );
-        $this->form_validation->set_rules(
-            'precio',
-            'Precio del publicacion',
-            'required|max_length[7]|numeric',
-            array(
-                'required'=>'Se requiere ingresar el precio del publicacion.',
-                'max_length'=>'¡El precio no debe contener más de 7 caracteres!.',
-                'numeric'=>'El precio solo debe contener números!.'
-                )
-            );
-        $this->form_validation->set_rules(
-            'color',
-            'Color del publicacion',
-            'required|min_length[3]|max_length[20]|alpha_numeric_spaces',
-            array(
-                'required'=>'Se requiere ingresar el color del publicacion.',
-                'min_length'=>'El color debe tener al menos 3 caracteres.',
-                'max_length'=>'¡El color no debe contener más de 20 caracteres!.',
-                'alpha_numeric_spaces'=>'¡El color solo debe contener letras!.'
-                )
-            );
-        $this->form_validation->set_rules(
-            'stock',
-            'Stock del publicacion',
-            'required|max_length[3]|is_natural',
-            array(
-                'required'=>'Se requiere ingresar el stock del publicacion.',
-                'max_length'=>'¡El stock no puede exceder más de 999 unidades!.',
-                'is_natural'=>'¡El stock solo debe contener números enteros!.'
-                )
-            );
-        $this->form_validation->set_rules(
-            'descripcion',
-            'Descripcion del publicacion',
-            'required|min_length[3]',
-            array(
-                'required'=>'¡Se requiere ingresar alguna descripción del publicacion! Puede agregar datos como por ejemplo: almacenamiento, memoria RAM, peso, procedencia, etc.',
-                'min_length'=>'La descripción tener al menos 3 caracteres.'
+                'required'=>'Se requiere ingresar el nombre del publicacion.'
                 )
             );
         if($this->form_validation->run()==FALSE)
         {
-            $lista=$this->categoria_model->listacategorias();
-            $data['categoria']=$lista;
-            $lista=$this->marca_model->listamarcas();
-            $data['marca']=$lista;
-            $this->load->view('inc/headergentelella');
-            $this->load->view('inc/sidebargentelella');
-            $this->load->view('inc/topbargentelella');
-            $this->load->view('publicacion/publicacion_insert',$data);
-            $this->load->view('inc/creditosgentelella');
-            $this->load->view('inc/footergentelella');
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_insert_staff',);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
         }
         else{
-            $data['nombrePublicacion']=$_POST['nombrepublicacion'];
-            $data['idMarca']=strtoupper($_POST['idmarca']);
-            $data['idCategoria']=$_POST['idcategoria'];
-            $data['precio']=$_POST['precio'];
-            $data['color']=$_POST['color'];
-            $data['stock']=$_POST['stock'];
-            $data['descripcion']=$_POST['descripcion'];
+            $data['idUsuario']=$this->session->userdata('idusuario');
+            $data['fotoPublicacion']='publicacion_default.png';
+            $data['titulo']=$_POST['titulo'];
+            $data['contenido']=$_POST['contenido'];
+
             $this->publicacion_model->agregarpublicaciones($data);
-            redirect('publicacion/index','refresh');
+            redirect('publicacion/indexStaff','refresh');
         }
     }
 

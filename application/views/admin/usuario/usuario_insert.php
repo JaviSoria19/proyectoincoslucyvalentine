@@ -20,7 +20,7 @@
                         ?>
                         <br>
                         <p class="text-white font-13 m-b-30">
-                            Usted agregará un nuevo usuario para que acceda al sistema, por favor llene los siguientes datos:
+                            Usted agregará un nuevo usuario del STAFF para que acceda al sistema, por favor llene los siguientes datos:
                         </p>
                         <?php 
                             echo form_open_multipart('usuarios/adminAgregarbd');

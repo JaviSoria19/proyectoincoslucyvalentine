@@ -47,11 +47,16 @@
     </div><!-- Fin Div container md-3 -->
     <div class="col-md-12 bg-dark rounded text-light">
         <h1 class="font-weight-bold">Comentarios</h1>
-        <?php 
+        <?php if ($this->session->userdata('estado')=='1'): ?>
+            <p class="text-warning font-weight-bold">Si desea comentar en alguna pubicación debe ser un usuario verificado, para ello debe subir una fotografía LEGIBLE de su Cédula de Identidad y posteriormente será revisado por un administrador.</p>
+        <?php endif ?>
+        <?php if ($this->session->userdata('estado')=='2'): ?>
+            <?php 
             echo form_open_multipart('comentario/agregarbd');
         ?>
             <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
             <textarea name="comentario" class="form-control rounded" required></textarea>
+            <br>
             <button type="submit" name="buttonComentar" class="btn btn-primary">
                 <i class="fa fa-comment-o"></i> Comentar
             </button>
@@ -61,6 +66,8 @@
         <?php 
             echo form_close();
         ?>
+        <?php endif ?>
+        
         <br>
         <?php 
             foreach($infocomentarios->result() as $row)

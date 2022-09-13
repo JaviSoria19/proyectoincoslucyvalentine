@@ -4,7 +4,7 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2><i class="fa fa-users"></i> Usuarios.</h2>
+                        <h2><i class="fa fa-users"></i> Usuarios pendientes de verificación.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -12,16 +12,19 @@
                         <div class="row"><!-- Inicio Div row 2 -->
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
+                                    <div class="btn-group">
                                     <?php 
-                                        echo form_open_multipart('usuarios/adminAgregar');
+                                        echo form_open_multipart('usuarios/adminVerStaff');
                                     ?>
-                                        <button type="submit" class="btn btn-success">
-                                        <i class="fa fa-plus-circle"></i> Insertar Usuario
+                                        <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-eye"></i> Ver usuarios del Staff
                                         </button>
                                     <?php 
                                         echo form_close();
-                                    ?>
-                                    <br>
+                                    ?> 
+                                    </div>
+                                    
+                                    <br><br>
                                     <p class="text-muted font-13 m-b-30">
                                         Actualmente contamos con <?php echo $usuario->num_rows(); ?>
                                         usuarios activos en sistema!<br>
@@ -32,6 +35,7 @@
                 <thead>
                     <tr class="text-center">
                         <th>Foto</th>
+                        <th>Departamento</th>
                         <th>Nombre</th>
                         <th>Nro. C.I.</th>
                         <th>Nro. Celular</th>
@@ -57,6 +61,7 @@
                         ?>
                         <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" height="35px" class="rounded mx-auto d-block gallery-item" alt="<?php echo $row->numeroCI; ?>">
                     </td>
+                    <td><?php echo $row->nombreDepartamento; ?></td>
                     <td><?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?></td>
                     <td><?php echo $row->numeroCI; ?></td>
                     <td><?php echo $row->numeroCelular; ?></td>

@@ -12,16 +12,6 @@
                         <div class="row"><!-- Inicio Div row 2 -->
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
-                                    <?php 
-                                        echo form_open_multipart('usuarios/adminAgregar');
-                                    ?>
-                                        <button type="submit" class="btn btn-success">
-                                        <i class="fa fa-plus-circle"></i> Nueva Publicación
-                                        </button>
-                                    <?php 
-                                        echo form_close();
-                                    ?>
-                                    <br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
                                         Estimad@ usuari@, recuerde seguir las normas de convivencia pacífica y sobretodo brindar respeto para una buena experiencia dentro de la comunidad.
                                     </p>
@@ -42,7 +32,7 @@
                                 <p style="display: block; white-space: nowrap;width: 90%;overflow: hidden;text-overflow: ellipsis; text-align: justify;">
                                     <?php echo $row->contenido;?>        
                                 </p>
-                                <p>Publicado por <?php echo $row->nombreUsuario;?> <?php echo formatearVerificado($row->estadoUsuario);?> el <?php echo formatearsoloFecha($row->fechaRegistro);?></p>
+                                <p class="font-weight-bold">Publicado por <?php echo $row->nombreUsuario;?> <?php echo formatearVerificado($row->estadoUsuario);?> el <?php echo formatearsoloFecha($row->fechaRegistro);?></p>
                                 <?php echo form_open_multipart('publicacion/visualizar_post');?>
                                     <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
                                     <button class="btn btn-primary">

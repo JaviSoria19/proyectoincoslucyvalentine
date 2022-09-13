@@ -13,10 +13,10 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <?php 
-                                        echo form_open_multipart('usuarios/adminAgregar');
+                                        echo form_open_multipart('publicacion/adminAgregar');
                                     ?>
                                         <button type="submit" class="btn btn-success">
-                                        <i class="fa fa-plus-circle"></i> Nueva Publicación
+                                        <i class="fa fa-plus-circle"></i> Nueva Publicación Oficial
                                         </button>
                                     <?php 
                                         echo form_close();
@@ -24,9 +24,6 @@
                                     <br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
                                         BIENVENIDO! AQUÍ PUEDE ENCONTRAR INFORMACIÓN OFICIAL BRINDADA POR LA DEFENSORÍA Y LA FUERZA POLICIAL DEL PAÍS.
-                                        <?php $valor=55;
-                                        echo 'cadena/'.$valor;?>
-
                                     </p>
 
                     <?php
@@ -37,7 +34,6 @@
                     <div class="item bg-dark rounded">
                         <div class="col-md-2 bg-dark rounded align-self-center">
                             <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" class="rounded mx-auto d-block img-thumbnail">
-                            
                         </div>
                         <div class="card col-md-10 bg-dark">
                             <div class="card-body text-light">
@@ -45,7 +41,7 @@
                                 <p style="display: block; white-space: nowrap;width: 90%;overflow: hidden;text-overflow: ellipsis; text-align: justify;">
                                     <?php echo $row->contenido;?>        
                                 </p>
-                                <p>Publicado por <?php echo $row->nombreUsuario;?> <?php echo formatearVerificado($row->estadoUsuario);?> el <?php echo formatearsoloFecha($row->fechaRegistro);?></p>
+                                <p class="font-weight-bold">Publicado por <?php echo $row->nombreUsuario;?> <?php echo formatearVerificado($row->estadoUsuario);?> el <?php echo formatearsoloFecha($row->fechaRegistro);?></p>
                                 <?php echo form_open_multipart('publicacion/visualizar_post');?>
                                     <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
                                     <button class="btn btn-primary">

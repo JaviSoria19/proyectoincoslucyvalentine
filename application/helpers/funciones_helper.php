@@ -76,5 +76,4 @@ function formatearVerificado($estado)
         return '<i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>';
     }
 }
-
 ?>
