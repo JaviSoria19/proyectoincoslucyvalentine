@@ -26,8 +26,8 @@
                                     
                                     <br><br>
                                     <p class="text-muted font-13 m-b-30">
-                                        Actualmente contamos con <?php echo $usuario->num_rows(); ?>
-                                        usuarios activos en sistema!<br>
+                                        Actualmente <?php echo $usuario->num_rows(); ?>
+                                        usuarios están pendientes para ser verificados en sistema!<br>
                                         Estimado administrador, recuerde verificar todas las medidas de seguridad de una Cédula de Identidad para validar a un usuario.
                                     </p>
 
