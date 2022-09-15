@@ -56,9 +56,7 @@
                     <br>
                     <?php 
                         } 
-                    ?>
-                </tbody>
-            </table>                  
+                    ?>               
                                 </div><!-- Inicio Div card-box table-responsive -->
                             </div><!-- Fin Div col-sm-12 2 -->
                         </div><!-- Fin Div row 2 -->

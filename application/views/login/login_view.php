@@ -9,9 +9,11 @@
         case '2':
           $mensaje='<p class="text-danger font-weight-bold">Usuario o contraseña no válidos.</p>';
           break;
-        
-        default:
+        case '3':
           $mensaje='<p class="text-danger font-weight-bold">Acceso no válido, primero inicie sesión</p>';
+          break;
+        default:
+          $mensaje='';
           break;
         } 
       ?>

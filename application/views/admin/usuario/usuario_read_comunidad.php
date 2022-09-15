@@ -43,8 +43,8 @@
                         <th>Usuario</th>
                         <th>Correo</th>
                         <th>Rol</th>
-                        <th>Creado</th>
-                        <th>Modificado</th>
+                        <th>F. Registro</th>
+                        <th>F. Modificación</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>

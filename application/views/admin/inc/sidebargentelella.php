@@ -69,7 +69,7 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('denuncia/inicio');?>
+                        <?php echo form_open_multipart('denuncia/index');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Denuncias
                           </button>
