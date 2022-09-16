@@ -418,6 +418,7 @@ class Usuarios extends CI_Controller {
                         $this->session->set_userdata('correo',$row->correo);
                         $this->session->set_userdata('foto',$row->foto);
                         $this->session->set_userdata('rol',$row->rol);
+                        $this->session->set_userdata('sexo',$row->sexo);
                         redirect('usuarios/panel','refresh');
                         }            
                 }
@@ -440,7 +441,7 @@ class Usuarios extends CI_Controller {
 
                         }
                         elseif($this->session->userdata('rol')=='usuario'){
-                                redirect('producto/index','refresh');
+                                redirect('publicacion/indexStaff','refresh');
                         }
                         else{
                                 //cargo guest

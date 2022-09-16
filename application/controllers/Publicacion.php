@@ -15,6 +15,16 @@ class Publicacion extends CI_Controller {
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }
+        else if ($this->session->userdata('rol')=='usuario') {
+            $lista=$this->publicacion_model->listaPublicacionesStaff();
+            $data['publicacion']=$lista;
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_staff',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }
         else
         {
             redirect('usuarios/panel','refresh');
@@ -33,6 +43,16 @@ class Publicacion extends CI_Controller {
             $this->load->view('admin/publicacion/publicacion_read_comunidad',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='usuario') {
+            $lista=$this->publicacion_model->listaPublicacionesComunidad();
+            $data['publicacion']=$lista;
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_comunidad',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
         }
         else
         {

@@ -1,4 +1,5 @@
         </div>
+    <script src="<?php echo base_url(); ?>gentelella/imagenesmodal.js"></script>
     <!-- jQuery -->
     <script src="<?php echo base_url(); ?>gentelella/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->

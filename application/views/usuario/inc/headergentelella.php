@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Miniatura de la pestaña -->
 	  <link href="<?php echo base_url()?>img/miniatura.png" rel="icon" type="image/png"/>
-    <title>Sistema de Ventas Celulares!</title>
+    <title>Sistema LCV</title>
     
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link href="<?php echo base_url(); ?>gentelella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
