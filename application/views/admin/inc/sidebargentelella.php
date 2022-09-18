@@ -60,6 +60,27 @@
                           </button>
                         <?php echo form_close();?>
                     </li>
+                    <li>
+                        <?php echo form_open_multipart('publicacion/indexComunidad');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Información Educativa
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                    <li>
+                        <?php echo form_open_multipart('publicacion/indexComunidad');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Pautas de Seguridad
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                    <li>
+                        <?php echo form_open_multipart('publicacion/indexComunidad');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Promoción de Actitudes Igualitarias.
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
                   </ul>
                 </li>
                 <li>

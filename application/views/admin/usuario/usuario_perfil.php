@@ -12,16 +12,21 @@
                         <div class="row"><!-- Inicio Div row 2 -->
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
-                                    <?php 
-                                        echo form_open_multipart('usuarios/inicio');
-                                    ?>
+                                    <div class="btn-group">
+                                        <?php echo form_open_multipart('usuarios/inicio'); ?>
                                         <button type="submit" class="btn btn-success">
                                         <i class="fa fa-home"></i> Volver a Inicio
                                         </button>
-                                    <?php 
-                                        echo form_close();
-                                    ?>
-                                    <br>
+                                        <?php echo form_close();?>
+                                        ⠀<!--caracter en blanco-->
+                                        <?php echo form_open_multipart('usuarios/modificar'); ?>
+                                        <input type="hidden" name="idusuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
+                                        <button type="submit" class="btn btn-warning">
+                                        <i class="fa fa-edit"></i> Editar perfil
+                                        </button>
+                                        <?php echo form_close();?>
+                                    </div>
+                                    <br><br>
                                     <?php            
                                         foreach($infousuario->result() as $row)
                                         {

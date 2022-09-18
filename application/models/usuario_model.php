@@ -16,9 +16,9 @@ class Usuario_model extends CI_Model {
             $this->db->group_end();
         $this->db->group_end();
         $this->db->where('contrasenha',$password);
-
         return $this->db->get(); //devolucion del resultado de la consulta
 	}
+
     public function listaUsuariosNoVerificados()//select
     {
         $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
@@ -77,4 +77,13 @@ class Usuario_model extends CI_Model {
         return $this->db->get(); //devolucion del resultado de la consulta
     }
 
+    public function validarCI($numeroci)
+    {
+        $estados = array('1', '2');
+        $this->db->select('*');
+        $this->db->from('usuario');
+        $this->db->where('numeroCI',$numeroci);
+        $this->db->where_in('u.estado', $estados);
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
 }

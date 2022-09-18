@@ -2,24 +2,24 @@
     <div class="container md-3"><!-- Inicio Div container md-3 -->
         <div class="row"><!-- Inicio Div row -->
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
-                <div class="x_panel"><!-- Inicio Div x_panel -->
+                <div class="x_panel bg-dark text-white"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2>Actualizar empleado.</h2>
+                        <h2>Modificar perfil.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
                         <?php 
-                            echo form_open_multipart('usuarios/inicio');
+                            echo form_open_multipart('usuarios/index');
                         ?>
                             <button type="submit" name="buttonInhabilitados" class="btn btn-outline-success">
-                            <i class="fa fa-arrow-circle-left"></i> Volver a usuarios
+                            <i class="fa fa-arrow-circle-left"></i> Volver a inicio
                             </button>
                         <?php 
                             echo form_close();
                         ?>
-                        <p class="text-muted font-13 m-b-30">
-                            Usted va a editar un usuario, por favor modifique el siguiente campo:
+                        <p class="font-13 m-b-30">
+                            Actualizar datos personales:
                         </p>
                         <?php            
                             foreach($infousuario->result() as $row)
@@ -28,23 +28,78 @@
                         ?>
                         <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario;?>">
                         <br>
-                        <div class="item form-group has-feedback">
-                            <label class="col-form-label col-md-1 label-align" for="login">Nombre de Usuario:</label>
-                            <div class="col-md-3">
-                                <input type="text" name="login" value="<?php echo $row->login;?>" class="form-control has-feedback-left">
-                                <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
-                                <?php echo form_error('login'); ?>
+                        <div class="item form-group has-feedback justify-content-center">
+                            <label class="col-form-label col-md-2 label-align" for="iddepartamento">Ciudad Actual:</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="iddepartamento" required>
+                                    <option selected disabled value="">
+                                        Ciudad Actual: <?php echo $row->nombreDepartamento;?> 
+                                    </option>
+                                    <?php
+                                        foreach ($departamento->result() as $rowDep)
+                                        {
+                                    ?>
+                                    <option value="<?php echo $rowDep->idDepartamento;?>">
+                                        <?php echo $rowDep->nombreDepartamento;?>    
+                                    </option>
+                                    <?php        
+                                        }
+                                    ?>
+                                </select>
                             </div>
-                            <label class="col-form-label col-md-1 label-align" for="password">Nueva contraseña:</label>
-                            <div class="col-md-3">
-                                <input type="text" name="password" class="form-control has-feedback-left">
-                                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
-                                <?php echo form_error('password'); ?>
+                        </div>
+                        <div class="item form-group has-feedback justify-content-center">
+                            <label class="col-form-label col-md-2 label-align" for="nombres">Nombre(s):</label>
+                            <div class="col-md-6">
+                                <input type="text" name="nombres" class="form-control has-feedback-left"
+                                value="<?php echo $row->nombres;?>">
+                                <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                                <?php echo form_error('nombres'); ?>
                             </div>
-                            <label class="col-form-label col-md-1 label-align">Foto:</label>
-                            <div class="col-md-3">
-                                <input type="file" name="userfile" class="form-control has-feedback-left">
-                                <span class="fa fa-image form-control-feedback left" aria-hidden="true"></span>
+                        </div>
+                        <div class="item form-group has-feedback justify-content-center">
+                            <label class="col-form-label col-md-2 label-align" for="primerapellido">Primer Apellido:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="primerapellido" class="form-control has-feedback-left"
+                                value="<?php echo $row->primerApellido;?>">
+                                <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                                <?php echo form_error('primerapellido'); ?>
+                            </div>
+                        </div>
+                        <div class="item form-group has-feedback justify-content-center">
+                            <label class="col-form-label col-md-2 label-align" for="segundoapellido">Segundo Apellido (opcional):</label>
+                            <div class="col-md-6">
+                                <input type="text" name="segundoapellido" class="form-control has-feedback-left"
+                                value="<?php echo $row->segundoApellido;?>">
+                                <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                                <?php echo form_error('segundoapellido'); ?>
+                            </div>
+                        </div>
+                        <div class="item form-group has-feedback justify-content-center">
+                            <label class="col-form-label col-md-2 label-align" for="numerocelular">Nro. Celular:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="numerocelular" class="form-control has-feedback-left"
+                                value="<?php echo $row->numeroCelular;?>">
+                                <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                                <?php echo form_error('numerocelular'); ?>
+                            </div>
+                        </div>
+                        <div class="item form-group has-feedback justify-content-center">
+                            <label class="col-form-label col-md-2 label-align" for="numeroci">Nro. Cédula de Identidad:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="numeroci" class="form-control has-feedback-left"
+                                value="<?php echo $row->numeroCI;?>">
+                                <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                                <?php echo form_error('numeroci'); ?>
+                            </div>
+                        </div>
+                        <div class="item form-group has-feedback justify-content-center">
+                            <label class="col-form-label col-md-2 label-align" for="correo">Correo:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="correo" class="form-control has-feedback-left"
+                                value="<?php echo $row->correo;?>">
+                                <span class="fa fa-at form-control-feedback left" aria-hidden="true"></span>
+                                <?php echo form_error('correo'); ?>
                             </div>
                         </div>
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalConfirmacion">
@@ -67,7 +122,7 @@
         </button>
       </div>
       <div class="modal-body">
-         ¿Está seguro de realizar la modificación? Presione Modificar
+         ¿Está seguro de haber ingresado los datos correctamente? Presione Modificar
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>

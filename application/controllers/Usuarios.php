@@ -166,7 +166,7 @@ class Usuarios extends CI_Controller {
                         $data['correo']=$_POST['correo'];
                         $data['nombreUsuario']=strtolower($_POST['nombreusuario']);
                         $data['contrasenha']=md5($_POST['contrasenha']);
-                        $data['foto']='1user.jpg';
+                        $data['foto']='user_default.png';
                         $data['rol']='usuario';
                         $this->usuario_model->agregarusuarios($data);
                         redirect('usuarios/index','refresh');
@@ -275,7 +275,7 @@ class Usuarios extends CI_Controller {
                         $data['correo']=$_POST['correo'];
                         $data['nombreUsuario']=strtolower($_POST['nombreusuario']);
                         $data['contrasenha']=md5($_POST['contrasenha']);
-                        $data['foto']='1user.jpg';
+                        $data['foto']='admin_default.jpg';
                         $data['rol']=$_POST['rol'];
                         $data['estado']='2';
                         $this->usuario_model->agregarusuarios($data);
@@ -284,14 +284,35 @@ class Usuarios extends CI_Controller {
         }
         public function modificar()
         {
+                if($this->session->userdata('rol')=='admin')
+                {
                 $idusuario=$_POST['idusuario'];
                 $data['infousuario']=$this->usuario_model->recuperarusuarios($idusuario);
-                $this->load->view('inc/headergentelella');
-                $this->load->view('inc/sidebargentelella');
-                $this->load->view('inc/topbargentelella');
-                $this->load->view('usuario/usuario_update',$data);
-                $this->load->view('inc/creditosgentelella');
-                $this->load->view('inc/footergentelella');
+                $lista=$this->departamento_model->listadepartamentos();
+                $data['departamento']=$lista;
+                $this->load->view('admin/inc/headergentelella');
+                $this->load->view('admin/inc/sidebargentelella');
+                $this->load->view('admin/inc/topbargentelella');
+                $this->load->view('admin/usuario/usuario_update',$data);
+                $this->load->view('admin/inc/creditosgentelella');
+                $this->load->view('admin/inc/footergentelella');
+                }
+                elseif ($this->session->userdata('rol')=='usuario') {
+                $idusuario=$_POST['idusuario'];
+                $data['infousuario']=$this->usuario_model->recuperarusuarios($idusuario);
+                $lista=$this->departamento_model->listadepartamentos();
+                $data['departamento']=$lista;
+                $this->load->view('usuario/inc/headergentelella');
+                $this->load->view('usuario/inc/sidebargentelella');
+                $this->load->view('usuario/inc/topbargentelella');
+                $this->load->view('admin/usuario/usuario_update',$data);
+                $this->load->view('usuario/inc/creditosgentelella');
+                $this->load->view('usuario/inc/footergentelella');
+                }
+                else
+                {
+                        redirect('usuarios/panel','refresh');
+                }
         }
 
         public function modificarbd()
@@ -407,7 +428,6 @@ class Usuarios extends CI_Controller {
                 $login=strtolower($_POST['login']);
                 $password=md5($_POST['password']);
                 $consulta=$this->usuario_model->validar($login,$password);
-                
                 if($consulta->num_rows()>0)
                 {
                         //validacion efectiva
@@ -430,6 +450,19 @@ class Usuarios extends CI_Controller {
 
 
         }
+        public function validarCIExistente()
+        {
+                $numeroci=$_POST['numeroci'];
+                $consulta=$this->usuario_model->validarCI($numeroci);
+                if($consulta->num_rows()>0)
+                {
+                        alertaCIExistente();          
+                }
+                else
+                {
+                        redirect('usuarios/index/2','refresh');
+                }
+        }
 
         public function panel()
         {
@@ -451,10 +484,7 @@ class Usuarios extends CI_Controller {
                 else
                 {//USUARIO NO LOGUEADO 
                         redirect('usuarios/index','refresh');
-                } 
-
-
-
+                }
         }
 
         public function logout()
