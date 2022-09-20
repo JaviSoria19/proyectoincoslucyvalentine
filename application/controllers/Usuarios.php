@@ -7,7 +7,7 @@ class Usuarios extends CI_Controller {
 	public function index()
 	{
                 $data['msg']=$this->uri->segment(3);
-                if ($this->session->userdata('nombreusuario'))
+                if ($this->session->userdata('correo'))
                 {//Usuario logueado
                         redirect('usuarios/panel','refresh');
                 }
@@ -81,17 +81,6 @@ class Usuarios extends CI_Controller {
         {
                 $this->load->library('form_validation');
                 $this->form_validation->set_rules(
-                        'nombreusuario',
-                        'Username del Usuario',
-                        'required|min_length[3]|max_length[50]|alpha',
-                        array(
-                        'required'=>'Se requiere ingresar el nombre de usuario!.',
-                        'min_length'=>'El usuario debe tener al menos 3 caracteres.',
-                        'max_length'=>'¡El usuario no debe contener más de 50 caracteres!.',
-                        'alpha'=>'¡El login solo debe contener letras!.'
-                        )
-                );        
-                $this->form_validation->set_rules(
                         'contrasenha',
                         'Contraseña del Usuario',
                         'required|min_length[8]',
@@ -164,7 +153,6 @@ class Usuarios extends CI_Controller {
                         $data['numeroCI']=$_POST['numeroci'];
                         $data['sexo']=$_POST['sexo'];
                         $data['correo']=$_POST['correo'];
-                        $data['nombreUsuario']=strtolower($_POST['nombreusuario']);
                         $data['contrasenha']=md5($_POST['contrasenha']);
                         $data['foto']='user_default.png';
                         $data['rol']='usuario';
@@ -186,17 +174,6 @@ class Usuarios extends CI_Controller {
         public function adminAgregarbd()
         {
                 $this->load->library('form_validation');
-                $this->form_validation->set_rules(
-                        'nombreusuario',
-                        'Username del Usuario',
-                        'required|min_length[3]|max_length[50]|alpha',
-                        array(
-                        'required'=>'Se requiere ingresar el nombre de usuario!.',
-                        'min_length'=>'El usuario debe tener al menos 3 caracteres.',
-                        'max_length'=>'¡El usuario no debe contener más de 50 caracteres!.',
-                        'alpha'=>'¡El login solo debe contener letras!.'
-                        )
-                );        
                 $this->form_validation->set_rules(
                         'contrasenha',
                         'Contraseña del Usuario',
@@ -273,7 +250,6 @@ class Usuarios extends CI_Controller {
                         $data['numeroCI']=$_POST['numeroci'];
                         $data['sexo']=$_POST['sexo'];
                         $data['correo']=$_POST['correo'];
-                        $data['nombreUsuario']=strtolower($_POST['nombreusuario']);
                         $data['contrasenha']=md5($_POST['contrasenha']);
                         $data['foto']='admin_default.jpg';
                         $data['rol']=$_POST['rol'];
@@ -434,7 +410,6 @@ class Usuarios extends CI_Controller {
                         foreach ($consulta->result() as $row) {
                         $this->session->set_userdata('idusuario',$row->idUsuario);
                         $this->session->set_userdata('estado',$row->estado);
-                        $this->session->set_userdata('nombreusuario',$row->nombreUsuario);
                         $this->session->set_userdata('correo',$row->correo);
                         $this->session->set_userdata('foto',$row->foto);
                         $this->session->set_userdata('rol',$row->rol);
@@ -466,7 +441,7 @@ class Usuarios extends CI_Controller {
 
         public function panel()
         {
-                if ($this->session->userdata('nombreusuario'))
+                if ($this->session->userdata('correo'))
                 {
                         if($this->session->userdata('rol')=='admin'){
                                 //cargo admin

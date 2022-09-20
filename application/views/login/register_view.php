@@ -76,11 +76,6 @@
                 <?php echo form_error('correo');?>
               </div>
               <div class="col-md-12 form-group has-feedback">
-                <input type="text" class="form-control has-feedback-left"  name="nombreusuario" placeholder="Nombre de Usuario">
-                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                <?php echo form_error('nombreusuario');?>
-              </div>
-              <div class="col-md-12 form-group has-feedback">
                 <input type="password" class="form-control has-feedback-left"  name="contrasenha" placeholder="Contraseña">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                 <?php echo form_error('contrasenha');?>

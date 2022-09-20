@@ -115,15 +115,6 @@
                             </div>
                         </div>
                         <div class="item form-group has-feedback justify-content-center">
-                            <label class="col-form-label col-md-2 label-align" for="nombreusuario">Usuario:</label>
-                            <div class="col-md-6">
-                                <input type="text" name="nombreusuario" class="form-control has-feedback-left"
-                                value="<?php echo set_value('nombreusuario');?>">
-                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                                <?php echo form_error('nombreusuario'); ?>
-                            </div>
-                        </div>
-                        <div class="item form-group has-feedback justify-content-center">
                             <label class="col-form-label col-md-2 label-align" for="contrasenha">Contraseña:</label>
                             <div class="col-md-6">
                                 <input type="text" name="contrasenha" class="form-control has-feedback-left"

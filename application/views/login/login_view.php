@@ -34,8 +34,8 @@
       <br>
       <?php echo $mensaje; ?>
       <div class="col-md-12 form-group has-feedback">
-        <input type="text" class="form-control has-feedback-left"  name="login" placeholder="Usuario / Correo" required>
-        <span class="fa fa-user form-control-feedback left" aria-hidden="true">
+        <input type="text" class="form-control has-feedback-left"  name="login" placeholder="Correo" required>
+        <span class="fa fa-at form-control-feedback left" aria-hidden="true">
         </span>
       </div>
       <div class="col-md-12 form-group has-feedback">

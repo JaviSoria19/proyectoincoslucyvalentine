@@ -29,7 +29,7 @@
                       $fotoperfil=$this->session->userdata('foto');
                     ?>
                       <img src="<?php echo base_url();?>/uploads/<?php echo $fotoperfil;?>" width="30px">
-                    <?php echo $this->session->userdata('nombreusuario')?>
+                    <?php echo $this->session->userdata('correo')?>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <?php echo form_open_multipart('usuarios/perfil'); ?>

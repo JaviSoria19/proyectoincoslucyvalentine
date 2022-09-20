@@ -5,23 +5,18 @@ class Usuario_model extends CI_Model {
 
 	public function validar($login,$password)
 	{
+        $estados = array('1', '2');
         $this->db->select('*');
         $this->db->from('usuario');
-        $this->db->group_start();
-            $this->db->where('nombreUsuario',$login);
-            $this->db->or_where('correo',$login);
-            $this->db->group_start();
-                $this->db->where('estado','1');
-                $this->db->or_where('estado','2');
-            $this->db->group_end();
-        $this->db->group_end();
+        $this->db->where('correo',$login);
+        $this->db->where_in('estado', $estados);
         $this->db->where('contrasenha',$password);
         return $this->db->get(); //devolucion del resultado de la consulta
 	}
 
     public function listaUsuariosNoVerificados()//select
     {
-        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
         $this->db->from('usuario AS u');
         $this->db->where('u.estado','1');
         $this->db->where('rol','usuario');
@@ -32,7 +27,7 @@ class Usuario_model extends CI_Model {
     {
         $estados = array('1', '2');
         $roles = array('admin', 'policia', 'autoridad');
-        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
         $this->db->from('usuario AS u');
         $this->db->where_in('u.estado', $estados);
         $this->db->where_in('rol', $roles);
@@ -54,7 +49,7 @@ class Usuario_model extends CI_Model {
 
     public function recuperarusuarios($idusuario)//get
     {
-        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
         $this->db->from('usuario AS u');
         $this->db->where('u.idUsuario',$idusuario);
         $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
@@ -69,7 +64,7 @@ class Usuario_model extends CI_Model {
 
     public function listausuariosdeshabilitados()//select
     {
-        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,nombreUsuario,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
         $this->db->from('usuario AS u');
         $this->db->where('u.estado','0'); //condición where estado = 1
         $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');

@@ -50,7 +50,6 @@
                         <th>Nro. C.I.</th>
                         <th>Nro. Celular</th>
                         <th>Género</th>
-                        <th>Usuario</th>
                         <th>Correo</th>
                         <th>Rol</th>
                         <th>F. Registro</th>
@@ -76,7 +75,6 @@
                     <td><?php echo $row->numeroCI; ?></td>
                     <td><?php echo $row->numeroCelular; ?></td>
                     <td><?php echo formatearGenero($row->sexo); ?></td>
-                    <td><?php echo $row->nombreUsuario; ?></td>
                     <td><?php echo $row->correo; ?></td>
                     <td><?php echo ucfirst($row->rol); ?></td>
                     <td class="text-center"><?php echo formatearFechaMasHora($row->fechaRegistro); ?></td>

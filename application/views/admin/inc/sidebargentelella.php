@@ -15,7 +15,7 @@
           </div><!-- end div profile_pic -->
           <div class="profile_info">
             <span>Bienvenido,</span>
-            <h2><?php echo $this->session->userdata('nombreusuario')?> <?php echo formatearVerificado($this->session->userdata('estado')); ?></h2>
+            <h2 class="overflow-hidden"><?php echo $this->session->userdata('correo')?> <?php echo formatearVerificado($this->session->userdata('estado')); ?></h2>
           </div><!-- end div profile_info -->
         </div><!-- end div profile clearfix -->
           <!-- /menu profile quick info -->
