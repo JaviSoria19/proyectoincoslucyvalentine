@@ -30,6 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>gentelella/build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>gentelella/lcv.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">

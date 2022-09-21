@@ -6,7 +6,7 @@ class Publicacion_model extends CI_Model {
 
 	public function listaPublicacionesStaff()//select
     {
-        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,p.estado,p.fechaRegistro,p.fechaActualizacion,u.nombreUsuario,u.rol,u.estado AS estadoUsuario'); //select *
+        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
         $this->db->from('publicacion AS p'); //tabla publicacion
         $this->db->where('p.estado','1'); //condición where estado = 1
         $this->db->where('u.rol','admin');
@@ -17,7 +17,7 @@ class Publicacion_model extends CI_Model {
     }
     public function listaPublicacionesComunidad()//select
     {
-        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,p.estado,p.fechaRegistro,p.fechaActualizacion,u.nombreUsuario,u.rol,u.estado AS estadoUsuario'); //select *
+        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
         $this->db->from('publicacion AS p'); //tabla publicacion
         $this->db->where('p.estado','1'); //condición where estado = 1
         $this->db->where('u.rol','usuario');
@@ -37,7 +37,7 @@ class Publicacion_model extends CI_Model {
     }
     public function recuperarpublicaciones($idpublicacion)//get
     {
-        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,p.estado,p.fechaRegistro,p.fechaActualizacion,u.nombreUsuario,u.rol,u.estado AS estadoUsuario'); //select *
+        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
         $this->db->from('publicacion AS p');
         $this->db->where('p.idPublicacion',$idpublicacion);
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
@@ -52,7 +52,7 @@ class Publicacion_model extends CI_Model {
     }
     public function listapublicacionesdeshabilitados()//select
     {
-        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,p.estado,p.fechaRegistro,p.fechaActualizacion,u.nombreUsuario,u.rol,u.estado AS estadoUsuario'); //select *
+        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
         $this->db->from('publicacion AS p');
         $this->db->where('p.estado','0'); //condición where estado = 1
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');

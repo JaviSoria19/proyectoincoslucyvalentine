@@ -120,10 +120,10 @@ class Usuarios extends CI_Controller {
                 $this->form_validation->set_rules(
                     'numerocelular',
                     'Número de Celular del usuario',
-                    'required|exact_length[8]|is_natural',
+                    'required|min_length[8]|max_length[13]',
                     array('required'=>'¡El número de celular es obligatorio!',
-                        'exact_length'=>'¡Ingrese un número de celular válido!.',
-                        'is_natural'=>'¡No ingrese caracteres que no sean números!.'
+                        'min_length'=>'¡Ingrese un número de celular válido!.',
+                        'max_length'=>'¡El número de celular no contiene más los 13 caracteres!.'
                         )
                     );
                 $this->form_validation->set_rules(
@@ -214,10 +214,10 @@ class Usuarios extends CI_Controller {
                 $this->form_validation->set_rules(
                     'numerocelular',
                     'Número de Celular del usuario',
-                    'required|exact_length[8]|is_natural',
+                    'required|min_length[8]|max_length[13]',
                     array('required'=>'¡El número de celular es obligatorio!',
-                        'exact_length'=>'¡Ingrese un número de celular válido!.',
-                        'is_natural'=>'¡No ingrese caracteres que no sean números!.'
+                        'min_length'=>'¡Ingrese un número de celular válido!.',
+                        'max_length'=>'¡El número de celular no contiene más los 13 caracteres!.'
                         )
                     );
                 $this->form_validation->set_rules(

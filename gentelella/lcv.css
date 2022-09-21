@@ -1,0 +1,8 @@
+.bg-lcv {
+  background: #d81b60 !important;
+  border: 1px solid #d81b60 !important;
+  color: #fff; }
+.nav.side-menu > li.active > a {
+  background: -webkit-gradient(linear, left top, left bottom, from(#f06292), to(#f06292)), #f06292;
+  background: linear-gradient(#f06292, #f06292), #f06292;
+}

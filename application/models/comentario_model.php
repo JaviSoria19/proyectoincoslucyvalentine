@@ -6,7 +6,7 @@ class Comentario_model extends CI_Model {
 
 	public function listacomentarios($idPublicacion)//select
 	{
-        $this->db->select('c.idComentario,c.idUsuario,c.idPublicacion,comentario,c.estado,c.fechaRegistro,c.fechaActualizacion,u.nombreUsuario,u.rol,u.estado AS estadoUsuario');
+        $this->db->select('c.idComentario,c.idUsuario,c.idPublicacion,comentario,c.estado,c.fechaRegistro,c.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario');
         $this->db->from('comentario AS c');
         $this->db->where('c.estado','1');
         $this->db->where('c.idPublicacion',$idPublicacion);
@@ -27,7 +27,7 @@ class Comentario_model extends CI_Model {
     }
     public function recuperarcomentarios($idcomentario)//get
     {
-        $this->db->select('c.idComentario,c.idUsuario,c.idPublicacion,comentario,estado,c.fechaRegistro,c.fechaActualizacion,u.nombreUsuario,u.rol,u.estado');
+        $this->db->select('c.idComentario,c.idUsuario,c.idPublicacion,comentario,estado,c.fechaRegistro,c.fechaActualizacion,u.correo,u.rol,u.estado');
         $this->db->from('comentario AS c');
         $this->db->where('idComentario',$idcomentario);
         $this->db->join('publicacion AS p', 'c.idPublicacion = p.idPublicacion');
@@ -43,7 +43,7 @@ class Comentario_model extends CI_Model {
     }
     public function listacomentariosdeshabilitados()
     {
-        $this->db->select('c.idComentario,c.idUsuario,c.idPublicacion,comentario,estado,c.fechaRegistro,c.fechaActualizacion,u.nombreUsuario,u.rol,u.estado');
+        $this->db->select('c.idComentario,c.idUsuario,c.idPublicacion,comentario,estado,c.fechaRegistro,c.fechaActualizacion,u.correo,u.rol,u.estado');
         $this->db->from('comentario AS c');
         $this->db->where('comentario.estado','0');
         $this->db->join('publicacion AS p', 'c.idPublicacion = p.idPublicacion');
