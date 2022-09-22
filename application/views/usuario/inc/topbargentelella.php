@@ -1,13 +1,3 @@
-              
-              <a data-toggle="tooltip" data-placement="top" title="Cerrar Sesión" href="<?php echo base_url()."index.php/usuarios/logout";?>">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-              
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
-
         <div class="top_nav">
           <div class="nav_menu">
               <div class="nav toggle">

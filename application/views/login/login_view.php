@@ -4,13 +4,13 @@
       <?php 
         switch ($msg) {
         case '1':
-          $mensaje='<p class="text-success font-weight-bold">Gracias por usar el sistema!</p>';
+          $mensaje='<p style="text-shadow: none;" class="text-success font-weight-bold">Gracias por usar el sistema!</p>';
           break;
         case '2':
-          $mensaje='<p class="text-danger font-weight-bold">Usuario o contraseña no válidos.</p>';
+          $mensaje='<p style="text-shadow: none;" class="text-danger font-weight-bold">Usuario o contraseña no válidos.</p>';
           break;
         case '3':
-          $mensaje='<p class="text-danger font-weight-bold">Acceso no válido, primero inicie sesión</p>';
+          $mensaje='<p style="text-shadow: none;" class="text-danger font-weight-bold">Acceso no válido, primero inicie sesión</p>';
           break;
         default:
           $mensaje='';
@@ -27,12 +27,14 @@
           )
         );
       ?>
-      <h1>Iniciar Sesión</h1>
+      <h1 style="text-shadow: none;">Iniciar Sesión</h1>
       <div class="content-center">
         <img class="img-fluid rounded w-50" src="<?php echo base_url()?>img/lucyvalentine.png">
       </div>
       <br>
-      <?php echo $mensaje; ?>
+      <div class="rounded badge-light">
+        <?php echo $mensaje; ?>
+      </div>
       <div class="col-md-12 form-group has-feedback">
         <input type="text" class="form-control has-feedback-left"  name="login" placeholder="Correo" required>
         <span class="fa fa-at form-control-feedback left" aria-hidden="true">
@@ -58,8 +60,8 @@
                 <br />
         <div class="clearfix"></div>
         <div>
-        <h1><i class="fa fa-female"></i> Sistema Lucy Valentine</h1>
-          <p>©2022 All Rights Reserved. Gentelella Alela! is a Bootstrap template.</p>
+        <h1 style="text-shadow: none;"><i class="fa fa-female"></i> Sistema Lucy Valentine</h1>
+          <p  style="text-shadow: none;">©2022 All Rights Reserved. Gentelella Alela! is a Bootstrap template.</p>
         </div>
       </div>
       <?php 

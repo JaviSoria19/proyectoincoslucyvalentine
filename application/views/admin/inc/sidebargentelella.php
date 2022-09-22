@@ -2,7 +2,7 @@
   <div class="col-md-3 left_col">
     <div class="left_col scroll-view bg-lcv">
       <div class="navbar nav_title bg-lcv" style="border:0; ba">
-        <a href="<?php echo base_url(); ?>index.php/usuarios/inicio" class="site_title"><i class="fa fa-female"></i> <span>LCV</span></a>
+        <a href="<?php echo base_url(); ?>index.php/usuarios/inicio" class="site_title"><i class="fa fa-female"></i> <span>Sistema LCV</span></a>
       </div>
       <div class="clearfix"></div>
             <!-- menu profile quick info -->
@@ -14,7 +14,13 @@
               <img src="<?php echo base_url();?>/uploads/<?php echo $fotoperfil;?>" alt="..." class="img-circle profile_img">
           </div><!-- end div profile_pic -->
           <div class="profile_info">
-            <span>Bienvenido,</span>
+            <span>
+              <?php if ($this->session->userdata('sexo')=='M'):?>
+                Bienvenido,
+              <?php else: ?>
+                Bienvenida,
+              <?php endif ?>
+            </span>
             <h2 class="overflow-hidden"><?php echo $this->session->userdata('correo')?> <?php echo formatearVerificado($this->session->userdata('estado')); ?></h2>
           </div><!-- end div profile_info -->
         </div><!-- end div profile clearfix -->
@@ -101,6 +107,21 @@
                         <?php echo form_open_multipart('publicacion/indexComunidad');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Promoción de Actitudes Igualitarias.
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a>
+                    <i class="fa fa-list-alt"></i>Test
+                    <span class="fa fa-chevron-down"></span>
+                  </a>
+                  <ul class="nav child_menu">
+                    <li>
+                        <?php echo form_open_multipart('test/inicio');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Test de Violencia
                           </button>
                         <?php echo form_close();?>
                     </li>

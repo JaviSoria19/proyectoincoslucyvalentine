@@ -16,6 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url(); ?>gentelella/build/css/custom.min.css" rel="stylesheet">
     <!-- Icono de pestaña -->
     <link href="<?php echo base_url()?>img/miniatura.png" rel="icon" type="image/png" />
+
+    <link href="<?php echo base_url(); ?>gentelella/lcv.css" rel="stylesheet">
   </head>
-  <body class="login">
+  <body class="login bg-lcv">
     <div>
