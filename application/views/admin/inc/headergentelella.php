@@ -33,5 +33,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url(); ?>gentelella/lcv.css" rel="stylesheet">
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md bg-lcv">
     <div class="container body">

@@ -125,6 +125,13 @@
                           </button>
                         <?php echo form_close();?>
                     </li>
+                    <li>
+                        <?php echo form_open_multipart('test/registros');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Registros
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
                   </ul>
                 </li>
               </ul>

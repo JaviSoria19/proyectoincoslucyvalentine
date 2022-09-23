@@ -76,6 +76,17 @@ function formatearVerificado($estado)
         return '<i class="fa fa-check-circle" data-toggle="tooltip" data-placement="top" title="Perfil Verificado"></i>';
     }
 }
+function formatearRespuesta($respuesta)
+{
+    if ($respuesta=='1'){
+        return 'Nunca';
+    }elseif ($respuesta=='2'){
+        return 'A veces';
+    }elseif ($respuesta=='3'){
+        return 'Casi Siempre';
+    }
+}
+
 function alertaCIExistente(){
     echo '<script language="javascript">';
     echo 'alert("Estimado Usuario, ¡el número de carnet que ingresó ha sido registrado en sistema previamente!")';
