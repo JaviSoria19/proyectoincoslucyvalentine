@@ -4,20 +4,26 @@ class Denuncia extends CI_Controller {
 
 	public function index()
 	{
-        if($this->session->userdata('rol')=='admin')
-        {
+        if($this->session->userdata('rol')=='admin'){
             $lista=$this->denuncia_model->listadenuncias();
             $data['denuncia']=$lista;
-
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
             $this->load->view('admin/denuncia/denuncia_read',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
-        }
-        else
-        {
+        }elseif($this->session->userdata('rol')=='usuario'){
+            $idusuario=$this->session->userdata('idusuario');
+            $lista=$this->denuncia_model->recuperardenunciasusuario($idusuario);
+            $data['historial']=$lista;
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/denuncia/denuncia_read',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }else{
             redirect('usuarios/panel','refresh');
         }
 	}

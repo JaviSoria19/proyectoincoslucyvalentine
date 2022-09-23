@@ -29,11 +29,10 @@ class Departamento extends CI_Controller {
         $this->load->view('inc/headergentelella');
         $this->load->view('inc/sidebargentelella');
         $this->load->view('inc/topbargentelella');
-        $this->load->view('departamento/departamento_insert',);
+        $this->load->view('departamento/departamento_insert');
         $this->load->view('inc/creditosgentelella');
         $this->load->view('inc/footergentelella');
 	}
-
     public function agregarbd()
     {
         $this->load->library('form_validation');
@@ -53,7 +52,7 @@ class Departamento extends CI_Controller {
             $this->load->view('inc/headergentelella');
             $this->load->view('inc/sidebargentelella');
             $this->load->view('inc/topbargentelella');
-            $this->load->view('departamento/departamento_insert',);
+            $this->load->view('departamento/departamento_insert');
             $this->load->view('inc/creditosgentelella');
             $this->load->view('inc/footergentelella');
         }
@@ -63,7 +62,6 @@ class Departamento extends CI_Controller {
             redirect('departamento/index','refresh');
         }
     }
-
         public function eliminarbd()
     {
         $iddepartamento=$_POST['iddepartamento'];

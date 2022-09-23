@@ -19,5 +19,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <link href="<?php echo base_url(); ?>gentelella/lcv.css" rel="stylesheet">
   </head>
-  <body class="login bg-lcv">
+  <body class="login bg-lcv text-light">
     <div>

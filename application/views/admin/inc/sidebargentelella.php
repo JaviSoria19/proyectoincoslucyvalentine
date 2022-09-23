@@ -1,5 +1,5 @@
 <div class="main_container">
-  <div class="col-md-3 left_col">
+  <div class="col-md-3 left_col bg-lcv">
     <div class="left_col scroll-view bg-lcv">
       <div class="navbar nav_title bg-lcv" style="border:0; ba">
         <a href="<?php echo base_url(); ?>index.php/usuarios/inicio" class="site_title"><i class="fa fa-female"></i> <span>Sistema LCV</span></a>
@@ -63,6 +63,21 @@
                         <?php echo form_open_multipart('publicacion/indexComunidad');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Comunidad
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a>
+                    <i class="fa fa-eye"></i>Alertas
+                    <span class="fa fa-chevron-down"></span>
+                  </a>
+                  <ul class="nav child_menu">
+                    <li>
+                        <?php echo form_open_multipart('alerta/inicio');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Alertas
                           </button>
                         <?php echo form_close();?>
                     </li>

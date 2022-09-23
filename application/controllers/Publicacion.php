@@ -78,7 +78,7 @@ class Publicacion extends CI_Controller {
         $this->load->view('admin/inc/headergentelella');
         $this->load->view('admin/inc/sidebargentelella');
         $this->load->view('admin/inc/topbargentelella');
-        $this->load->view('admin/publicacion/publicacion_insert_staff',);
+        $this->load->view('admin/publicacion/publicacion_insert_staff');
         $this->load->view('admin/inc/creditosgentelella');
         $this->load->view('admin/inc/footergentelella');
 	}
@@ -99,7 +99,7 @@ class Publicacion extends CI_Controller {
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
-            $this->load->view('admin/publicacion/publicacion_insert_staff',);
+            $this->load->view('admin/publicacion/publicacion_insert_staff');
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }

@@ -12,14 +12,14 @@
                 )
               );
             ?>
-              <h1>Registrarse</h1>
+              <h1 style="text-shadow: none;">Registrarse</h1>
               <div class="content-center">
                 <img class="img-fluid rounded w-50" src="<?php echo base_url()?>img/lucyvalentine.png">
               </div>
               <br>
-              <h2>Datos personales</h2><br>
+              <h2 style="text-shadow: none;">Datos personales</h2><br>
               <div class="col-md-12">
-                <label>Ciudad Actual:</label>
+                <label style="text-shadow: none;">Ciudad Actual:</label>
                 <select class="form-control" name="iddepartamento" required>
                   <option selected disabled value="">
                     Seleccione una Ciudad...   
@@ -62,14 +62,14 @@
                 <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
                 <?php echo form_error('numeroci');?>
               </div>
-              <label>Género:</label>
+              <label style="text-shadow: none;">Género:</label>
               <p>
                       Masculino:
                       <input type="radio" class="flat" name="sexo" value="M" /> Femenino:
                       <input type="radio" class="flat" name="sexo" value="F" checked="" required />
               </p>
               <br>
-              <h2>Datos de usuario</h2><br>
+              <h2 style="text-shadow: none;">Datos de usuario</h2><br>
               <div class="col-md-12 form-group has-feedback">
                 <input type="email" class="form-control has-feedback-left"  name="correo" placeholder="Correo" required>
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
@@ -98,8 +98,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-female"></i> Sistema Lucy Valentine</h1>
-                  <p>©2022 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template.</p>
+                  <h1 style="text-shadow: none;"><i class="fa fa-female"></i> Sistema Lucy Valentine</h1>
+                  <p style="text-shadow: none;">©2022 Todos los derechos Reservados.</p>
                 </div>
               </div>
             <?php 

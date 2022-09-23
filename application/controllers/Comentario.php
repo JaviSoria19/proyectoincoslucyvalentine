@@ -21,10 +21,6 @@ class Comentario extends CI_Controller {
     {
         $idcomentario=$_POST['idcomentario'];
         $data['infocomentario']=$this->comentario_model->recuperarcomentarios($idcomentario);
-        $lista=$this->categoria_model->listacategorias();
-        $data['categoria']=$lista;
-        $lista=$this->marca_model->listamarcas();
-        $data['marca']=$lista;
         $this->load->view('inc/headergentelella');
         $this->load->view('inc/sidebargentelella');
         $this->load->view('inc/topbargentelella');

@@ -61,7 +61,7 @@
         <div class="clearfix"></div>
         <div>
         <h1 style="text-shadow: none;"><i class="fa fa-female"></i> Sistema Lucy Valentine</h1>
-          <p  style="text-shadow: none;">©2022 All Rights Reserved. Gentelella Alela! is a Bootstrap template.</p>
+          <p  style="text-shadow: none;">©2022 Todos los derechos Reservados.</p>
         </div>
       </div>
       <?php 
