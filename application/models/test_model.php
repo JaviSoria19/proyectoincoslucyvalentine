@@ -14,6 +14,39 @@ class Test_model extends CI_Model {
         $this->db->order_by('t.fechaRegistro', 'DESC');
         return $this->db->get(); //devolucion del resultado de la consulta
     }
+    public function total_test_todas_las_fases()
+    {
+        $this->db->select('(SELECT COUNT(idTest) FROM test WHERE estado = 1 AND idNombre=1) AS totalfase1,
+            (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND idNombre=2) AS totalfase2,
+            (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND idNombre=3) AS totalfase3,
+            (SELECT COUNT(idTest) FROM test WHERE estado = 1) AS totalrealizados');
+        return $this->db->get();
+    }
+    public function total_fase_individual($idNombre)//select
+    {
+        $this->db->select('COUNT(idTest) AS totalfase'.$idNombre);
+        $this->db->from('test');
+        $this->db->where('estado','1');
+        $this->db->where('idNombre',$idNombre);
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
+    public function total_respuestas_por_pregunta_por_fase($idNombre,$res)
+    {
+        $respuesta='respuesta'.$res;
+        $alias1='totalfase'.$idNombre.'respuesta'.$res.'opcion1';
+        $alias2='totalfase'.$idNombre.'respuesta'.$res.'opcion2';
+        $alias3='totalfase'.$idNombre.'respuesta'.$res.'opcion3';
+        $this->db->select('(SELECT COUNT('.$respuesta.')
+            FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND '.$respuesta.' = 1)AS '.$alias1.',
+            (SELECT COUNT('.$respuesta.')
+            FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND '.$respuesta.' = 2)AS '.$alias2.',
+            (SELECT COUNT('.$respuesta.')
+            FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND '.$respuesta.' = 3)AS '.$alias3);
+        return $this->db->get();
+    }
     public function agregarTest($data)//create
     {
         $this->db->insert('test',$data); //tabla

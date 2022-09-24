@@ -12,7 +12,48 @@
                         <div class="row"><!-- Inicio Div row 2 -->
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
+                                <?php //inicio de los foreach
+                                    foreach ($totalfases->result() as $rowtotalfases)
+                                    {
+                                    foreach ($totalf1p1->result() as $rowtotalf1p1)
+                                    {
+                                ?> 
+                                <div class="col-md-4 text-center">
+                                    <h2 class="font-weight-bold text-dark">Total de Test Realizados hasta la fecha: <?php echo $rowtotalfases->totalrealizados;?></h2>
+                                    <div id="grafico_total_test" style="width:100%; height:300px;"></div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <h2 class="font-weight-bold text-dark">Respuestas de Test Fase 1, Pregunta 1: </h2>
+                                    <div id="grafico_total_t1p1" style="width:100%; height:300px;"></div>
+                                </div>
                                     
+                                   
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script>
+                new Morris.Donut({
+                    element:'grafico_total_test',
+                    data:[
+                    {label:"Fase 1",value:<?php echo $rowtotalfases->totalfase1;?>,color:'#FFFB00'},
+                    {label:"Fase 2",value:<?php echo $rowtotalfases->totalfase2;?>,color:'#FF9300'},
+                    {label:"Fase 3",value:<?php echo $rowtotalfases->totalfase3;?>,color:'#FF0000'}
+                    ]
+                });
+    </script>
+    <script>
+                new Morris.Donut({
+                    element:'grafico_total_t1p1',
+                    data:[
+                    {label:"Nunca",value:<?php echo $rowtotalf1p1->totalfase1respuesta1opcion1;?>,color:'#42FF00'},
+                    {label:"A veces",value:<?php echo $rowtotalf1p1->totalfase1respuesta1opcion2;?>,color:'#FFFB00'},
+                    {label:"Frecuente",value:<?php echo $rowtotalf1p1->totalfase1respuesta1opcion3;?>,color:'#FF9300'}
+                    ]
+                });
+    </script>
+                                <?php //fin de los foreach
+                                    }}
+                                ?>
             <table id="datatable-buttons" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">

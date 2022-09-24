@@ -37,6 +37,10 @@ class Test extends CI_Controller {
         {
             $lista=$this->test_model->listaTest();
             $data['test']=$lista;
+            $totalfases=$this->test_model->total_test_todas_las_fases();
+            $data['totalfases']=$totalfases;
+            $totalf1p1=$this->test_model->total_respuestas_por_pregunta_por_fase(1,1);
+            $data['totalf1p1']=$totalf1p1;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
@@ -108,8 +112,10 @@ class Test extends CI_Controller {
         public function resultado($resultado)
     {
         $mensaje='';
+        $foto='';
         if ($resultado>=5 && $resultado<=6) {
             $mensaje='Estimada, usted no sufre de violencia <br><br> "¡El amor no reclama posesiones sino que da libertad!"<br>-Rabindranath Tagore';
+            $foto='test_msj1.jpeg';
         }
         elseif ($resultado>=7 && $resultado<=10) {
             $mensaje='Estimada, usted está presentando algunos síntomas de violencia, le recomendamos dialogar con su pareja para resolver y mejorar su relación.';
@@ -119,10 +125,12 @@ class Test extends CI_Controller {
         }
         elseif ($resultado==15) {
             $mensaje='Estimada, usted está sufriendo violencia en muchos aspectos y corre peligro, le recomendamos contactarse con el SLIM.<br><br>"Defiende tu vida, lucha por tu independencia, busca tu felicidad y aprende a quererte"<br>-Izaskun González';
+            $foto='test_msj4.jpeg';
         }
         if($this->session->userdata('rol')=='admin')
         {
             $data['mensaje']=$mensaje;
+            $data['foto']=$foto;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
@@ -133,6 +141,7 @@ class Test extends CI_Controller {
         elseif($this->session->userdata('rol')=='usuario')
         {
             $data['mensaje']=$mensaje;
+            $data['foto']=$foto;
             $this->load->view('usuario/inc/headergentelella');
             $this->load->view('usuario/inc/sidebargentelella');
             $this->load->view('usuario/inc/topbargentelella');

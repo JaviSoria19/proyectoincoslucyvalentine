@@ -11,7 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Miniatura de la pestaña -->
 	  <link href="<?php echo base_url()?>img/miniatura.png" rel="icon" type="image/png"/>
     <title>Sistema LCV | Admins.</title>
-    
+
+    <!--Gráfico donut de test's-->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <link href="<?php echo base_url(); ?>gentelella/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>gentelella/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -20,8 +23,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link href="<?php echo base_url(); ?>gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>gentelella/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <link href="<?php echo base_url(); ?>gentelella/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-
     <link href="<?php echo base_url(); ?>gentelella/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>gentelella/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>gentelella/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
