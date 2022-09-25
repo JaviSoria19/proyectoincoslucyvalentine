@@ -81,4 +81,29 @@ class Usuario_model extends CI_Model {
         $this->db->where_in('u.estado', $estados);
         return $this->db->get(); //devolucion del resultado de la consulta
     }
+
+    public function total_usuarios_por_sexo()
+    {
+        $this->db->select('
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND sexo= "M" ) AS totalm,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND sexo= "F" ) AS totalf,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2)) AS totalu
+            ');
+        return $this->db->get();
+    }
+    public function total_usuarios_por_departamento()
+    {
+        $this->db->select('
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=1) AS totalBN,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=2) AS totalCH,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=3) AS totalCO,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=4) AS totalLP,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=5) AS totalOR,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=6) AS totalPD,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=7) AS totalPT,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=8) AS totalSC,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=9) AS totalTJ
+            ');
+        return $this->db->get();
+    }
 }

@@ -12,24 +12,93 @@
                         <div class="row"><!-- Inicio Div row 2 -->
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
-                                    <div class="btn-group">
-                                    <?php 
-                                        echo form_open_multipart('usuarios/adminVerStaff');
-                                    ?>
+                                    <?php //inicio de los foreach
+                                    foreach ($totalusuariosporsexo->result() as $rowtotalusuariosporsexo)
+                                    {
+                                    foreach ($totalusuariospordpto->result() as $rowtotalusuariospordpto)
+                                    {
+                                    ?> 
+                                    <div class="item btn-group">
+                                    <?php echo form_open_multipart('usuarios/adminVerStaff'); ?>
                                         <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-eye"></i> Ver usuarios del Staff
                                         </button>
-                                    <?php 
-                                        echo form_close();
-                                    ?> 
+                                    <?php echo form_close(); ?> 
                                     </div>
-                                    
                                     <br><br>
-                                    <p class="text-muted font-13 m-b-30">
+                                    <p class="text-dark font-13 m-b-30">
                                         Actualmente <?php echo $usuario->num_rows(); ?>
                                         usuarios están pendientes para ser verificados en sistema!<br>
                                         Estimado administrador, recuerde verificar todas las medidas de seguridad de una Cédula de Identidad para validar a un usuario.
                                     </p>
+                                    <h2>Estadísticas: </h2>
+                                    <div class="card col-md-12 text-center">
+                                        <h2 class="font-weight-bold text-dark">Usuarios registrados por departamento:</h2>
+                                        <div class="item justify-content-center text-dark">
+                                            <h2 style="color:#42FF00;">■</h2><h2>A</h2>
+                                            <h2 style="color:#FFFB00;">■</h2><h2>B⠀</h2>
+                                            <h2 style="color:#FF9300;">■</h2><h2>C</h2>
+                                        </div>
+                                        <div id="grafico_bar_total_por_depto" style="width:100%; height:300px;"></div>
+                                    </div>
+                                    ⠀<!--caracter en blanco--><br>
+                                    <div class="col-md-6 text-center">
+                                        <div class="x_panel">
+                                            <div class="x_title">
+                                                <h2 class="font-weight-bold text-dark">Total de Usuarios Registrados: <?php echo $rowtotalusuariosporsexo->totalu;?>, según el género: </h2>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_content2">
+                                                <div class="item justify-content-center text-dark">
+                                                    <h2 style="color:#00FFEC;">■</h2><h2>Varones⠀</h2>
+                                                    <h2 style="color:#E800FF;">■</h2><h2>Mujeres⠀</h2>
+                                                </div>
+                                            <div id="grafico_donut_total_por_sexo" style="width:100%; height:300px;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script>
+        Morris.Donut({
+            element:'grafico_donut_total_por_sexo',
+            data:[
+            {label:"Varones",value:<?php echo $rowtotalusuariosporsexo->totalm;?>,color:'#00FFEC'},
+            {label:"Mujeres",value:<?php echo $rowtotalusuariosporsexo->totalf;?>,color:'#E800FF'}
+            ]
+        });
+        Morris.Bar({
+            element: 'grafico_bar_total_por_depto',
+            data: [
+                { y: 'Beni', 
+                    a:<?php echo $rowtotalusuariospordpto->totalBN;?>},
+                { y: 'Chuquisaca', 
+                    a:<?php echo $rowtotalusuariospordpto->totalCH;?>},
+                { y: 'Cochabamba', 
+                    a:<?php echo $rowtotalusuariospordpto->totalCO;?>},
+                { y: 'La Paz', 
+                    a:<?php echo $rowtotalusuariospordpto->totalLP;?>},
+                { y: 'Oruro', 
+                    a:<?php echo $rowtotalusuariospordpto->totalOR;?>},
+                { y: 'Pando', 
+                    a:<?php echo $rowtotalusuariospordpto->totalPD;?>},
+                { y: 'Potosí', 
+                    a:<?php echo $rowtotalusuariospordpto->totalPT;?>},
+                { y: 'Santa Cruz', 
+                    a:<?php echo $rowtotalusuariospordpto->totalSC;?>},
+                { y: 'Tarija',
+                    a:<?php echo $rowtotalusuariospordpto->totalTJ;?>}
+            ],
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['Usuarios'],
+        });
+    </script>
+                                    <?php //fin de los foreach
+                                    }}
+                                    ?> 
+                                    
 
             <table id="datatable-buttons" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>

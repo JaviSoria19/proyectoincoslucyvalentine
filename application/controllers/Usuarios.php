@@ -25,6 +25,10 @@ class Usuarios extends CI_Controller {
                 {
                         $lista=$this->usuario_model->listaUsuariosNoVerificados();
                         $data['usuario']=$lista;
+                        $totalusuariosporsexo=$this->usuario_model->total_usuarios_por_sexo();
+                        $data['totalusuariosporsexo']=$totalusuariosporsexo;
+                        $totalusuariospordpto=$this->usuario_model->total_usuarios_por_departamento();
+                        $data['totalusuariospordpto']=$totalusuariospordpto;
                         $this->load->view('admin/inc/headergentelella');
                         $this->load->view('admin/inc/sidebargentelella');
                         $this->load->view('admin/inc/topbargentelella');

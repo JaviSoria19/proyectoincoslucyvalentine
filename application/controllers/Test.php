@@ -41,6 +41,12 @@ class Test extends CI_Controller {
             $data['totalfases']=$totalfases;
             $totalf1p1=$this->test_model->total_respuestas_por_pregunta_por_fase(1,1);
             $data['totalf1p1']=$totalf1p1;
+            $totalt1=$this->test_model->total_respuestas_por_fase(1);
+            $totalt2=$this->test_model->total_respuestas_por_fase(2);
+            $totalt3=$this->test_model->total_respuestas_por_fase(3);
+            $data['totalt1']=$totalt1;
+            $data['totalt2']=$totalt2;
+            $data['totalt3']=$totalt3;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
