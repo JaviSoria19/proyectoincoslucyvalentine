@@ -19,33 +19,33 @@
                         <input type="hidden" name="idtestnombre" value="2">
                         <div class="form-group">
                             <label class="font-weight-bold">¿Evitas topar ciertos temas o hacer ciertas cosas por temor a la reacción de tu pareja?</label><br>
-                                <input type="radio" class="flat" name="r1" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r1" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r1" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r1" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r1" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r1" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Tu pareja es excesivamente celosa y posesiva?</label><br>
-                                <input type="radio" class="flat" name="r2" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r2" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r2" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r2" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r2" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r2" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Tienes relaciones sexuales sin consentimientos?</label><br>
-                                <input type="radio" class="flat" name="r3" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r3" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r3" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r3" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r3" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r3" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Te amenaza con quitarte a tus hijos o tus bienes si terminas la relación o denuncias?</label><br>
-                                <input type="radio" class="flat" name="r4" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r4" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r4" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r4" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r4" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r4" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Ha vuelto a agredirle después de haber prometido que no lo vuelve a hacer?</label><br>
-                                <input type="radio" class="flat" name="r5" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r5" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r5" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r5" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r5" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r5" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Enviar

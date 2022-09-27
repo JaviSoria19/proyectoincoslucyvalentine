@@ -5,6 +5,7 @@
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
                         <h2><i class="fa fa-users"></i> Usuarios pendientes de verificación.</h2>
+                        <?php echo base_url().'uploads/admin_default.jpg' ?>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -124,10 +125,7 @@
                     ?>
                     <tr>
                     <td class="text-center">
-                        <?php
-                            $foto=$row->foto;
-                        ?>
-                        <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" height="35px" class="rounded mx-auto d-block gallery-item" alt="<?php echo $row->numeroCI; ?>">
+                        <img src="<?php echo $row->foto;?>" height="35px" class="rounded mx-auto d-block gallery-item" alt="<?php echo $row->numeroCI; ?>">
                     </td>
                     <td><?php echo $row->nombreDepartamento; ?></td>
                     <td><?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?></td>

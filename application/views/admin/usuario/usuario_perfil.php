@@ -31,11 +31,12 @@
                                         foreach($infousuario->result() as $row)
                                         {
                                     ?>
+                                    <div class="item"><!--inicio div class item-->
                                     <div class="col-md-4 align-self-center">
                                         <?php
                                             $fotoperfil=$this->session->userdata('foto');
                                         ?>
-                                        <img src="<?php echo base_url();?>/uploads/<?php echo $fotoperfil;?>" class="img-thumbnail rounded mx-auto d-block">
+                                        <img src="<?php echo $fotoperfil;?>" class="img-thumbnail rounded mx-auto d-block">
                                     </div>
                                     <div class="card col-md-8 bg-dark text-light">
                                         <div class="card-body">
@@ -61,7 +62,7 @@
                                             <h3><i class="fa fa-envelope-o" data-toggle="tooltip" data-placement="top" title="Correo"></i> <?php echo $row->correo; ?></h3>
                                         </div>
                                     </div>
-
+                                    </div><!--fin div class item-->
                                     <?php
                                         }
                                     ?>

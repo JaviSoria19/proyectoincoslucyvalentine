@@ -120,14 +120,18 @@ class Denuncia extends CI_Controller {
             $this->load->view('inc/footergentelella');
         }
         else{
-            $data['nombreDenuncia']=$_POST['nombredenuncia'];
-            $data['idMarca']=strtoupper($_POST['idmarca']);
+            $data['idUsuario']=$this->session->userdata('idusuario');
             $data['idCategoria']=$_POST['idcategoria'];
-            $data['precio']=$_POST['precio'];
-            $data['color']=$_POST['color'];
-            $data['stock']=$_POST['stock'];
-            $data['descripcion']=$_POST['descripcion'];
-            $this->denuncia_model->agregardenuncias($data);
+            $data['declaracion']=$_POST['declaracion'];
+            $data['foto']=$_POST['foto'];
+            $data['audio']=$_POST['audio'];
+            $data['video']=$_POST['video'];
+            $idDenuncia=$this->denuncia_model->agregardenuncias($data);
+
+            $datatwo['idDenuncia']=$idDenuncia;
+            $datatwo['idUsuarioResponsable']=$_POST['color'];
+            $datatwo['comentario']=$_POST['color'];
+            $this->proceso_denuncia_model->agregarproceso_denuncia($datatwo);
             redirect('denuncia/index','refresh');
         }
     }

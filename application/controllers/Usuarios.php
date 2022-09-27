@@ -94,15 +94,6 @@ class Usuarios extends CI_Controller {
                         )
                 );
                 $this->form_validation->set_rules(
-                        'nombres',
-                        'Nombre del usuario',
-                        'required|min_length[4]|max_length[30]',
-                        array('required'=>'¡Se requiere ingresar sus nombres!',
-                        'min_length'=>'El nombre debe tener al menos 4 caracteres.',
-                        'max_length'=>'¡El nombre no debe contener más de 30 caracteres!.'
-                        )
-                );
-                $this->form_validation->set_rules(
                         'primerapellido',
                         'Primer apellido del usuario',
                         'required|min_length[4]|max_length[30]|alpha',
@@ -158,7 +149,7 @@ class Usuarios extends CI_Controller {
                         $data['sexo']=$_POST['sexo'];
                         $data['correo']=$_POST['correo'];
                         $data['contrasenha']=md5($_POST['contrasenha']);
-                        $data['foto']='user_default.png';
+                        $data['foto']=base_url().'uploads/user_default.png';
                         $data['rol']='usuario';
                         $this->usuario_model->agregarusuarios($data);
                         redirect('usuarios/index','refresh');
@@ -255,7 +246,7 @@ class Usuarios extends CI_Controller {
                         $data['sexo']=$_POST['sexo'];
                         $data['correo']=$_POST['correo'];
                         $data['contrasenha']=md5($_POST['contrasenha']);
-                        $data['foto']='admin_default.jpg';
+                        $data['foto']=base_url().'uploads/admin_default.jpg';
                         $data['rol']=$_POST['rol'];
                         $data['estado']='2';
                         $this->usuario_model->agregarusuarios($data);

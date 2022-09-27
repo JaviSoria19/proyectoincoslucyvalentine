@@ -11,7 +11,7 @@
             <?php
               $fotoperfil=$this->session->userdata('foto');
             ?>
-              <img src="<?php echo base_url();?>/uploads/<?php echo $fotoperfil;?>" alt="..." class="img-circle profile_img">
+              <img src="<?php echo $fotoperfil;?>" alt="..." class="img-circle profile_img">
           </div><!-- end div profile_pic -->
           <div class="profile_info">
             <span>

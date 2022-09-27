@@ -78,11 +78,11 @@ function formatearVerificado($estado)
 }
 function formatearRespuesta($respuesta)
 {
-    if ($respuesta=='1'){
+    if ($respuesta=='0'){
         return 'Nunca';
-    }elseif ($respuesta=='2'){
+    }elseif ($respuesta=='1'){
         return 'A veces';
-    }elseif ($respuesta=='3'){
+    }elseif ($respuesta=='2'){
         return 'Casi Siempre';
     }
 }

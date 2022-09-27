@@ -19,33 +19,33 @@
                         <input type="hidden" name="idtestnombre" value="1">
                         <div class="form-group">
                             <label class="font-weight-bold">¿Te amenaza o chantajea?</label><br>
-                                <input type="radio" class="flat" name="r1" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r1" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r1" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r1" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r1" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r1" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Te grita, se burla de ti, te humilla?</label><br>
-                                <input type="radio" class="flat" name="r2" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r2" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r2" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r2" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r2" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r2" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Te prohíbe decidir sobre tu dinero y tus bienes?</label><br>
-                                <input type="radio" class="flat" name="r3" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r3" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r3" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r3" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r3" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r3" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Controla tu hora de salida, de llegada, o uso del tiempo en general?</label><br>
-                                <input type="radio" class="flat" name="r4" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r4" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r4" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r4" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r4" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r4" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Controla tu forma de vestir?</label><br>
-                                <input type="radio" class="flat" name="r5" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r5" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r5" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r5" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r5" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r5" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Enviar

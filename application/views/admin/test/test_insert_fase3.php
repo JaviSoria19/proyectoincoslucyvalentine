@@ -19,33 +19,33 @@
                         <input type="hidden" name="idtestnombre" value="3">
                         <div class="form-group">
                             <label class="font-weight-bold">¿Tienes miedo a tu pareja?</label><br>
-                                <input type="radio" class="flat" name="r1" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r1" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r1" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r1" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r1" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r1" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Te amenaza con hacerse daño o suicidarse si se acaba la relación?</label><br>
-                                <input type="radio" class="flat" name="r2" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r2" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r2" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r2" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r2" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r2" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Te amenaza con hacerte daño o dañar a tu familia si terminas la relación?</label><br>
-                                <input type="radio" class="flat" name="r3" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r3" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r3" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r3" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r3" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r3" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Estás deprimida y con problema de salud, o has tenido pensamientos suicidas?</label><br>
-                                <input type="radio" class="flat" name="r4" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r4" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r4" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r4" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r4" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r4" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="form-group">
                             <label class="font-weight-bold">¿Las reacciones de violencia son impredecibles y más recurrentes?</label><br>
-                                <input type="radio" class="flat" name="r5" value="1" required/> Nunca<br><br>
-                                <input type="radio" class="flat" name="r5" value="2" required/> En ocasiones<br><br>
-                                <input type="radio" class="flat" name="r5" value="3" required/> Casi siempre<br><br>
+                                <input type="radio" class="flat" name="r5" value="0" required/> Nunca<br><br>
+                                <input type="radio" class="flat" name="r5" value="1" required/> En ocasiones<br><br>
+                                <input type="radio" class="flat" name="r5" value="2" required/> Casi siempre<br><br>
                         </div><br>
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Enviar

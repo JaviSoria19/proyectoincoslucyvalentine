@@ -17,6 +17,7 @@ class Denuncia_model extends CI_Model {
     public function agregardenuncias($data)//create
     {
         $this->db->insert('denuncia',$data); //tabla
+        return $this->db->insert_id();
     }
     public function eliminardenuncias($iddenuncia)//delete
     {

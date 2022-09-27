@@ -65,10 +65,7 @@
                     ?>
                     <tr>
                     <td class="text-center">
-                        <?php
-                            $foto=$row->foto;
-                        ?>
-                        <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" height="35px" class="rounded mx-auto d-block gallery-item" alt="<?php echo $row->numeroCI; ?>">
+                        <img src="<?php echo $row->foto;?>" height="35px" class="rounded mx-auto d-block gallery-item" alt="<?php echo $row->numeroCI; ?>">
                     </td>
                     <td><?php echo $row->nombreDepartamento; ?></td>
                     <td><?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?></td>
@@ -104,7 +101,8 @@
                         } 
                     ?>
                 </tbody>
-            </table>                  
+            </table>
+                       
                                 </div><!-- Inicio Div card-box table-responsive -->
                             </div><!-- Fin Div col-sm-12 2 -->
                         </div><!-- Fin Div row 2 -->

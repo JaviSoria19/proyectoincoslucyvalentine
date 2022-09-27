@@ -8,7 +8,7 @@
           <li class="nav-item dropdown open" style="padding-left: 15px;">
             <a href="<?php echo base_url(); ?>gentelella/javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
               <?php $fotoperfil=$this->session->userdata('foto');?>
-              <img src="<?php echo base_url();?>/uploads/<?php echo $fotoperfil;?>" width="30px">
+              <img src="<?php echo $fotoperfil;?>" width="30px">
               <?php echo $this->session->userdata('correo')?>
             </a>
             <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">

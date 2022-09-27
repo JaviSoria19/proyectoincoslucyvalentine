@@ -9,15 +9,11 @@
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <?php 
-                            echo form_open_multipart('denuncia/index');
-                        ?>
+                        <?php echo form_open_multipart('denuncia/index'); ?>
                             <button type="submit" name="buttonInhabilitados" class="btn btn-outline-success">
                             <i class="fa fa-arrow-circle-left"></i> Volver a denuncias
                             </button>
-                        <?php 
-                            echo form_close();
-                        ?>
+                        <?php echo form_close(); ?>
                         <br>
                         <?php            
                             foreach($infodenuncia->result() as $row)
@@ -75,8 +71,20 @@
                                             La denunciante no ha presentado video alguno.
                                         <?php endif ?>
                                     </div>
-                                    
+                                    <div class="col-md-12">
+                                        <h2>Acciones:</h2>
+                                        <?php echo form_open_multipart('proceso/agregarbd'); ?>
+                                        <input type="hidden" name="iddenuncia" value="<?php echo $row->idDenuncia;?>">
+                                        <select>
+                                            <option>Lorem ipsum</option>
+                                        </select>
+                                            <button type="submit" name="buttonInsertProceso" class="btn btn-success">
+                                            <i class="fa fa-arrow-circle-o-up"></i> Actualizar Caso de Violencia
+                                            </button>
+                                        <?php echo form_close(); ?>
+                                    </div>
                                 </div>
+
                             </div>
                         <?php 
                             }

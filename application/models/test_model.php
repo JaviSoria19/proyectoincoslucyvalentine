@@ -38,48 +38,48 @@ class Test_model extends CI_Model {
         $alias3='totalfase'.$idNombre.'respuesta'.$res.'opcion3';
         $this->db->select('(SELECT COUNT('.$respuesta.')
             FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND '.$respuesta.' = 1)AS '.$alias1.',
+            AND idNombre = '.$idNombre.' AND '.$respuesta.' = 0)AS '.$alias1.',
             (SELECT COUNT('.$respuesta.')
             FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND '.$respuesta.' = 2)AS '.$alias2.',
+            AND idNombre = '.$idNombre.' AND '.$respuesta.' = 1)AS '.$alias2.',
             (SELECT COUNT('.$respuesta.')
             FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND '.$respuesta.' = 3)AS '.$alias3);
+            AND idNombre = '.$idNombre.' AND '.$respuesta.' = 2)AS '.$alias3);
         return $this->db->get();
     }
     public function total_respuestas_por_fase($idNombre)
     {
         $this->db->select('
             (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta1 = 1)AS totalt'.$idNombre.'r1o1,
+            AND idNombre = '.$idNombre.' AND respuesta1 = 0)AS totalt'.$idNombre.'r1o1,
             (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta1 = 2)AS totalt'.$idNombre.'r1o2,
+            AND idNombre = '.$idNombre.' AND respuesta1 = 1)AS totalt'.$idNombre.'r1o2,
             (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta1 = 3)AS totalt'.$idNombre.'r1o3,
+            AND idNombre = '.$idNombre.' AND respuesta1 = 2)AS totalt'.$idNombre.'r1o3,
             (SELECT COUNT(respuesta2) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta2 = 1)AS totalt'.$idNombre.'r2o1,
+            AND idNombre = '.$idNombre.' AND respuesta2 = 0)AS totalt'.$idNombre.'r2o1,
             (SELECT COUNT(respuesta2) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta2 = 2)AS totalt'.$idNombre.'r2o2,
+            AND idNombre = '.$idNombre.' AND respuesta2 = 1)AS totalt'.$idNombre.'r2o2,
             (SELECT COUNT(respuesta2) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta2 = 3)AS totalt'.$idNombre.'r2o3,
+            AND idNombre = '.$idNombre.' AND respuesta2 = 2)AS totalt'.$idNombre.'r2o3,
             (SELECT COUNT(respuesta3) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta3 = 1)AS totalt'.$idNombre.'r3o1,
+            AND idNombre = '.$idNombre.' AND respuesta3 = 0)AS totalt'.$idNombre.'r3o1,
             (SELECT COUNT(respuesta3) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta3 = 2)AS totalt'.$idNombre.'r3o2,
+            AND idNombre = '.$idNombre.' AND respuesta3 = 1)AS totalt'.$idNombre.'r3o2,
             (SELECT COUNT(respuesta3) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta3 = 3)AS totalt'.$idNombre.'r3o3,
+            AND idNombre = '.$idNombre.' AND respuesta3 = 2)AS totalt'.$idNombre.'r3o3,
             (SELECT COUNT(respuesta4) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta4 = 1)AS totalt'.$idNombre.'r4o1,
+            AND idNombre = '.$idNombre.' AND respuesta4 = 0)AS totalt'.$idNombre.'r4o1,
             (SELECT COUNT(respuesta4) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta4 = 2)AS totalt'.$idNombre.'r4o2,
+            AND idNombre = '.$idNombre.' AND respuesta4 = 1)AS totalt'.$idNombre.'r4o2,
             (SELECT COUNT(respuesta4) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta4 = 3)AS totalt'.$idNombre.'r4o3,
+            AND idNombre = '.$idNombre.' AND respuesta4 = 2)AS totalt'.$idNombre.'r4o3,
             (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta5 = 1)AS totalt'.$idNombre.'r5o1,
+            AND idNombre = '.$idNombre.' AND respuesta5 = 0)AS totalt'.$idNombre.'r5o1,
             (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta5 = 2)AS totalt'.$idNombre.'r5o2,
+            AND idNombre = '.$idNombre.' AND respuesta5 = 1)AS totalt'.$idNombre.'r5o2,
             (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
-            AND idNombre = '.$idNombre.' AND respuesta5 = 3)AS totalt'.$idNombre.'r5o3
+            AND idNombre = '.$idNombre.' AND respuesta5 = 2)AS totalt'.$idNombre.'r5o3
         ');
         return $this->db->get();
     }

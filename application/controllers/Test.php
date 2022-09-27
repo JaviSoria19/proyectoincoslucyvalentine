@@ -119,17 +119,17 @@ class Test extends CI_Controller {
     {
         $mensaje='';
         $foto='';
-        if ($resultado>=5 && $resultado<=6) {
+        if ($resultado>=0 && $resultado<=1) {
             $mensaje='Estimada, usted no sufre de violencia <br><br> "¡El amor no reclama posesiones sino que da libertad!"<br>-Rabindranath Tagore';
             $foto='test_msj1.jpeg';
         }
-        elseif ($resultado>=7 && $resultado<=10) {
+        elseif ($resultado>=2 && $resultado<=5) {
             $mensaje='Estimada, usted está presentando algunos síntomas de violencia, le recomendamos dialogar con su pareja para resolver y mejorar su relación.';
         }
-        elseif ($resultado>=11 && $resultado<=14) {
+        elseif ($resultado>=6 && $resultado<=9) {
             $mensaje='Estimada, usted está presentando varios síntomas de violencia.';
         }
-        elseif ($resultado==15) {
+        elseif ($resultado==10) {
             $mensaje='Estimada, usted está sufriendo violencia en muchos aspectos y corre peligro, le recomendamos contactarse con el SLIM.<br><br>"Defiende tu vida, lucha por tu independencia, busca tu felicidad y aprende a quererte"<br>-Izaskun González';
             $foto='test_msj4.jpeg';
         }

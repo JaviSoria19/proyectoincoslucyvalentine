@@ -10,7 +10,7 @@
                     <?php
                       $fotoperfil=$this->session->userdata('foto');
                     ?>
-                      <img src="<?php echo base_url();?>/uploads/<?php echo $fotoperfil;?>" width="30px">
+                      <img src="<?php echo $fotoperfil;?>" width="30px">
                     <?php echo $this->session->userdata('correo')?>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
