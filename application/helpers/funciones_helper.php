@@ -87,18 +87,57 @@ function formatearRespuesta($respuesta)
     }
 }
 
-function scriptgooglemaps($i,$latitud,$longitud){
-        echo '
-        alerta'.$i.' = { lat: '.$latitud.', lng: '.$longitud.' };
-        map'.$i.' = new google.maps.Map(document.getElementById("map'.$i.'"), {
-            zoom: 15,
-            center: alerta'.$i.',
-            });
-        marker'.$i.' = new google.maps.Marker({
-            position: alerta'.$i.',
-            map: map'.$i.',
-            });
-        ';
-    
+function scriptGoogleMaps($i,$latitud,$longitud)
+{
+    echo '
+    alerta'.$i.' = { lat: '.$latitud.', lng: '.$longitud.' };
+    map'.$i.' = new google.maps.Map(document.getElementById("map'.$i.'"), {
+        zoom: 15,
+        center: alerta'.$i.',
+        });
+    marker'.$i.' = new google.maps.Marker({
+        position: alerta'.$i.',
+        map: map'.$i.',
+        });
+    ';
 }
+
+function selectDenunciasEstado($estadoDenuncia)
+{
+    if ($estadoDenuncia=='Denuncia enviada') 
+    {
+        return '
+            <option>Denuncia recibida</option>
+            <option value = "Denuncia descartada">DESCARTAR DENUNCIA</option>
+            <option disabled>Citada a brindar declaración</option>
+            <option disabled>Denuncia en seguimiento</option>
+            <option disabled>Denuncia finalizada</option>
+            ';
+    }
+    elseif ($estadoDenuncia=='Denuncia recibida') 
+    {
+        return '
+            <option>Citada a brindar declaración</option>
+            <option disabled>Denuncia en seguimiento</option>
+            <option disabled>Denuncia finalizada</option>
+            ';
+    }
+    elseif ($estadoDenuncia=='Citada a brindar declaración') 
+    {
+        return '
+            <option>Denuncia en seguimiento</option>
+            <option disabled>Denuncia finalizada</option>
+            ';    
+    }elseif ($estadoDenuncia=='Denuncia en seguimiento') {
+        return '
+            <option>Denuncia finalizada</option>
+            ';
+    }
+    else{
+        return '
+            <option disabled>La denuncia ha sido descartada</option>
+        ';
+    }
+}
+
 ?>

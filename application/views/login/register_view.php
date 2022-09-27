@@ -14,7 +14,7 @@
             ?>
               <h1 style="text-shadow: none;">Registrarse</h1>
               <div class="content-center">
-                <img class="img-fluid rounded w-50" src="<?php echo base_url()?>img/lucyvalentine.png">
+                <img class="img-fluid rounded w-50" src="<?php echo base_url()?>img/lucyvalentine.jpg">
               </div>
               <br>
               <h2 style="text-shadow: none;">Datos personales</h2><br>

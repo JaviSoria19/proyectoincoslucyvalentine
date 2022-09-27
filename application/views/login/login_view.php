@@ -29,7 +29,7 @@
       ?>
       <h1 style="text-shadow: none;">Iniciar Sesión</h1>
       <div class="content-center">
-        <img class="img-fluid rounded w-50" src="<?php echo base_url()?>img/lucyvalentine.png">
+        <img class="img-fluid rounded w-50" src="<?php echo base_url()?>img/lucyvalentine.jpg">
       </div>
       <br>
       <div class="rounded badge-light">

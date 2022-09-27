@@ -31,6 +31,8 @@ class Denuncia extends CI_Controller {
     {
         $iddenuncia=$_POST['iddenuncia'];
         $data['infodenuncia']=$this->denuncia_model->recuperardenuncias($iddenuncia);
+        $data['proceso']=$this->proceso_denuncia_model->listaproceso_denuncias($iddenuncia);
+        $data['listaautoridadpolicia']=$this->usuario_model->listaUsuariosPoliciayAutoridad();
         $this->load->view('admin/inc/headergentelella');
         $this->load->view('admin/inc/sidebargentelella');
         $this->load->view('admin/inc/topbargentelella');

@@ -36,6 +36,19 @@ class Usuario_model extends CI_Model {
         return $this->db->get(); //devolucion del resultado de la consulta
     }
 
+    public function listaUsuariosPoliciayAutoridad()//select
+    {
+        $estados = array('1', '2');
+        $roles = array('policia', 'autoridad');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->from('usuario AS u');
+        $this->db->where_in('u.estado', $estados);
+        $this->db->where_in('rol', $roles);
+        $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
+
+
     public function agregarusuarios($data)//create
     {
         $this->db->insert('usuario',$data); //tabla

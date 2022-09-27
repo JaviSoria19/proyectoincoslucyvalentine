@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Miniatura de la pestaña -->
-	  <link href="<?php echo base_url()?>img/miniatura.png" rel="icon" type="image/png"/>
+	  <link href="<?php echo base_url()?>img/miniatura.ico" rel="icon" type="image/ico"/>
     <title>Sistema LCV | Admins.</title>
 
     <!--Gráfico donut de test's-->

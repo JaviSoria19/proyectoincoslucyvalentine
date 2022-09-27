@@ -71,13 +71,81 @@
                                             La denunciante no ha presentado video alguno.
                                         <?php endif ?>
                                     </div>
-                                    <div class="col-md-12">
-                                        <h2>Acciones:</h2>
-                                        <?php echo form_open_multipart('proceso/agregarbd'); ?>
+
+                                    <div class="card col-md-12 text-dark">
+                                        <h2 class="font-weight-bold">Historial del caso</h2>
+            <table class="table table-striped table-dark table-bordered" style="width:100%">
+                <thead>
+                    <tr class="text-center">
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                        <th>Persona a cargo</th>
+                        <th>Comentario.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($proceso->result() as $rowProceso) { ?>
+                    <tr>
+                        <td><?php echo $rowProceso->estado; ?></td>
+                        <td><?php echo $rowProceso->fechaRegistro; ?></td>
+                        <td><?php echo $rowProceso->idUsuarioResponsable; ?></td>
+                        <td><?php echo $rowProceso->comentario; ?></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+                                        <h2 class="font-weight-bold">Acciones:</h2>
+                                        <?php echo form_open_multipart('proceso_denuncia/agregarbd'); ?>
                                         <input type="hidden" name="iddenuncia" value="<?php echo $row->idDenuncia;?>">
-                                        <select>
-                                            <option>Lorem ipsum</option>
-                                        </select>
+                                        <div class="item form-group has-feedback justify-content-center">
+                                            <label class="col-form-label col-md-2 label-align" for="estado">Estado:</label>
+                                            <div class="col-md-8">
+                                               <select class="form-control" name="estado" required>
+                                                    <option selected disabled value="">
+                                                        Seleccione un nuevo estado...  
+                                                    </option>
+                                                    <?php echo selectDenunciasEstado($rowProceso->estado);?>
+                                                </select> 
+                                            </div>
+                                        </div>
+                                        <div class="item form-group has-feedback justify-content-center">
+                                            <label class="col-form-label col-md-2 label-align" for="comentario">Comentario:</label>
+                                            <div class="col-md-8">
+                                                <input type="text" class="form-control has-feedback-left"  name="comentario" placeholder="...">
+                                                <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                                                <?php echo form_error('comentario');?>
+                                            </div>
+                                        </div>
+                                        <?php if ($rowProceso->idUsuarioResponsable==""): ?>
+                                            <div class="item form-group has-feedback justify-content-center">
+                                            <label class="col-form-label col-md-2 label-align" for="idusuarioresponsable">Responsable:</label>
+                                            <div class="col-md-8">
+                                               <select class="form-control" name="idusuarioresponsable" required>
+                                                    <option selected disabled value="">
+                                                        Seleccione un usuario al cual asignar el caso...  
+                                                    </option>
+                                                    <?php
+                                                        foreach ($listaautoridadpolicia->result() as $rowautoridadpolicia)
+                                                        {
+                                                    ?>
+                                                    <option value="<?php echo $rowautoridadpolicia->idUsuario;?>">
+                                                        <?php echo $rowautoridadpolicia->nombres;?> 
+                                                        <?php echo $rowautoridadpolicia->primerApellido;?> 
+                                                        <?php echo $rowautoridadpolicia->segundoApellido;?> 
+                                                        (<?php echo $rowautoridadpolicia->rol;?>)    
+                                                    </option>
+                                                    <?php        
+                                                        }
+                                                    ?>
+                                                </select> 
+                                            </div>
+                                            </div>
+                                        <?php else: ?>
+                                            <input type="hidden" name="idusuarioresponsable" value="<?php echo $rowProceso->idUsuarioResponsable;?>">
+                                        <?php endif ?>
+                                        
+
+                                        
                                             <button type="submit" name="buttonInsertProceso" class="btn btn-success">
                                             <i class="fa fa-arrow-circle-o-up"></i> Actualizar Caso de Violencia
                                             </button>

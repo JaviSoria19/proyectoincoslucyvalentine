@@ -46,7 +46,7 @@
     <script type="text/javascript">
         function initMap() {
             <?php $indice=1; foreach ($alertas->result() as $rowmaps){ ?>
-                <?php echo scriptgooglemaps($indice,$rowmaps->latitud,$rowmaps->longitud); ?>
+                <?php echo scriptGoogleMaps($indice,$rowmaps->latitud,$rowmaps->longitud); ?>
             <?php $indice++; } ?>
 
         }
