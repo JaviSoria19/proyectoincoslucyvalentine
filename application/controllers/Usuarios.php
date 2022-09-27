@@ -25,6 +25,22 @@ class Usuarios extends CI_Controller {
                 {
                         $lista=$this->usuario_model->listaUsuariosNoVerificados();
                         $data['usuario']=$lista;
+                        $this->load->view('admin/inc/headergentelella');
+                        $this->load->view('admin/inc/sidebargentelella');
+                        $this->load->view('admin/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read_comunidad',$data);
+                        $this->load->view('admin/inc/creditosgentelella');
+                        $this->load->view('admin/inc/footergentelella');
+                }
+                else
+                {
+                        redirect('usuarios/panel','refresh');
+                }   
+        }
+        public function reportes()
+        {
+                if($this->session->userdata('rol')=='admin')
+                {
                         $totalusuariosporsexo=$this->usuario_model->total_usuarios_por_sexo();
                         $data['totalusuariosporsexo']=$totalusuariosporsexo;
                         $totalusuariospordpto=$this->usuario_model->total_usuarios_por_departamento();
@@ -32,7 +48,7 @@ class Usuarios extends CI_Controller {
                         $this->load->view('admin/inc/headergentelella');
                         $this->load->view('admin/inc/sidebargentelella');
                         $this->load->view('admin/inc/topbargentelella');
-                        $this->load->view('admin/usuario/usuario_read_comunidad',$data);
+                        $this->load->view('admin/usuario/usuario_reportes',$data);
                         $this->load->view('admin/inc/creditosgentelella');
                         $this->load->view('admin/inc/footergentelella');
                 }

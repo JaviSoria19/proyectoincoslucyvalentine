@@ -37,16 +37,6 @@ class Test extends CI_Controller {
         {
             $lista=$this->test_model->listaTest();
             $data['test']=$lista;
-            $totalfases=$this->test_model->total_test_todas_las_fases();
-            $data['totalfases']=$totalfases;
-            $totalf1p1=$this->test_model->total_respuestas_por_pregunta_por_fase(1,1);
-            $data['totalf1p1']=$totalf1p1;
-            $totalt1=$this->test_model->total_respuestas_por_fase(1);
-            $totalt2=$this->test_model->total_respuestas_por_fase(2);
-            $totalt3=$this->test_model->total_respuestas_por_fase(3);
-            $data['totalt1']=$totalt1;
-            $data['totalt2']=$totalt2;
-            $data['totalt3']=$totalt3;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
@@ -65,6 +55,32 @@ class Test extends CI_Controller {
             $this->load->view('usuario/test/test_read',$data);
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
+        }
+    }
+    public function reportes()
+    {
+        if($this->session->userdata('rol')=='admin')
+        {
+            $totalfases=$this->test_model->total_test_todas_las_fases();
+            $data['totalfases']=$totalfases;
+            $totalf1p1=$this->test_model->total_respuestas_por_pregunta_por_fase(1,1);
+            $data['totalf1p1']=$totalf1p1;
+            $totalt1=$this->test_model->total_respuestas_por_fase(1);
+            $totalt2=$this->test_model->total_respuestas_por_fase(2);
+            $totalt3=$this->test_model->total_respuestas_por_fase(3);
+            $data['totalt1']=$totalt1;
+            $data['totalt2']=$totalt2;
+            $data['totalt3']=$totalt3;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/test/test_reportes',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        else
+        {
+            redirect('usuarios/panel','refresh');
         }
     }
     public function agregar()

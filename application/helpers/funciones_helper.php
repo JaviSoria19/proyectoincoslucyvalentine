@@ -87,9 +87,18 @@ function formatearRespuesta($respuesta)
     }
 }
 
-function alertaCIExistente(){
-    echo '<script language="javascript">';
-    echo 'alert("Estimado Usuario, ¡el número de carnet que ingresó ha sido registrado en sistema previamente!")';
-    echo '</script>';
+function scriptgooglemaps($i,$latitud,$longitud){
+        echo '
+        alerta'.$i.' = { lat: '.$latitud.', lng: '.$longitud.' };
+        map'.$i.' = new google.maps.Map(document.getElementById("map'.$i.'"), {
+            zoom: 15,
+            center: alerta'.$i.',
+            });
+        marker'.$i.' = new google.maps.Marker({
+            position: alerta'.$i.',
+            map: map'.$i.',
+            });
+        ';
+    
 }
 ?>

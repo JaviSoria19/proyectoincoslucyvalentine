@@ -44,6 +44,13 @@
                           </button>
                         <?php echo form_close();?>
                     </li>
+                    <li>
+                        <?php echo form_open_multipart('usuarios/reportes');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Reportes
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
                   </ul>
                 </li>
                 <li>
@@ -66,6 +73,13 @@
                           </button>
                         <?php echo form_close();?>
                     </li>
+                    <li>
+                        <?php echo form_open_multipart('publicacion/reportes');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Reportes
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
                   </ul>
                 </li>
                 <li>
@@ -81,6 +95,13 @@
                           </button>
                         <?php echo form_close();?>
                     </li>
+                    <li>
+                        <?php echo form_open_multipart('alerta/reportes');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Reportes
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
                   </ul>
                 </li>
                 <li>
@@ -93,6 +114,13 @@
                         <?php echo form_open_multipart('denuncia/index');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Denuncias
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                    <li>
+                        <?php echo form_open_multipart('denuncia/reportes');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Reportes
                           </button>
                         <?php echo form_close();?>
                     </li>
@@ -144,6 +172,13 @@
                         <?php echo form_open_multipart('test/registros');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Registros
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                    <li>
+                        <?php echo form_open_multipart('test/reportes');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Reportes
                           </button>
                         <?php echo form_close();?>
                     </li>
