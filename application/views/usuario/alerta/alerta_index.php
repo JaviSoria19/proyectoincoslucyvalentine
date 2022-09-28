@@ -15,25 +15,37 @@
                 <thead>
                     <tr class="text-center">
                         <th>Departamento</th>
-                        <th>Latitud</th>
-                        <th>Longitud</th>
+                        <th>Ubicación</th>
                         <th>F. Registro</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
+                        $indice=1;
                         foreach ($historial->result() as $row)
                         {
                     ?>
-                    <tr>
+                    <tr class="text-center">
                     <td><?php echo $row->nombreDepartamento; ?></td>
-                    <td><?php echo $row->latitud; ?></td>
-                    <td><?php echo $row->longitud; ?></td>
-                    <td class="text-center"><?php echo formatearFechaMasHora($row->fechaRegistro); ?></td>
+                    <td class="w-25" align="center"><div id="map<?php echo $indice; ?>" style="width: 320px; height:320px;"></div></td>
+                    <td><?php echo formatearFechaMasHora($row->fechaRegistro); ?></td>
                     </tr>
                     <?php 
+                        $indice++;
                         } 
                     ?>
+    <script type="text/javascript">
+        function initMap() {
+            <?php $indice=1; foreach ($historial->result() as $rowmaps){ ?>
+                <?php echo scriptGoogleMaps($indice,$rowmaps->latitud,$rowmaps->longitud); ?>
+            <?php $indice++; } ?>
+        }
+    </script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?
+      key=AIzaSyAOig1CSGUk1nF4phMflhvb50RCX22KZl0&callback=initMap&v=weekly"
+      defer>   
+    </script>
                 </tbody>
             </table>
                     </div><!-- Fin Div x_content -->

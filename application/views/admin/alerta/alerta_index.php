@@ -35,8 +35,6 @@
                     <td><?php echo $row->numeroCelular; ?></td>
                     <td class="w-25" align="center"><div id="map<?php echo $indice; ?>" style="width: 320px; height:320px;"></div></td>
                     
-
-
                     <td class="text-center"><?php echo formatearFechaMasHora($row->fechaRegistro); ?></td>
                     </tr>
                     <?php
@@ -48,7 +46,6 @@
             <?php $indice=1; foreach ($alertas->result() as $rowmaps){ ?>
                 <?php echo scriptGoogleMaps($indice,$rowmaps->latitud,$rowmaps->longitud); ?>
             <?php $indice++; } ?>
-
         }
     </script>
     <script

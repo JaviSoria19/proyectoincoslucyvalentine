@@ -73,15 +73,28 @@ class Publicacion extends CI_Controller {
         $this->load->view('admin/inc/creditosgentelella');
         $this->load->view('admin/inc/footergentelella');
     }
-    public function adminAgregar()
-	{
-        $this->load->view('admin/inc/headergentelella');
-        $this->load->view('admin/inc/sidebargentelella');
-        $this->load->view('admin/inc/topbargentelella');
-        $this->load->view('admin/publicacion/publicacion_insert_staff');
-        $this->load->view('admin/inc/creditosgentelella');
-        $this->load->view('admin/inc/footergentelella');
-	}
+    public function agregar()
+    {
+        if($this->session->userdata('rol')=='admin')
+        {
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_insert_staff');
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }elseif ($this->session->userdata('rol')=='usuario') {
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_insert_comunidad');
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }
+
+    }
 
     public function adminAgregarStaffbd()
     {
@@ -105,12 +118,42 @@ class Publicacion extends CI_Controller {
         }
         else{
             $data['idUsuario']=$this->session->userdata('idusuario');
-            $data['fotoPublicacion']='publicacion_default.png';
+            $data['fotoPublicacion']=base_url().'uploads/publicacion_default.jpg';
             $data['titulo']=$_POST['titulo'];
             $data['contenido']=$_POST['contenido'];
-
+            $data['tipo']='1';
             $this->publicacion_model->agregarpublicaciones($data);
             redirect('publicacion/indexStaff','refresh');
+        }
+    }
+    public function usuarioAgregarbd()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'titulo',
+            'Titulo de la publicación',
+            'required',
+            array(
+                'required'=>'Se requiere ingresar el nombre del publicacion.'
+                )
+            );
+        if($this->form_validation->run()==FALSE)
+        {
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_insert_comunidad');
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }
+        else{
+            $data['idUsuario']=$this->session->userdata('idusuario');
+            $data['fotoPublicacion']=base_url().'uploads/publicacion_default.jpg';
+            $data['titulo']=$_POST['titulo'];
+            $data['contenido']=$_POST['contenido'];
+            $data['tipo']='2';
+            $this->publicacion_model->agregarpublicaciones($data);
+            redirect('publicacion/indexComunidad','refresh');
         }
     }
 

@@ -4,23 +4,23 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel bg-dark text-white"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2>Nueva publicación Oficial.</h2>
+                        <h2>Nueva Discusión.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
                         <?php 
-                            echo form_open_multipart('publicacion/indexStaff');
+                            echo form_open_multipart('publicacion/indexComunidad');
                         ?>
                             <button type="submit" name="buttonIndexStaff" class="btn btn-outline-success">
-                                <i class="fa fa-arrow-circle-left"></i> Volver a Publicaciones Oficiales.
+                                <i class="fa fa-arrow-circle-left"></i> Volver a Comunidad.
                             </button>
                         <?php 
                             echo form_close();
                         ?>
                         <br>
                         <?php 
-                            echo form_open_multipart('publicacion/adminAgregarStaffbd');
+                            echo form_open_multipart('publicacion/usuarioAgregarbd');
                         ?>
                         <div class="item form-group has-feedback">
                             <label class="col-form-label col-md-1 label-align" for="titulo">Título de la publicación:</label>

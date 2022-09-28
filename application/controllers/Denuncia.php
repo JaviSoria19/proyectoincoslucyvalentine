@@ -29,16 +29,32 @@ class Denuncia extends CI_Controller {
 	}
     public function visualizar_detalles()
     {
-        $iddenuncia=$_POST['iddenuncia'];
-        $data['infodenuncia']=$this->denuncia_model->recuperardenuncias($iddenuncia);
-        $data['proceso']=$this->proceso_denuncia_model->listaproceso_denuncias($iddenuncia);
-        $data['listaautoridadpolicia']=$this->usuario_model->listaUsuariosPoliciayAutoridad();
-        $this->load->view('admin/inc/headergentelella');
-        $this->load->view('admin/inc/sidebargentelella');
-        $this->load->view('admin/inc/topbargentelella');
-        $this->load->view('admin/denuncia/denuncia_read_detalles',$data);
-        $this->load->view('admin/inc/creditosgentelella');
-        $this->load->view('admin/inc/footergentelella');
+        if ($this->session->userdata('rol')=='admin') {
+            $iddenuncia=$_POST['iddenuncia'];
+            $data['infodenuncia']=$this->denuncia_model->recuperardenuncias($iddenuncia);
+            $data['proceso']=$this->proceso_denuncia_model->listaproceso_denuncias($iddenuncia);
+            $data['listaautoridadpolicia']=$this->usuario_model->listaUsuariosPoliciayAutoridad();
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/denuncia/denuncia_read_detalles',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }elseif ($this->session->userdata('rol')=='usuario') {
+            $iddenuncia=$_POST['iddenuncia'];
+            $data['infodenuncia']=$this->denuncia_model->recuperardenuncias($iddenuncia);
+            $data['proceso']=$this->proceso_denuncia_model->listaproceso_denuncias($iddenuncia);
+            $data['listaautoridadpolicia']=$this->usuario_model->listaUsuariosPoliciayAutoridad();
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/denuncia/denuncia_read_detalles',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }
+        
     }
     public function agregar()
 	{

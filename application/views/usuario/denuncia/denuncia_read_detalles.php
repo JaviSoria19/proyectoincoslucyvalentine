@@ -33,8 +33,6 @@
                                          <h3>
                                         Tipo de Denuncia: <?php echo $row->descripcionCategoria;?>
                                         <br>
-                                        Denunciante: <?php echo $row->nombres;?> <?php echo $row->primerApellido;?> <?php echo $row->segundoApellido;?>
-                                        <br>
                                         Fecha: <?php echo formatearsoloFecha($row->fechaRegistro);?> a hrs. <?php echo formatearsoloHora($row->fechaRegistro);?> <br>
                                         Autoridad asignada al caso:
                                         <?php if ($row->autoridadAsignada==''): ?>
@@ -53,7 +51,7 @@
                                             onclick="window.open(this.src, '_blank');">
                                             <br>
                                         <?php else: ?>
-                                            La denunciante no ha presentado ninguna evidencia fotográfica.<br>
+                                            Usted no ha presentado ninguna evidencia fotográfica.<br>
                                         <?php endif ?>
 
                                         <?php if ($row->audio!=''): ?>
@@ -63,7 +61,7 @@
                                             </audio>
                                             <br><br>
                                         <?php else: ?>
-                                            La denunciante no ha presentado ninguna evidencia de audio.<br>
+                                            Usted no ha presentado ninguna evidencia de audio.<br>
                                         <?php endif ?>
                                         <?php if ($row->video!=''): ?>
                                             <video controls class="w-50 rounded">
@@ -72,10 +70,33 @@
                                               Su navegador no soporta archivos de video.
                                             </video>
                                         <?php else: ?>
-                                            La denunciante no ha presentado video alguno.
+                                            Usted no ha presentado video alguno.
                                         <?php endif ?>
                                     </div>
                                     
+                                    <div class="card col-md-12 text-dark">
+                                        <h2 class="font-weight-bold">Historial del caso</h2>
+            <table class="table table-striped table-dark table-bordered" style="width:100%">
+                <thead>
+                    <tr class="text-center">
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                        <th>Persona a cargo</th>
+                        <th>Comentario.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($proceso->result() as $rowProceso) { ?>
+                    <tr>
+                        <td><?php echo $rowProceso->estado; ?></td>
+                        <td><?php echo $rowProceso->fechaRegistro; ?></td>
+                        <td><?php echo $rowProceso->idUsuarioResponsable; ?></td>
+                        <td><?php echo $rowProceso->comentario; ?></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+
                                 </div>
                             </div>
                         <?php 

@@ -4,16 +4,16 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2>Actualizar empleado.</h2>
+                        <h2>Actualizar publicación.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
                         <?php 
-                            echo form_open_multipart('usuarios/inicio');
+                            echo form_open_multipart('publicacion/indexStaff');
                         ?>
-                            <button type="submit" name="buttonInhabilitados" class="btn btn-outline-success">
-                            <i class="fa fa-arrow-circle-left"></i> Volver a usuarios
+                            <button type="submit" name="buttonIndexStaff" class="btn btn-outline-success">
+                                <i class="fa fa-arrow-circle-left"></i> Volver a Publicaciones Oficiales.
                             </button>
                         <?php 
                             echo form_close();

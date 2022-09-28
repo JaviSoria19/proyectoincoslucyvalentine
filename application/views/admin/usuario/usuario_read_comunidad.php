@@ -111,7 +111,7 @@
       </div>
       <div class="modal-footer">
         <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-        <a id="url-delete" type="submit" class="btn btn-outline-success"><i class="fa fa-toggle-on"></i> Verificar</a>
+        <a id="url-delete" type="submit" class="btn btn-outline-success"><i class="fa fa-toggle-on"></i> Si, Verificar</a>
       </div>
     </div>
   </div>
@@ -141,7 +141,7 @@
       </div>
       <div class="modal-footer">
         <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-        <a id="url-delete-two" type="submit" class="btn btn-outline-warning"><i class="fa fa-toggle-off"></i> Confirmar</a>
+        <a id="url-delete-two" type="submit" class="btn btn-outline-warning"><i class="fa fa-toggle-off"></i> Si, Confirmar</a>
       </div>
     </div>
   </div>
@@ -165,7 +165,7 @@
         </button>
       </div>
       <div class="modal-body" align="center">
-         <img src="<?php echo base_url();?>/uploads/user.png" class="modal-img img-thumbnail">
+         <img src="<?php echo base_url();?>/uploads/user.png" class="modal-img rounded w-75">
       </div>
     </div>
   </div>

@@ -141,9 +141,11 @@ class Test extends CI_Controller {
         }
         elseif ($resultado>=2 && $resultado<=5) {
             $mensaje='Estimada, usted está presentando algunos síntomas de violencia, le recomendamos dialogar con su pareja para resolver y mejorar su relación.';
+            $foto='test_msj2.jpg';
         }
         elseif ($resultado>=6 && $resultado<=9) {
-            $mensaje='Estimada, usted está presentando varios síntomas de violencia.';
+            $mensaje='Estimada, usted está presentando varios síntomas de violencia, le recomendamos dialogar de forma seria con su pareja para tratar de resolver su relación, ';
+            $foto='test_msj2.jpg';
         }
         elseif ($resultado==10) {
             $mensaje='Estimada, usted está sufriendo violencia en muchos aspectos y corre peligro, le recomendamos contactarse con el SLIM.<br><br>"Defiende tu vida, lucha por tu independencia, busca tu felicidad y aprende a quererte"<br>-Izaskun González';

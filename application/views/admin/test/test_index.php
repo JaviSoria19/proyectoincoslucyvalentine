@@ -15,7 +15,7 @@
                         ?>
                         <div class="col-md-4 item justify-content-center">
                             <div class="card">
-                                <img class="card-img-top" src="<?php echo base_url();?>/uploads/publicacion_default.png">
+                                <img class="card-img-top" src="<?php echo base_url();?>/uploads/publicacion_default.jpg">
                                 <div class="card-body">
                                     <h5 class="card-title text-center"><?php echo $row->nombre; ?></h5>
                                 <?php echo form_open_multipart('test/agregar'); ?>
