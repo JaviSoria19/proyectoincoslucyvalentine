@@ -23,7 +23,7 @@
                     ?>
                     <div class="item bg-dark rounded">
                         <div class="col-md-2 bg-dark rounded align-self-center">
-                            <img src="<?php echo $foto;?>" class="rounded mx-auto d-block img-thumbnail">
+                            <img src="<?php echo $foto;?>" class="rounded mx-auto d-block rounded w-100">
                             
                         </div>
                         <div class="card col-md-10 bg-dark">

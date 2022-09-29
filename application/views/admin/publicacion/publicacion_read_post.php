@@ -31,8 +31,8 @@
                                 <?php echo formatearVerificado($row->estadoUsuario); ?> el 
                                 <?php echo formatearFechaMasHora($row->fechaRegistro);?>
                             </p>
-                            <img src="<?php echo $row->fotoPublicacion;?>" class="rounded mx-auto d-block w-50">
-                            <h2 class="text-justify"><?php echo $row->contenido;?></h2>
+                            <img src="<?php echo $row->fotoPublicacion;?>" class="rounded mx-auto d-block" style="width: 400px; height: 100%">
+                            <h2 class="text-justify"><?php echo nl2br($row->contenido);?></h2>
                             </div>
                         <?php 
                             }
@@ -77,7 +77,7 @@
                     <div class="card-title">
                         <h5><?php echo $row->correo;?> <?php echo formatearVerificado($row->estadoUsuario); ?> el <?php echo formatearFechaMasHora($row->fechaRegistro);?></h5>
                     </div>
-                    <p class="card-text text-justify"><?php echo $row->comentario;?></p>   
+                    <p class="card-text text-justify"><?php echo nl2br($row->comentario);?></p>   
                 </div>
             </div>
             <br>

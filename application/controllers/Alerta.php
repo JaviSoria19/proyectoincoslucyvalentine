@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Alerta extends CI_Controller {
 
 	public function inicio()
-	{
+    {
         if($this->session->userdata('rol')=='admin')
         {
             $lista=$this->alerta_model->listaAlerta();
@@ -30,7 +30,24 @@ class Alerta extends CI_Controller {
         {
             redirect('usuarios/panel','refresh');
         }
-	}
+    }
+    public function reportes()
+    {
+        if($this->session->userdata('rol')=='admin')
+        {
+            $lista=$this->alerta_model->listaAlerta();
+            $data['alertas']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/alerta/alerta_reportes',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else
+        {
+            redirect('usuarios/panel','refresh');
+        }
+    }
         public function eliminarbd()
     {
         $idalerta=$_POST['idalerta'];

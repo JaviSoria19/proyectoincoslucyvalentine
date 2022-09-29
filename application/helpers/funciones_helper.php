@@ -102,6 +102,22 @@ function scriptGoogleMaps($i,$latitud,$longitud)
     ';
 }
 
+function scriptGoogleMapsAllIn_1($i,$latitud,$longitud)
+{
+    echo '
+    alerta'.$i.' = { lat: '.$latitud.', lng: '.$longitud.' };
+    ';
+}
+function scriptGoogleMapsAllIn_2($i,$latitud,$longitud)
+{
+    echo '
+    marker'.$i.' = new google.maps.Marker({
+        position: alerta'.$i.',
+        map: map,
+        });
+    ';
+}
+
 function selectDenunciasEstado($estadoDenuncia)
 {
     if ($estadoDenuncia=='Denuncia enviada') 

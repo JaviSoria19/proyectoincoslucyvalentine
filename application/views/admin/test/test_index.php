@@ -14,13 +14,13 @@
                             {
                         ?>
                         <div class="col-md-4 item justify-content-center">
-                            <div class="card">
+                            <div class="card bg-lcv">
                                 <img class="card-img-top" src="<?php echo base_url();?>/uploads/publicacion_default.jpg">
                                 <div class="card-body">
-                                    <h5 class="card-title text-center"><?php echo $row->nombre; ?></h5>
+                                    <h5 class="card-title text-center text-light"><?php echo $row->nombre; ?></h5>
                                 <?php echo form_open_multipart('test/agregar'); ?>
                                 <input type="hidden" name="idtestnombre" value="<?php echo $row->idNombre;?>">
-                                <button type="submit" class="btn btn-outline-success">
+                                <button type="submit" class="btn btn-success">
                                 <i class="fa fa-arrow-circle-o-right"></i> Comenzar
                                 </button>
                                 <?php echo form_close(); ?>
