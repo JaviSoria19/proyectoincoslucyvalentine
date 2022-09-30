@@ -83,5 +83,41 @@ class Alerta extends CI_Controller {
         $data['estado']='1';
         $this->alerta_model->modificaralertaes($idalerta,$data);
         redirect('alerta/deshabilitados','refresh');
+    }   
+    public function inicio_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            
+            $lista=$this->alerta_model->filtroAlerta($fecha_inicio,$fecha_fin);
+            $data['alertas']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/alerta/alerta_index',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
+    public function reportes_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            
+            $lista=$this->alerta_model->filtroAlerta($fecha_inicio,$fecha_fin);
+            $data['alertas']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/alerta/alerta_reportes',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
     }
 }

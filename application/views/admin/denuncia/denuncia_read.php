@@ -13,8 +13,29 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        
+                                        Estimado administrador, aquí se encuentra las denuncias realizadas por los usuarios, recuerde que está bajo su criterio verificar la veracidad de los testimonios y las evidencias que el usuario presenta.
                                     </p>
+
+                        <?php echo form_open_multipart('denuncia/index_filtro');?>
+                        <h2>Realizar una búsqueda por fechas</h2>
+                        <div class="item form-group col-md-12">
+                            <div class="col-md-2 form-group">
+                                <label>Inicio</label>
+                                <input type="date" name="date_inicio" class="form-control">
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label>Fin</label>
+                                <input type="date" name="date_fin" class="form-control" value="<?php echo date('Y-m-d'); ?>">
+                            </div>
+                            <br>
+                            <div class="col-md-2 form-group">
+                                <label>Filtrar</label>
+                                <button type="submit" class="btn btn-primary form-control">
+                                 <i class="fa fa-search"></i> Buscar!</button>
+                            </div>
+                        </div>
+                        <?php echo form_close();?>
+
             <table id="datatable-buttons" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">

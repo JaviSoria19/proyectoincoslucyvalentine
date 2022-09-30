@@ -315,17 +315,41 @@ class Publicacion extends CI_Controller {
         redirect('publicacion/deshabilitados','refresh');
     }
 
-
-    public function guest()
+    public function indexStaff_filtro()
     {
-        $lista=$this->publicacion_model->listapublicaciones();
-        $data['publicacion']=$lista;
-        $this->load->view('inc/headergentelella');
-        $this->load->view('inc/sidebargentelella');
-        $this->load->view('inc/topbargentelella');
-        $this->load->view('publicacion/publicacion_guest',$data);
-        $this->load->view('inc/creditosgentelella');
-        $this->load->view('inc/footergentelella');        
+        if ($this->session->userdata('rol')=='admin') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            
+            $lista=$this->publicacion_model->filtroPublicacionStaff($fecha_inicio,$fecha_fin);
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_staff',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
+    public function indexComunidad_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            
+            $lista=$this->publicacion_model->filtroPublicacionComunidad($fecha_inicio,$fecha_fin);
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_comunidad',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
     }
 
   }

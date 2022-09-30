@@ -508,4 +508,42 @@ class Usuarios extends CI_Controller {
                 redirect('usuarios/index/1','refresh');
         }
 
+
+    public function inicio_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+                $fecha_inicio=$_POST['date_inicio'];
+                $fecha_fin=$_POST['date_fin'];
+
+                $lista=$this->usuario_model->filtroUsuarioNoVerificado($fecha_inicio,$fecha_fin);
+                $data['usuario']=$lista;
+                $this->load->view('admin/inc/headergentelella');
+                $this->load->view('admin/inc/sidebargentelella');
+                $this->load->view('admin/inc/topbargentelella');
+                $this->load->view('admin/usuario/usuario_read_comunidad',$data);
+                $this->load->view('admin/inc/creditosgentelella');
+                $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
+    public function adminVerStaff_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+                $fecha_inicio=$_POST['date_inicio'];
+                $fecha_fin=$_POST['date_fin'];
+
+                $lista=$this->usuario_model->filtroUsuarioStaff($fecha_inicio,$fecha_fin);
+                $data['usuario']=$lista;
+                $this->load->view('admin/inc/headergentelella');
+                $this->load->view('admin/inc/sidebargentelella');
+                $this->load->view('admin/inc/topbargentelella');
+                $this->load->view('admin/usuario/usuario_read_staff',$data);
+                $this->load->view('admin/inc/creditosgentelella');
+                $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
+
 }

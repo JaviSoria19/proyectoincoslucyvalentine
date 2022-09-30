@@ -60,5 +60,28 @@ class Publicacion_model extends CI_Model {
         //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','0');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
-
+    public function filtroPublicacionStaff($fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario
+            FROM publicacion AS p
+            INNER JOIN usuario AS u ON p.idUsuario = u.idUsuario
+            WHERE p.estado = 1 AND u.rol = 'admin' AND p.tipo = '1' AND p.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        return $this->db->get();
+    }
+    public function filtroPublicacionComunidad($fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario
+            FROM publicacion AS p
+            INNER JOIN usuario AS u ON p.idUsuario = u.idUsuario
+            WHERE p.estado = 1 AND u.rol = 'usuario' AND p.tipo = '2' AND p.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        return $this->db->get();
+    }
 }

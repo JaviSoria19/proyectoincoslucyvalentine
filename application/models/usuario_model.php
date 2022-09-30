@@ -119,4 +119,26 @@ class Usuario_model extends CI_Model {
             ');
         return $this->db->get();
     }
+    public function filtroUsuarioNoVerificado($fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento
+            FROM usuario AS u
+            INNER JOIN departamento AS d ON u.idDepartamento = d.idDepartamento
+            WHERE u.estado = 1 AND u.rol = 'usuario' AND u.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        return $this->db->get();
+    }
+    public function filtroUsuarioStaff($fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento
+            FROM usuario AS u
+            INNER JOIN departamento AS d ON u.idDepartamento = d.idDepartamento
+            WHERE u.estado IN ('1','2') AND u.rol IN ('admin','policia','autoridad') AND u.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        return $this->db->get();
+    }
 }

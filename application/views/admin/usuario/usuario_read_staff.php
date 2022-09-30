@@ -35,12 +35,30 @@
                                     </div>
                                     
                                     <br><br>
-                                    <p class="text-muted font-13 m-b-30">
+                                    <p class="text-dark font-weight-bold font-13 m-b-30">
                                         Actualmente contamos con <?php echo $usuario->num_rows(); ?>
                                         usuarios activos que forman parte del staff!<br>
                                         Estimado administrador, recuerde verificar todas las medidas de seguridad de una Cédula de Identidad para validar a un usuario.
                                     </p>
-
+                        <?php echo form_open_multipart('usuarios/adminVerStaff_filtro');?>
+                        <h2>Realizar una búsqueda por fechas</h2>
+                        <div class="item form-group col-md-12">
+                            <div class="col-md-2 form-group">
+                                <label>Inicio</label>
+                                <input type="date" name="date_inicio" class="form-control">
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label>Fin</label>
+                                <input type="date" name="date_fin" class="form-control" value="<?php echo date('Y-m-d'); ?>">
+                            </div>
+                            <br>
+                            <div class="col-md-2 form-group">
+                                <label>Filtrar</label>
+                                <button type="submit" class="btn btn-primary form-control">
+                                 <i class="fa fa-search"></i> Buscar!</button>
+                            </div>
+                        </div>
+                        <?php echo form_close();?>
             <table id="datatable-buttons" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">

@@ -12,6 +12,25 @@
                         <div class="row"><!-- Inicio Div row 2 -->
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
+                        <?php echo form_open_multipart('test/reportes_filtro');?>
+                        <h2>Realizar una búsqueda por fechas</h2>
+                        <div class="item form-group col-md-12">
+                            <div class="col-md-2 form-group">
+                                <label>Inicio</label>
+                                <input type="date" name="date_inicio" class="form-control">
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label>Fin</label>
+                                <input type="date" name="date_fin" class="form-control" value="<?php echo date('Y-m-d'); ?>">
+                            </div>
+                            <br>
+                            <div class="col-md-2 form-group">
+                                <label>Filtrar</label>
+                                <button type="submit" class="btn btn-primary form-control">
+                                 <i class="fa fa-search"></i> Buscar!</button>
+                            </div>
+                        </div>
+                        <?php echo form_close();?>
                                 <?php //inicio de los foreach
                                     foreach ($totalfases->result() as $rowtotalfases)
                                     {
@@ -86,10 +105,7 @@
                                         <h2 style="color:#FF0000;">■</h2><h2>Frecuentemente</h2>
                                     </div>
                                     <div id="grafico_bar_t3" style="width:100%; height:300px;"></div>
-                                </div>
-                                ⠀<!--caracter en blanco--><br>
-                                ⠀<!--caracter en blanco--><br>
-                                <h2 class="text-dark font-weight-bold">Registro de test realizados.</h2>        
+                                </div>      
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>

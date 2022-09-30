@@ -210,4 +210,49 @@ class Test extends CI_Controller {
         $this->test_model->modificartestes($idtest,$data);
         redirect('test/deshabilitados','refresh');
     }
+    public function registros_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            
+            $lista=$this->test_model->filtroTest($fecha_inicio,$fecha_fin);
+            $data['test']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/test/test_read',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
+    public function reportes_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            
+
+            $totalfases=$this->test_model->filtro_total_test_todas_las_fases($fecha_inicio,$fecha_fin);
+            $data['totalfases']=$totalfases;
+            $totalf1p1=$this->test_model->filtro_total_respuestas_por_pregunta_por_fase(1,1,$fecha_inicio,$fecha_fin);
+            $data['totalf1p1']=$totalf1p1;
+            $totalt1=$this->test_model->filtro_total_respuestas_por_fase(1,$fecha_inicio,$fecha_fin);
+            $totalt2=$this->test_model->filtro_total_respuestas_por_fase(2,$fecha_inicio,$fecha_fin);
+            $totalt3=$this->test_model->filtro_total_respuestas_por_fase(3,$fecha_inicio,$fecha_fin);
+            $data['totalt1']=$totalt1;
+            $data['totalt2']=$totalt2;
+            $data['totalt3']=$totalt3;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/test/test_reportes',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
 }
