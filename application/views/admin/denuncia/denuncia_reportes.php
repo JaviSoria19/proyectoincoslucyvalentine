@@ -4,7 +4,7 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2><i class="fa fa-users"></i> Usuarios - Reportes.</h2>
+                        <h2><i class="fa fa-users"></i> Denuncias - Reportes.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -12,7 +12,8 @@
                         <div class="row"><!-- Inicio Div row 2 -->
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
-                        <?php echo form_open_multipart('usuarios/reportes_filtro');?>
+
+                        <?php echo form_open_multipart('denuncia/reportes_filtro');?>
                         <h2>Realizar una búsqueda por fechas</h2>
                         <div class="item form-group col-md-12">
                             <div class="col-md-2 form-group">
@@ -36,25 +37,18 @@
                                     {
                                     foreach ($totalusuariospordpto->result() as $rowtotalusuariospordpto)
                                     {
-                                    ?> 
-                                    <div class="item btn-group">
-                                    <?php echo form_open_multipart('usuarios/adminVerStaff'); ?>
-                                        <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-eye"></i> Ver usuarios del Staff
-                                        </button>
-                                    <?php echo form_close(); ?> 
-                                    </div>
+                                    ?>
                                     <br><br>
                                     <h2>Estadísticas: </h2>
                                     <div class="card col-md-12 text-center">
-                                        <h2 class="font-weight-bold text-dark">Usuarios registrados por departamento:</h2>
+                                        <h2 class="font-weight-bold text-dark">Denuncias registradas por departamento:</h2>
                                         <div id="grafico_bar_total_por_depto" style="width:100%; height:300px;"></div>
                                     </div>
                                     ⠀<!--caracter en blanco--><br>
                                     <div class="col-md-6 text-center">
                                         <div class="x_panel">
                                             <div class="x_title">
-                                                <h2 class="font-weight-bold text-dark">Total de Usuarios Registrados: <?php echo $rowtotalusuariosporsexo->totalu;?>, según el género: </h2>
+                                                <h2 class="font-weight-bold text-dark">Total de Denuncias Registrados: <?php echo $rowtotalusuariosporsexo->totalu;?>, según el género: </h2>
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="x_content2">

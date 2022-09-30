@@ -23,6 +23,28 @@
                             echo form_open_multipart('publicacion/adminAgregarStaffbd');
                         ?>
                         <div class="item form-group has-feedback">
+                            <label class="col-form-label col-md-1 label-align" for="tipo">Tipo de Publicación:</label>
+                            <div class="col-md-11">
+                                <select class="form-control" name="tipo" required>
+                                    <option selected disabled value="">
+                                        Seleccione el tipo de publicación...   
+                                    </option>
+                                    <option value="1">
+                                        Publicación Oficial   
+                                    </option>
+                                    <option value="3">
+                                        Información Educativa   
+                                    </option>
+                                    <option value="4">
+                                        Pautas de Seguridad  
+                                    </option>
+                                    <option value="5">
+                                        Promoción de Actitudes Igualitarias   
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group has-feedback">
                             <label class="col-form-label col-md-1 label-align" for="titulo">Título de la publicación:</label>
                             <div class="col-md-11">
                                 <input type="text" name="titulo" class="form-control has-feedback-left"

@@ -141,4 +141,40 @@ class Usuario_model extends CI_Model {
             ");
         return $this->db->get();
     }
+    public function filtro_total_usuarios_por_sexo($fecha_inicio,$fecha_fin)
+    {
+        $this->db->select("
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND sexo= 'M' AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalm,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND sexo= 'F' AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalf,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalu
+            ");
+        return $this->db->get();
+    }
+    public function filtro_total_usuarios_por_departamento($fecha_inicio,$fecha_fin)
+    {
+        $this->db->select("
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=1 AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalBN,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=2 AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalCH,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=3 AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalCO,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=4 AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalLP,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=5 AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalOR,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=6 AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalPD,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=7 AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalPT,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=8 AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalSC,
+            (SELECT COUNT(idUsuario) FROM usuario WHERE estado IN (1,2) AND idDepartamento=9 AND fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalTJ
+            ");
+        return $this->db->get();
+    }
 }

@@ -90,21 +90,21 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexComunidad');?>
+                        <?php echo form_open_multipart('publicacion/indexInformacionEducativa');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Información Educativa
                           </button>
                         <?php echo form_close();?>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexComunidad');?>
+                        <?php echo form_open_multipart('publicacion/indexPautasdeSeguridad');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Pautas de Seguridad
                           </button>
                         <?php echo form_close();?>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexComunidad');?>
+                        <?php echo form_open_multipart('publicacion/indexPromociondeActitudesIgualitarias');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Promoción de Actitudes Igualitarias.
                           </button>

@@ -27,6 +27,42 @@ class Publicacion_model extends CI_Model {
         //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
+    public function listaPublicacionesInformacionEducativa()//select
+    {
+        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
+        $this->db->from('publicacion AS p'); //tabla publicacion
+        $this->db->where('p.estado','1'); //condición where estado = 1
+        $this->db->where('u.rol','admin');
+        $this->db->where('p.tipo','3');
+        $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
+    public function listaPublicacionesPautasdeSeguridad()//select
+    {
+        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
+        $this->db->from('publicacion AS p'); //tabla publicacion
+        $this->db->where('p.estado','1'); //condición where estado = 1
+        $this->db->where('u.rol','admin');
+        $this->db->where('p.tipo','4');
+        $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
+    public function listaPublicacionesPromociondeActitudesIgualitarias()//select
+    {
+        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
+        $this->db->from('publicacion AS p'); //tabla publicacion
+        $this->db->where('p.estado','1'); //condición where estado = 1
+        $this->db->where('u.rol','admin');
+        $this->db->where('p.tipo','5');
+        $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
     public function agregarpublicaciones($data)//create
     {
         $this->db->insert('publicacion',$data); //tabla
@@ -79,6 +115,42 @@ class Publicacion_model extends CI_Model {
             FROM publicacion AS p
             INNER JOIN usuario AS u ON p.idUsuario = u.idUsuario
             WHERE p.estado = 1 AND u.rol = 'usuario' AND p.tipo = '2' AND p.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        return $this->db->get();
+    }
+    public function filtroPublicacionInfo1($fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario
+            FROM publicacion AS p
+            INNER JOIN usuario AS u ON p.idUsuario = u.idUsuario
+            WHERE p.estado = 1 AND u.rol = 'admin' AND p.tipo = '3' AND p.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        return $this->db->get();
+    }
+    public function filtroPublicacionInfo2($fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario
+            FROM publicacion AS p
+            INNER JOIN usuario AS u ON p.idUsuario = u.idUsuario
+            WHERE p.estado = 1 AND u.rol = 'admin' AND p.tipo = '4' AND p.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        return $this->db->get();
+    }
+    public function filtroPublicacionInfo3($fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario
+            FROM publicacion AS p
+            INNER JOIN usuario AS u ON p.idUsuario = u.idUsuario
+            WHERE p.estado = 1 AND u.rol = 'admin' AND p.tipo = '5' AND p.fechaRegistro
             BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
             ");
         $this->db->order_by('p.fechaRegistro', 'DESC');

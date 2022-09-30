@@ -27,6 +27,26 @@ class Denuncia extends CI_Controller {
             redirect('usuarios/panel','refresh');
         }
 	}
+    public function reportes()
+        {
+                if($this->session->userdata('rol')=='admin')
+                {
+                        $totalusuariosporsexo=$this->usuario_model->total_usuarios_por_sexo();
+                        $data['totalusuariosporsexo']=$totalusuariosporsexo;
+                        $totalusuariospordpto=$this->usuario_model->total_usuarios_por_departamento();
+                        $data['totalusuariospordpto']=$totalusuariospordpto;
+                        $this->load->view('admin/inc/headergentelella');
+                        $this->load->view('admin/inc/sidebargentelella');
+                        $this->load->view('admin/inc/topbargentelella');
+                        $this->load->view('admin/denuncia/denuncia_reportes',$data);
+                        $this->load->view('admin/inc/creditosgentelella');
+                        $this->load->view('admin/inc/footergentelella');
+                }
+                else
+                {
+                        redirect('usuarios/panel','refresh');
+                }   
+        }
     public function visualizar_detalles()
     {
         if ($this->session->userdata('rol')=='admin') {
@@ -329,5 +349,4 @@ class Denuncia extends CI_Controller {
             redirect('usuarios/panel','refresh');
         }  
     }
-
 }

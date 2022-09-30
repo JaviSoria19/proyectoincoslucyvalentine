@@ -60,6 +60,93 @@ class Publicacion extends CI_Controller {
         }
         
     }
+    public function indexInformacionEducativa()
+    {
+        if($this->session->userdata('rol')=='admin')
+        {
+            $lista=$this->publicacion_model->listaPublicacionesInformacionEducativa();
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_info1',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='usuario') {
+            $lista=$this->publicacion_model->listaPublicacionesInformacionEducativa();
+            $data['publicacion']=$lista;
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_info1',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }
+        else
+        {
+            redirect('usuarios/panel','refresh');
+        }
+        
+    }
+    public function indexPautasdeSeguridad()
+    {
+        if($this->session->userdata('rol')=='admin')
+        {
+            $lista=$this->publicacion_model->listaPublicacionesPautasdeSeguridad();
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_info2',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='usuario') {
+            $lista=$this->publicacion_model->listaPublicacionesPautasdeSeguridad();
+            $data['publicacion']=$lista;
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_info2',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }
+        else
+        {
+            redirect('usuarios/panel','refresh');
+        }
+        
+    }
+    public function indexPromociondeActitudesIgualitarias()
+    {
+        if($this->session->userdata('rol')=='admin')
+        {
+            $lista=$this->publicacion_model->listaPublicacionesPromociondeActitudesIgualitarias();
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_info3',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='usuario') {
+            $lista=$this->publicacion_model->listaPublicacionesPromociondeActitudesIgualitarias();
+            $data['publicacion']=$lista;
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_info3',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }
+        else
+        {
+            redirect('usuarios/panel','refresh');
+        }
+        
+    }
     public function visualizar_post()
     {
         $idpublicacion=$_POST['idpublicacion'];
@@ -121,7 +208,7 @@ class Publicacion extends CI_Controller {
             $data['fotoPublicacion']=base_url().'uploads/publicacion_default.jpg';
             $data['titulo']=$_POST['titulo'];
             $data['contenido']=$_POST['contenido'];
-            $data['tipo']='1';
+            $data['tipo']=$_POST['tipo'];
             $this->publicacion_model->agregarpublicaciones($data);
             redirect('publicacion/indexStaff','refresh');
         }
@@ -345,6 +432,60 @@ class Publicacion extends CI_Controller {
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
             $this->load->view('admin/publicacion/publicacion_read_comunidad',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
+    public function indexInformacionEducativa_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            
+            $lista=$this->publicacion_model->filtroPublicacionInfo1($fecha_inicio,$fecha_fin);
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_info1',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
+    public function indexPautasdeSeguridad_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            
+            $lista=$this->publicacion_model->filtroPublicacionInfo2($fecha_inicio,$fecha_fin);
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_info2',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
+    public function indexPromociondeActitudesIgualitarias_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            
+            $lista=$this->publicacion_model->filtroPublicacionInfo3($fecha_inicio,$fecha_fin);
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_info3',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }else{

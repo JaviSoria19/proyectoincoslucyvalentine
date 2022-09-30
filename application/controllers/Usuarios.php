@@ -545,5 +545,26 @@ class Usuarios extends CI_Controller {
             redirect('usuarios/panel','refresh');
         }  
     }
-
+        public function reportes_filtro()
+        {
+                if($this->session->userdata('rol')=='admin')
+                {
+                        $fecha_inicio=$_POST['date_inicio'];
+                        $fecha_fin=$_POST['date_fin'];
+                        $totalusuariosporsexo=$this->usuario_model->filtro_total_usuarios_por_sexo($fecha_inicio,$fecha_fin);
+                        $data['totalusuariosporsexo']=$totalusuariosporsexo;
+                        $totalusuariospordpto=$this->usuario_model->filtro_total_usuarios_por_departamento($fecha_inicio,$fecha_fin);
+                        $data['totalusuariospordpto']=$totalusuariospordpto;
+                        $this->load->view('admin/inc/headergentelella');
+                        $this->load->view('admin/inc/sidebargentelella');
+                        $this->load->view('admin/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_reportes',$data);
+                        $this->load->view('admin/inc/creditosgentelella');
+                        $this->load->view('admin/inc/footergentelella');
+                }
+                else
+                {
+                        redirect('usuarios/panel','refresh');
+                }   
+        }
 }
