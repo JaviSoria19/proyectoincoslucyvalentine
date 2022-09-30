@@ -136,19 +136,19 @@ class Test extends CI_Controller {
         $mensaje='';
         $foto='';
         if ($resultado>=0 && $resultado<=1) {
-            $mensaje='Estimada, usted no sufre de violencia <br><br> "¡El amor no reclama posesiones sino que da libertad!"<br>-Rabindranath Tagore';
+            $mensaje='Usted no sufre de violencia. <br><br> "¡El amor no reclama posesiones sino que da libertad!"<br>-Rabindranath Tagore';
             $foto='test_msj1.jpeg';
         }
         elseif ($resultado>=2 && $resultado<=5) {
-            $mensaje='Estimada, usted está presentando algunos síntomas de violencia, le recomendamos dialogar con su pareja para resolver y mejorar su relación.';
+            $mensaje='Usted está presentando algunos síntomas de violencia, le recomendamos dialogar con su pareja para resolver y mejorar su relación. <br><br> "¡El acto más valiente es pensar por una misma. En voz alta!"<br>-Coco Chanel';
             $foto='test_msj2.jpg';
         }
         elseif ($resultado>=6 && $resultado<=9) {
-            $mensaje='Estimada, usted está presentando varios síntomas de violencia, le recomendamos dialogar de forma seria con su pareja para tratar de resolver su relación, ';
+            $mensaje='Usted está presentando varios síntomas de violencia, es urgente que dialogue con su pareja, o en su defecto busque consejo externo. <br><br> "¡Ignoramos nuestra verdadera estatura hasta que nos ponemos en pie!"<br>-Emily Dickinson';
             $foto='test_msj2.jpg';
         }
         elseif ($resultado==10) {
-            $mensaje='Estimada, usted está sufriendo violencia en muchos aspectos y corre peligro, le recomendamos contactarse con el SLIM.<br><br>"Defiende tu vida, lucha por tu independencia, busca tu felicidad y aprende a quererte"<br>-Izaskun González';
+            $mensaje='Usted está sufriendo violencia en muchos aspectos y corre peligro, le recomendamos contactarse con el SLIM para recibir orientación de manera URGENTE.<br><br>"Defiende tu vida, lucha por tu independencia, busca tu felicidad y aprende a quererte"<br>-Izaskun González';
             $foto='test_msj4.jpeg';
         }
         if($this->session->userdata('rol')=='admin')
