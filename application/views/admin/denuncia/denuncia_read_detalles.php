@@ -26,20 +26,34 @@
                                 <div class="card-body">
 
                                     <div class="col-md-6">
-                                         <h3>
-                                        Tipo de Denuncia: <?php echo $row->descripcionCategoria;?>
-                                        <br>
-                                        Denunciante: <?php echo $row->nombres;?> <?php echo $row->primerApellido;?> <?php echo $row->segundoApellido;?>
-                                        <br>
-                                        Fecha: <?php echo formatearsoloFecha($row->fechaRegistro);?> a hrs. <?php echo formatearsoloHora($row->fechaRegistro);?> <br>
-                                        Autoridad asignada al caso:
-                                        <?php if ($row->autoridadAsignada==''): ?>
-                                            Pendiente.
-                                        <?php else: ?>
-                                            <?php echo $row->autoridadAsignada;?>
-                                        <?php endif ?>
-                                        </h3>
-                                        <h2><?php echo $row->declaracion;?></h2>
+                                        <table class="table table-sm text-light h5">
+                                            <thead></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tipo de Denuncia:</td>
+                                                    <td><?php echo $row->descripcionCategoria;?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Denunciante:</td>
+                                                    <td><?php echo $row->nombres;?> <?php echo $row->primerApellido;?> <?php echo $row->segundoApellido;?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Fecha:</td>
+                                                    <td><?php echo formatearsoloFecha($row->fechaRegistro);?> a hrs. <?php echo formatearsoloHora($row->fechaRegistro);?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Responsable designado por:</td>
+                                                    <td>
+                                                        <?php if ($row->autoridadAsignada==''): ?>
+                                                        Pendiente.
+                                                        <?php else: ?>
+                                                            <?php echo $row->autoridadAsignada;?>
+                                                        <?php endif ?>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h2 class="font-italic">"<?php echo $row->declaracion;?>"</h2>
                                     </div>
                                     <div class="col-md-6 text-center align-self-center">
                                         <h3>Evidencias presentadas: </h3>
@@ -128,7 +142,7 @@
                                                         foreach ($listaautoridadpolicia->result() as $rowautoridadpolicia)
                                                         {
                                                     ?>
-                                                    <option value="<?php echo $rowautoridadpolicia->idUsuario;?>">
+                                                    <option value="<?php echo $rowautoridadpolicia->nombres;?> <?php echo $rowautoridadpolicia->primerApellido;?>">
                                                         <?php echo $rowautoridadpolicia->nombres;?> 
                                                         <?php echo $rowautoridadpolicia->primerApellido;?> 
                                                         <?php echo $rowautoridadpolicia->segundoApellido;?> 
