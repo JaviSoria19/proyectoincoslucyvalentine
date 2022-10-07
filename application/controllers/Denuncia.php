@@ -31,10 +31,8 @@ class Denuncia extends CI_Controller {
         {
                 if($this->session->userdata('rol')=='admin')
                 {
-                        $totalusuariosporsexo=$this->usuario_model->total_usuarios_por_sexo();
-                        $data['totalusuariosporsexo']=$totalusuariosporsexo;
-                        $totalusuariospordpto=$this->usuario_model->total_usuarios_por_departamento();
-                        $data['totalusuariospordpto']=$totalusuariospordpto;
+                        $totaldenunciaporcategoria=$this->denuncia_model->total_denuncia_por_categoria();
+                        $data['totaldenunciaporcategoria']=$totaldenunciaporcategoria;
                         $this->load->view('admin/inc/headergentelella');
                         $this->load->view('admin/inc/sidebargentelella');
                         $this->load->view('admin/inc/topbargentelella');
@@ -348,5 +346,25 @@ class Denuncia extends CI_Controller {
         }else{
             redirect('usuarios/panel','refresh');
         }  
+    }
+    public function reportes_filtro()
+    {
+        if($this->session->userdata('rol')=='admin')
+        {
+                    $fecha_inicio=$_POST['date_inicio'];
+                    $fecha_fin=$_POST['date_fin'];
+                    $totaldenunciaporcategoria=$this->denuncia_model->filtro_total_denuncia_por_categoria($fecha_inicio,$fecha_fin);
+                    $data['totaldenunciaporcategoria']=$totaldenunciaporcategoria;
+                    $this->load->view('admin/inc/headergentelella');
+                    $this->load->view('admin/inc/sidebargentelella');
+                    $this->load->view('admin/inc/topbargentelella');
+                    $this->load->view('admin/denuncia/denuncia_reportes',$data);
+                    $this->load->view('admin/inc/creditosgentelella');
+                    $this->load->view('admin/inc/footergentelella');
+        }
+        else
+        {
+            redirect('usuarios/panel','refresh');
+        }   
     }
 }

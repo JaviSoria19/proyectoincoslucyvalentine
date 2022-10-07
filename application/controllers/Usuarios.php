@@ -37,6 +37,24 @@ class Usuarios extends CI_Controller {
                         redirect('usuarios/panel','refresh');
                 }   
         }
+        public function todos()
+        {
+                if($this->session->userdata('rol')=='admin')
+                {
+                        $lista=$this->usuario_model->listaUsuarios();
+                        $data['usuario']=$lista;
+                        $this->load->view('admin/inc/headergentelella');
+                        $this->load->view('admin/inc/sidebargentelella');
+                        $this->load->view('admin/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read_comunidad_todos',$data);
+                        $this->load->view('admin/inc/creditosgentelella');
+                        $this->load->view('admin/inc/footergentelella');
+                }
+                else
+                {
+                        redirect('usuarios/panel','refresh');
+                }   
+        }
         public function reportes()
         {
                 if($this->session->userdata('rol')=='admin')
@@ -157,13 +175,13 @@ class Usuarios extends CI_Controller {
                 }
                 else{
                         $data['idDepartamento']=$_POST['iddepartamento'];
-                        $data['nombres']=$_POST['nombres'];
-                        $data['primerApellido']=$_POST['primerapellido'];
-                        $data['segundoApellido']=$_POST['segundoapellido'];
+                        $data['nombres']=trim($_POST['nombres']);
+                        $data['primerApellido']=trim($_POST['primerapellido']);
+                        $data['segundoApellido']=trim($_POST['segundoapellido']);
                         $data['numeroCelular']=$_POST['numerocelular'];
-                        $data['numeroCI']=$_POST['numeroci'];
+                        $data['numeroCI']=trim($_POST['numeroci']);
                         $data['sexo']=$_POST['sexo'];
-                        $data['correo']=$_POST['correo'];
+                        $data['correo']=trim($_POST['correo']);
                         $data['contrasenha']=md5($_POST['contrasenha']);
                         $data['foto']=base_url().'uploads/user_default.png';
                         $data['rol']='usuario';
@@ -254,13 +272,13 @@ class Usuarios extends CI_Controller {
                 }
                 else{
                         $data['idDepartamento']=$_POST['iddepartamento'];
-                        $data['nombres']=$_POST['nombres'];
-                        $data['primerApellido']=$_POST['primerapellido'];
-                        $data['segundoApellido']=$_POST['segundoapellido'];
+                        $data['nombres']=trim($_POST['nombres']);
+                        $data['primerApellido']=trim($_POST['primerapellido']);
+                        $data['segundoApellido']=trim($_POST['segundoapellido']);
                         $data['numeroCelular']=$_POST['numerocelular'];
-                        $data['numeroCI']=$_POST['numeroci'];
+                        $data['numeroCI']=trim($_POST['numeroci']);
                         $data['sexo']=$_POST['sexo'];
-                        $data['correo']=$_POST['correo'];
+                        $data['correo']=trim($_POST['correo']);
                         $data['contrasenha']=md5($_POST['contrasenha']);
                         $data['foto']=base_url().'uploads/admin_default.jpg';
                         $data['rol']=$_POST['rol'];
@@ -387,12 +405,12 @@ class Usuarios extends CI_Controller {
                 else{
                         $idusuario=$_POST['idusuario'];
                         $data['idDepartamento']=$_POST['iddepartamento'];
-                        $data['nombres']=$_POST['nombres'];
-                        $data['primerApellido']=$_POST['primerapellido'];
-                        $data['segundoApellido']=$_POST['segundoapellido'];
+                        $data['nombres']=trim($_POST['nombres']);
+                        $data['primerApellido']=trim($_POST['primerapellido']);
+                        $data['segundoApellido']=trim($_POST['segundoapellido']);
                         $data['numeroCelular']=$_POST['numerocelular'];
-                        $data['numeroCI']=$_POST['numeroci'];
-                        $data['correo']=$_POST['correo'];
+                        $data['numeroCI']=trim($_POST['numeroci']);
+                        $data['correo']=trim($_POST['correo']);
                         $data['idUsuario']=$_POST['idusuario'];
                         $data['fechaActualizacion']=date('Y-m-d H:i:s');
                         $this->usuario_model->modificarusuarios($idusuario,$data);
@@ -521,6 +539,24 @@ class Usuarios extends CI_Controller {
                 $this->load->view('admin/inc/sidebargentelella');
                 $this->load->view('admin/inc/topbargentelella');
                 $this->load->view('admin/usuario/usuario_read_comunidad',$data);
+                $this->load->view('admin/inc/creditosgentelella');
+                $this->load->view('admin/inc/footergentelella');
+        }else{
+            redirect('usuarios/panel','refresh');
+        }  
+    }
+    public function todos_filtro()
+    {
+        if ($this->session->userdata('rol')=='admin') {
+                $fecha_inicio=$_POST['date_inicio'];
+                $fecha_fin=$_POST['date_fin'];
+
+                $lista=$this->usuario_model->filtroListaUsuarios($fecha_inicio,$fecha_fin);
+                $data['usuario']=$lista;
+                $this->load->view('admin/inc/headergentelella');
+                $this->load->view('admin/inc/sidebargentelella');
+                $this->load->view('admin/inc/topbargentelella');
+                $this->load->view('admin/usuario/usuario_read_comunidad_todos',$data);
                 $this->load->view('admin/inc/creditosgentelella');
                 $this->load->view('admin/inc/footergentelella');
         }else{

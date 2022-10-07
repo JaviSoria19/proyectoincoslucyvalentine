@@ -89,7 +89,7 @@ class Test_model extends CI_Model {
     }
     public function eliminarTest($idtest)//delete
     {
-        $this->db->where('idTest',$idtest); //condición where id
+        $this->db->where('idTest',$idtest);
         $this->db->delete('test'); //tabla
     }
     public function recuperarTest($idtest)//get
@@ -115,7 +115,6 @@ class Test_model extends CI_Model {
         $this->db->from('test AS t');
         $this->db->where('t.estado','0'); //condición where estado = 1
         $this->db->join('test_nombre AS tn', 't.idNombre = tn.idNombre');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','0');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
     public function filtroTest($fecha_inicio,$fecha_fin)//select

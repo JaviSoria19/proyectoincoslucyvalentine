@@ -15,12 +15,12 @@ class Alerta_model extends CI_Model {
     }
     public function agregarAlerta($data)//create
     {
-        $this->db->insert('alerta',$data); //tabla
+        $this->db->insert('alerta',$data);
     }
     public function eliminarAlerta($idalerta)//delete
     {
-        $this->db->where('idAlerta',$idalerta); //condición where id
-        $this->db->delete('alerta'); //tabla
+        $this->db->where('idAlerta',$idalerta);
+        $this->db->delete('alerta');
     }
     public function recuperarAlerta($idalerta)//get
     {

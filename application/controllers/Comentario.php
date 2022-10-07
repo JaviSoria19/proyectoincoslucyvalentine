@@ -164,17 +164,4 @@ class Comentario extends CI_Controller {
         redirect('comentario/deshabilitados','refresh');
     }
 
-
-    public function guest()
-    {
-        $lista=$this->comentario_model->listacomentarios();
-        $data['comentario']=$lista;
-        $this->load->view('inc/headergentelella');
-        $this->load->view('inc/sidebargentelella');
-        $this->load->view('inc/topbargentelella');
-        $this->load->view('comentario/comentario_guest',$data);
-        $this->load->view('inc/creditosgentelella');
-        $this->load->view('inc/footergentelella');        
-    }
-
   }

@@ -33,73 +33,39 @@
                         </div>
                         <?php echo form_close();?>
                                     <?php //inicio de los foreach
-                                    foreach ($totalusuariosporsexo->result() as $rowtotalusuariosporsexo)
-                                    {
-                                    foreach ($totalusuariospordpto->result() as $rowtotalusuariospordpto)
+                                    foreach ($totaldenunciaporcategoria->result() as $rowtotaldenunciaporcategoria)
                                     {
                                     ?>
                                     <br><br>
                                     <h2>Estadísticas: </h2>
                                     <div class="card col-md-12 text-center">
-                                        <h2 class="font-weight-bold text-dark">Denuncias registradas por departamento:</h2>
-                                        <div id="grafico_bar_total_por_depto" style="width:100%; height:300px;"></div>
-                                    </div>
-                                    ⠀<!--caracter en blanco--><br>
-                                    <div class="col-md-6 text-center">
-                                        <div class="x_panel">
-                                            <div class="x_title">
-                                                <h2 class="font-weight-bold text-dark">Total de Denuncias Registrados: <?php echo $rowtotalusuariosporsexo->totalu;?>, según el género: </h2>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                            <div class="x_content2">
-                                                <div class="item justify-content-center text-dark">
-                                                    <h2 style="color:#00FFEC;">■</h2><h2>Varones⠀</h2>
-                                                    <h2 style="color:#E800FF;">■</h2><h2>Mujeres⠀</h2>
-                                                </div>
-                                            <div id="grafico_donut_total_por_sexo" style="width:100%; height:300px;"></div>
-                                            </div>
-                                        </div>
+                                        <h2 class="font-weight-bold text-dark">Denuncias registradas por categoría:</h2>
+                                        <div id="grafico_bar_total_por_categoria" style="width:100%; height:300px;"></div>
                                     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script>
-        Morris.Donut({
-            element:'grafico_donut_total_por_sexo',
-            data:[
-            {label:"Varones",value:<?php echo $rowtotalusuariosporsexo->totalm;?>,color:'#00FFEC'},
-            {label:"Mujeres",value:<?php echo $rowtotalusuariosporsexo->totalf;?>,color:'#E800FF'}
-            ]
-        });
         Morris.Bar({
-            element: 'grafico_bar_total_por_depto',
+            element: 'grafico_bar_total_por_categoria',
             data: [
-                { y: 'Beni', 
-                    a:<?php echo $rowtotalusuariospordpto->totalBN;?>},
-                { y: 'Chuquisaca', 
-                    a:<?php echo $rowtotalusuariospordpto->totalCH;?>},
-                { y: 'Cochabamba', 
-                    a:<?php echo $rowtotalusuariospordpto->totalCO;?>},
-                { y: 'La Paz', 
-                    a:<?php echo $rowtotalusuariospordpto->totalLP;?>},
-                { y: 'Oruro', 
-                    a:<?php echo $rowtotalusuariospordpto->totalOR;?>},
-                { y: 'Pando', 
-                    a:<?php echo $rowtotalusuariospordpto->totalPD;?>},
-                { y: 'Potosí', 
-                    a:<?php echo $rowtotalusuariospordpto->totalPT;?>},
-                { y: 'Santa Cruz', 
-                    a:<?php echo $rowtotalusuariospordpto->totalSC;?>},
-                { y: 'Tarija',
-                    a:<?php echo $rowtotalusuariospordpto->totalTJ;?>}
+                { y: 'Tipos de Violencia', 
+                    a:<?php echo $rowtotaldenunciaporcategoria->v1;?>,
+                    b:<?php echo $rowtotaldenunciaporcategoria->v2;?>,
+                    c:<?php echo $rowtotaldenunciaporcategoria->v3;?>,
+                    d:<?php echo $rowtotaldenunciaporcategoria->v4;?>,
+                    e:<?php echo $rowtotaldenunciaporcategoria->v5;?>,
+                    f:<?php echo $rowtotaldenunciaporcategoria->v6;?>
+                }
             ],
             xkey: 'y',
-            ykeys: ['a'],
-            labels: ['Usuarios'],
+            ykeys: ['a','b','c','d','e','f'],
+            labels: ['Violencia Física','Violencia Psicológica','Violencia Económica','Violencia Sexual','Violencia Emocional','Otro'],
+            barColors: ['#800000','#380062','#FF8F00','#FF0000','#004162','#808080']
         });
     </script>
                                     <?php //fin de los foreach
-                                    }}
+                                    }
                                     ?>         
                                 </div><!-- Inicio Div card-box table-responsive -->
                             </div><!-- Fin Div col-sm-12 2 -->

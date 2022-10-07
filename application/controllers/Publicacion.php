@@ -206,7 +206,7 @@ class Publicacion extends CI_Controller {
         else{
             $data['idUsuario']=$this->session->userdata('idusuario');
             $data['fotoPublicacion']=base_url().'uploads/publicacion_default.jpg';
-            $data['titulo']=$_POST['titulo'];
+            $data['titulo']=trim($_POST['titulo']);
             $data['contenido']=$_POST['contenido'];
             $data['tipo']=$_POST['tipo'];
             $this->publicacion_model->agregarpublicaciones($data);

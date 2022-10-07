@@ -7,8 +7,8 @@ class Publicacion_model extends CI_Model {
 	public function listaPublicacionesStaff()//select
     {
         $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
-        $this->db->from('publicacion AS p'); //tabla publicacion
-        $this->db->where('p.estado','1'); //condición where estado = 1
+        $this->db->from('publicacion AS p');
+        $this->db->where('p.estado','1');
         $this->db->where('u.rol','admin');
         $this->db->where('p.tipo','1');
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
@@ -18,49 +18,45 @@ class Publicacion_model extends CI_Model {
     public function listaPublicacionesComunidad()//select
     {
         $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
-        $this->db->from('publicacion AS p'); //tabla publicacion
-        $this->db->where('p.estado','1'); //condición where estado = 1
+        $this->db->from('publicacion AS p');
+        $this->db->where('p.estado','1');
         $this->db->where('u.rol','usuario');
         $this->db->where('p.tipo','2');
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
         $this->db->order_by('p.fechaRegistro', 'DESC');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
     public function listaPublicacionesInformacionEducativa()//select
     {
         $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
-        $this->db->from('publicacion AS p'); //tabla publicacion
-        $this->db->where('p.estado','1'); //condición where estado = 1
+        $this->db->from('publicacion AS p');
+        $this->db->where('p.estado','1');
         $this->db->where('u.rol','admin');
         $this->db->where('p.tipo','3');
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
         $this->db->order_by('p.fechaRegistro', 'DESC');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
     public function listaPublicacionesPautasdeSeguridad()//select
     {
         $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
-        $this->db->from('publicacion AS p'); //tabla publicacion
-        $this->db->where('p.estado','1'); //condición where estado = 1
+        $this->db->from('publicacion AS p');
+        $this->db->where('p.estado','1');
         $this->db->where('u.rol','admin');
         $this->db->where('p.tipo','4');
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
         $this->db->order_by('p.fechaRegistro', 'DESC');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
     public function listaPublicacionesPromociondeActitudesIgualitarias()//select
     {
         $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
-        $this->db->from('publicacion AS p'); //tabla publicacion
-        $this->db->where('p.estado','1'); //condición where estado = 1
+        $this->db->from('publicacion AS p');
+        $this->db->where('p.estado','1');
         $this->db->where('u.rol','admin');
         $this->db->where('p.tipo','5');
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
         $this->db->order_by('p.fechaRegistro', 'DESC');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
     public function agregarpublicaciones($data)//create
@@ -69,7 +65,7 @@ class Publicacion_model extends CI_Model {
     }
     public function eliminarpublicaciones($idpublicacion)//delete
     {
-        $this->db->where('idPublicacion',$idpublicacion); //condición where id
+        $this->db->where('idPublicacion',$idpublicacion);
         $this->db->delete('publicacion'); //tabla
     }
     public function recuperarpublicaciones($idpublicacion)//get
@@ -93,7 +89,6 @@ class Publicacion_model extends CI_Model {
         $this->db->from('publicacion AS p');
         $this->db->where('p.estado','0'); //condición where estado = 1
         $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','0');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
     public function filtroPublicacionStaff($fecha_inicio,$fecha_fin)//select

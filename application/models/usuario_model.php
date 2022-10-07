@@ -23,6 +23,16 @@ class Usuario_model extends CI_Model {
         $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
         return $this->db->get(); //devolucion del resultado de la consulta
     }
+    public function listaUsuarios()//select
+    {
+        $estados = array('1', '2');
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->from('usuario AS u');
+        $this->db->where('rol','usuario');
+        $this->db->where_in('u.estado', $estados);
+        $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
     public function listaUsuariosStaff()//select
     {
         $estados = array('1', '2');
@@ -32,7 +42,6 @@ class Usuario_model extends CI_Model {
         $this->db->where_in('u.estado', $estados);
         $this->db->where_in('rol', $roles);
         $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
 
@@ -56,8 +65,8 @@ class Usuario_model extends CI_Model {
 
     public function eliminarusuarios($idusuario)//delete
     {
-        $this->db->where('idUsuario',$idusuario); //condición where id
-        $this->db->delete('usuario'); //tabla
+        $this->db->where('idUsuario',$idusuario);
+        $this->db->delete('usuario');
     }
 
     public function recuperarusuarios($idusuario)//get
@@ -79,9 +88,8 @@ class Usuario_model extends CI_Model {
     {
         $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
         $this->db->from('usuario AS u');
-        $this->db->where('u.estado','0'); //condición where estado = 1
+        $this->db->where('u.estado','0');
         $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
 
@@ -129,6 +137,17 @@ class Usuario_model extends CI_Model {
             BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
             ");
         return $this->db->get();
+    }
+    public function filtroListaUsuarios($fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento
+            FROM usuario AS u
+            INNER JOIN departamento AS d ON u.idDepartamento = d.idDepartamento
+            WHERE u.estado IN ('1','2') AND rol = 'usuario' AND u.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        return $this->db->get(); //devolucion del resultado de la consulta
     }
     public function filtroUsuarioStaff($fecha_inicio,$fecha_fin)//select
     {

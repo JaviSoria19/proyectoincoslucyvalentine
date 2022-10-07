@@ -13,17 +13,16 @@ class Comentario_model extends CI_Model {
         $this->db->join('publicacion AS p', 'c.idPublicacion = p.idPublicacion');
         $this->db->join('usuario AS u', 'c.idUsuario = u.idUsuario');
         $this->db->order_by('c.fechaRegistro', 'DESC');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
         return $this->db->get(); //devolucion del resultado de la consulta
 	}
     public function agregarcomentarios($data)//create
     {
-        $this->db->insert('comentario',$data); //tabla
+        $this->db->insert('comentario',$data);
     }
     public function eliminarcomentarios($idcomentario)//delete
     {
-        $this->db->where('idComentario',$idcomentario); //condición where id
-        $this->db->delete('comentario'); //tabla
+        $this->db->where('idComentario',$idcomentario);
+        $this->db->delete('comentario');
     }
     public function recuperarcomentarios($idcomentario)//get
     {
@@ -32,7 +31,6 @@ class Comentario_model extends CI_Model {
         $this->db->where('idComentario',$idcomentario);
         $this->db->join('publicacion AS p', 'c.idPublicacion = p.idPublicacion');
         $this->db->join('usuario AS u', 'c.idUsuario = u.idUsuario');
-         //condición where id
         return $this->db->get(); //devolucion del resultado de la consulta
     }
 
@@ -48,7 +46,6 @@ class Comentario_model extends CI_Model {
         $this->db->where('comentario.estado','0');
         $this->db->join('publicacion AS p', 'c.idPublicacion = p.idPublicacion');
         $this->db->join('usuario AS u', 'c.idUsuario = u.idUsuario');
-        //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','0');)
         return $this->db->get(); //devolucion del resultado de la consulta
     }
 

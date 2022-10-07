@@ -1,7 +1,7 @@
 <div class="main_container">
   <div class="col-md-3 left_col bg-lcv">
     <div class="left_col scroll-view bg-lcv">
-      <div class="navbar nav_title bg-lcv" style="border:0; ba">
+      <div class="navbar nav_title bg-lcv" style="border:0; ba" align="center">
         <a href="<?php echo base_url(); ?>index.php/usuarios/inicio" class="site_title"><i class="fa fa-female"></i> <span>Sistema LCV</span></a>
       </div>
       <div class="clearfix"></div>
@@ -107,6 +107,13 @@
                         <?php echo form_open_multipart('denuncia/index');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Denuncias
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                    <li>
+                        <?php echo form_open_multipart('denuncia/reportes');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Reportes
                           </button>
                         <?php echo form_close();?>
                     </li>

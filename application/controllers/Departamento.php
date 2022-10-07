@@ -130,18 +130,5 @@ class Departamento extends CI_Controller {
         $this->departamento_model->modificardepartamentos($iddepartamento,$data);
         redirect('departamento/index','refresh');
     }
-
-    /*queda pendiente modificar esta funcion*/
-    public function guest()
-    {
-        $lista=$this->departamento_model->listadepartamentos();
-        $data['departamento']=$lista;
-        $this->load->view('inc/headergentelella');
-        $this->load->view('inc/sidebargentelella');
-        $this->load->view('inc/topbargentelella');
-        $this->load->view('departamento/producto_guest',$data);
-        $this->load->view('inc/creditosgentelella');
-        $this->load->view('inc/footergentelella');        
-    }
-
+    
   }

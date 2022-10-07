@@ -4,8 +4,8 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <title> <i class="fa fa-users"></i> Usuarios pendientes de verificación.</title>
-                        <h2><i class="fa fa-users"></i> Usuarios pendientes de verificación.</h2>
+                        <title> <i class="fa fa-users"></i> Todos los Usuarios.</title>
+                        <h2><i class="fa fa-users"></i> Usuarios - Todos.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -14,9 +14,9 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <div class="item btn-group">
-                                    <?php echo form_open_multipart('usuarios/todos'); ?>
-                                        <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-eye"></i> Todos los Usuarios
+                                    <?php echo form_open_multipart('usuarios/inicio'); ?>
+                                        <button type="submit" class="btn btn-warning">
+                                        <i class="fa fa-eye"></i> Usuarios no verificados
                                         </button>
                                     <?php echo form_close(); ?> 
                                     ⠀<!--caracter en blanco-->
@@ -28,12 +28,9 @@
                                     </div>
                                     <br><br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Actualmente <?php echo $usuario->num_rows(); ?>
-                                        usuarios están pendientes para ser verificados en sistema!<br>
-                                        Estimado administrador, recuerde verificar todas las medidas de seguridad de una Cédula de Identidad para validar a un usuario, dado que posteriormente gracias a la verificación podrá participar en los grupos de apoyo :)
+                                        Estimado administrador, aquí se encuentran todos los usuarios (perfiles verificados y no verificados).
                                     </p>
-
-                        <?php echo form_open_multipart('usuarios/inicio_filtro');?>
+                        <?php echo form_open_multipart('usuarios/todos_filtro');?>
                         <h2>Realizar una búsqueda por fechas</h2>
                         <div class="item form-group col-md-12">
                             <div class="col-md-2 form-group">

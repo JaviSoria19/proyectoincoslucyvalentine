@@ -16,8 +16,8 @@
                                     <?php 
                                         echo form_open_multipart('usuarios/inicio');
                                     ?>
-                                        <button type="submit" class="btn btn-primary">
-                                        <i class="fa fa-eye"></i> Ver usuarios no verificados
+                                        <button type="submit" class="btn btn-warning">
+                                        <i class="fa fa-eye"></i> Usuarios no verificados
                                         </button>
                                     <?php 
                                         echo form_close();
@@ -27,7 +27,7 @@
                                         echo form_open_multipart('usuarios/adminAgregar');
                                     ?>
                                         <button type="submit" class="btn btn-success">
-                                        <i class="fa fa-plus-circle"></i> Insertar Usuario
+                                        <i class="fa fa-plus-circle"></i> Insertar Usuario de Staff
                                         </button>
                                     <?php 
                                         echo form_close();

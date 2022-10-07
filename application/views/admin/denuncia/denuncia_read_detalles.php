@@ -42,13 +42,16 @@
                                                     <td><?php echo formatearsoloFecha($row->fechaRegistro);?> a hrs. <?php echo formatearsoloHora($row->fechaRegistro);?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Responsable designado por:</td>
+                                                    <td>Responsable:</td>
                                                     <td>
-                                                        <?php if ($row->autoridadAsignada==''): ?>
-                                                        Pendiente.
-                                                        <?php else: ?>
-                                                            <?php echo $row->autoridadAsignada;?>
-                                                        <?php endif ?>
+                                        <?php $query = $this->db->query("SELECT * FROM proceso_denuncia WHERE idDenuncia = ".$row->idDenuncia." ORDER BY idProceso DESC LIMIT 1");
+                                        foreach($query->result() as $rowUltimoProceso) { ?>
+                                            <?php if (!$rowUltimoProceso->idUsuarioResponsable): ?>
+                                                -
+                                            <?php endif ?>
+                                            <?php echo $rowUltimoProceso->idUsuarioResponsable; ?>
+
+                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -59,7 +62,7 @@
                                         <h3>Evidencias presentadas: </h3>
                                         <?php if ($foto!=''): ?>
                                             Click en la imagen para verla en la resolución enviada:
-                                            <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" class="rounded w-50 mx-auto d-block"
+                                            <img src="<?php echo $foto;?>" class="rounded w-50 mx-auto d-block"
                                             onclick="window.open(this.src, '_blank');">
                                             <br>
                                         <?php else: ?>
@@ -68,7 +71,7 @@
 
                                         <?php if ($row->audio!=''): ?>
                                             <audio controls>
-                                              <source src="<?php echo base_url();?>/uploads/denuncia/<?php echo $audio;?>" type="audio/ogg">
+                                              <source src="<?php echo $audio;?>" type="audio/ogg">
                                               Su navegador no soporta archivos de audio.
                                             </audio>
                                             <br><br>
@@ -77,7 +80,7 @@
                                         <?php endif ?>
                                         <?php if ($row->video!=''): ?>
                                             <video controls class="w-50 rounded">
-                                              <source src="<?php echo base_url();?>/uploads/denuncia/<?php echo $video;?>" type="video/mp4">
+                                              <source src="<?php echo $video;?>" type="video/mp4">
                                               <source src="movie.ogg" type="video/ogg">
                                               Su navegador no soporta archivos de video.
                                             </video>
@@ -138,6 +141,9 @@
                                                     <option selected disabled value="">
                                                         Seleccione un usuario al cual asignar el caso...  
                                                     </option>
+                                                    <option value="...">
+                                                        -SELECCIONE ESTE CAMPO SOLO SI DESCARTARÁ LA DENUNCIA-
+                                                    </option>
                                                     <?php
                                                         foreach ($listaautoridadpolicia->result() as $rowautoridadpolicia)
                                                         {
@@ -151,6 +157,7 @@
                                                     <?php        
                                                         }
                                                     ?>
+                                                    
                                                 </select> 
                                             </div>
                                             </div>
