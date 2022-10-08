@@ -141,7 +141,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-dark">
          ¿Está seguro de verificar este perfil? Presione Verificar.
       </div>
       <div class="modal-footer">
@@ -171,7 +171,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-dark">
          ¿Está seguro de quitar el atributo verificado de este perfil? Presione Confirmar.
       </div>
       <div class="modal-footer">

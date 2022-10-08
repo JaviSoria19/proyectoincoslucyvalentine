@@ -36,7 +36,7 @@
                                         <?php
                                             $fotoperfil=$this->session->userdata('foto');
                                         ?>
-                                        <img src="<?php echo $fotoperfil;?>" class="img-thumbnail rounded mx-auto d-block">
+                                            <img src="<?php echo $fotoperfil;?>" class="rounded mx-auto d-block w-100">                                        
                                     </div>
                                     <div class="card col-md-8 bg-dark text-light">
                                         <div class="card-body">
@@ -76,34 +76,3 @@
         </div><!-- Fin Div row -->
     </div><!-- Fin Div container md-3 -->
 </div><!-- Fin Right Col Role Main -->
-
-<!-- Modal -->
-<div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header alert-danger">
-        <h5 class="modal-title font-weight-bold">CONFIRMAR ACCIÓN</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         ¿Está seguro de deshabilitarlo? Presione Deshabilitar
-      </div>
-      <div class="modal-footer">
-        <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-        <a id="url-delete" type="submit" class="btn btn-outline-danger"><i class="fa fa-toggle-off"></i> Deshabilitar</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-     function confirm_modalDeshabilitar(id) 
-        {
-            var url = '<?php echo base_url() . "index.php/usuarios/deshabilitarbd/"; ?>';
-            $("#url-delete").attr('href', url + id);
-            // jQuery('#confirmar').modal('show', {backdrop: 'static'});
-            $('#modalConfirmacion').modal('show');
-        } 
-</script>

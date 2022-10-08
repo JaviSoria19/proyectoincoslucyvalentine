@@ -75,7 +75,11 @@
             <div class="card">
                 <div class="card-body text-dark">
                     <div class="card-title">
-                        <h5><?php echo $row->correo;?> <?php echo formatearVerificado($row->estadoUsuario); ?> el <?php echo formatearFechaMasHora($row->fechaRegistro);?></h5>
+                        <h5><?php echo $row->correo;?> <?php echo formatearVerificado($row->estadoUsuario); ?>
+                        <?php if ($row->rol=='admin' || $row->rol=='policia' || $row->rol=='autoridad'): ?>
+                            <i class="fa fa-star" data-toggle="tooltip" data-placement="top" title="Staff"></i>
+                        <?php endif ?>
+                         el <?php echo formatearFechaMasHora($row->fechaRegistro);?></h5>
                     </div>
                     <p class="card-text text-justify"><?php echo nl2br($row->comentario);?></p>   
                 </div>

@@ -4,6 +4,7 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
+                        <title> | Test - Registros.</title>
                         <h2><i class="fa fa-list-alt"></i> Test - Registros.</h2>
                         <div class="clearfix">
                         </div>

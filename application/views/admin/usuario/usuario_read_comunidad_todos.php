@@ -103,6 +103,9 @@
                                 <i class="fa fa-toggle-off"></i>
                                 </button>
                             <?php endif ?>
+                            <button class="btn btn-danger" data-toggle="tooltip"  onclick="return confirm_modal_vetar(<?php echo $row->idUsuario; ?>)"  data-placement="top" title="Vetar Usuario">
+                                <i class="fa fa-ban"></i>
+                            </button>
                         </div>
                     </td>
                     </tr>
@@ -122,6 +125,42 @@
 </div><!-- Fin Right Col Role Main -->
 
 <!-- Modal -->
+<div class="modal fade" id="modalConfirmarVeto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header alert-danger">
+        <h5 class="modal-title font-weight-bold">CONFIRMAR ACCIÓN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body font-weight-bold text-dark">
+        Atención: Esta acción conlleva a que el usuario ya no podrá usar el sistema, considere que esto solo se debe realizar cuando el usuario:<br>
+        - Ha realizado spam en la comunidad.<br>
+        - Ha realizado bullying a otros usuarios.<br>
+        - Ha realizado MÚLTIPLES denuncias falsas.<br>
+        - Ha demostrado un comportamiento tóxico.<br>
+
+        ¿Está seguro de vetar a este usuario? Presione Vetar.
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+        <a id="url-delete" type="submit" class="btn btn-outline-danger"><i class="fa fa-ban"></i> Si, Vetar</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+     function confirm_modal_vetar(id) 
+        {
+            var url = '<?php echo base_url() . "index.php/usuarios/deshabilitarbd/"; ?>';
+            $("#url-delete").attr('href', url + id);
+            // jQuery('#confirmar').modal('show', {backdrop: 'static'});
+            $('#modalConfirmarVeto').modal('show');
+        } 
+</script>
+
+<!-- Modal -->
 <div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -131,10 +170,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-dark">
          ¿Está seguro de verificar este perfil? Presione Verificar.
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer text-dark">
         <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
         <a id="url-delete" type="submit" class="btn btn-outline-success"><i class="fa fa-toggle-on"></i> Si, Verificar</a>
       </div>
@@ -161,10 +200,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-dark">
          ¿Está seguro de quitar el atributo verificado de este perfil? Presione Confirmar.
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer text-dark">
         <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
         <a id="url-delete-two" type="submit" class="btn btn-outline-warning"><i class="fa fa-toggle-off"></i> Si, Confirmar</a>
       </div>

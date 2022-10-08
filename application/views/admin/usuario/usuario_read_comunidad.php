@@ -4,7 +4,7 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <title> <i class="fa fa-users"></i> Usuarios pendientes de verificación.</title>
+                        <title> | Usuarios pendientes de verificación.</title>
                         <h2><i class="fa fa-users"></i> Usuarios pendientes de verificación.</h2>
                         <div class="clearfix">
                         </div>
