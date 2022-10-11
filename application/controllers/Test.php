@@ -61,13 +61,15 @@ class Test extends CI_Controller {
     {
         if($this->session->userdata('rol')=='admin')
         {
+            $numeroTest=1;
+            $data['numeroTest']=$numeroTest;
             $totalfases=$this->test_model->total_test_todas_las_fases();
             $data['totalfases']=$totalfases;
-            $totalf1p1=$this->test_model->total_respuestas_por_pregunta_por_fase(1,1);
-            $data['totalf1p1']=$totalf1p1;
+            $totaldonuts=$this->test_model->total_respuestas_por_fase_donut($numeroTest);
             $totalt1=$this->test_model->total_respuestas_por_fase(1);
             $totalt2=$this->test_model->total_respuestas_por_fase(2);
             $totalt3=$this->test_model->total_respuestas_por_fase(3);
+            $data['totaldonuts']=$totaldonuts;
             $data['totalt1']=$totalt1;
             $data['totalt2']=$totalt2;
             $data['totalt3']=$totalt3;
@@ -233,15 +235,15 @@ class Test extends CI_Controller {
         if ($this->session->userdata('rol')=='admin') {
             $fecha_inicio=$_POST['date_inicio'];
             $fecha_fin=$_POST['date_fin'];
-            
-
+            $numeroTest=$_POST['numerotest'];
+            $data['numeroTest']=$numeroTest;
             $totalfases=$this->test_model->filtro_total_test_todas_las_fases($fecha_inicio,$fecha_fin);
             $data['totalfases']=$totalfases;
-            $totalf1p1=$this->test_model->filtro_total_respuestas_por_pregunta_por_fase(1,1,$fecha_inicio,$fecha_fin);
-            $data['totalf1p1']=$totalf1p1;
+            $totaldonuts=$this->test_model->filtro_total_respuestas_por_fase_donut($numeroTest,$fecha_inicio,$fecha_fin);
             $totalt1=$this->test_model->filtro_total_respuestas_por_fase(1,$fecha_inicio,$fecha_fin);
             $totalt2=$this->test_model->filtro_total_respuestas_por_fase(2,$fecha_inicio,$fecha_fin);
             $totalt3=$this->test_model->filtro_total_respuestas_por_fase(3,$fecha_inicio,$fecha_fin);
+            $data['totaldonuts']=$totaldonuts;
             $data['totalt1']=$totalt1;
             $data['totalt2']=$totalt2;
             $data['totalt3']=$totalt3;

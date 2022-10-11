@@ -83,6 +83,42 @@ class Test_model extends CI_Model {
         ');
         return $this->db->get();
     }
+    public function total_respuestas_por_fase_donut($idNombre)
+    {
+        $this->db->select('
+            (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta1 = 0)AS totalr1o1,
+            (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta1 = 1)AS totalr1o2,
+            (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta1 = 2)AS totalr1o3,
+            (SELECT COUNT(respuesta2) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta2 = 0)AS totalr2o1,
+            (SELECT COUNT(respuesta2) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta2 = 1)AS totalr2o2,
+            (SELECT COUNT(respuesta2) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta2 = 2)AS totalr2o3,
+            (SELECT COUNT(respuesta3) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta3 = 0)AS totalr3o1,
+            (SELECT COUNT(respuesta3) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta3 = 1)AS totalr3o2,
+            (SELECT COUNT(respuesta3) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta3 = 2)AS totalr3o3,
+            (SELECT COUNT(respuesta4) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta4 = 0)AS totalr4o1,
+            (SELECT COUNT(respuesta4) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta4 = 1)AS totalr4o2,
+            (SELECT COUNT(respuesta4) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta4 = 2)AS totalr4o3,
+            (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta5 = 0)AS totalr5o1,
+            (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta5 = 1)AS totalr5o2,
+            (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
+            AND idNombre = '.$idNombre.' AND respuesta5 = 2)AS totalr5o3
+        ');
+        return $this->db->get();
+    }
     public function agregarTest($data)//create
     {
         $this->db->insert('test',$data); //tabla
@@ -189,6 +225,42 @@ class Test_model extends CI_Model {
             AND idNombre = ".$idNombre." AND respuesta5 = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r5o2,
             (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
             AND idNombre = ".$idNombre." AND respuesta5 = 2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r5o3
+        ");
+        return $this->db->get();
+    }
+    public function filtro_total_respuestas_por_fase_donut($idNombre,$fecha_inicio,$fecha_fin)
+    {
+        $this->db->select("
+            (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta1 = 0 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr1o1,
+            (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta1 = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr1o2,
+            (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta1 = 2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr1o3,
+            (SELECT COUNT(respuesta2) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta2 = 0 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr2o1,
+            (SELECT COUNT(respuesta2) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta2 = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr2o2,
+            (SELECT COUNT(respuesta2) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta2 = 2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr2o3,
+            (SELECT COUNT(respuesta3) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta3 = 0 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr3o1,
+            (SELECT COUNT(respuesta3) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta3 = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr3o2,
+            (SELECT COUNT(respuesta3) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta3 = 2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr3o3,
+            (SELECT COUNT(respuesta4) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta4 = 0 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr4o1,
+            (SELECT COUNT(respuesta4) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta4 = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr4o2,
+            (SELECT COUNT(respuesta4) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta4 = 2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr4o3,
+            (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta5 = 0 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr5o1,
+            (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta5 = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr5o2,
+            (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
+            AND idNombre = ".$idNombre." AND respuesta5 = 2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr5o3
         ");
         return $this->db->get();
     }

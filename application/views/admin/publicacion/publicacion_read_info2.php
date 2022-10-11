@@ -63,6 +63,7 @@
                                     <?php echo $row->contenido;?>        
                                 </p>
                                 <p class="font-weight-bold">Publicado por <?php echo $row->correo;?> <?php echo formatearVerificado($row->estadoUsuario);?> el <?php echo formatearsoloFecha($row->fechaRegistro);?></p>
+                                <div class="btn-group">
                                 <?php echo form_open_multipart('publicacion/visualizar_post');?>
                                     <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
                                     <button class="btn btn-primary">
@@ -70,6 +71,20 @@
                                     <i class="fa fa-eye"></i>
                                     </button>
                                 <?php echo form_close();?>
+                                ⠀<!--caracter ASCII en blanco-->
+                                <?php if ($row->idUsuario == $this->session->userdata('idusuario')): ?>
+                                    <?php echo form_open_multipart('publicacion/modificar');?>
+                                    <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
+                                    <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar Publicación" >
+                                    <i class="fa fa-edit"></i>
+                                    </button>
+                                    <?php echo form_close();?>
+                                <?php endif ?>
+                                <button class="btn btn-danger" onclick="return confirm_modal_deshabilitar(<?php echo $row->idPublicacion; ?>)" data-toggle="tooltip" data-placement="top" title="Eliminar Publicación">
+                                    <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                
                             </div>
 
                         </div>
@@ -87,3 +102,32 @@
         </div><!-- Fin Div row -->
     </div><!-- Fin Div container md-3 -->
 </div><!-- Fin Right Col Role Main -->
+<!-- Modal -->
+<div class="modal fade" id="modalConfirmacionDeshabilitar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header alert-danger">
+        <h5 class="modal-title font-weight-bold">CONFIRMAR ACCIÓN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-dark">
+         ¿Está seguro de dar de baja esta publicación? Presione Eliminar.
+      </div>
+      <div class="modal-footer">
+        <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+        <a id="url-delete" type="submit" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Si, Eliminar</a>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+     function confirm_modal_deshabilitar(id) 
+        {
+            var url = '<?php echo base_url() . "index.php/publicacion/deshabilitarbd/"; ?>';
+            $("#url-delete").attr('href', url + id);
+            // jQuery('#confirmar').modal('show', {backdrop: 'static'});
+            $('#modalConfirmacionDeshabilitar').modal('show');
+        } 
+</script>

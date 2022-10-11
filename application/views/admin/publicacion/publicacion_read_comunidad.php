@@ -53,6 +53,7 @@
                                     <?php echo $row->contenido;?>        
                                 </p>
                                 <p class="font-weight-bold">Publicado por <?php echo $row->correo;?> <?php echo formatearVerificado($row->estadoUsuario);?> el <?php echo formatearsoloFecha($row->fechaRegistro);?></p>
+                                <div class="btn-group">
                                 <?php echo form_open_multipart('publicacion/visualizar_post');?>
                                     <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
                                     <button class="btn btn-primary">
@@ -60,6 +61,12 @@
                                     <i class="fa fa-eye"></i>
                                     </button>
                                 <?php echo form_close();?>
+                                ⠀<!--caracter ASCII en blanco-->
+                                <button class="btn btn-danger" onclick="return confirm_modal_deshabilitar(<?php echo $row->idPublicacion; ?>)" data-toggle="tooltip" data-placement="top" title="Eliminar Publicación">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                                </div>
+                                
                             </div>
 
                         </div>
@@ -79,76 +86,31 @@
 </div><!-- Fin Right Col Role Main -->
 
 <!-- Modal -->
-<div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalConfirmacionDeshabilitar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header alert-success">
+      <div class="modal-header alert-danger">
         <h5 class="modal-title font-weight-bold">CONFIRMAR ACCIÓN</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-         ¿Está seguro de verificar este perfil? Presione Verificar.
+      <div class="modal-body text-dark">
+         ¿Está seguro de dar de baja esta publicación? Presione Eliminar.
       </div>
       <div class="modal-footer">
         <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-        <a id="url-delete" type="submit" class="btn btn-outline-success"><i class="fa fa-toggle-on"></i> Verificar</a>
+        <a id="url-delete" type="submit" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Si, Eliminar</a>
       </div>
     </div>
   </div>
 </div>
 <script>
-     function confirm_modal_verificar(id) 
+     function confirm_modal_deshabilitar(id) 
         {
-            var url = '<?php echo base_url() . "index.php/usuarios/verificarbd/"; ?>';
+            var url = '<?php echo base_url() . "index.php/publicacion/deshabilitarbd/"; ?>';
             $("#url-delete").attr('href', url + id);
             // jQuery('#confirmar').modal('show', {backdrop: 'static'});
-            $('#modalConfirmacion').modal('show');
+            $('#modalConfirmacionDeshabilitar').modal('show');
         } 
 </script>
-
-<!-- Modal -->
-<div class="modal fade" id="modalDeshacer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header alert-warning">
-        <h5 class="modal-title font-weight-bold">CONFIRMAR ACCIÓN</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         ¿Está seguro de quitar el atributo verificado de este perfil? Presione Confirmar.
-      </div>
-      <div class="modal-footer">
-        <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-        <a id="url-delete-two" type="submit" class="btn btn-outline-warning"><i class="fa fa-toggle-off"></i> Confirmar</a>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-     function confirm_modal_deshacer_verificar(id) 
-        {
-            var url = '<?php echo base_url() . "index.php/usuarios/undoverificarbd/"; ?>';
-            $("#url-delete-two").attr('href', url + id);
-            $('#modalDeshacer').modal('show');
-        } 
-</script>
-
-<div class="modal fade" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-weight-bold">FOTO SUBIDA POR EL USUARIO:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" align="center">
-         <img src="<?php echo base_url();?>/uploads/user.png" class="modal-img img-thumbnail">
-      </div>
-    </div>
-  </div>
-</div>

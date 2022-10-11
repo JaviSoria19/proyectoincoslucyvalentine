@@ -79,11 +79,10 @@
                                     <i class="fa fa-edit"></i>
                                     </button>
                                     <?php echo form_close();?>
+                                <?php endif ?>
                                     <button class="btn btn-danger" onclick="return confirm_modal_deshabilitar(<?php echo $row->idPublicacion; ?>)" data-toggle="tooltip" data-placement="top" title="Eliminar Publicación">
                                     <i class="fa fa-trash"></i>
                                     </button>
-                                <?php endif ?>
-                                    
                                 </div>
                                 
                             </div>

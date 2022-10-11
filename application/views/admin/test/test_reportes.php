@@ -1,8 +1,8 @@
 <div class="right_col" role="main"><!-- Inicio Div Right Col Role Main -->
     <div class="container md-3"><!-- Inicio Div container md-3 -->
         <div class="row"><!-- Inicio Div row -->
-            <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
-                <div class="x_panel"><!-- Inicio Div x_panel -->
+            <div class="col-md-12 col-sm-12"><!-- Inicio Div col-md-12 col-sm-12  -->
+                <div class="x_panel bg-dark text-white rounded"><!-- Inicio Div x_panel -->
                     <div class="x_title">
                         <h2><i class="fa fa-list-alt"></i> Test - Reportes.</h2>
                         <div class="clearfix">
@@ -13,7 +13,7 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                         <?php echo form_open_multipart('test/reportes_filtro');?>
-                        <h2>Realizar una búsqueda por fechas</h2>
+                        <h2>Realizar una búsqueda por fechas y por Test</h2>
                         <div class="item form-group col-md-12">
                             <div class="col-md-2 form-group">
                                 <label>Inicio</label>
@@ -22,6 +22,17 @@
                             <div class="col-md-2 form-group">
                                 <label>Fin</label>
                                 <input type="date" name="date_fin" class="form-control" value="<?php echo date('Y-m-d'); ?>">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>Test</label>
+                                <select class="form-control" name="numerotest" required>
+                                    <option selected disabled value="">
+                                        Seleccione un test para las donas... 
+                                    </option>
+                                    <option value="1">Test de Violencia - Fase 1</option>
+                                    <option value="2">Test de Violencia - Fase 2</option>
+                                    <option value="3">Test de Violencia - Fase 3</option>
+                                </select>
                             </div>
                             <br>
                             <div class="col-md-2 form-group">
@@ -34,7 +45,7 @@
                                 <?php //inicio de los foreach
                                     foreach ($totalfases->result() as $rowtotalfases)
                                     {
-                                    foreach ($totalf1p1->result() as $rowtotalf1p1)
+                                    foreach ($totaldonuts->result() as $rowtotaldonuts)
                                     {
                                     foreach ($totalt1->result() as $rowtotalt1)
                                     {
@@ -43,8 +54,8 @@
                                     foreach ($totalt3->result() as $rowtotalt3)
                                     {
                                 ?> 
-                                <div class="col-md-6 text-center">
-                                <div class="x_panel">
+                                <div class="col-md-4 text-center">
+                                <div class="x_panel rounded">
                                     <div class="x_title">
                                         <h2 class="font-weight-bold text-dark">Total de Test Realizados hasta la fecha: <?php echo $rowtotalfases->totalrealizados;?></h2>
                                         <div class="clearfix"></div>
@@ -60,29 +71,94 @@
                                 </div>
                                 </div>
 
-                                <div class="col-md-6 text-center">
-                                <div class="x_panel">
+                                <div class="col-md-4 text-center">
+                                <div class="x_panel rounded">
                                     <div class="x_title">
-                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase 1, Pregunta 1: </h2>
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 1: </h2>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content2">
                                         <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
                                         <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
-                                        <h2 style="color:#FF9300;">■</h2><h2>Frecuentemente</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
                                         </div>
                                         <div id="grafico_donut_total_t1p1" style="width:100%; height:300px;"></div>
                                     </div>
                                 </div>
                                 </div>
-
+                                <div class="col-md-4 text-center">
+                                <div class="x_panel rounded">
+                                    <div class="x_title">
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 2: </h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content2">
+                                        <div class="item justify-content-center text-dark">
+                                        <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
+                                        <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
+                                        </div>
+                                        <div id="grafico_donut_total_t1p2" style="width:100%; height:300px;"></div>
+                                    </div>
+                                </div>
+                                </div>
+                                ⠀<!--caracter en blanco--><br>
+                                <div class="col-md-4 text-center">
+                                <div class="x_panel rounded">
+                                    <div class="x_title">
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 3: </h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content2">
+                                        <div class="item justify-content-center text-dark">
+                                        <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
+                                        <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
+                                        </div>
+                                        <div id="grafico_donut_total_t1p3" style="width:100%; height:300px;"></div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                <div class="x_panel rounded">
+                                    <div class="x_title">
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 4: </h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content2">
+                                        <div class="item justify-content-center text-dark">
+                                        <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
+                                        <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
+                                        </div>
+                                        <div id="grafico_donut_total_t1p4" style="width:100%; height:300px;"></div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                <div class="x_panel rounded">
+                                    <div class="x_title">
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 5: </h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content2">
+                                        <div class="item justify-content-center text-dark">
+                                        <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
+                                        <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
+                                        </div>
+                                        <div id="grafico_donut_total_t1p5" style="width:100%; height:300px;"></div>
+                                    </div>
+                                </div>
+                                </div>
+                                ⠀<!--caracter en blanco--><br>
                                 <div class="card col-md-12 text-center">
                                     <h2 class="font-weight-bold text-dark">Respuestas de Test de Violencia - Fase 1: </h2>
                                     <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
                                         <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
-                                        <h2 style="color:#FF9300;">■</h2><h2>Frecuentemente</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
                                     </div>
                                     <div id="grafico_bar_t1" style="width:100%; height:300px;"></div>
                                 </div>
@@ -92,7 +168,7 @@
                                     <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
                                         <h2 style="color:#FF9300;">■</h2><h2>En ocasiones⠀</h2>
-                                        <h2 style="color:#FF0000;">■</h2><h2>Frecuentemente</h2>
+                                        <h2 style="color:#FF0000;">■</h2><h2>Casi siempre</h2>
                                     </div>
                                     <div id="grafico_bar_t2" style="width:100%; height:300px;"></div>
                                 </div>
@@ -102,7 +178,7 @@
                                     <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
                                         <h2 style="color:#FF9300;">■</h2><h2>En ocasiones⠀</h2>
-                                        <h2 style="color:#FF0000;">■</h2><h2>Frecuentemente</h2>
+                                        <h2 style="color:#FF0000;">■</h2><h2>Casi siempre</h2>
                                     </div>
                                     <div id="grafico_bar_t3" style="width:100%; height:300px;"></div>
                                 </div>      
@@ -121,9 +197,41 @@
         Morris.Donut({
             element:'grafico_donut_total_t1p1',
             data:[
-            {label:"Nunca",value:<?php echo $rowtotalf1p1->totalfase1respuesta1opcion1;?>,color:'#42FF00'},
-            {label:"En ocasiones",value:<?php echo $rowtotalf1p1->totalfase1respuesta1opcion2;?>,color:'#FFFB00'},
-            {label:"Frecuente",value:<?php echo $rowtotalf1p1->totalfase1respuesta1opcion3;?>,color:'#FF9300'}
+            {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr1o1;?>,color:'#42FF00'},
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr1o2;?>,color:'#FFFB00'},
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr1o3;?>,color:'#FF9300'}
+            ]
+        });
+        Morris.Donut({
+            element:'grafico_donut_total_t1p2',
+            data:[
+            {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr2o1;?>,color:'#42FF00'},
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr2o2;?>,color:'#FFFB00'},
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr2o3;?>,color:'#FF9300'}
+            ]
+        });
+        Morris.Donut({
+            element:'grafico_donut_total_t1p3',
+            data:[
+            {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr3o1;?>,color:'#42FF00'},
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr3o2;?>,color:'#FFFB00'},
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr3o3;?>,color:'#FF9300'}
+            ]
+        });
+        Morris.Donut({
+            element:'grafico_donut_total_t1p4',
+            data:[
+            {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr4o1;?>,color:'#42FF00'},
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr4o2;?>,color:'#FFFB00'},
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr4o3;?>,color:'#FF9300'}
+            ]
+        });
+        Morris.Donut({
+            element:'grafico_donut_total_t1p5',
+            data:[
+            {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr5o1;?>,color:'#42FF00'},
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr5o2;?>,color:'#FFFB00'},
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr5o3;?>,color:'#FF9300'}
             ]
         });
         Morris.Bar({
@@ -152,7 +260,7 @@
             ],
             xkey: 'y',
             ykeys: ['a', 'b', 'c'],
-            labels: ['Nunca', 'En ocasiones', 'Frecuentemente'],
+            labels: ['Nunca', 'En ocasiones', 'Casi siempre'],
             barColors: ['#42FF00', '#FFFB00','#FF9300']
         });
 
@@ -182,7 +290,7 @@
             ],
             xkey: 'y',
             ykeys: ['a', 'b', 'c'],
-            labels: ['Nunca', 'En ocasiones', 'Frecuentemente'],
+            labels: ['Nunca', 'En ocasiones', 'Casi siempre'],
             barColors: ['#42FF00', '#FF9300','#FF0000']
         });
 
@@ -212,7 +320,7 @@
             ],
             xkey: 'y',
             ykeys: ['a', 'b', 'c'],
-            labels: ['Nunca', 'En ocasiones', 'Frecuentemente'],
+            labels: ['Nunca', 'En ocasiones', 'Casi siempre'],
             barColors: ['#42FF00', '#FF9300','#FF0000']
         });
     </script>

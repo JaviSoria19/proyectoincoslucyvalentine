@@ -170,7 +170,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body text-dark">
+      <div class="modal-body font-weight-bold text-dark">
+        Atención: Esta acción conlleva a que el usuario podrá:<br>
+        - Realizar comentarios en las publicaciones de comunidad.<br>
+        - Realizar publicaciones en la comunidad.<br>
          ¿Está seguro de verificar este perfil? Presione Verificar.
       </div>
       <div class="modal-footer text-dark">
@@ -200,8 +203,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body text-dark">
-         ¿Está seguro de quitar el atributo verificado de este perfil? Presione Confirmar.
+      <div class="modal-body font-weight-bold text-dark">
+        Atención: Esta acción conlleva a que el usuario ya no podrá:<br>
+        - Realizar comentarios en las publicaciones de comunidad.<br>
+        - Realizar publicaciones en la comunidad.<br>
+        ¿Está seguro de quitar el atributo verificado de este perfil? Presione Confirmar.
       </div>
       <div class="modal-footer text-dark">
         <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
