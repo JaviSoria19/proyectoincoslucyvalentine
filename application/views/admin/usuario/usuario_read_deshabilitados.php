@@ -4,8 +4,8 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <title> | Denuncias.</title>
-                        <h2><i class="fa fa-exclamation-triangle"></i> Denuncias.</h2>
+                        <title> | Usuarios vetados.</title>
+                        <h2><i class="fa fa-users"></i> Usuarios vetados.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -13,19 +13,27 @@
                         <div class="row"><!-- Inicio Div row 2 -->
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
-                                    <div class="btn-group">
-                                        <?php echo form_open_multipart('denuncia/descartados');?>
-                                        <button type="submit" class="btn btn-warning">
-                                        <i class="fa fa-eye"></i> Denuncias descartadas.
+                                    <div class="item btn-group">
+                                    <?php echo form_open_multipart('usuarios/todos'); ?>
+                                        <button type="submit" class="btn btn-primary">
+                                        <i class="fa fa-eye"></i> Todos los Usuarios
                                         </button>
-                                        <?php echo form_close();?>
+                                    <?php echo form_close(); ?> 
+                                    ⠀<!--caracter en blanco-->
+                                    <?php echo form_open_multipart('usuarios/adminVerStaff'); ?>
+                                        <button type="submit" class="btn btn-outline-success">
+                                        <i class="fa fa-eye"></i> Usuarios del Staff
+                                        </button>
+                                    <?php echo form_close(); ?> 
                                     </div>
                                     <br><br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Estimado <?php echo $this->session->userdata('rol'); ?>, aquí se encuentra las denuncias realizadas por los usuarios, recuerde que está bajo su criterio verificar la veracidad de los testimonios y las evidencias que el usuario presenta.
+                                        Actualmente <?php echo $usuario->num_rows(); ?>
+                                        usuarios fueron vetados del sistema por comportamiento inadecuado.<br>
+                                        Estimado administrador, considere volver a permitir el acceso al sistema solo si el usuario presentó una justificación válida.
                                     </p>
 
-                        <?php echo form_open_multipart('denuncia/index_filtro');?>
+                        <?php echo form_open_multipart('usuarios/vetados_filtro');?>
                         <h2>Realizar una búsqueda por fechas</h2>
                         <div class="item form-group col-md-12">
                             <div class="col-md-2 form-group">
@@ -48,59 +56,44 @@
             <table id="datatable-buttons" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">
-                        <th>Evidencia</th>
+                        <th>Foto</th>
                         <th>Departamento</th>
                         <th>Nombre</th>
                         <th>Nro. C.I.</th>
                         <th>Nro. Celular</th>
                         <th>Género</th>
-                        <th>Tipo de Denuncia</th>
-                        <th>F. Denuncia</th>
+                        <th>Correo</th>
+                        <th>Rol</th>
+                        <th>F. Registro</th>
+                        <th>F. Modificación</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($denuncia->result() as $row)
+                        foreach ($usuario->result() as $row)
                         {
                     ?>
                     <tr>
                     <td class="text-center">
-                        <?php
-                            $foto=$row->foto;
-                            if($foto=="")
-                            {
-                        ?>
-                            <i class="fa fa-image" data-toggle="tooltip" data-placement="top" title="Actualmente esta denuncia no cuenta con evidencia fotográfica."></i>
-                        <?php
-                            }
-                            else
-                            {
-                        ?>
-                        <img src="<?php echo $foto;?>" height="35px" class="rounded mx-auto d-block gallery-item">
-                        <?php
-                            }
-                        ?>
+                        <img src="<?php echo $row->foto;?>" height="35px" class="rounded mx-auto d-block gallery-item" alt="<?php echo $row->numeroCI; ?>">
                     </td>
                     <td><?php echo $row->nombreDepartamento; ?></td>
                     <td><?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?></td>
                     <td><?php echo $row->numeroCI; ?></td>
                     <td><?php echo $row->numeroCelular; ?></td>
                     <td><?php echo formatearGenero($row->sexo); ?></td>
-                    <td><?php echo $row->descripcionCategoria; ?></td>
+                    <td><?php echo $row->correo; ?></td>
+                    <td><?php echo ucfirst($row->rol); ?></td>
                     <td class="text-center"><?php echo formatearFechaMasHora($row->fechaRegistro); ?></td>
+                    <td class="text-center"><?php echo formatearFechaMasHora($row->fechaActualizacion); ?></td>
+                    <td class="text-center"><?php echo formatearEstado($row->estado);?></td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <?php echo form_open_multipart('denuncia/visualizar_detalles');?>
-                            <input type="hidden" name="iddenuncia" value="<?php echo $row->idDenuncia;?>">
-                            <button class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Ver Denuncia">
-                            <i class="fa fa-eye"></i>
-                            </button>
-                            <?php echo form_close();?>
-
-                            <button class="btn btn-outline-warning" data-toggle="tooltip"  onclick="return confirm_modal_verificar(<?php echo $row->idDenuncia; ?>)"  data-placement="top" title="Descartar denuncia">
-                                <i class="fa fa-trash"></i>
-                            </button>
+                                <button class="btn btn-outline-success" data-toggle="tooltip"  onclick="return confirm_modal_habilitar(<?php echo $row->idUsuario; ?>)"  data-placement="top" title="Habilitar">
+                                <i class="fa fa-toggle-on"></i>
+                                </button>
                         </div>
                     </td>
                     </tr>
@@ -108,7 +101,7 @@
                         } 
                     ?>
                 </tbody>
-            </table>              
+            </table>                  
                                 </div><!-- Inicio Div card-box table-responsive -->
                             </div><!-- Fin Div col-sm-12 2 -->
                         </div><!-- Fin Div row 2 -->
@@ -129,20 +122,21 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-         ¿Está seguro de descartar esta denuncia? Presione Confirmar.
+      <div class="modal-body font-weight-bold text-dark">
+        Atención: Esta acción conlleva a que el usuario nuevamente tendrá acceso al sistema.<br>
+        ¿Está seguro de habilitar este perfil? Presione Confirmar.
       </div>
       <div class="modal-footer">
         <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-        <a id="url-delete" type="submit" class="btn btn-outline-warning"><i class="fa fa-trash"></i> Si, descartar</a>
+        <a id="url-delete" type="submit" class="btn btn-outline-success"><i class="fa fa-toggle-on"></i> Si, Confirmar</a>
       </div>
     </div>
   </div>
 </div>
 <script>
-     function confirm_modal_verificar(id) 
+     function confirm_modal_habilitar(id) 
         {
-            var url = '<?php echo base_url() . "index.php/denuncia/deshabilitarbd/"; ?>';
+            var url = '<?php echo base_url() . "index.php/usuarios/habilitarbd/"; ?>';
             $("#url-delete").attr('href', url + id);
             // jQuery('#confirmar').modal('show', {backdrop: 'static'});
             $('#modalConfirmacion').modal('show');

@@ -39,8 +39,37 @@ class Publicacion extends CI_Controller {
         {
             redirect('usuarios/panel','refresh');
         }
-		
 	}
+    public function eliminados()
+    {
+        if($this->session->userdata('rol')=='admin')
+        {
+            $tipoPublicacion = '1';
+            $data['tipoPublicacion']=$tipoPublicacion;
+            $lista=$this->publicacion_model->listaPublicacionesEliminadas($tipoPublicacion);
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_deshabilitados',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        else if ($this->session->userdata('rol')=='policia') {
+            $lista=$this->publicacion_model->listaPublicacionesEliminadas($tipoPublicacion);
+            $data['publicacion']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_deshabilitados',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        else
+        {
+            redirect('usuarios/panel','refresh');
+        }
+    }
     public function indexComunidad()
     {
         if($this->session->userdata('rol')=='admin')
@@ -500,5 +529,36 @@ class Publicacion extends CI_Controller {
             redirect('usuarios/panel','refresh');
         }  
     }
-
+    public function eliminados_filtro()
+    {
+        $fecha_inicio=$_POST['date_inicio'];
+        $fecha_fin=$_POST['date_fin'];
+        $tipoPublicacion =$_POST['tipopublicacion'];
+        $data['tipoPublicacion']=$tipoPublicacion;
+        if($this->session->userdata('rol')=='admin')
+        {
+            $lista=$this->publicacion_model->filtroPublicacionesEliminadas($tipoPublicacion,$fecha_inicio,$fecha_fin);
+            $data['publicacion']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_deshabilitados',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        else if ($this->session->userdata('rol')=='policia') {
+            $lista=$this->publicacion_model->filtroPublicacionesEliminadas($tipoPublicacion,$fecha_inicio,$fecha_fin);
+            $data['publicacion']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_deshabilitados',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        else
+        {
+            redirect('usuarios/panel','refresh');
+        }
+    }
   }

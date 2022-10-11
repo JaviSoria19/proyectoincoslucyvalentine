@@ -24,6 +24,12 @@
                                         <button type="submit" class="btn btn-outline-success">
                                         <i class="fa fa-eye"></i> Usuarios del Staff
                                         </button>
+                                    <?php echo form_close(); ?>
+                                    ⠀<!--caracter en blanco-->
+                                    <?php echo form_open_multipart('usuarios/vetados'); ?>
+                                        <button type="submit" class="btn btn-danger">
+                                        <i class="fa fa-eye"></i> Usuarios vetados
+                                        </button>
                                     <?php echo form_close(); ?> 
                                     </div>
                                     <br><br>

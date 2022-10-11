@@ -15,6 +15,16 @@ class Publicacion_model extends CI_Model {
         $this->db->order_by('p.fechaRegistro', 'DESC');
         return $this->db->get(); //devolucion del resultado de la consulta
     }
+    public function listaPublicacionesEliminadas($tipo)//select
+    {
+        $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
+        $this->db->from('publicacion AS p');
+        $this->db->where('p.estado','0');
+        $this->db->where('p.tipo',$tipo);
+        $this->db->join('usuario AS u', 'p.idUsuario = u.idUsuario');
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
     public function listaPublicacionesComunidad()//select
     {
         $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *
@@ -102,6 +112,18 @@ class Publicacion_model extends CI_Model {
             ");
         $this->db->order_by('p.fechaRegistro', 'DESC');
         return $this->db->get();
+    }
+    public function filtroPublicacionesEliminadas($tipo,$fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario
+            FROM publicacion AS p
+            INNER JOIN usuario AS u ON p.idUsuario = u.idUsuario
+            WHERE p.estado = 0 AND p.tipo = '".$tipo."' AND p.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        $this->db->order_by('p.fechaRegistro', 'DESC');
+        return $this->db->get(); //devolucion del resultado de la consulta
     }
     public function filtroPublicacionComunidad($fecha_inicio,$fecha_fin)//select
     {

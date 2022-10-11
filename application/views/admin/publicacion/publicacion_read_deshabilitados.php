@@ -4,7 +4,7 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2><i class="fa fa-newspaper-o"></i> Publicaciones Oficiales.</h2>
+                        <h2><i class="fa fa-newspaper-o"></i> Publicaciones Eliminadas.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -13,25 +13,19 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <div class="btn-group">
-                                    <?php echo form_open_multipart('publicacion/agregar');?>
+                                    <?php echo form_open_multipart('publicacion/indexStaff');?>
                                         <button type="submit" class="btn btn-success">
-                                        <i class="fa fa-plus-circle"></i> Nueva Publicación Oficial
-                                        </button>
-                                    <?php echo form_close(); ?>
-                                    ⠀<!--caracter en blanco-->
-                                    <?php echo form_open_multipart('publicacion/eliminados');?>
-                                        <button type="submit" class="btn btn-danger">
-                                        <i class="fa fa-trash"></i> Publicaciones Eliminadas
+                                        <i class="fa fa-home"></i> Volver a Publicaciones Oficiales
                                         </button>
                                     <?php echo form_close(); ?>  
                                     </div>
                                     <br><br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        BIENVENIDO! AQUÍ PUEDE ENCONTRAR INFORMACIÓN OFICIAL BRINDADA POR SLIM, DEFENSORÍA Y LA FUERZA POLICIAL DEL PAÍS (FELCV).
+                                        AQUÍ PUEDE ENCONTRAR LAS PUBLICACIONES ELIMINADAS.
                                     </p>
 
 
-                        <?php echo form_open_multipart('publicacion/indexStaff_filtro');?>
+                        <?php echo form_open_multipart('publicacion/eliminados_filtro');?>
                         <h2>Realizar una búsqueda por fechas</h2>
                         <div class="item form-group col-md-12">
                             <div class="col-md-2 form-group">
@@ -41,6 +35,19 @@
                             <div class="col-md-2 form-group">
                                 <label>Fin</label>
                                 <input type="date" name="date_fin" class="form-control" value="<?php echo date('Y-m-d'); ?>">
+                            </div>
+                            <div class="col-md-2 form-group">
+                                <label>Tipo de Publicación</label>
+                                <select class="form-control" name="tipopublicacion" required>
+                                    <option selected disabled value="<?php echo $tipoPublicacion;?>">
+                                        Seleccione un tipo de publicación...
+                                    </option>
+                                    <option value="1">Publicaciones Oficiales</option>
+                                    <option value="2">Comunidad</option>
+                                    <option value="3">Información Educativa</option>
+                                    <option value="4">Pautas de Seguridad</option>
+                                    <option value="5">Promoción de Actitudes Igualitarias</option>
+                                </select>
                             </div>
                             <br>
                             <div class="col-md-2 form-group">

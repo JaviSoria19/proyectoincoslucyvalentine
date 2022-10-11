@@ -4,8 +4,8 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <title> | Denuncias.</title>
-                        <h2><i class="fa fa-exclamation-triangle"></i> Denuncias.</h2>
+                        <title> | Denuncias descartadas.</title>
+                        <h2><i class="fa fa-exclamation-triangle"></i> Denuncias descartadas.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -14,18 +14,18 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <div class="btn-group">
-                                        <?php echo form_open_multipart('denuncia/descartados');?>
-                                        <button type="submit" class="btn btn-warning">
-                                        <i class="fa fa-eye"></i> Denuncias descartadas.
+                                        <?php echo form_open_multipart('denuncia/index');?>
+                                        <button type="submit" class="btn btn-success">
+                                        <i class="fa fa-eye"></i> Volver a Denuncias.
                                         </button>
                                         <?php echo form_close();?>
                                     </div>
                                     <br><br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Estimado <?php echo $this->session->userdata('rol'); ?>, aquí se encuentra las denuncias realizadas por los usuarios, recuerde que está bajo su criterio verificar la veracidad de los testimonios y las evidencias que el usuario presenta.
+                                        Estimado <?php echo $this->session->userdata('rol'); ?>, aquí se encuentra las denuncias descartadas por diversos motivos.
                                     </p>
 
-                        <?php echo form_open_multipart('denuncia/index_filtro');?>
+                        <?php echo form_open_multipart('denuncia/descartados_filtro');?>
                         <h2>Realizar una búsqueda por fechas</h2>
                         <div class="item form-group col-md-12">
                             <div class="col-md-2 form-group">

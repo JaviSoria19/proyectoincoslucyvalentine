@@ -5,7 +5,7 @@ class Usuarios extends CI_Controller {
 
 
 	public function index()
-	{
+        {
                 $data['msg']=$this->uri->segment(3);
                 if ($this->session->userdata('correo'))
                 {//Usuario logueado
@@ -29,6 +29,24 @@ class Usuarios extends CI_Controller {
                         $this->load->view('admin/inc/sidebargentelella');
                         $this->load->view('admin/inc/topbargentelella');
                         $this->load->view('admin/usuario/usuario_read_comunidad',$data);
+                        $this->load->view('admin/inc/creditosgentelella');
+                        $this->load->view('admin/inc/footergentelella');
+                }
+                else
+                {
+                        redirect('usuarios/panel','refresh');
+                }   
+        }
+        public function vetados()
+        {
+                if($this->session->userdata('rol')=='admin')
+                {
+                        $lista=$this->usuario_model->listaUsuariosVetados();
+                        $data['usuario']=$lista;
+                        $this->load->view('admin/inc/headergentelella');
+                        $this->load->view('admin/inc/sidebargentelella');
+                        $this->load->view('admin/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read_deshabilitados',$data);
                         $this->load->view('admin/inc/creditosgentelella');
                         $this->load->view('admin/inc/footergentelella');
                 }
@@ -440,6 +458,12 @@ class Usuarios extends CI_Controller {
                 }
         }
 
+        public function habilitarbd($idusuario)
+        {
+                $data['estado']='1';
+                $this->usuario_model->modificarusuarios($idusuario,$data);
+                redirect('usuarios/inicio','refresh');
+        }
         public function deshabilitarbd($idusuario)
         {
                 $data['estado']='0';
@@ -470,15 +494,6 @@ class Usuarios extends CI_Controller {
                 $this->usuario_model->modificarusuarios($idusuario,$data);
                 redirect('usuarios/adminVerStaff','refresh');
         }
-
-        public function habilitarbd()
-        {
-                $idusuario=$_POST['idusuario'];
-                $data['estado']='1';
-                $this->usuario_model->modificarusuarios($idusuario,$data);
-                redirect('usuarios/inicio','refresh');
-        }
-        
         public function validar()
         {
                 $login=strtolower($_POST['login']);
@@ -570,6 +585,26 @@ class Usuarios extends CI_Controller {
             redirect('usuarios/panel','refresh');
         }  
     }
+    public function vetados_filtro()
+        {
+                if($this->session->userdata('rol')=='admin')
+                {
+                        $fecha_inicio=$_POST['date_inicio'];
+                        $fecha_fin=$_POST['date_fin'];
+                        $lista=$this->usuario_model->filtrolistaUsuariosVetados($fecha_inicio,$fecha_fin);
+                        $data['usuario']=$lista;
+                        $this->load->view('admin/inc/headergentelella');
+                        $this->load->view('admin/inc/sidebargentelella');
+                        $this->load->view('admin/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read_deshabilitados',$data);
+                        $this->load->view('admin/inc/creditosgentelella');
+                        $this->load->view('admin/inc/footergentelella');
+                }
+                else
+                {
+                        redirect('usuarios/panel','refresh');
+                }   
+        }
     public function todos_filtro()
     {
         if ($this->session->userdata('rol')=='admin') {

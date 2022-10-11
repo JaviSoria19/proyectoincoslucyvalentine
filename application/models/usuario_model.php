@@ -33,6 +33,15 @@ class Usuario_model extends CI_Model {
         $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
         return $this->db->get(); //devolucion del resultado de la consulta
     }
+    public function listaUsuariosVetados()//select
+    {
+        $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
+        $this->db->from('usuario AS u');
+        $this->db->where('u.rol','usuario');
+        $this->db->where('u.estado', '0');
+        $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
     public function listaUsuariosStaff()//select
     {
         $estados = array('1', '2');
@@ -145,6 +154,17 @@ class Usuario_model extends CI_Model {
             FROM usuario AS u
             INNER JOIN departamento AS d ON u.idDepartamento = d.idDepartamento
             WHERE u.estado IN ('1','2') AND rol = 'usuario' AND u.fechaRegistro
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
+            ");
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
+    public function filtrolistaUsuariosVetados($fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento
+            FROM usuario AS u
+            INNER JOIN departamento AS d ON u.idDepartamento = d.idDepartamento
+            WHERE u.estado = '0' AND rol = 'usuario' AND u.fechaRegistro
             BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
             ");
         return $this->db->get(); //devolucion del resultado de la consulta
