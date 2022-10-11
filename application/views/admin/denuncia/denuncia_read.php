@@ -14,7 +14,7 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Estimado administrador, aquí se encuentra las denuncias realizadas por los usuarios, recuerde que está bajo su criterio verificar la veracidad de los testimonios y las evidencias que el usuario presenta.
+                                        Estimado <?php echo $this->session->userdata('rol'); ?>, aquí se encuentra las denuncias realizadas por los usuarios, recuerde que está bajo su criterio verificar la veracidad de los testimonios y las evidencias que el usuario presenta.
                                     </p>
 
                         <?php echo form_open_multipart('denuncia/index_filtro');?>

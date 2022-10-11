@@ -2,7 +2,7 @@
     <div class="container md-3"><!-- Inicio Div container md-3 -->
         <div class="row"><!-- Inicio Div row -->
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
-                <div class="x_panel"><!-- Inicio Div x_panel -->
+                <div class="x_panel bg-dark rounded text-light"><!-- Inicio Div x_panel -->
                     <div class="x_title">
                         <h2><i class="fa fa-users"></i> Usuarios - Reportes.</h2>
                         <div class="clearfix">
@@ -43,7 +43,7 @@
                                     </div>
                                     ⠀<!--caracter en blanco--><br>
                                     <div class="col-md-12 text-center">
-                                        <div class="x_panel">
+                                        <div class="x_panel rounded">
                                             <div class="x_title">
                                                 <h2 class="font-weight-bold text-dark">Total de Usuarios Registrados: <?php echo $rowtotalusuariosporsexo->totalu;?>, según el género: </h2>
                                                 <div class="clearfix"></div>

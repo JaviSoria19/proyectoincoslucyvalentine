@@ -19,12 +19,16 @@
                                         </button>
                                         <?php echo form_close();?>
                                         ⠀<!--caracter en blanco-->
+
+                                        <?php if ($this->session->userdata('rol')=='admin' || $this->session->userdata('rol')=='usuario'): ?>
                                         <?php echo form_open_multipart('usuarios/modificar'); ?>
                                         <input type="hidden" name="idusuario" value="<?php echo $this->session->userdata('idusuario'); ?>">
                                         <button type="submit" class="btn btn-warning">
                                         <i class="fa fa-edit"></i> Editar perfil
                                         </button>
-                                        <?php echo form_close();?>
+                                        <?php echo form_close();?> 
+                                        <?php endif ?>
+                                        
                                     </div>
                                     <br><br>
                                     <?php            

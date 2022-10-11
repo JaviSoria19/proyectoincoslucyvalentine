@@ -22,18 +22,16 @@
                         <?php            
                             foreach($infopublicacion->result() as $row)
                             {
-
-                                $foto=$row->fotoPublicacion;
                         ?>
                             <div class="col-md-12 bg-dark text-light rounded">
                                 <h1 class="font-weight-bold"><?php echo $row->titulo;?></h1>
                             <p class="font-weight-bold font-13 m-b-30">
                                 Publicado por 
-                                <?php echo $row->nombreUsuario;?> 
+                                <?php echo $row->correo;?> 
                                 <?php echo formatearVerificado($row->estadoUsuario); ?> el 
                                 <?php echo formatearFechaMasHora($row->fechaRegistro);?>
                             </p>
-                            <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" class="rounded mx-auto d-block rounded w-100">
+                            <img src="<?php echo $row->fotoPublicacion;?>" class="rounded mx-auto d-block" style="width: 400px; height: 100%">
                             <h2 class="text-justify"><?php echo nl2br($row->contenido);?></h2>
                             </div>
                         <?php 
@@ -47,6 +45,7 @@
     </div><!-- Fin Div container md-3 -->
     <div class="col-md-12 bg-dark rounded text-light">
         <h1 class="font-weight-bold">Comentarios</h1>
+        <p>Estimad@ usuario, con el objetido de proteger su identidad no se mostrará su foto de perfil en la caja de comentarios, recuerde que aquí prevalece la convivencia sana y el respeto mutuo. </p>
         <?php if ($this->session->userdata('estado')=='1'): ?>
             <p class="text-warning font-weight-bold">Si desea comentar en alguna pubicación debe ser un usuario verificado, para ello debe subir una fotografía LEGIBLE de su Cédula de Identidad y posteriormente será revisado por un administrador.</p>
         <?php endif ?>
@@ -76,7 +75,7 @@
             <div class="card">
                 <div class="card-body text-dark">
                     <div class="card-title">
-                        <h5><?php echo $row->nombreUsuario;?> <?php echo formatearVerificado($row->estadoUsuario); ?>
+                        <h5><?php echo $row->correo;?> <?php echo formatearVerificado($row->estadoUsuario); ?>
                         <?php if ($row->rol=='admin' || $row->rol=='policia' || $row->rol=='autoridad'): ?>
                             <i class="fa fa-star" data-toggle="tooltip" data-placement="top" title="Staff"></i>
                         <?php endif ?>

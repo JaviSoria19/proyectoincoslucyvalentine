@@ -25,6 +25,16 @@ class Publicacion extends CI_Controller {
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
         }
+        else if ($this->session->userdata('rol')=='policia') {
+            $lista=$this->publicacion_model->listaPublicacionesStaff();
+            $data['publicacion']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_staff',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
         else
         {
             redirect('usuarios/panel','refresh');
@@ -53,6 +63,16 @@ class Publicacion extends CI_Controller {
             $this->load->view('usuario/publicacion/publicacion_read_comunidad',$data);
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='policia') {
+            $lista=$this->publicacion_model->listaPublicacionesComunidad();
+            $data['publicacion']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_comunidad',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
         }
         else
         {
@@ -83,6 +103,16 @@ class Publicacion extends CI_Controller {
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
         }
+        elseif ($this->session->userdata('rol')=='policia') {
+            $lista=$this->publicacion_model->listaPublicacionesInformacionEducativa();
+            $data['publicacion']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_info1',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
         else
         {
             redirect('usuarios/panel','refresh');
@@ -111,6 +141,16 @@ class Publicacion extends CI_Controller {
             $this->load->view('usuario/publicacion/publicacion_read_info2',$data);
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='policia') {
+            $lista=$this->publicacion_model->listaPublicacionesPautasdeSeguridad();
+            $data['publicacion']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_info2',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
         }
         else
         {
@@ -141,6 +181,16 @@ class Publicacion extends CI_Controller {
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
         }
+        elseif ($this->session->userdata('rol')=='policia') {
+            $lista=$this->publicacion_model->listaPublicacionesPromociondeActitudesIgualitarias();
+            $data['publicacion']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_info3',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
         else
         {
             redirect('usuarios/panel','refresh');
@@ -153,12 +203,35 @@ class Publicacion extends CI_Controller {
         $data['infopublicacion']=$this->publicacion_model->recuperarpublicaciones($idpublicacion);
         $lista=$this->comentario_model->listacomentarios($idpublicacion);
         $data['infocomentarios']=$lista;
-        $this->load->view('admin/inc/headergentelella');
-        $this->load->view('admin/inc/sidebargentelella');
-        $this->load->view('admin/inc/topbargentelella');
-        $this->load->view('admin/publicacion/publicacion_read_post',$data);
-        $this->load->view('admin/inc/creditosgentelella');
-        $this->load->view('admin/inc/footergentelella');
+        if ($this->session->userdata('rol')=='admin') {
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/publicacion/publicacion_read_post',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        else if ($this->session->userdata('rol')=='usuario') {
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_post',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }
+        else if ($this->session->userdata('rol')=='policia') {
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('usuario/publicacion/publicacion_read_post',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        else
+        {
+            redirect('usuarios/panel','refresh');
+        }
+        
     }
     public function agregar()
     {

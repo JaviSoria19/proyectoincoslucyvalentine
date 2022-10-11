@@ -2,14 +2,14 @@
     <div class="container md-3"><!-- Inicio Div container md-3 -->
         <div class="row"><!-- Inicio Div row -->
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
-                <div class="x_panel"><!-- Inicio Div x_panel -->
+                <div class="x_panel bg-dark rounded text-light"><!-- Inicio Div x_panel -->
                     <div class="x_title">
                         <h2><i class="fa fa-eye"></i> Alertas - Reportes.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <p class="text-dark font-weight-bold font-13 m-b-30">Estimado administrador, aquí encontrará usted las alertas realizadas por todas las personas que están utilizando el sistema pero con la diferencia que los marcadores están centralizados en un solo mapa, el punto por defecto que usted está viendo es el centro de la ciudad de Cochabamba.</p>
+                        <p class="font-weight-bold font-13 m-b-30">Estimado <?php echo $this->session->userdata('rol'); ?>, aquí encontrará usted las alertas realizadas por todas las personas que están utilizando el sistema pero con la diferencia que los marcadores están centralizados en un solo mapa, el punto por defecto que usted está viendo es el centro de la ciudad de Cochabamba.</p>
                         <br>
 
                         <?php echo form_open_multipart('alerta/reportes_filtro');?>

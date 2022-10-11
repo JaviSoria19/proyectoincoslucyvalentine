@@ -2,7 +2,7 @@
     <div class="container md-3"><!-- Inicio Div container md-3 -->
         <div class="row"><!-- Inicio Div row -->
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
-                <div class="x_panel"><!-- Inicio Div x_panel -->
+                <div class="x_panel bg-dark text-white rounded"><!-- Inicio Div x_panel -->
                     <div class="x_title">
                         <h2><i class="fa fa-users"></i> Denuncias - Reportes.</h2>
                         <div class="clearfix">

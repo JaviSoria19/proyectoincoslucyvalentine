@@ -26,6 +26,17 @@ class Alerta extends CI_Controller {
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
         }
+        if($this->session->userdata('rol')=='policia')
+        {
+            $lista=$this->alerta_model->listaAlerta();
+            $data['alertas']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('admin/alerta/alerta_index',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
         else
         {
             redirect('usuarios/panel','refresh');
@@ -33,17 +44,27 @@ class Alerta extends CI_Controller {
     }
     public function reportes()
     {
+        $lista=$this->alerta_model->listaAlerta();
+        $data['alertas']=$lista;
         if($this->session->userdata('rol')=='admin')
         {
-            $lista=$this->alerta_model->listaAlerta();
-            $data['alertas']=$lista;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
             $this->load->view('admin/alerta/alerta_reportes',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
-        }else
+        }
+        elseif($this->session->userdata('rol')=='policia')
+        {
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('admin/alerta/alerta_reportes',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        else
         {
             redirect('usuarios/panel','refresh');
         }
@@ -86,37 +107,55 @@ class Alerta extends CI_Controller {
     }   
     public function inicio_filtro()
     {
+        $fecha_inicio=$_POST['date_inicio'];
+        $fecha_fin=$_POST['date_fin'];
+        $lista=$this->alerta_model->filtroAlerta($fecha_inicio,$fecha_fin);
+        $data['alertas']=$lista;
         if ($this->session->userdata('rol')=='admin') {
-            $fecha_inicio=$_POST['date_inicio'];
-            $fecha_fin=$_POST['date_fin'];
-            
-            $lista=$this->alerta_model->filtroAlerta($fecha_inicio,$fecha_fin);
-            $data['alertas']=$lista;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
             $this->load->view('admin/alerta/alerta_index',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
-        }else{
+        }
+        elseif ($this->session->userdata('rol')=='policia') {
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('admin/alerta/alerta_index',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        else{
             redirect('usuarios/panel','refresh');
         }  
     }
     public function reportes_filtro()
     {
-        if ($this->session->userdata('rol')=='admin') {
-            $fecha_inicio=$_POST['date_inicio'];
-            $fecha_fin=$_POST['date_fin'];
+        $fecha_inicio=$_POST['date_inicio'];
+        $fecha_fin=$_POST['date_fin'];
+        $lista=$this->alerta_model->filtroAlerta($fecha_inicio,$fecha_fin);
+        $data['alertas']=$lista;
+        if($this->session->userdata('rol')=='admin') {
             
-            $lista=$this->alerta_model->filtroAlerta($fecha_inicio,$fecha_fin);
-            $data['alertas']=$lista;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
             $this->load->view('admin/alerta/alerta_reportes',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
-        }else{
+        }
+        elseif($this->session->userdata('rol')=='policia') {
+            
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('admin/alerta/alerta_reportes',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        else{
             redirect('usuarios/panel','refresh');
         }  
     }

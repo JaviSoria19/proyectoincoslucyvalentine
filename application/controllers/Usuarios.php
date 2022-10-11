@@ -99,12 +99,34 @@ class Usuarios extends CI_Controller {
         {
                 $idusuario=$this->session->userdata('idusuario');
                 $data['infousuario']=$this->usuario_model->recuperarusuarios($idusuario);
-                $this->load->view('admin/inc/headergentelella');
-                $this->load->view('admin/inc/sidebargentelella');
-                $this->load->view('admin/inc/topbargentelella');
-                $this->load->view('admin/usuario/usuario_perfil',$data);
-                $this->load->view('admin/inc/creditosgentelella');
-                $this->load->view('admin/inc/footergentelella'); 
+                if($this->session->userdata('rol')=='admin')
+                {
+                        $this->load->view('admin/inc/headergentelella');
+                        $this->load->view('admin/inc/sidebargentelella');
+                        $this->load->view('admin/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_perfil',$data);
+                        $this->load->view('admin/inc/creditosgentelella');
+                        $this->load->view('admin/inc/footergentelella');
+                }
+                elseif ($this->session->userdata('rol')=='usuario') {
+                        $this->load->view('usuario/inc/headergentelella');
+                        $this->load->view('usuario/inc/sidebargentelella');
+                        $this->load->view('usuario/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_perfil',$data);
+                        $this->load->view('usuario/inc/creditosgentelella');
+                        $this->load->view('usuario/inc/footergentelella');
+                }
+                elseif ($this->session->userdata('rol')=='policia') {
+                        $this->load->view('policia/inc/headergentelella');
+                        $this->load->view('policia/inc/sidebargentelella');
+                        $this->load->view('policia/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_perfil',$data);
+                        $this->load->view('policia/inc/creditosgentelella');
+                        $this->load->view('policia/inc/footergentelella');
+                }
+                else{
+                        redirect('usuarios/panel','refresh');
+                }
         }
 
         public function agregar()
@@ -507,6 +529,9 @@ class Usuarios extends CI_Controller {
 
                         }
                         elseif($this->session->userdata('rol')=='usuario'){
+                                redirect('publicacion/indexStaff','refresh');
+                        }
+                        elseif($this->session->userdata('rol')=='policia'){
                                 redirect('publicacion/indexStaff','refresh');
                         }
                         else{
