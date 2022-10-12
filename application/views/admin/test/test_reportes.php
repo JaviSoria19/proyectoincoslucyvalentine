@@ -26,7 +26,7 @@
                             <div class="col-md-3 form-group">
                                 <label>Test</label>
                                 <select class="form-control" name="numerotest" required>
-                                    <option selected disabled value="<?php echo $numeroTest;?>">
+                                    <option selected disabled value="">
                                         Seleccione un test para las donas; Test de Violencia actual: <?php echo $numeroTest;?>
                                     </option>
                                     <option value="1">Test de Violencia - Fase 1</option>

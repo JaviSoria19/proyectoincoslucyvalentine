@@ -75,12 +75,12 @@
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                 <?php echo form_error('correo');?>
               </div>
-              <div class="col-md-12 form-group has-feedback">
-                <input type="password" class="form-control has-feedback-left"  name="contrasenha" placeholder="Contraseña">
+              <div class="col-md-10 form-group has-feedback">
+                <input id="contrasenha" type="password" class="form-control has-feedback-left"  name="contrasenha" placeholder="Contraseña">
                 <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                 <?php echo form_error('contrasenha');?>
               </div>
-
+              <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
               <div>
                 <button class="col btn btn-success" type="submit">
                   <i class="fa fa-sign-in"></i> Registrarse

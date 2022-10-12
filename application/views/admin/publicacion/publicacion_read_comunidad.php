@@ -35,7 +35,12 @@
                             </div>
                         </div>
                         <?php echo form_close();?>
-
+                    <?php if ($publicacion->num_rows()==0): ?>
+                    <div class="alert alert-warning text-light">
+                        <h2 class="font-weight-bold">
+                            <i class="fa fa-inbox"></i> Vaya, al parecer no hay Publicaciones de la comunidad dentro del rango de búsqueda.</h2>
+                    </div>
+                    <?php endif ?>
                     <?php
                         foreach ($publicacion->result() as $row)
                         {

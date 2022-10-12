@@ -40,11 +40,12 @@
         <span class="fa fa-at form-control-feedback left" aria-hidden="true">
         </span>
       </div>
-      <div class="col-md-12 form-group has-feedback">
+      <div class="col-md-10 form-group has-feedback">
         <span class="fa fa-key form-control-feedback left" aria-hidden="true">
         </span>
-        <input type="password" class="form-control has-feedback-left"  name="password" placeholder="Contraseña" required>
+        <input id="contrasenha" type="password" class="form-control has-feedback-left"  name="password" placeholder="Contraseña" required>   
       </div>
+        <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>       
       <div>
         <button class="col btn btn-success" type="submit">
           <i class="fa fa-sign-in"></i> Ingresar

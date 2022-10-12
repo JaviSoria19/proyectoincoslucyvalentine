@@ -15,7 +15,7 @@ class Alerta extends CI_Controller {
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }
-        else if ($this->session->userdata('rol')=='usuario') {
+        elseif ($this->session->userdata('rol')=='usuario') {
             $idusuario=$this->session->userdata('idusuario');
             $lista=$this->alerta_model->recuperarAlertaUsuario($idusuario);
             $data['historial']=$lista;
@@ -26,7 +26,7 @@ class Alerta extends CI_Controller {
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
         }
-        if($this->session->userdata('rol')=='policia')
+        elseif($this->session->userdata('rol')=='policia')
         {
             $lista=$this->alerta_model->listaAlerta();
             $data['alertas']=$lista;
