@@ -123,13 +123,13 @@
 <div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header alert-success">
+      <div class="modal-header alert-warning">
         <h5 class="modal-title font-weight-bold">CONFIRMAR ACCIÓN</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body font-weight-bold text-dark">
          ¿Está seguro de descartar esta denuncia? Presione Confirmar.
       </div>
       <div class="modal-footer">

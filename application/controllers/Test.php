@@ -4,10 +4,10 @@ class Test extends CI_Controller {
 
 	public function inicio()
 	{
+        $lista=$this->test_nombre_model->listaTest_nombre();
+        $data['testDisponibles']=$lista;
         if($this->session->userdata('rol')=='admin')
         {
-            $lista=$this->test_nombre_model->listaTest_nombre();
-            $data['testDisponibles']=$lista;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
@@ -15,15 +15,21 @@ class Test extends CI_Controller {
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }
-        else if ($this->session->userdata('rol')=='usuario') {
-            $lista=$this->test_nombre_model->listaTest_nombre();
-            $data['testDisponibles']=$lista;
+        elseif ($this->session->userdata('rol')=='usuario') {
             $this->load->view('usuario/inc/headergentelella');
             $this->load->view('usuario/inc/sidebargentelella');
             $this->load->view('usuario/inc/topbargentelella');
             $this->load->view('usuario/test/test_index',$data);
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='autoridad') {
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
+            $this->load->view('usuario/test/test_index',$data);
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
         }
         else
         {
@@ -44,7 +50,7 @@ class Test extends CI_Controller {
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }
-        if($this->session->userdata('rol')=='usuario')
+        elseif($this->session->userdata('rol')=='usuario')
         {
             $idusuario=$this->session->userdata('idusuario');
             $lista=$this->test_model->recuperarTestUsuario($idusuario);
@@ -55,6 +61,21 @@ class Test extends CI_Controller {
             $this->load->view('usuario/test/test_read',$data);
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
+        }
+        elseif($this->session->userdata('rol')=='autoridad')
+        {
+            $lista=$this->test_model->listaTest();
+            $data['test']=$lista;
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
+            $this->load->view('admin/test/test_read',$data);
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
+        }
+        else
+        {
+            redirect('usuarios/panel','refresh');
         }
     }
     public function reportes()
@@ -79,6 +100,27 @@ class Test extends CI_Controller {
             $this->load->view('admin/test/test_reportes',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
+        }
+        elseif($this->session->userdata('rol')=='autoridad')
+        {
+            $numeroTest=1;
+            $data['numeroTest']=$numeroTest;
+            $totalfases=$this->test_model->total_test_todas_las_fases();
+            $data['totalfases']=$totalfases;
+            $totaldonuts=$this->test_model->total_respuestas_por_fase_donut($numeroTest);
+            $totalt1=$this->test_model->total_respuestas_por_fase(1);
+            $totalt2=$this->test_model->total_respuestas_por_fase(2);
+            $totalt3=$this->test_model->total_respuestas_por_fase(3);
+            $data['totaldonuts']=$totaldonuts;
+            $data['totalt1']=$totalt1;
+            $data['totalt2']=$totalt2;
+            $data['totalt3']=$totalt3;
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
+            $this->load->view('admin/test/test_reportes',$data);
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
         }
         else
         {
@@ -214,19 +256,27 @@ class Test extends CI_Controller {
     }
     public function registros_filtro()
     {
+        $fecha_inicio=$_POST['date_inicio'];
+        $fecha_fin=$_POST['date_fin'];
+        $lista=$this->test_model->filtroTest($fecha_inicio,$fecha_fin);
+        $data['test']=$lista;
         if ($this->session->userdata('rol')=='admin') {
-            $fecha_inicio=$_POST['date_inicio'];
-            $fecha_fin=$_POST['date_fin'];
-            
-            $lista=$this->test_model->filtroTest($fecha_inicio,$fecha_fin);
-            $data['test']=$lista;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
             $this->load->view('admin/test/test_read',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
-        }else{
+        }
+        elseif($this->session->userdata('rol')=='autoridad') {
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
+            $this->load->view('admin/test/test_read',$data);
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
+        }
+        else{
             redirect('usuarios/panel','refresh');
         }  
     }
@@ -253,7 +303,30 @@ class Test extends CI_Controller {
             $this->load->view('admin/test/test_reportes',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
-        }else{
+        }
+        elseif ($this->session->userdata('rol')=='autoridad') {
+            $fecha_inicio=$_POST['date_inicio'];
+            $fecha_fin=$_POST['date_fin'];
+            $numeroTest=$_POST['numerotest'];
+            $data['numeroTest']=$numeroTest;
+            $totalfases=$this->test_model->filtro_total_test_todas_las_fases($fecha_inicio,$fecha_fin);
+            $data['totalfases']=$totalfases;
+            $totaldonuts=$this->test_model->filtro_total_respuestas_por_fase_donut($numeroTest,$fecha_inicio,$fecha_fin);
+            $totalt1=$this->test_model->filtro_total_respuestas_por_fase(1,$fecha_inicio,$fecha_fin);
+            $totalt2=$this->test_model->filtro_total_respuestas_por_fase(2,$fecha_inicio,$fecha_fin);
+            $totalt3=$this->test_model->filtro_total_respuestas_por_fase(3,$fecha_inicio,$fecha_fin);
+            $data['totaldonuts']=$totaldonuts;
+            $data['totalt1']=$totalt1;
+            $data['totalt2']=$totalt2;
+            $data['totalt3']=$totalt3;
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
+            $this->load->view('admin/test/test_reportes',$data);
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
+        }
+        else{
             redirect('usuarios/panel','refresh');
         }  
     }

@@ -30,10 +30,15 @@ class Proceso_denuncia extends CI_Controller {
         }
         else{
             $data['idDenuncia']=$_POST['iddenuncia'];
+            $id=$_POST['iddenuncia'];
             $data['estado']=$_POST['estado'];
             $data['idUsuarioResponsable']=$_POST['idusuarioresponsable'];
             $data['comentario']=$_POST['comentario'];
-            $idDenuncia=$this->proceso_denuncia_model->agregarproceso_denuncia($data);
+            $this->proceso_denuncia_model->agregarproceso_denuncia($data);
+            if ($data['estado']=='Denuncia descartada') {
+                $datatwo['estado']='0';
+                $this->denuncia_model->modificardenuncias($id,$datatwo);
+            }
             redirect('proceso_denuncia/procesoRegistrado','refresh');
         }
     }

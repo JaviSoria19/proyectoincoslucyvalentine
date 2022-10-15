@@ -33,35 +33,6 @@
               <ul class="nav side-menu">
                 <li>
                   <a>
-                    <i class="fa fa-users"></i>Usuarios
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                        <?php echo form_open_multipart('usuarios/inicio');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Usuarios
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('usuarios/vetados');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            U. Vetados
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('usuarios/reportes');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Reportes
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
                     <i class="fa fa-newspaper-o"></i>Publicaciones
                     <span class="fa fa-chevron-down"></span>
                   </a>
@@ -77,35 +48,6 @@
                         <?php echo form_open_multipart('publicacion/indexComunidad');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Comunidad
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('publicacion/eliminados');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            P. Eliminadas
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
-                    <i class="fa fa-eye"></i>Alertas
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                        <?php echo form_open_multipart('alerta/inicio');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Alertas
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('alerta/reportes');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Reportes
                           </button>
                         <?php echo form_close();?>
                     </li>

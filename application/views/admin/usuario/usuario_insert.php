@@ -134,10 +134,13 @@
                                         Administrador
                                     </option>
                                     <option value="policia">
-                                        Policia
+                                        Policia (F.E.L.C.V)
                                     </option>
                                     <option value="autoridad">
-                                        Autoridad
+                                        Autoridad (S.L.I.M)
+                                    </option>
+                                    <option value="moderador">
+                                        Moderador
                                     </option>
                                 </select>
                             </div>

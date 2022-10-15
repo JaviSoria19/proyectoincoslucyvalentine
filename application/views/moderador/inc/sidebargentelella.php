@@ -80,57 +80,6 @@
                           </button>
                         <?php echo form_close();?>
                     </li>
-                    <li>
-                        <?php echo form_open_multipart('publicacion/eliminados');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            P. Eliminadas
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
-                    <i class="fa fa-eye"></i>Alertas
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                        <?php echo form_open_multipart('alerta/inicio');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Alertas
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('alerta/reportes');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Reportes
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
-                    <i class="fa fa-folder-open-o"></i>Denuncias
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                        <?php echo form_open_multipart('denuncia/index');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Denuncias
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('denuncia/reportes');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Reportes
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
                   </ul>
                 </li>
                 <li>
@@ -157,35 +106,6 @@
                         <?php echo form_open_multipart('publicacion/indexPromociondeActitudesIgualitarias');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Promoción de Actitudes Igualitarias.
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
-                    <i class="fa fa-list-alt"></i>Test
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                        <?php echo form_open_multipart('test/inicio');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Test de Violencia
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('test/registros');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Registros
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
-                        <?php echo form_open_multipart('test/reportes');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Reportes
                           </button>
                         <?php echo form_close();?>
                     </li>

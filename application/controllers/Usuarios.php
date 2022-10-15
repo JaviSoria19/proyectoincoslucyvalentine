@@ -21,16 +21,25 @@ class Usuarios extends CI_Controller {
 
         public function inicio()
         {
+                $lista=$this->usuario_model->listaUsuariosNoVerificados();
+                $data['usuario']=$lista;
                 if($this->session->userdata('rol')=='admin')
                 {
-                        $lista=$this->usuario_model->listaUsuariosNoVerificados();
-                        $data['usuario']=$lista;
                         $this->load->view('admin/inc/headergentelella');
                         $this->load->view('admin/inc/sidebargentelella');
                         $this->load->view('admin/inc/topbargentelella');
                         $this->load->view('admin/usuario/usuario_read_comunidad',$data);
                         $this->load->view('admin/inc/creditosgentelella');
                         $this->load->view('admin/inc/footergentelella');
+                }
+                elseif($this->session->userdata('rol')=='moderador')
+                {
+                        $this->load->view('moderador/inc/headergentelella');
+                        $this->load->view('moderador/inc/sidebargentelella');
+                        $this->load->view('moderador/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read_comunidad',$data);
+                        $this->load->view('moderador/inc/creditosgentelella');
+                        $this->load->view('moderador/inc/footergentelella');
                 }
                 else
                 {
@@ -50,6 +59,17 @@ class Usuarios extends CI_Controller {
                         $this->load->view('admin/inc/creditosgentelella');
                         $this->load->view('admin/inc/footergentelella');
                 }
+                elseif($this->session->userdata('rol')=='moderador')
+                {
+                        $lista=$this->usuario_model->listaUsuariosVetados();
+                        $data['usuario']=$lista;
+                        $this->load->view('moderador/inc/headergentelella');
+                        $this->load->view('moderador/inc/sidebargentelella');
+                        $this->load->view('moderador/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read_deshabilitados',$data);
+                        $this->load->view('moderador/inc/creditosgentelella');
+                        $this->load->view('moderador/inc/footergentelella');
+                }
                 else
                 {
                         redirect('usuarios/panel','refresh');
@@ -67,6 +87,17 @@ class Usuarios extends CI_Controller {
                         $this->load->view('admin/usuario/usuario_read_comunidad_todos',$data);
                         $this->load->view('admin/inc/creditosgentelella');
                         $this->load->view('admin/inc/footergentelella');
+                }
+                elseif($this->session->userdata('rol')=='moderador')
+                {
+                        $lista=$this->usuario_model->listaUsuarios();
+                        $data['usuario']=$lista;
+                        $this->load->view('moderador/inc/headergentelella');
+                        $this->load->view('moderador/inc/sidebargentelella');
+                        $this->load->view('moderador/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read_comunidad_todos',$data);
+                        $this->load->view('moderador/inc/creditosgentelella');
+                        $this->load->view('moderador/inc/footergentelella');
                 }
                 else
                 {
@@ -141,6 +172,22 @@ class Usuarios extends CI_Controller {
                         $this->load->view('admin/usuario/usuario_perfil',$data);
                         $this->load->view('policia/inc/creditosgentelella');
                         $this->load->view('policia/inc/footergentelella');
+                }
+                elseif ($this->session->userdata('rol')=='autoridad') {
+                        $this->load->view('autoridad/inc/headergentelella');
+                        $this->load->view('autoridad/inc/sidebargentelella');
+                        $this->load->view('autoridad/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_perfil',$data);
+                        $this->load->view('autoridad/inc/creditosgentelella');
+                        $this->load->view('autoridad/inc/footergentelella');
+                }
+                elseif ($this->session->userdata('rol')=='moderador') {
+                        $this->load->view('moderador/inc/headergentelella');
+                        $this->load->view('moderador/inc/sidebargentelella');
+                        $this->load->view('moderador/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_perfil',$data);
+                        $this->load->view('moderador/inc/creditosgentelella');
+                        $this->load->view('moderador/inc/footergentelella');
                 }
                 else{
                         redirect('usuarios/panel','refresh');
@@ -549,6 +596,12 @@ class Usuarios extends CI_Controller {
                         elseif($this->session->userdata('rol')=='policia'){
                                 redirect('publicacion/indexStaff','refresh');
                         }
+                        elseif($this->session->userdata('rol')=='autoridad'){
+                                redirect('publicacion/indexStaff','refresh');
+                        }
+                        elseif($this->session->userdata('rol')=='moderador'){
+                                redirect('usuarios/inicio','refresh');
+                        }
                         else{
                                 //cargo guest
                                 redirect('producto/guest','refresh');
@@ -569,36 +622,53 @@ class Usuarios extends CI_Controller {
 
     public function inicio_filtro()
     {
+        $fecha_inicio=$_POST['date_inicio'];
+        $fecha_fin=$_POST['date_fin'];
+        $lista=$this->usuario_model->filtroUsuarioNoVerificado($fecha_inicio,$fecha_fin);
+        $data['usuario']=$lista;
         if ($this->session->userdata('rol')=='admin') {
-                $fecha_inicio=$_POST['date_inicio'];
-                $fecha_fin=$_POST['date_fin'];
-
-                $lista=$this->usuario_model->filtroUsuarioNoVerificado($fecha_inicio,$fecha_fin);
-                $data['usuario']=$lista;
                 $this->load->view('admin/inc/headergentelella');
                 $this->load->view('admin/inc/sidebargentelella');
                 $this->load->view('admin/inc/topbargentelella');
                 $this->load->view('admin/usuario/usuario_read_comunidad',$data);
                 $this->load->view('admin/inc/creditosgentelella');
                 $this->load->view('admin/inc/footergentelella');
-        }else{
+        }
+        elseif ($this->session->userdata('rol')=='moderador') {
+                $this->load->view('moderador/inc/headergentelella');
+                $this->load->view('moderador/inc/sidebargentelella');
+                $this->load->view('moderador/inc/topbargentelella');
+                $this->load->view('admin/usuario/usuario_read_comunidad',$data);
+                $this->load->view('moderador/inc/creditosgentelella');
+                $this->load->view('moderador/inc/footergentelella');
+        }
+        else{
             redirect('usuarios/panel','refresh');
         }  
     }
     public function vetados_filtro()
         {
+                $fecha_inicio=$_POST['date_inicio'];
+                $fecha_fin=$_POST['date_fin'];
+                $lista=$this->usuario_model->filtrolistaUsuariosVetados($fecha_inicio,$fecha_fin);
+                $data['usuario']=$lista;
                 if($this->session->userdata('rol')=='admin')
                 {
-                        $fecha_inicio=$_POST['date_inicio'];
-                        $fecha_fin=$_POST['date_fin'];
-                        $lista=$this->usuario_model->filtrolistaUsuariosVetados($fecha_inicio,$fecha_fin);
-                        $data['usuario']=$lista;
                         $this->load->view('admin/inc/headergentelella');
                         $this->load->view('admin/inc/sidebargentelella');
                         $this->load->view('admin/inc/topbargentelella');
                         $this->load->view('admin/usuario/usuario_read_deshabilitados',$data);
                         $this->load->view('admin/inc/creditosgentelella');
                         $this->load->view('admin/inc/footergentelella');
+                }
+                elseif($this->session->userdata('rol')=='moderador')
+                {
+                        $this->load->view('moderador/inc/headergentelella');
+                        $this->load->view('moderador/inc/sidebargentelella');
+                        $this->load->view('moderador/inc/topbargentelella');
+                        $this->load->view('admin/usuario/usuario_read_deshabilitados',$data);
+                        $this->load->view('moderador/inc/creditosgentelella');
+                        $this->load->view('moderador/inc/footergentelella');
                 }
                 else
                 {
@@ -607,19 +677,27 @@ class Usuarios extends CI_Controller {
         }
     public function todos_filtro()
     {
+        $fecha_inicio=$_POST['date_inicio'];
+        $fecha_fin=$_POST['date_fin'];
+        $lista=$this->usuario_model->filtroListaUsuarios($fecha_inicio,$fecha_fin);
+        $data['usuario']=$lista;
         if ($this->session->userdata('rol')=='admin') {
-                $fecha_inicio=$_POST['date_inicio'];
-                $fecha_fin=$_POST['date_fin'];
-
-                $lista=$this->usuario_model->filtroListaUsuarios($fecha_inicio,$fecha_fin);
-                $data['usuario']=$lista;
                 $this->load->view('admin/inc/headergentelella');
                 $this->load->view('admin/inc/sidebargentelella');
                 $this->load->view('admin/inc/topbargentelella');
                 $this->load->view('admin/usuario/usuario_read_comunidad_todos',$data);
                 $this->load->view('admin/inc/creditosgentelella');
                 $this->load->view('admin/inc/footergentelella');
-        }else{
+        }
+        elseif ($this->session->userdata('rol')=='moderador') {
+                $this->load->view('moderador/inc/headergentelella');
+                $this->load->view('moderador/inc/sidebargentelella');
+                $this->load->view('moderador/inc/topbargentelella');
+                $this->load->view('admin/usuario/usuario_read_comunidad_todos',$data);
+                $this->load->view('moderador/inc/creditosgentelella');
+                $this->load->view('moderador/inc/footergentelella');
+        }
+        else{
             redirect('usuarios/panel','refresh');
         }  
     }

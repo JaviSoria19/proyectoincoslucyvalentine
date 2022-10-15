@@ -45,7 +45,7 @@
         </span>
         <input id="contrasenha" type="password" class="form-control has-feedback-left"  name="password" placeholder="Contraseña" required>   
       </div>
-        <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>       
+        <button id="show_password" class="btn btn-success" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>       
       <div>
         <button class="col btn btn-success" type="submit">
           <i class="fa fa-sign-in"></i> Ingresar

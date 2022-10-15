@@ -80,8 +80,13 @@
                                     <div class="x_content2">
                                         <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
+                                        <?php if ($numeroTest==3||$numeroTest==2): ?>
+                                        <h2 style="color:#FF9300;">■</h2><h2>En ocasiones⠀</h2>
+                                        <h2 style="color:#FF0000;">■</h2><h2>Casi siempre</h2>
+                                        <?php else: ?>
                                         <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
-                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>  
+                                        <?php endif ?>
                                         </div>
                                         <div id="grafico_donut_total_t1p1" style="width:100%; height:300px;"></div>
                                     </div>
@@ -96,8 +101,13 @@
                                     <div class="x_content2">
                                         <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
+                                        <?php if ($numeroTest==3||$numeroTest==2): ?>
+                                        <h2 style="color:#FF9300;">■</h2><h2>En ocasiones⠀</h2>
+                                        <h2 style="color:#FF0000;">■</h2><h2>Casi siempre</h2>
+                                        <?php else: ?>
                                         <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
-                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>  
+                                        <?php endif ?>
                                         </div>
                                         <div id="grafico_donut_total_t1p2" style="width:100%; height:300px;"></div>
                                     </div>
@@ -113,8 +123,13 @@
                                     <div class="x_content2">
                                         <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
+                                        <?php if ($numeroTest==3||$numeroTest==2): ?>
+                                        <h2 style="color:#FF9300;">■</h2><h2>En ocasiones⠀</h2>
+                                        <h2 style="color:#FF0000;">■</h2><h2>Casi siempre</h2>
+                                        <?php else: ?>
                                         <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
-                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>  
+                                        <?php endif ?>
                                         </div>
                                         <div id="grafico_donut_total_t1p3" style="width:100%; height:300px;"></div>
                                     </div>
@@ -129,8 +144,13 @@
                                     <div class="x_content2">
                                         <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
+                                        <?php if ($numeroTest==3||$numeroTest==2): ?>
+                                        <h2 style="color:#FF9300;">■</h2><h2>En ocasiones⠀</h2>
+                                        <h2 style="color:#FF0000;">■</h2><h2>Casi siempre</h2>
+                                        <?php else: ?>
                                         <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
-                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>  
+                                        <?php endif ?>
                                         </div>
                                         <div id="grafico_donut_total_t1p4" style="width:100%; height:300px;"></div>
                                     </div>
@@ -145,8 +165,13 @@
                                     <div class="x_content2">
                                         <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
+                                        <?php if ($numeroTest==3||$numeroTest==2): ?>
+                                        <h2 style="color:#FF9300;">■</h2><h2>En ocasiones⠀</h2>
+                                        <h2 style="color:#FF0000;">■</h2><h2>Casi siempre</h2>
+                                        <?php else: ?>
                                         <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
-                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>
+                                        <h2 style="color:#FF9300;">■</h2><h2>Casi siempre</h2>  
+                                        <?php endif ?>
                                         </div>
                                         <div id="grafico_donut_total_t1p5" style="width:100%; height:300px;"></div>
                                     </div>
@@ -198,40 +223,100 @@
             element:'grafico_donut_total_t1p1',
             data:[
             {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr1o1;?>,color:'#42FF00'},
-            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr1o2;?>,color:'#FFFB00'},
-            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr1o3;?>,color:'#FF9300'}
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr1o2;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF9300'
+                <?php else: ?>
+                color:'#FFFB00'
+                <?php endif ?>
+                },
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr1o3;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF0000'
+                <?php else: ?>
+                color:'#FF9300'
+                <?php endif ?>
+                }
             ]
         });
         Morris.Donut({
             element:'grafico_donut_total_t1p2',
             data:[
             {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr2o1;?>,color:'#42FF00'},
-            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr2o2;?>,color:'#FFFB00'},
-            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr2o3;?>,color:'#FF9300'}
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr2o2;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF9300'
+                <?php else: ?>
+                color:'#FFFB00'
+                <?php endif ?>
+                },
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr2o3;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF0000'
+                <?php else: ?>
+                color:'#FF9300'
+                <?php endif ?>
+                }
             ]
         });
         Morris.Donut({
             element:'grafico_donut_total_t1p3',
             data:[
             {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr3o1;?>,color:'#42FF00'},
-            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr3o2;?>,color:'#FFFB00'},
-            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr3o3;?>,color:'#FF9300'}
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr3o2;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF9300'
+                <?php else: ?>
+                color:'#FFFB00'
+                <?php endif ?>
+                },
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr3o3;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF0000'
+                <?php else: ?>
+                color:'#FF9300'
+                <?php endif ?>
+                }
             ]
         });
         Morris.Donut({
             element:'grafico_donut_total_t1p4',
             data:[
             {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr4o1;?>,color:'#42FF00'},
-            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr4o2;?>,color:'#FFFB00'},
-            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr4o3;?>,color:'#FF9300'}
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr4o2;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF9300'
+                <?php else: ?>
+                color:'#FFFB00'
+                <?php endif ?>
+                },
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr4o3;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF0000'
+                <?php else: ?>
+                color:'#FF9300'
+                <?php endif ?>
+                }
             ]
         });
         Morris.Donut({
             element:'grafico_donut_total_t1p5',
             data:[
             {label:"Nunca",value:<?php echo $rowtotaldonuts->totalr5o1;?>,color:'#42FF00'},
-            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr5o2;?>,color:'#FFFB00'},
-            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr5o3;?>,color:'#FF9300'}
+            {label:"En ocasiones",value:<?php echo $rowtotaldonuts->totalr5o2;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF9300'
+                <?php else: ?>
+                color:'#FFFB00'
+                <?php endif ?>
+                },
+            {label:"Casi siempre",value:<?php echo $rowtotaldonuts->totalr5o3;?>,
+                <?php if ($numeroTest==3||$numeroTest==2): ?>
+                color:'#FF0000'
+                <?php else: ?>
+                color:'#FF9300'
+                <?php endif ?>
+                }
             ]
         });
         Morris.Bar({

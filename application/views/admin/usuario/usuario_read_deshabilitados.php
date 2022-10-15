@@ -20,11 +20,13 @@
                                         </button>
                                     <?php echo form_close(); ?> 
                                     ⠀<!--caracter en blanco-->
+                                    <?php if ($this->session->userdata('rol')=='admin'): ?>
                                     <?php echo form_open_multipart('usuarios/adminVerStaff'); ?>
                                         <button type="submit" class="btn btn-outline-success">
                                         <i class="fa fa-eye"></i> Usuarios del Staff
                                         </button>
                                     <?php echo form_close(); ?> 
+                                    <?php endif ?>
                                     </div>
                                     <br><br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">

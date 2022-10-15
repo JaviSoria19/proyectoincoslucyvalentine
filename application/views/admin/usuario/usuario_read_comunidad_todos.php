@@ -18,14 +18,16 @@
                                         <button type="submit" class="btn btn-warning">
                                         <i class="fa fa-eye"></i> Usuarios no verificados
                                         </button>
-                                    <?php echo form_close(); ?> 
+                                    <?php echo form_close(); ?>
                                     ⠀<!--caracter en blanco-->
+                                    <?php if ($this->session->userdata('rol')=='admin'): ?>
                                     <?php echo form_open_multipart('usuarios/adminVerStaff'); ?>
                                         <button type="submit" class="btn btn-outline-success">
                                         <i class="fa fa-eye"></i> Usuarios del Staff
                                         </button>
                                     <?php echo form_close(); ?>
                                     ⠀<!--caracter en blanco-->
+                                    <?php endif ?>
                                     <?php echo form_open_multipart('usuarios/vetados'); ?>
                                         <button type="submit" class="btn btn-danger">
                                         <i class="fa fa-eye"></i> Usuarios vetados
