@@ -36,7 +36,7 @@
                                     </div>
                                     <br><br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Estimado administrador, aquí se encuentran todos los usuarios (perfiles verificados y no verificados).
+                                        Estimado <?php echo $this->session->userdata('rol'); ?>, aquí se encuentran todos los usuarios (perfiles verificados y no verificados).
                                     </p>
                         <?php echo form_open_multipart('usuarios/todos_filtro');?>
                         <h2>Realizar una búsqueda por fechas</h2>

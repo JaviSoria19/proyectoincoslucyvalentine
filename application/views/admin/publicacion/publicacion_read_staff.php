@@ -72,6 +72,16 @@
                                     <?php echo $row->contenido;?>        
                                 </p>
                                 <p class="font-weight-bold">Publicado por <?php echo $row->correo;?> <?php echo formatearVerificado($row->estadoUsuario);?> el <?php echo formatearsoloFecha($row->fechaRegistro);?></p>
+    <?php 
+        $likes = $this->db->query("SELECT COUNT(idMeGusta) AS totalLikes FROM me_gusta WHERE idPublicacion = '.$row->idPublicacion.'");
+        foreach ($likes->result() as $rowLikes)
+        {
+    ?>
+    <i class="fa fa-thumbs-up"></i> <?php echo $rowLikes->totalLikes; ?>
+    <?php 
+        }
+    ?>
+                                <br><br>
                                 <div class="btn-group">
                                 <?php echo form_open_multipart('publicacion/visualizar_post');?>
                                     <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
@@ -80,6 +90,34 @@
                                     <i class="fa fa-eye"></i>
                                     </button>
                                 <?php echo form_close();?>
+                                ⠀<!--caracter ASCII en blanco-->
+    <?php
+        $idu = $this->session->userdata('idusuario');
+        $botonLike = $this->db->query("SELECT COUNT(idMeGusta) AS totalLikesbtn FROM me_gusta WHERE idPublicacion = '.$row->idPublicacion.' AND idUsuario = $idu");
+        foreach ($botonLike->result() as $rowbtn)
+        {
+            $rowbtn->totalLikesbtn;
+        }
+    ?>
+    <?php if ($rowbtn->totalLikesbtn==0): ?>
+                                <?php echo form_open_multipart('like/agregarbd');?>
+                                    <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
+                                    <input type="hidden" name="tipo" value="<?php echo $row->tipo;?>">
+                                    <button class="btn btn-primary">
+                                        Me Gusta
+                                    <i class="fa fa-thumbs-up"></i>
+                                    </button>
+                                <?php echo form_close();?>
+    <?php else: ?>
+                                <?php echo form_open_multipart('like/agregarbd');?>
+                                    <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
+                                    <input type="hidden" name="tipo" value="<?php echo $row->tipo;?>">
+                                    <button class="btn btn-primary" disabled>
+                                        Me Gusta
+                                    <i class="fa fa-thumbs-up"></i>
+                                    </button>
+                                <?php echo form_close();?>
+    <?php endif ?>       
                                 ⠀<!--caracter ASCII en blanco-->
                                 <?php if ($row->idUsuario == $this->session->userdata('idusuario')): ?>
                                     <?php echo form_open_multipart('publicacion/modificar');?>

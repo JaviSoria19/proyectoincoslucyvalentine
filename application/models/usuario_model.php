@@ -45,7 +45,7 @@ class Usuario_model extends CI_Model {
     public function listaUsuariosStaff()//select
     {
         $estados = array('1', '2');
-        $roles = array('admin', 'policia', 'autoridad');
+        $roles = array('admin', 'policia', 'autoridad','moderador');
         $this->db->select('u.idUsuario,u.idDepartamento,nombres,primerApellido,segundoApellido,numeroCelular,numeroCI,sexo,foto,correo,rol,u.estado,u.fechaRegistro,u.fechaActualizacion,d.nombreDepartamento');
         $this->db->from('usuario AS u');
         $this->db->where_in('u.estado', $estados);

@@ -40,8 +40,8 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>gentelella/build/js/custom.min.js"></script>
-    <!-- Datatables -->
     
+    <!-- Datatables -->
     <script src="<?php echo base_url(); ?>gentelella/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url(); ?>gentelella/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>gentelella/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>

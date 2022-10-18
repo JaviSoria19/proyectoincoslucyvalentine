@@ -155,5 +155,4 @@ function selectDenunciasEstado($estadoDenuncia)
         ';
     }
 }
-
 ?>
