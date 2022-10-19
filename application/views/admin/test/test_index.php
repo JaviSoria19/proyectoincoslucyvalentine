@@ -10,14 +10,16 @@
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
                         <br>
-                        <?php foreach ($testDisponibles->result() as $row)
+                        <?php
+                            $i=1; 
+                            foreach ($testDisponibles->result() as $row)
                             {
                         ?>
                         <div class="col-md-4 item justify-content-center">
-                            <div class="card bg-lcv">
-                                <img class="card-img-top" src="<?php echo base_url();?>/uploads/publicacion_default.jpg">
+                            <div class="card bg-lcv w-100">
+                                <img class="card-img-top" src="<?php echo base_url();?>/uploads/test_fase_<?php echo $i; ?>.jpg">
                                 <div class="card-body">
-                                    <h5 class="card-title text-center text-light"><?php echo $row->nombre; ?></h5>
+                                    <h5 class="card-title text-center text-light font-weight-bold"><?php echo $row->nombre; ?></h5>
                                 <?php echo form_open_multipart('test/agregar'); ?>
                                 <input type="hidden" name="idtestnombre" value="<?php echo $row->idNombre;?>">
                                 <button type="submit" class="btn btn-success">
@@ -28,6 +30,7 @@
                             </div>
                         </div>
                         <?php 
+                            $i++;
                             } 
                         ?>
                     </div><!-- Fin Div x_content -->

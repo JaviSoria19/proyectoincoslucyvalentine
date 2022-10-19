@@ -97,6 +97,15 @@
                                     </button>
                                 <?php echo form_close();?>
     <?php endif ?>
+                                ⠀<!--caracter ASCII en blanco-->
+                                <?php if ($row->idUsuario == $this->session->userdata('idusuario')): ?>
+                                    <?php echo form_open_multipart('publicacion/modificar');?>
+                                    <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
+                                    <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar Publicación" >
+                                    <i class="fa fa-edit"></i>
+                                    </button>
+                                    <?php echo form_close();?>
+                                <?php endif ?>
                                 </div>
                                 
                             </div>

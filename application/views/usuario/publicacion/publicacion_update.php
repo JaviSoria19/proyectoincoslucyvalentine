@@ -2,47 +2,47 @@
     <div class="container md-3"><!-- Inicio Div container md-3 -->
         <div class="row"><!-- Inicio Div row -->
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
-                <div class="x_panel"><!-- Inicio Div x_panel -->
+                <div class="x_panel bg-dark text-white rounded"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2>Actualizar empleado.</h2>
+                        <h2>Actualizar publicación.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
                         <?php 
-                            echo form_open_multipart('usuarios/inicio');
+                            echo form_open_multipart('publicacion/indexStaff');
                         ?>
-                            <button type="submit" name="buttonInhabilitados" class="btn btn-outline-success">
-                            <i class="fa fa-arrow-circle-left"></i> Volver a usuarios
+                            <button type="submit" name="buttonIndexStaff" class="btn btn-outline-success">
+                                <i class="fa fa-arrow-circle-left"></i> Volver a Publicaciones Oficiales.
                             </button>
                         <?php 
                             echo form_close();
                         ?>
-                        <p class="text-muted font-13 m-b-30">
-                            Usted va a editar un usuario, por favor modifique el siguiente campo:
-                        </p>
                         <?php            
-                            foreach($infousuario->result() as $row)
+                            foreach($infopublicacion->result() as $row)
                             {
-                            echo form_open_multipart('usuarios/modificarbd');
+                            echo form_open_multipart('publicacion/modificarbd');
                         ?>
-                        <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario;?>">
+                        <input type="hidden" name="idpublicacion" value="<?php echo $row->idPublicacion;?>">
                         <br>
                         <div class="item form-group has-feedback">
-                            <label class="col-form-label col-md-1 label-align" for="login">Nombre de Usuario:</label>
-                            <div class="col-md-3">
-                                <input type="text" name="login" value="<?php echo $row->login;?>" class="form-control has-feedback-left">
-                                <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
-                                <?php echo form_error('login'); ?>
+                            <label class="col-form-label col-md-1 label-align" for="titulo">Título de la publicación:</label>
+                            <div class="col-md-11">
+                                <input type="text" name="titulo" class="form-control has-feedback-left"
+                                value="<?php echo $row->titulo;?>">
+                                <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                                <?php echo form_error('titulo'); ?>
                             </div>
-                            <label class="col-form-label col-md-1 label-align" for="password">Nueva contraseña:</label>
-                            <div class="col-md-3">
-                                <input type="text" name="password" class="form-control has-feedback-left">
-                                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
-                                <?php echo form_error('password'); ?>
+                        </div>
+                        <div class="item form-group has-feedback">
+                            <label class="col-form-label col-md-1 label-align" for="contenido">Contenido:</label>
+                            <div class="col-md-11">
+                                <textarea class="form-control" name="contenido"><?php echo $row->contenido;?></textarea>
                             </div>
-                            <label class="col-form-label col-md-1 label-align">Foto:</label>
-                            <div class="col-md-3">
+                        </div>
+                        <div class="item form-group has-feedback">
+                            <label class="col-form-label col-md-1 label-align" for="contenido">Foto:</label>
+                            <div class="col-md-5">
                                 <input type="file" name="userfile" class="form-control has-feedback-left">
                                 <span class="fa fa-image form-control-feedback left" aria-hidden="true"></span>
                             </div>

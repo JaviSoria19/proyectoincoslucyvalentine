@@ -171,7 +171,7 @@ class Test_model extends CI_Model {
             (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND idNombre=1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalfase1,
             (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND idNombre=2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalfase2,
             (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND idNombre=3 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalfase3,
-            (SELECT COUNT(idTest) FROM test WHERE estado = 1) AS totalrealizados
+            (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalrealizados
             ");
         return $this->db->get();
     }

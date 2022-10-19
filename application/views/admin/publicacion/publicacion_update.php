@@ -40,6 +40,13 @@
                                 <textarea class="form-control" name="contenido"><?php echo $row->contenido;?></textarea>
                             </div>
                         </div>
+                        <div class="item form-group has-feedback">
+                            <label class="col-form-label col-md-1 label-align" for="contenido">Foto:</label>
+                            <div class="col-md-5">
+                                <input type="file" name="userfile" class="form-control has-feedback-left">
+                                <span class="fa fa-image form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                        </div>
                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalConfirmacion">
                             <i class="fa fa-edit"></i> Modificar
                         </button>

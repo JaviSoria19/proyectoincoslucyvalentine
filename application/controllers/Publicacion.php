@@ -468,6 +468,27 @@ class Publicacion extends CI_Controller {
         else
         {
             $idpublicacion=$_POST['idpublicacion'];
+            //inicio lógica de guardado de archivos
+            $nombrearchivo="publicacion_".$idpublicacion.".jpg";
+            $config['upload_path']='./uploads';
+            $config['file_name']=$nombrearchivo;
+            $direccion="./uploads/".$nombrearchivo;
+            if(file_exists($direccion))
+            {
+                unlink($direccion);
+            }
+            $config['allowed_types']='jpg|png|jpeg';
+            $this->load->library('upload',$config);
+            if(!$this->upload->do_upload())
+            {
+                $data['error']=$this->upload->display_errors();
+            }
+            else
+            {
+                $data['fotoPublicacion']=base_url().'uploads/'.$nombrearchivo;
+                $this->upload->data();
+            }
+
             $data['titulo']=$_POST['titulo'];
             $data['contenido']=$_POST['contenido'];
             $data['fechaActualizacion']=date('Y-m-d H:i:s');
