@@ -134,6 +134,21 @@
                     </li>
                   </ul>
                 </li>
+                <li>
+                  <a>
+                    <i class="fa fa-phone"></i>Contactos
+                    <span class="fa fa-chevron-down"></span>
+                  </a>
+                  <ul class="nav child_menu">
+                    <li>
+                        <?php echo form_open_multipart('contacto/inicio');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Teléfonos de Contacto
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </div>
           </div>
