@@ -22,7 +22,7 @@
                                     </div>
                                     <br><br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Estimado <?php echo $this->session->userdata('rol'); ?>, aquí se encuentra las denuncias descartadas por diversos motivos.
+                                        Estimado <?php echo formatearRol($this->session->userdata('rol')); ?>, aquí se encuentra las denuncias descartadas por diversos motivos.
                                     </p>
 
                         <?php echo form_open_multipart('denuncia/descartados_filtro');?>

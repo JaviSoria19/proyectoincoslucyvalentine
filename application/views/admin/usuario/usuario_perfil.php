@@ -47,7 +47,7 @@
                                             <h1><i class="fa fa-list-alt" data-toggle="tooltip" data-placement="top" title="Nombre"></i> <?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?> 
                                             <?php echo formatearVerificado($row->estado);?>
                                         </h1>
-                                            <h3><i class="fa fa-star" data-toggle="tooltip" data-placement="top" title="Cargo"></i> <?php echo ucfirst($row->rol); ?></h3>
+                                            <h3><i class="fa fa-star" data-toggle="tooltip" data-placement="top" title="Cargo"></i> <?php echo formatearRol($row->rol); ?></h3>
                                             <h3><i class="fa fa-calendar" data-toggle="tooltip" data-placement="top" title="Fecha de Ingreso"></i> <?php echo formatearsoloFecha($row->fechaRegistro); ?></h3>
                                             <h3>
                                                 <?php if ($row->sexo=='M')

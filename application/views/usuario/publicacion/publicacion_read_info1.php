@@ -23,7 +23,7 @@
                                     
                                     <br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        BIENVENIDO! AQUÍ PUEDE ENCONTRAR INFORMACIÓN OFICIAL BRINDADA POR EL STAFF.
+                                        <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),2); ?> AQUÍ PUEDE ENCONTRAR INFORMACIÓN OFICIAL BRINDADA POR EL STAFF.
                                     </p>
 
                     <?php

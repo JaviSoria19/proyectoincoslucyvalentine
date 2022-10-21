@@ -28,11 +28,11 @@
                                     <?php echo form_close(); ?> 
                                     <?php endif ?>
                                     </div>
-                                    <br><br>
+                                    <br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
                                         Actualmente <?php echo $usuario->num_rows(); ?>
                                         usuarios están pendientes para ser verificados en sistema!<br>
-                                        Estimado <?php echo $this->session->userdata('rol'); ?>, recuerde verificar todas las medidas de seguridad de una Cédula de Identidad para validar a un usuario, dado que posteriormente gracias a la verificación podrá participar en los grupos de apoyo :)
+                                        Estimado <?php echo formatearRol($this->session->userdata('rol')); ?>, recuerde verificar todas las medidas de seguridad de una Cédula de Identidad para validar a un usuario, dado que posteriormente gracias a la verificación podrá participar en los grupos de apoyo :)
                                     </p>
 
                         <?php echo form_open_multipart('usuarios/inicio_filtro');?>

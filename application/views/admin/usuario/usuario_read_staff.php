@@ -91,7 +91,7 @@
                     <td><?php echo $row->numeroCelular; ?></td>
                     <td><?php echo formatearGenero($row->sexo); ?></td>
                     <td><?php echo $row->correo; ?></td>
-                    <td><?php echo ucfirst($row->rol); ?></td>
+                    <td><?php echo formatearRol($row->rol); ?></td>
                     <td class="text-center"><?php echo formatearFechaMasHora($row->fechaRegistro); ?></td>
                     <td class="text-center"><?php echo formatearFechaMasHora($row->fechaActualizacion); ?></td>
                     <td class="text-center"><?php echo formatearEstado($row->estado);?></td>

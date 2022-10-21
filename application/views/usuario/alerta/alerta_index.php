@@ -9,7 +9,7 @@
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <p>Aquí encontrarás las alertas que realizaste.</p>
+                        <p class="font-weight-bold text-dark">Aquí encontrarás las alertas que realizaste.</p>
                         <br>
                         <table id="datatable" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>

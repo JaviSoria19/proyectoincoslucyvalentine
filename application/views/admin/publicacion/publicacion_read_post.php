@@ -4,14 +4,19 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2><i class="fa fa-newspaper-o"></i> Publicaciones Oficiales.</h2>
+                        <h2><i class="fa fa-newspaper-o"></i> Publicación.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <?php 
-                            echo form_open_multipart('publicacion/indexStaff');
+                        <?php            
+                            foreach($infopublicacion->result() as $row)
+                            {
                         ?>
+                        <?php 
+                            echo form_open_multipart('publicacion/retornarInicio');
+                        ?>
+                            <input type="hidden" name="tipo" value="<?php echo $row->tipo;?>">
                             <button type="submit" name="buttonInhabilitados" class="btn btn-outline-success">
                             <i class="fa fa-arrow-circle-left"></i> Volver a publicaciones
                             </button>
@@ -19,10 +24,7 @@
                             echo form_close();
                         ?>
                         <br>
-                        <?php            
-                            foreach($infopublicacion->result() as $row)
-                            {
-                        ?>
+                        
                             <div class="col-md-12 bg-dark text-light rounded">
                                 <h1 class="font-weight-bold"><?php echo $row->titulo;?></h1>
                             <p class="font-weight-bold font-13 m-b-30">
@@ -45,7 +47,7 @@
     </div><!-- Fin Div container md-3 -->
     <div class="col-md-12 bg-dark rounded text-light">
         <h1 class="font-weight-bold">Comentarios</h1>
-        <p>Estimad@ <?php echo $this->session->userdata('rol'); ?>, con el objetido de proteger su identidad no se mostrará su foto de perfil en la caja de comentarios, recuerde que aquí prevalece la convivencia sana y el respeto mutuo. </p>
+        <p>Estimad@ <?php echo formatearRol($this->session->userdata('rol')); ?>, con el objetido de proteger su identidad no se mostrará su foto de perfil en la caja de comentarios, recuerde que aquí prevalece la convivencia sana y el respeto mutuo. </p>
         <?php if ($this->session->userdata('estado')=='1'): ?>
             <p class="text-warning font-weight-bold">Si desea comentar en alguna pubicación debe ser un usuario verificado, para ello debe subir una fotografía LEGIBLE de su Cédula de Identidad y posteriormente será revisado por un administrador o moderador.</p>
         <?php endif ?>

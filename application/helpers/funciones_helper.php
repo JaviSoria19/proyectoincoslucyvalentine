@@ -155,4 +155,30 @@ function selectDenunciasEstado($estadoDenuncia)
         ';
     }
 }
+
+function formatearRol($rol)
+{
+    if ($rol=='admin'){
+        return 'Administrador';
+    }else{
+        return ucfirst($rol);
+    }
+}
+function retornarSaludoPerGenero($genero,$caso)
+{
+    if ($genero=='M' && $caso=='1'){
+        return 'Estimado usuario';
+    }
+    elseif($genero=='F' && $caso=='1'){
+        return 'Estimada';
+    }
+    elseif($genero=='M' && $caso=='2'){
+        return 'BIENVENIDO!';
+    }
+    elseif($genero=='F' && $caso=='2'){
+        return 'BIENVENIDA!';
+    }else{
+        return 'error';
+    }
+}
 ?>

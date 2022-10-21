@@ -8,11 +8,14 @@ if(!$conexion){
 
 try{
 
-    $query="SELECT DE.idDenuncia,DC.descripcionCategoria,CONCAT(USU.nombres,' ',USU.primerApellido) AS nombres,DE.declaracion,(SELECT estado FROM proceso_denuncia WHERE idDenuncia = DE.idDenuncia ORDER BY idProceso DESC LIMIT 1) AS estado,DE.idUsuario,DATE_FORMAT(DE.fechaRegistro,'%d/%m/%Y') AS fechaRegistro,DE.foto
-    FROM usuario USU
-    INNER JOIN denuncia DE ON USU.idUsuario=DE.idUsuario
-    INNER JOIN denuncia_categoria DC ON DC.idCategoria=DE.idcategoria
-    WHERE DE.estado = 1";
+    $query="
+        SELECT DE.idDenuncia,DC.descripcionCategoria,CONCAT(USU.nombres,' ',USU.primerApellido) AS nombres,DE.declaracion,(SELECT estado FROM proceso_denuncia WHERE idDenuncia = DE.idDenuncia ORDER BY idProceso DESC LIMIT 1) AS estado,DE.idUsuario,DATE_FORMAT(DE.fechaRegistro,'%d/%m/%Y') AS fechaRegistro,DE.foto
+        FROM usuario USU
+        INNER JOIN denuncia DE ON USU.idUsuario=DE.idUsuario
+        INNER JOIN denuncia_categoria DC ON DC.idCategoria=DE.idcategoria
+        WHERE DE.estado = 1
+        ORDER BY DE.fechaRegistro DESC
+        ";
 
     $consulta=mysqli_query($conexion,$query);
     $servicios=[];

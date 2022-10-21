@@ -13,7 +13,7 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Estimad@ usuari@, recuerde seguir las normas de convivencia pacífica y sobretodo brindar respeto para una buena experiencia dentro de la comunidad.
+                                        Estimad@ <?php echo formatearRol($this->session->userdata('rol')); ?>, recuerde seguir las normas de convivencia pacífica y sobretodo brindar respeto para una buena experiencia dentro de la comunidad.
                                     </p>
 
                         <?php echo form_open_multipart('publicacion/indexComunidad_filtro');?>

@@ -22,7 +22,7 @@
                                     </div>
                                     <br><br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Estimado <?php echo $this->session->userdata('rol'); ?>, aquí se encuentra las denuncias realizadas por los usuarios, recuerde que está bajo su criterio verificar la veracidad de los testimonios y las evidencias que el usuario presenta.
+                                        Estimado <?php echo formatearRol($this->session->userdata('rol')); ?>, aquí se encuentra las denuncias realizadas por los usuarios, recuerde que está bajo su criterio verificar la veracidad de los testimonios y las evidencias que el usuario presenta.
                                     </p>
 
                         <?php echo form_open_multipart('denuncia/index_filtro');?>

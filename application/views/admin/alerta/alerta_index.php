@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <p class="text-dark font-weight-bold font-13 m-b-30">Estimado <?php echo $this->session->userdata('rol'); ?>, aquí encontrará usted las alertas realizadas por todas las personas que están utilizando el sistema, recuerde que es su responsabilidad considerar la veracidad de las alertas, o en un mal caso podrían ser solamente falsas.</p>
+                        <p class="text-dark font-weight-bold font-13 m-b-30">Estimado <?php echo formatearRol($this->session->userdata('rol')); ?>, aquí encontrará usted las alertas realizadas por todas las personas que están utilizando el sistema, recuerde que es su responsabilidad considerar la veracidad de las alertas, o en un mal caso podrían ser solamente falsas.</p>
                         <br>
 
                         <?php echo form_open_multipart('alerta/inicio_filtro');?>

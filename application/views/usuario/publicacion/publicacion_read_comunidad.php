@@ -31,7 +31,7 @@
                                     
                                     <br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Estimad@ usuari@, recuerde seguir las normas de convivencia pacífica y sobretodo brindar respeto para una buena experiencia dentro de la comunidad.
+                                        <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),1); ?>, recuerde seguir las normas de convivencia pacífica y sobretodo brindar respeto para una buena experiencia dentro de la comunidad.
                                     </p>
 
                     <?php

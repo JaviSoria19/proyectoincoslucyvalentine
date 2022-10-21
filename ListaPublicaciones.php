@@ -9,7 +9,7 @@ if(!$conexion){
 
 try{
     $query="SELECT idPublicacion,titulo,contenido,tipo,fotoPublicacion
-    FROM publicacion";
+    FROM publicacion ORDER BY fechaRegistro ASC";
 
     $consulta=mysqli_query($conexion,$query);
     $servicios=[];
@@ -18,7 +18,7 @@ try{
     while($row=mysqli_fetch_assoc($consulta)){
         $servicios[$i]['idPublicacion']=$row['idPublicacion'];
         $servicios[$i]['titulo']=$row['titulo'];
-        $servicios[$i]['contenido']=$row['contenido'];
+        $servicios[$i]['contenido']=nl2br($row['contenido']);
         $servicios[$i]['tipo']=$row['tipo'];
         $servicios[$i]['fotoPublicacion']=$row['fotoPublicacion'];
 

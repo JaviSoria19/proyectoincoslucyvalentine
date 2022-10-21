@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <p class="text-dark font-weight-bold font-13 m-b-30">Estimado administrador, aquí encontrará usted los test realizadas por los usuarios que están utilizando el sistema, considere estas opciones para realizar un análisis psicológico superficial.</p>
+                        <p class="text-dark font-weight-bold font-13 m-b-30">Estimado <?php echo formatearRol($this->session->userdata('rol')); ?>, aquí encontrará usted los test realizadas por los usuarios que están utilizando el sistema, considere estas opciones para realizar un análisis psicológico superficial.</p>
                         <br>
 
                         <?php echo form_open_multipart('test/registros_filtro');?>

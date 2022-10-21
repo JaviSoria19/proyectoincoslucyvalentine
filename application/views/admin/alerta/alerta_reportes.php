@@ -9,7 +9,7 @@
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <p class="font-weight-bold font-13 m-b-30">Estimado <?php echo $this->session->userdata('rol'); ?>, aquí encontrará usted las alertas realizadas por todas las personas que están utilizando el sistema pero con la diferencia que los marcadores están centralizados en un solo mapa, el punto por defecto que usted está viendo es el centro de la ciudad de Cochabamba.</p>
+                        <p class="font-weight-bold font-13 m-b-30">Estimado <?php echo formatearRol($this->session->userdata('rol')); ?>, aquí encontrará usted las alertas realizadas por todas las personas que están utilizando el sistema pero con la diferencia que los marcadores están centralizados en un solo mapa, el punto por defecto que usted está viendo es el centro de la ciudad de Cochabamba.</p>
                         <br>
 
                         <?php echo form_open_multipart('alerta/reportes_filtro');?>

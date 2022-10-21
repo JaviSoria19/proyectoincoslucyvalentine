@@ -5,11 +5,13 @@ $correo=$_POST['correo'];
 $contrasena=MD5($_POST['contrasena']);
 
 
-/*$correo="maribel@gmail.com";
-$contrasena="1234";*/
+/*
+$correo="brenda.merida@gmail.com";
+$contrasena="brenda123";
+*/
 
 
-$sentencia=$mysql->prepare("SELECT * FROM usuario WHERE correo=? AND contrasenha=?");
+$sentencia=$conexion->prepare("SELECT * FROM usuario WHERE correo=? AND contrasenha=?");
 $sentencia->bind_param('ss',$correo,$contrasena);
 $sentencia->execute();
 
@@ -19,6 +21,6 @@ if($fila=$resultado->fetch_assoc()){
 }
 
 $sentencia->close();
-$mysql->close();
+$conexion->close();
 
 ?>

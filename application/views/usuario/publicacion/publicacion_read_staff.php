@@ -23,7 +23,7 @@
                                     
                                     <br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        BIENVENIDO! AQUÍ PUEDE ENCONTRAR INFORMACIÓN OFICIAL BRINDADA POR LA DEFENSORÍA Y LA FUERZA POLICIAL DEL PAÍS.
+                                        <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),2); ?> AQUÍ PUEDE ENCONTRAR INFORMACIÓN OFICIAL BRINDADA POR LA DEFENSORÍA Y LA FUERZA POLICIAL DEL PAÍS.
                                     </p>
 
                     <?php

@@ -28,11 +28,11 @@
                                     <?php echo form_close(); ?> 
                                     <?php endif ?>
                                     </div>
-                                    <br><br>
+                                    <br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
                                         Actualmente <?php echo $usuario->num_rows(); ?>
                                         usuarios fueron vetados del sistema por comportamiento inadecuado.<br>
-                                        Estimado <?php echo $this->session->userdata('rol'); ?>, considere volver a permitir el acceso al sistema solo si el usuario presentó una justificación válida.
+                                        Estimado <?php echo formatearRol($this->session->userdata('rol')); ?>, considere volver a permitir el acceso al sistema solo si el usuario presentó una justificación válida.
                                     </p>
 
                         <?php echo form_open_multipart('usuarios/vetados_filtro');?>
