@@ -4,6 +4,53 @@ class Contacto extends CI_Controller {
 
     public function inicio()
     {
+        if($this->session->userdata('rol')=='admin')
+        {
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_index');
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='usuario') {
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_index');
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='policia') {
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_index');
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='autoridad') {
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_index');
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='moderador') {
+            $this->load->view('moderador/inc/headergentelella');
+            $this->load->view('moderador/inc/sidebargentelella');
+            $this->load->view('moderador/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_index');
+            $this->load->view('moderador/inc/creditosgentelella');
+            $this->load->view('moderador/inc/footergentelella');
+        }
+        else{
+            redirect('usuarios/panel','refresh');
+        }
+    }
+    public function Cochabamba()
+    {
         $data['cb_institucion'] = array(
             'Servicios Legales Integrales Municipales - SLIM Jefatura',
             'Servicios Legales Integrales Municipales - SLIM Sub Alcaldía Tunari PACATA',
@@ -31,11 +78,56 @@ class Contacto extends CI_Controller {
             'Acre entre Beijing y Villavicencio',
             'Av. México, detrás del Mercado',
             'Complejo Petrolero, Calle Pojo');
-
+        if($this->session->userdata('rol')=='admin')
+        {
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='usuario') {
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='policia') {
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='autoridad') {
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='moderador') {
+            $this->load->view('moderador/inc/headergentelella');
+            $this->load->view('moderador/inc/sidebargentelella');
+            $this->load->view('moderador/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('moderador/inc/creditosgentelella');
+            $this->load->view('moderador/inc/footergentelella');
+        }
+        else{
+            redirect('usuarios/panel','refresh');
+        }
+    }
+    public function La_Paz()
+    {
         $data['lp1_institucion'] = array('Sartasin Warmi');
         $data['lp1_telefono'] = array('2850076');
         $data['lp1_direccion'] = array('Av. Guadalquivir #2015');
-
         $data['lp2_institucion'] = array(
             'SLIM CENTRO',
             'SLIM Periférica',
@@ -57,7 +149,80 @@ class Contacto extends CI_Controller {
             'Av Entre Rios esq. Chorolque interior del Centro Integrado de Justicia Max Paredes, subsuelo, detrás del Cementerio General',
             'Av. Entre Rios esq. Chorolque',
             'Av. Josefa Mujía, Alto San Antonio, interior de la Sub Alcaldía San Antonio');
-
+        $data['cb_institucion'] = array(
+            'Servicios Legales Integrales Municipales - SLIM Jefatura',
+            'Servicios Legales Integrales Municipales - SLIM Sub Alcaldía Tunari PACATA',
+            'Servicios Legales Integrales Municipales - SLIM Sub Alcaldía Adela Zamudio',
+            'Servicios Legales Integrales Municipales - SLIM Sub Alcaldía Tunari EPI NORTE',
+            'Servicios Legales Integrales Municipales - SLIM Sub Alcaldía Alejo Calatayud',
+            'Servicios Legales Integrales Municipales - SLIM Sub Alcaldía Molle',
+            'Servicios Legales Integrales Municipales - SLIM Sub Alcaldía Villa México',
+            'Servicios Legales Integrales Municipales - SLIM Sub Alcaldía Valle Hermoso D6');
+        $data['cb_telefono'] = array(
+            '4321178',
+            '4010883',
+            '4010884',
+            '4476773',
+            '4225890',
+            '4225890',
+            '4235243',
+            '4010880');
+        $data['cb_direccion'] = array(
+            'C. San Martín 448',
+            'Av. Circunvalación casi Servicio de Caminos',
+            'Colombia esquina Ayacucho',
+            'Melchor Pérez y Circunvalación',
+            'Petrolera Km 2 1/2',
+            'Acre entre Beijing y Villavicencio',
+            'Av. México, detrás del Mercado',
+            'Complejo Petrolero, Calle Pojo');
+        if($this->session->userdata('rol')=='admin')
+        {
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='usuario') {
+            $this->load->view('usuario/inc/headergentelella');
+            $this->load->view('usuario/inc/sidebargentelella');
+            $this->load->view('usuario/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('usuario/inc/creditosgentelella');
+            $this->load->view('usuario/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='policia') {
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='autoridad') {
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
+        }
+        elseif ($this->session->userdata('rol')=='moderador') {
+            $this->load->view('moderador/inc/headergentelella');
+            $this->load->view('moderador/inc/sidebargentelella');
+            $this->load->view('moderador/inc/topbargentelella');
+            $this->load->view('admin/contacto/contacto_cochabamba',$data);
+            $this->load->view('moderador/inc/creditosgentelella');
+            $this->load->view('moderador/inc/footergentelella');
+        }
+        else{
+            redirect('usuarios/panel','refresh');
+        }
+    }
+    public function Santa_Cruz()
+    {
         $data['sc_institucion'] = array(
             'Unidad de Víctimas Especiales (UVE)',
             'Servicios Legales Integrales Municipales (SLIM) - Distrito 1: Sub Alcaldía',
@@ -145,13 +310,12 @@ class Contacto extends CI_Controller {
             'C. Etelvino Vaca Parada, B. Central Fátima',
             'Av. Francisco Mora 3er Anillo Interno Zona Polanco'
             );
-
         if($this->session->userdata('rol')=='admin')
         {
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
-            $this->load->view('admin/contacto/contacto_read',$data);
+            $this->load->view('admin/contacto/contacto_santa_cruz',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }
@@ -159,7 +323,7 @@ class Contacto extends CI_Controller {
             $this->load->view('usuario/inc/headergentelella');
             $this->load->view('usuario/inc/sidebargentelella');
             $this->load->view('usuario/inc/topbargentelella');
-            $this->load->view('admin/contacto/contacto_read',$data);
+            $this->load->view('admin/contacto/contacto_santa_cruz',$data);
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
         }
@@ -167,7 +331,7 @@ class Contacto extends CI_Controller {
             $this->load->view('policia/inc/headergentelella');
             $this->load->view('policia/inc/sidebargentelella');
             $this->load->view('policia/inc/topbargentelella');
-            $this->load->view('admin/contacto/contacto_read',$data);
+            $this->load->view('admin/contacto/contacto_santa_cruz',$data);
             $this->load->view('policia/inc/creditosgentelella');
             $this->load->view('policia/inc/footergentelella');
         }
@@ -175,7 +339,7 @@ class Contacto extends CI_Controller {
             $this->load->view('autoridad/inc/headergentelella');
             $this->load->view('autoridad/inc/sidebargentelella');
             $this->load->view('autoridad/inc/topbargentelella');
-            $this->load->view('admin/contacto/contacto_read',$data);
+            $this->load->view('admin/contacto/contacto_santa_cruz',$data);
             $this->load->view('autoridad/inc/creditosgentelella');
             $this->load->view('autoridad/inc/footergentelella');
         }
@@ -183,9 +347,12 @@ class Contacto extends CI_Controller {
             $this->load->view('moderador/inc/headergentelella');
             $this->load->view('moderador/inc/sidebargentelella');
             $this->load->view('moderador/inc/topbargentelella');
-            $this->load->view('admin/contacto/contacto_read',$data);
+            $this->load->view('admin/contacto/contacto_santa_cruz',$data);
             $this->load->view('moderador/inc/creditosgentelella');
             $this->load->view('moderador/inc/footergentelella');
+        }
+        else{
+            redirect('usuarios/panel','refresh');
         }
     }
 }

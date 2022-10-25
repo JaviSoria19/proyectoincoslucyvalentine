@@ -8,3 +8,24 @@
 .nav-md ul.nav.child_menu li:before{
   background: #E7E7E7;
 }
+.cbba:hover {
+  border-radius: 5px;
+  background: linear-gradient(#00FFF7,#00C6C0);
+  transition: 0.5s;
+  border-style: solid;
+  border-color: #00C6C0;
+}
+.lp:hover {
+  border-radius: 5px;
+  background: linear-gradient(#FF2727, #E70000);
+  transition: 0.5s;
+  border-style: solid;
+  border-color: #BF0000;
+}
+.sc:hover {
+  border-radius: 5px;
+  background: linear-gradient(#66C52B,#00a32e);
+  transition: 0.5s;
+  border-style: solid;
+  border-color: #00a32e;
+}

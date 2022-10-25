@@ -9,7 +9,7 @@ if(!$conexion){
 
 try{
     $query="SELECT idPublicacion,titulo,contenido,tipo,fotoPublicacion
-    FROM publicacion ORDER BY fechaRegistro ASC";
+    FROM publicacion ORDER BY fechaRegistro DESC";
 
     $consulta=mysqli_query($conexion,$query);
     $servicios=[];
