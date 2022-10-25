@@ -12,9 +12,15 @@
                         <div class="row"><!-- Inicio Div row 2 -->
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
-                                    <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        
+                                    <p class="text-dark font-weight-bold">
+                                        <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),2); ?> aquí puedes encontrar las denuncias que realizaste dentro de la aplicación móvil.
                                     </p>
+                                    <?php if ($historial->num_rows()==0): ?>
+                                        <div class="alert alert-info text-light">
+                                            <h2 class="font-weight-bold">
+                                                <i class="fa fa-inbox"></i> Vaya, al parecer no realizaste ninguna denuncia en la aplicación móvil.</h2>
+                                        </div>
+                                    <?php endif ?>
             <table id="datatable" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">

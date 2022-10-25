@@ -14,7 +14,7 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
-                                        Aquí puedes encontrar los puntos a donde acudir en caso de violencia.
+                                        <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),2); ?> aquí puedes encontrar los puntos a donde acudir en caso de violencia, por favor selecciona un departamento para desplegar la información.
                                     </p>
                                         
                                     <div class="col-md-4 text-center font-weight-bold text-dark">

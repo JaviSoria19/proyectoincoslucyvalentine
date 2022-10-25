@@ -32,7 +32,7 @@
                             <label class="col-form-label col-md-2 label-align" for="iddepartamento">Ciudad Actual:</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="iddepartamento" required>
-                                    <option selected disabled value="">
+                                    <option selected value="<?php echo $row->idDepartamento;?>">
                                         Ciudad Actual: <?php echo $row->nombreDepartamento;?> 
                                     </option>
                                     <?php

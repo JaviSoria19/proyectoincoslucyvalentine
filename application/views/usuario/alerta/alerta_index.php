@@ -9,8 +9,17 @@
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <p class="font-weight-bold text-dark">Aquí encontrarás las alertas que realizaste.</p>
+                        <p class="font-weight-bold text-dark">Aquí encontrarás las alertas que realizaste desde la aplicación móvil, las alertas son un mecanismo de auxilio que permite a la mujer realizar simultáneamente las siguientes acciones:<br>
+                        ● Llamar a la fuerza especial de lucha contra la violencia.<br>
+                        ● Envíar la ubicación a una base de datos de la FELCV.<br>  
+                        ● Mandar un mensaje SMS a un máximo de 5 contactos que hayas seleccionado previamente, el cual contiene tu ubicación del momento en que apretaste el botón de alerta y un texto de auxilio.</p>
                         <br>
+                        <?php if ($historial->num_rows()==0): ?>
+                            <div class="alert alert-info text-light">
+                                <h2 class="font-weight-bold">
+                                    <i class="fa fa-inbox"></i> Vaya, al parecer no realizaste ninguna alerta en la aplicación móvil.</h2>
+                            </div>
+                        <?php endif ?>
                         <table id="datatable" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">
