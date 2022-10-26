@@ -178,7 +178,7 @@
                                 </div>
                                 </div>
                                 ⠀<!--caracter en blanco--><br>
-                                <div class="card col-md-12 text-center">
+                                <div class="card col-md-12 text-center" id='exportarBar1'>
                                     <h2 class="font-weight-bold text-dark">Respuestas de Test de Violencia - Fase 1: </h2>
                                     <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
@@ -187,8 +187,15 @@
                                     </div>
                                     <div id="grafico_bar_t1" style="width:100%; height:300px;"></div>
                                 </div>
+                                    <div class="col-md-12" align="center">
+                                        <br>
+                                        <button id="saveBarPDF1" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> PDF
+                                        </button>
+                                        <button id="saveBarIMG1" class="btn btn-info"><i class="fa fa-file-photo-o"></i> JPG
+                                        </button> 
+                                    </div>
                                 ⠀<!--caracter en blanco--><br>
-                                <div class="card col-md-12 text-center">
+                                <div class="card col-md-12 text-center" id='exportarBar2'>
                                     <h2 class="font-weight-bold text-dark">Respuestas de Test de Violencia - Fase 2: </h2>
                                     <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
@@ -197,8 +204,15 @@
                                     </div>
                                     <div id="grafico_bar_t2" style="width:100%; height:300px;"></div>
                                 </div>
+                                    <div class="col-md-12" align="center">
+                                        <br>
+                                        <button id="saveBarPDF2" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> PDF
+                                        </button>
+                                        <button id="saveBarIMG2" class="btn btn-info"><i class="fa fa-file-photo-o"></i> JPG
+                                        </button> 
+                                    </div>
                                 ⠀<!--caracter en blanco--><br>
-                                <div class="card col-md-12 text-center">
+                                <div class="card col-md-12 text-center" id='exportarBar3'>
                                     <h2 class="font-weight-bold text-dark">Respuestas de Test de Violencia - Fase 3: </h2>
                                     <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
@@ -206,7 +220,14 @@
                                         <h2 style="color:#FF0000;">■</h2><h2>Casi siempre</h2>
                                     </div>
                                     <div id="grafico_bar_t3" style="width:100%; height:300px;"></div>
-                                </div>      
+                                </div>  
+                                    <div class="col-md-12" align="center">
+                                        <br>
+                                        <button id="saveBarPDF3" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> PDF
+                                        </button>
+                                        <button id="saveBarIMG3" class="btn btn-info"><i class="fa fa-file-photo-o"></i> JPG
+                                        </button> 
+                                    </div>    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
@@ -346,7 +367,8 @@
             xkey: 'y',
             ykeys: ['a', 'b', 'c'],
             labels: ['Nunca', 'En ocasiones', 'Casi siempre'],
-            barColors: ['#42FF00', '#FFFB00','#FF9300']
+            barColors: ['#42FF00', '#FFFB00','#FF9300'],
+            hideHover: 'auto'
         });
 
         Morris.Bar({
@@ -376,7 +398,8 @@
             xkey: 'y',
             ykeys: ['a', 'b', 'c'],
             labels: ['Nunca', 'En ocasiones', 'Casi siempre'],
-            barColors: ['#42FF00', '#FF9300','#FF0000']
+            barColors: ['#42FF00', '#FF9300','#FF0000'],
+            hideHover: 'auto'
         });
 
         Morris.Bar({
@@ -406,7 +429,8 @@
             xkey: 'y',
             ykeys: ['a', 'b', 'c'],
             labels: ['Nunca', 'En ocasiones', 'Casi siempre'],
-            barColors: ['#42FF00', '#FF9300','#FF0000']
+            barColors: ['#42FF00', '#FF9300','#FF0000'],
+            hideHover: 'auto'
         });
     </script>
                                 <?php //fin de los foreach
@@ -421,3 +445,86 @@
         </div><!-- Fin Div row -->
     </div><!-- Fin Div container md-3 -->
 </div><!-- Fin Right Col Role Main -->
+
+<!--SCRIPTS PARA PDF & IMAGEN-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
+
+<script type="text/javascript">
+    $("#saveBarPDF1").click(function() {
+    html2canvas(document.getElementById('exportarBar1')).then(canvas => {
+        var w = document.getElementById("exportarBar1").offsetWidth;
+        var h = document.getElementById("exportarBar1").offsetHeight;
+
+        var img = canvas.toDataURL("image/jpeg", 1);
+
+        var doc = new jsPDF('L', 'pt', [w, h]);
+        doc.addImage(img, 'JPEG', 0, 0, w, h);
+        doc.save('RespuestasTestViolencia_Fase1_<?php echo date('d_m_Y_H_i_s'); ?>.pdf');
+    }).catch(function(e) {
+        console.log(e.message);
+    });
+})
+</script>
+<script type="text/javascript">
+    $("#saveBarPDF2").click(function() {
+    html2canvas(document.getElementById('exportarBar2')).then(canvas => {
+        var w = document.getElementById("exportarBar2").offsetWidth;
+        var h = document.getElementById("exportarBar2").offsetHeight;
+
+        var img = canvas.toDataURL("image/jpeg", 1);
+
+        var doc = new jsPDF('L', 'pt', [w, h]);
+        doc.addImage(img, 'JPEG', 0, 0, w, h);
+        doc.save('RespuestasTestViolencia_Fase2_<?php echo date('d_m_Y_H_i_s'); ?>.pdf');
+    }).catch(function(e) {
+        console.log(e.message);
+    });
+})
+</script>
+<script type="text/javascript">
+    $("#saveBarPDF3").click(function() {
+    html2canvas(document.getElementById('exportarBar3')).then(canvas => {
+        var w = document.getElementById("exportarBar3").offsetWidth;
+        var h = document.getElementById("exportarBar3").offsetHeight;
+
+        var img = canvas.toDataURL("image/jpeg", 1);
+
+        var doc = new jsPDF('L', 'pt', [w, h]);
+        doc.addImage(img, 'JPEG', 0, 0, w, h);
+        doc.save('RespuestasTestViolencia_Fase3_<?php echo date('d_m_Y_H_i_s'); ?>.pdf');
+    }).catch(function(e) {
+        console.log(e.message);
+    });
+})
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+
+<script type="text/javascript">
+    $("#saveBarIMG1").click(function() {
+    html2canvas(document.querySelector("#exportarBar1")).then(canvas => {
+        canvas.toBlob(function(blob) {
+          window.saveAs(blob, 'RespuestasTestViolencia_Fase1_<?php echo date('d_m_Y_H_i_s'); ?>.jpg');
+        });
+        });
+})
+</script>
+<script type="text/javascript">
+    $("#saveBarIMG2").click(function() {
+    html2canvas(document.querySelector("#exportarBar2")).then(canvas => {
+        canvas.toBlob(function(blob) {
+          window.saveAs(blob, 'RespuestasTestViolencia_Fase2_<?php echo date('d_m_Y_H_i_s'); ?>.jpg');
+        });
+        });
+})
+</script>
+<script type="text/javascript">
+    $("#saveBarIMG3").click(function() {
+    html2canvas(document.querySelector("#exportarBar3")).then(canvas => {
+        canvas.toBlob(function(blob) {
+          window.saveAs(blob, 'RespuestasTestViolencia_Fase3_<?php echo date('d_m_Y_H_i_s'); ?>.jpg');
+        });
+        });
+})
+</script>

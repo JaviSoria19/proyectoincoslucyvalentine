@@ -38,10 +38,18 @@
                                     ?>
                                     <br><br>
                                     <h2>Estadísticas: </h2>
-                                    <div class="card col-md-12 text-center">
+                                    <div class="card col-md-12 text-center" id='exportarBar'>
                                         <h2 class="font-weight-bold text-dark">Denuncias registradas por categoría:</h2>
                                         <div id="grafico_bar_total_por_categoria" style="width:100%; height:300px;"></div>
                                     </div>
+                                    <div class="col-md-12" align="center">
+                                        <br>
+                                        <button id="saveBarPDF" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> PDF
+                                        </button>
+                                        <button id="saveBarIMG" class="btn btn-info"><i class="fa fa-file-photo-o"></i> JPG
+                                        </button> 
+                                    </div>
+                                    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
@@ -77,77 +85,34 @@
     </div><!-- Fin Div container md-3 -->
 </div><!-- Fin Right Col Role Main -->
 
-<!-- Modal -->
-<div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header alert-success">
-        <h5 class="modal-title font-weight-bold">CONFIRMAR ACCIÓN</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         ¿Está seguro de verificar este perfil? Presione Verificar.
-      </div>
-      <div class="modal-footer">
-        <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-        <a id="url-delete" type="submit" class="btn btn-outline-success"><i class="fa fa-toggle-on"></i> Verificar</a>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-     function confirm_modal_verificar(id) 
-        {
-            var url = '<?php echo base_url() . "index.php/usuarios/verificarbd/"; ?>';
-            $("#url-delete").attr('href', url + id);
-            // jQuery('#confirmar').modal('show', {backdrop: 'static'});
-            $('#modalConfirmacion').modal('show');
-        } 
+<!--SCRIPTS PARA PDF & IMAGEN-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.1/dist/html2canvas.min.js"></script>
+<script type="text/javascript">
+    $("#saveBarPDF").click(function() {
+    html2canvas(document.getElementById('exportarBar')).then(canvas => {
+        var w = document.getElementById("exportarBar").offsetWidth;
+        var h = document.getElementById("exportarBar").offsetHeight;
+
+        var img = canvas.toDataURL("image/jpeg", 1);
+
+        var doc = new jsPDF('L', 'pt', [w, h]);
+        doc.addImage(img, 'JPEG', 0, 0, w, h);
+        doc.save('DenunciasRegistradasPorCategoria_<?php echo date('d_m_Y_H_i_s'); ?>.pdf');
+    }).catch(function(e) {
+        console.log(e.message);
+    });
+})
 </script>
 
-<!-- Modal -->
-<div class="modal fade" id="modalDeshacer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header alert-warning">
-        <h5 class="modal-title font-weight-bold">CONFIRMAR ACCIÓN</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         ¿Está seguro de quitar el atributo verificado de este perfil? Presione Confirmar.
-      </div>
-      <div class="modal-footer">
-        <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-        <a id="url-delete-two" type="submit" class="btn btn-outline-warning"><i class="fa fa-toggle-off"></i> Confirmar</a>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-     function confirm_modal_deshacer_verificar(id) 
-        {
-            var url = '<?php echo base_url() . "index.php/usuarios/undoverificarbd/"; ?>';
-            $("#url-delete-two").attr('href', url + id);
-            $('#modalDeshacer').modal('show');
-        } 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+<script type="text/javascript">
+    $("#saveBarIMG").click(function() {
+    html2canvas(document.querySelector("#exportarBar")).then(canvas => {
+        canvas.toBlob(function(blob) {
+          window.saveAs(blob, 'DenunciasRegistradasPorCategoria_<?php echo date('d_m_Y_H_i_s'); ?>.jpg');
+        });
+        });
+})
 </script>
 
-<div class="modal fade" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title font-weight-bold">FOTO SUBIDA POR EL USUARIO:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" align="center">
-         <img src="<?php echo base_url();?>/uploads/user.png" class="modal-img img-thumbnail">
-      </div>
-    </div>
-  </div>
-</div>
