@@ -4,15 +4,16 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2><i class="fa fa-list-eye"></i> Mis alertas.</h2>
+                        <h2><i class="fa fa-eye"></i> Mis alertas.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
                         <p class="font-weight-bold text-dark">Aquí encontrarás las alertas que realizaste desde la aplicación móvil, las alertas son un mecanismo de auxilio que permite a la mujer realizar simultáneamente las siguientes acciones:<br>
-                        ● Llamar a la fuerza especial de lucha contra la violencia.<br>
-                        ● Envíar la ubicación a una base de datos de la FELCV.<br>  
-                        ● Mandar un mensaje SMS a un máximo de 5 contactos que hayas seleccionado previamente, el cual contiene tu ubicación del momento en que apretaste el botón de alerta y un texto de auxilio.</p>
+                        ● Envíar tú ubicación a una base de datos de la FELCV.<br>  
+                        ● Mandar un mensaje SMS a un máximo de 5 contactos que hayas seleccionado previamente, el cual contiene tu ubicación del momento en que apretaste el botón de alerta y un texto de auxilio.<br>
+                        ● Llamar al número de la Fuerza Especial de Lucha Contra la Violencia.
+                        </p>
                         <br>
                         <?php if ($historial->num_rows()==0): ?>
                             <div class="alert alert-info text-light">

@@ -19,8 +19,6 @@
                             foreach($infodenuncia->result() as $row)
                             {
                                 $foto=$row->foto;
-                                $audio=$row->audio;
-                                $video=$row->video;
                         ?>
                             <div class="card bg-dark text-light justify text-justify">
                                 <div class="card-body">
@@ -67,25 +65,6 @@
                                             <br>
                                         <?php else: ?>
                                             La denunciante no ha presentado ninguna evidencia fotográfica.<br>
-                                        <?php endif ?>
-
-                                        <?php if ($row->audio!=''): ?>
-                                            <audio controls>
-                                              <source src="<?php echo $audio;?>" type="audio/ogg">
-                                              Su navegador no soporta archivos de audio.
-                                            </audio>
-                                            <br><br>
-                                        <?php else: ?>
-                                            La denunciante no ha presentado ninguna evidencia de audio.<br>
-                                        <?php endif ?>
-                                        <?php if ($row->video!=''): ?>
-                                            <video controls class="w-50 rounded">
-                                              <source src="<?php echo $video;?>" type="video/mp4">
-                                              <source src="movie.ogg" type="video/ogg">
-                                              Su navegador no soporta archivos de video.
-                                            </video>
-                                        <?php else: ?>
-                                            La denunciante no ha presentado video alguno.
                                         <?php endif ?>
                                     </div>
 

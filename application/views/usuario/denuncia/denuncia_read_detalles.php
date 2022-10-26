@@ -9,68 +9,58 @@
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <?php 
-                            echo form_open_multipart('denuncia/index');
-                        ?>
+                        <?php echo form_open_multipart('denuncia/index'); ?>
                             <button type="submit" name="buttonInhabilitados" class="btn btn-outline-success">
                             <i class="fa fa-arrow-circle-left"></i> Volver a denuncias
                             </button>
-                        <?php 
-                            echo form_close();
-                        ?>
+                        <?php echo form_close(); ?>
                         <br>
                         <?php            
                             foreach($infodenuncia->result() as $row)
                             {
                                 $foto=$row->foto;
-                                $audio=$row->audio;
-                                $video=$row->video;
                         ?>
                             <div class="card bg-dark text-light justify text-justify">
                                 <div class="card-body">
 
                                     <div class="col-md-6">
-                                         <h3>
-                                        Tipo de Denuncia: <?php echo $row->descripcionCategoria;?>
-                                        <br>
-                                        Fecha: <?php echo formatearsoloFecha($row->fechaRegistro);?> a hrs. <?php echo formatearsoloHora($row->fechaRegistro);?> <br>
-                                        Autoridad asignada al caso:
-                                        <?php if ($row->autoridadAsignada==''): ?>
-                                            Pendiente.
-                                        <?php else: ?>
-                                            <?php echo $row->autoridadAsignada;?>
-                                        <?php endif ?>
-                                        </h3>
-                                        <h2><?php echo $row->declaracion;?></h2>
+                                        <table class="table table-sm text-light h5">
+                                            <thead></thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tipo de Denuncia:</td>
+                                                    <td><?php echo $row->descripcionCategoria;?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Fecha:</td>
+                                                    <td><?php echo formatearsoloFecha($row->fechaRegistro);?> a hrs. <?php echo formatearsoloHora($row->fechaRegistro);?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Responsable:</td>
+                                                    <td>
+                                        <?php $query = $this->db->query("SELECT * FROM proceso_denuncia WHERE idDenuncia = ".$row->idDenuncia." ORDER BY idProceso DESC LIMIT 1");
+                                        foreach($query->result() as $rowUltimoProceso) { ?>
+                                            <?php if (!$rowUltimoProceso->idUsuarioResponsable): ?>
+                                                -
+                                            <?php endif ?>
+                                            <?php echo $rowUltimoProceso->idUsuarioResponsable; ?>
+
+                                        <?php } ?>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <h2 class="font-italic">"<?php echo $row->declaracion;?>"</h2>
                                     </div>
                                     <div class="col-md-6 text-center align-self-center">
                                         <h3>Evidencias presentadas: </h3>
                                         <?php if ($foto!=''): ?>
                                             Click en la imagen para verla en la resolución enviada:
-                                            <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" class="rounded w-50 mx-auto d-block"
+                                            <img src="<?php echo $foto;?>" class="rounded w-50 mx-auto d-block"
                                             onclick="window.open(this.src, '_blank');">
                                             <br>
                                         <?php else: ?>
                                             Usted no ha presentado ninguna evidencia fotográfica.<br>
-                                        <?php endif ?>
-
-                                        <?php if ($row->audio!=''): ?>
-                                            <audio controls>
-                                              <source src="<?php echo base_url();?>/uploads/denuncia/<?php echo $audio;?>" type="audio/ogg">
-                                              Su navegador no soporta archivos de audio.
-                                            </audio>
-                                            <br><br>
-                                        <?php else: ?>
-                                            Usted no ha presentado ninguna evidencia de audio.<br>
-                                        <?php endif ?>
-                                        <?php if ($row->video!=''): ?>
-                                            <video controls class="w-50 rounded">
-                                              <source src="<?php echo base_url();?>/uploads/denuncia/<?php echo $video;?>" type="video/mp4">
-                                              <source src="movie.ogg" type="video/ogg">
-                                              Su navegador no soporta archivos de video.
-                                            </video>
-                                        <?php else: ?>
-                                            Usted no ha presentado video alguno.
                                         <?php endif ?>
                                     </div>
                                     
@@ -96,7 +86,6 @@
                     <?php } ?>
                 </tbody>
             </table>
-
                                 </div>
                             </div>
                         <?php 

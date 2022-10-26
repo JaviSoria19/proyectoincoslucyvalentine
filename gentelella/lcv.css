@@ -8,24 +8,36 @@
 .nav-md ul.nav.child_menu li:before{
   background: #E7E7E7;
 }
+.cbba{
+  opacity: 0.5;
+}
 .cbba:hover {
   border-radius: 5px;
   background: linear-gradient(#00FFF7,#00C6C0);
-  transition: 0.5s;
+  transition: 0.3s;
   border-style: solid;
   border-color: #00C6C0;
+  opacity: 1.0;
+}
+.lp{
+  opacity: 0.5;
 }
 .lp:hover {
   border-radius: 5px;
   background: linear-gradient(#FF2727, #E70000);
-  transition: 0.5s;
+  transition: 0.3s;
   border-style: solid;
   border-color: #BF0000;
+  opacity: 1.0;
+}
+.sc{
+  opacity: 0.5;
 }
 .sc:hover {
   border-radius: 5px;
   background: linear-gradient(#66C52B,#00a32e);
-  transition: 0.5s;
+  transition: 0.3s;
   border-style: solid;
   border-color: #00a32e;
+  opacity: 1.0;
 }

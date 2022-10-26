@@ -13,7 +13,11 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                                     <p class="text-dark font-weight-bold">
-                                        <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),2); ?> aquí puedes encontrar las denuncias que realizaste dentro de la aplicación móvil.
+                                        <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),2); ?> aquí puedes encontrar las denuncias que realizaste dentro de la aplicación móvil.<br>
+                                        Si deseas realizar una denuncia puedes hacier cualquiera de las siguientes opciones:<br>
+                                        ● Descargar la aplicación móvil Sistema Lucy Valentine.<br>
+                                        ● Apersonarte a SLIM.<br>
+                                        ● Apersonarte a la FELCV.
                                     </p>
                                     <?php if ($historial->num_rows()==0): ?>
                                         <div class="alert alert-info text-light">
@@ -49,7 +53,7 @@
                             else
                             {
                         ?>
-                        <img src="<?php echo base_url();?>/uploads/<?php echo $foto;?>" height="35px" class="rounded mx-auto d-block gallery-item">
+                        <img src="<?php echo $foto;?>" height="35px" class="rounded mx-auto d-block gallery-item">
                         <?php
                             }
                         ?>
@@ -152,7 +156,7 @@
         </button>
       </div>
       <div class="modal-body" align="center">
-         <img src="<?php echo base_url();?>/uploads/user.png" class="modal-img img-thumbnail">
+         <img src="<?php echo base_url();?>/uploads/user.png" class="modal-img rounded w-75">
       </div>
     </div>
   </div>
