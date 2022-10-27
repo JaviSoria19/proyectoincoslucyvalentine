@@ -52,6 +52,24 @@
                                             <p>Santa Cruz</p>
                                         </a>
                                     </div>
+                                    <div class="col-md-4 text-center font-weight-bold text-dark">
+                                        <a href="<?php echo base_url()."index.php/institucion/Tarija";?>">
+                                            <img class="w-75 lp" src="<?php echo base_url();?>/uploads/departamentos/tarija.png">
+                                            <p>Tarija</p>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 text-center font-weight-bold text-dark">
+                                        <a href="<?php echo base_url()."index.php/institucion/Pando";?>">
+                                            <img class="w-75 sc" src="<?php echo base_url();?>/uploads/departamentos/pando.png">
+                                            <p>Pando</p>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 text-center font-weight-bold text-dark">
+                                        <a href="<?php echo base_url()."index.php/institucion/Potosi";?>">
+                                            <img class="w-75 lp" src="<?php echo base_url();?>/uploads/departamentos/potosi.png">
+                                            <p>Potosí</p>
+                                        </a>
+                                    </div>
                                     
                                     
                                 </div><!-- Inicio Div card-box table-responsive -->
