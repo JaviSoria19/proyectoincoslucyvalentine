@@ -39,7 +39,7 @@ class Publicacion extends CI_Controller {
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }
-        else if ($this->session->userdata('rol')=='usuario') {
+        elseif ($this->session->userdata('rol')=='usuario') {
             $this->load->view('usuario/inc/headergentelella');
             $this->load->view('usuario/inc/sidebargentelella');
             $this->load->view('usuario/inc/topbargentelella');
@@ -47,7 +47,7 @@ class Publicacion extends CI_Controller {
             $this->load->view('usuario/inc/creditosgentelella');
             $this->load->view('usuario/inc/footergentelella');
         }
-        else if ($this->session->userdata('rol')=='policia') {
+        elseif ($this->session->userdata('rol')=='policia') {
             $this->load->view('policia/inc/headergentelella');
             $this->load->view('policia/inc/sidebargentelella');
             $this->load->view('policia/inc/topbargentelella');
@@ -55,7 +55,7 @@ class Publicacion extends CI_Controller {
             $this->load->view('policia/inc/creditosgentelella');
             $this->load->view('policia/inc/footergentelella');
         }
-        else if ($this->session->userdata('rol')=='autoridad') {
+        elseif ($this->session->userdata('rol')=='autoridad') {
             $this->load->view('autoridad/inc/headergentelella');
             $this->load->view('autoridad/inc/sidebargentelella');
             $this->load->view('autoridad/inc/topbargentelella');
@@ -63,7 +63,7 @@ class Publicacion extends CI_Controller {
             $this->load->view('autoridad/inc/creditosgentelella');
             $this->load->view('autoridad/inc/footergentelella');
         }
-        else if ($this->session->userdata('rol')=='moderador') {
+        elseif ($this->session->userdata('rol')=='moderador') {
             $this->load->view('moderador/inc/headergentelella');
             $this->load->view('moderador/inc/sidebargentelella');
             $this->load->view('moderador/inc/topbargentelella');
@@ -91,7 +91,7 @@ class Publicacion extends CI_Controller {
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }
-        else if ($this->session->userdata('rol')=='policia') {
+        elseif ($this->session->userdata('rol')=='policia') {
             $lista=$this->publicacion_model->listaPublicacionesEliminadas($tipoPublicacion);
             $data['publicacion']=$lista;
             $this->load->view('policia/inc/headergentelella');

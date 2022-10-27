@@ -157,6 +157,17 @@ class Denuncia extends CI_Controller {
             $this->load->view('policia/inc/creditosgentelella');
             $this->load->view('policia/inc/footergentelella');
         }
+        elseif ($this->session->userdata('rol')=='autoridad') {
+            $iddenuncia=$_POST['iddenuncia'];
+            $data['infodenuncia']=$this->denuncia_model->recuperardenuncias($iddenuncia);
+            $data['proceso']=$this->proceso_denuncia_model->listaproceso_denuncias($iddenuncia);
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
+            $this->load->view('autoridad/denuncia/denuncia_read_detalles',$data);
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
+        }
         else{
             redirect('usuarios/panel','refresh');
         }

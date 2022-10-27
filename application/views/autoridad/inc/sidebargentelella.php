@@ -111,13 +111,6 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('test/inicio');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Test de Violencia
-                          </button>
-                        <?php echo form_close();?>
-                    </li>
-                    <li>
                         <?php echo form_open_multipart('test/registros');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                             Registros
@@ -140,9 +133,9 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('contacto/inicio');?>
+                        <?php echo form_open_multipart('institucion/inicio');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Teléfonos de Contacto
+                            Instituciones
                           </button>
                         <?php echo form_close();?>
                     </li>
