@@ -89,6 +89,8 @@ class Denuncia extends CI_Controller {
     {
         $totaldenunciaporcategoria=$this->denuncia_model->total_denuncia_por_categoria();
         $data['totaldenunciaporcategoria']=$totaldenunciaporcategoria;
+        $totaldenunciaporprocesodenuncia=$this->denuncia_model->total_denuncia_por_proceso_denuncia();
+        $data['totaldenunciaporprocesodenuncia']=$totaldenunciaporprocesodenuncia;
         if($this->session->userdata('rol')=='admin')
         {
             $this->load->view('admin/inc/headergentelella');
@@ -372,6 +374,8 @@ class Denuncia extends CI_Controller {
         $fecha_fin=$_POST['date_fin'];
         $totaldenunciaporcategoria=$this->denuncia_model->filtro_total_denuncia_por_categoria($fecha_inicio,$fecha_fin);
         $data['totaldenunciaporcategoria']=$totaldenunciaporcategoria;
+        $totaldenunciaporprocesodenuncia=$this->denuncia_model->filtro_total_denuncia_por_proceso_denuncia($fecha_inicio,$fecha_fin);
+        $data['totaldenunciaporprocesodenuncia']=$totaldenunciaporprocesodenuncia;
         if($this->session->userdata('rol')=='admin')
         {
                     $this->load->view('admin/inc/headergentelella');

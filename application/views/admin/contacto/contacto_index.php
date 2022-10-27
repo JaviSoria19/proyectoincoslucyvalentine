@@ -33,7 +33,18 @@
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
                                         <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),2); ?> aquí puedes encontrar los puntos a donde acudir en caso de violencia, por favor selecciona un departamento para desplegar la información.
                                     </p>
-                                        
+                                    <div class="col-md-4 text-center font-weight-bold text-dark">
+                                        <a href="<?php echo base_url()."index.php/institucion/Beni";?>">
+                                            <img class="w-75 sc" src="<?php echo base_url();?>/uploads/departamentos/beni.png">
+                                            <p>Beni</p>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 text-center font-weight-bold text-dark">
+                                        <a href="<?php echo base_url()."index.php/institucion/Chuquisaca";?>">
+                                            <img class="w-75 lp" src="<?php echo base_url();?>/uploads/departamentos/chuquisaca.png">
+                                            <p>Chuquisaca</p>
+                                        </a>
+                                    </div>
                                     <div class="col-md-4 text-center font-weight-bold text-dark">
                                         <a href="<?php echo base_url()."index.php/institucion/Cochabamba";?>">
                                             <img class="w-75 cbba" src="<?php echo base_url();?>/uploads/departamentos/cochabamba.png">
@@ -47,15 +58,9 @@
                                         </a>
                                     </div>
                                     <div class="col-md-4 text-center font-weight-bold text-dark">
-                                        <a href="<?php echo base_url()."index.php/institucion/Santa_Cruz";?>">
-                                            <img class="w-75 sc" src="<?php echo base_url();?>/uploads/departamentos/santa_cruz.png">
-                                            <p>Santa Cruz</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-4 text-center font-weight-bold text-dark">
-                                        <a href="<?php echo base_url()."index.php/institucion/Tarija";?>">
-                                            <img class="w-75 lp" src="<?php echo base_url();?>/uploads/departamentos/tarija.png">
-                                            <p>Tarija</p>
+                                        <a href="<?php echo base_url()."index.php/institucion/Oruro";?>">
+                                            <img class="w-75 lp" src="<?php echo base_url();?>/uploads/departamentos/oruro.png">
+                                            <p>Oruro</p>
                                         </a>
                                     </div>
                                     <div class="col-md-4 text-center font-weight-bold text-dark">
@@ -70,6 +75,19 @@
                                             <p>Potosí</p>
                                         </a>
                                     </div>
+                                    <div class="col-md-4 text-center font-weight-bold text-dark">
+                                        <a href="<?php echo base_url()."index.php/institucion/Santa_Cruz";?>">
+                                            <img class="w-75 sc" src="<?php echo base_url();?>/uploads/departamentos/santa_cruz.png">
+                                            <p>Santa Cruz</p>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 text-center font-weight-bold text-dark">
+                                        <a href="<?php echo base_url()."index.php/institucion/Tarija";?>">
+                                            <img class="w-75 lp" src="<?php echo base_url();?>/uploads/departamentos/tarija.png">
+                                            <p>Tarija</p>
+                                        </a>
+                                    </div>
+                                    
                                     
                                     
                                 </div><!-- Inicio Div card-box table-responsive -->

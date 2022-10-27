@@ -34,6 +34,18 @@
                                     <option value="3">Test de Violencia - Fase 3</option>
                                 </select>
                             </div>
+                            <div class="col-md-3 form-group">
+                                <label>Departamento</label>
+                                <select class="form-control" name="iddepartamento" required>
+                                    <option selected disabled value="">
+                                        Seleccione un departamento.
+                                    </option>
+                                    <option value="0">TODOS LOS DPTOS.</option>
+                                    <?php foreach ($departamento->result() as $rowDep): ?>
+                                        <option value="<?php echo $rowDep->idDepartamento ?>"><?php echo $rowDep->nombreDepartamento ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
                             <br>
                             <div class="col-md-2 form-group">
                                 <label>Filtrar</label>
@@ -57,7 +69,7 @@
                                 <div class="col-md-4 text-center">
                                 <div class="x_panel rounded">
                                     <div class="x_title">
-                                        <h2 class="font-weight-bold text-dark">Total de Test Realizados hasta la fecha: <?php echo $rowtotalfases->totalrealizados;?></h2>
+                                        <h2 class="font-weight-bold text-dark">Total Realizados hasta la fecha: <?php echo $rowtotalfases->totalrealizados;?></h2>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content2">

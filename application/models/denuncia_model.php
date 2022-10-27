@@ -111,7 +111,8 @@ class Denuncia_model extends CI_Model {
     public function filtro_total_denuncia_por_categoria($fecha_inicio,$fecha_fin)
     {
         $this->db->select("
-            (SELECT COUNT(idDenuncia) FROM denuncia WHERE idCategoria=1) AS v1,
+            (SELECT COUNT(idDenuncia) FROM denuncia WHERE idCategoria=1  AND estado = 1 AND fechaRegistro 
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS v1,
             (SELECT COUNT(idDenuncia) FROM denuncia WHERE idCategoria=2 AND estado = 1 AND fechaRegistro 
             BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS v2,
             (SELECT COUNT(idDenuncia) FROM denuncia WHERE idCategoria=3 AND estado = 1 AND fechaRegistro 
@@ -123,6 +124,36 @@ class Denuncia_model extends CI_Model {
             (SELECT COUNT(idDenuncia) FROM denuncia WHERE idCategoria=6 AND estado = 1 AND fechaRegistro 
             BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS v6
             ");
+        return $this->db->get();
+    }
+    public function total_denuncia_por_proceso_denuncia()
+    {
+        $this->db->select("
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia descartada') AS d0,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia enviada') AS d1,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia recibida') AS d2,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Citada a brindar declaración') AS d3,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia en seguimiento') AS d4,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia finalizada') AS d5
+        ");
+        return $this->db->get();
+    }
+    public function filtro_total_denuncia_por_proceso_denuncia($fecha_inicio,$fecha_fin)
+    {
+        $this->db->select("
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia descartada' AND fechaRegistro 
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS d0,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia enviada' AND fechaRegistro 
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS d1,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia recibida' AND fechaRegistro 
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS d2,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Citada a brindar declaración' AND fechaRegistro 
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS d3,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia en seguimiento' AND fechaRegistro 
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS d4,
+            (SELECT COUNT(estado) FROM proceso_denuncia WHERE estado = 'Denuncia finalizada' AND fechaRegistro 
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS d5
+        ");
         return $this->db->get();
     }
 }

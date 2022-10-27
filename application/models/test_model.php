@@ -165,14 +165,33 @@ class Test_model extends CI_Model {
             ");
         return $this->db->get();
     }
-    public function filtro_total_test_todas_las_fases($fecha_inicio,$fecha_fin)
+    public function filtro_total_test_todas_las_fases($fecha_inicio,$fecha_fin,$idDepartamento)
     {
-        $this->db->select("
+        if ($idDepartamento == '0') {
+            $this->db->select("
             (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND idNombre=1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalfase1,
             (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND idNombre=2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalfase2,
             (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND idNombre=3 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalfase3,
             (SELECT COUNT(idTest) FROM test WHERE estado = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalrealizados
             ");
+        }
+        else{
+            $this->db->select("
+            (SELECT COUNT(t.idTest) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre=1 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalfase1,
+            (SELECT COUNT(t.idTest) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre=2 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalfase2,
+            (SELECT COUNT(t.idTest) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre=3 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalfase3,
+            (SELECT COUNT(t.idTest) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59') AS totalrealizados
+            ");
+        }
+        
         return $this->db->get();
     }
     public function filtro_total_respuestas_por_pregunta_por_fase($idNombre,$res,$fecha_inicio,$fecha_fin)
@@ -192,9 +211,10 @@ class Test_model extends CI_Model {
             AND idNombre = ".$idNombre." AND ".$respuesta." = 2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS ".$alias3);
         return $this->db->get();
     }
-    public function filtro_total_respuestas_por_fase($idNombre,$fecha_inicio,$fecha_fin)
+    public function filtro_total_respuestas_por_fase($idNombre,$fecha_inicio,$fecha_fin,$idDepartamento)
     {
-        $this->db->select("
+        if ($idDepartamento=='0') {
+            $this->db->select("
             (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
             AND idNombre = ".$idNombre." AND respuesta1 = 0 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r1o1,
             (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
@@ -225,12 +245,78 @@ class Test_model extends CI_Model {
             AND idNombre = ".$idNombre." AND respuesta5 = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r5o2,
             (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
             AND idNombre = ".$idNombre." AND respuesta5 = 2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r5o3
-        ");
+            ");
+        }
+        else{
+            $this->db->select("
+                (SELECT COUNT(t.respuesta1) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta1 = 0 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r1o1,
+                (SELECT COUNT(t.respuesta1) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta1 = 1 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r1o2,
+                (SELECT COUNT(t.respuesta1) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta1 = 2 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r1o3,
+                (SELECT COUNT(t.respuesta2) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta2 = 0 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r2o1,
+                (SELECT COUNT(t.respuesta2) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta2 = 1 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r2o2,
+                (SELECT COUNT(t.respuesta2) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta2 = 2 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r2o3,
+                (SELECT COUNT(t.respuesta3) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta3 = 0 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r3o1,
+                (SELECT COUNT(t.respuesta3) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta3 = 1 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r3o2,
+                (SELECT COUNT(t.respuesta3) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta3 = 2 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r3o3,
+                (SELECT COUNT(t.respuesta4) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta4 = 0 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r4o1,
+                (SELECT COUNT(t.respuesta4) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta4 = 1 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r4o2,
+                (SELECT COUNT(t.respuesta4) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta4 = 2 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r4o3,
+                (SELECT COUNT(t.respuesta5) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta5 = 0 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r5o1,
+                (SELECT COUNT(t.respuesta5) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta5 = 1 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r5o2,
+                (SELECT COUNT(t.respuesta5) FROM test as t
+                INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 
+                AND t.idNombre = ".$idNombre." AND t.respuesta5 = 2 AND u.idDepartamento = ".$idDepartamento."
+                AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalt".$idNombre."r5o3
+            ");
+        }
         return $this->db->get();
     }
-    public function filtro_total_respuestas_por_fase_donut($idNombre,$fecha_inicio,$fecha_fin)
+    public function filtro_total_respuestas_por_fase_donut($idNombre,$fecha_inicio,$fecha_fin,$idDepartamento)
     {
-        $this->db->select("
+        if ($idDepartamento=='0') {
+            $this->db->select("
             (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
             AND idNombre = ".$idNombre." AND respuesta1 = 0 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr1o1,
             (SELECT COUNT(respuesta1) FROM test WHERE estado = 1 
@@ -261,7 +347,58 @@ class Test_model extends CI_Model {
             AND idNombre = ".$idNombre." AND respuesta5 = 1 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr5o2,
             (SELECT COUNT(respuesta5) FROM test WHERE estado = 1 
             AND idNombre = ".$idNombre." AND respuesta5 = 2 AND fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr5o3
-        ");
+            ");
+        }
+        else{
+            $this->db->select("
+            (SELECT COUNT(t.respuesta1) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta1 = 0 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr1o1,
+            (SELECT COUNT(t.respuesta1) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta1 = 1 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr1o2,
+            (SELECT COUNT(t.respuesta1) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta1 = 2 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr1o3,
+            (SELECT COUNT(t.respuesta2) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta2 = 0 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr2o1,
+            (SELECT COUNT(t.respuesta2) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta2 = 1 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr2o2,
+            (SELECT COUNT(t.respuesta2) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta2 = 2 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr2o3,
+            (SELECT COUNT(t.respuesta3) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta3 = 0 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr3o1,
+            (SELECT COUNT(t.respuesta3) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta3 = 1 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr3o2,
+            (SELECT COUNT(t.respuesta3) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta3 = 2 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr3o3,
+            (SELECT COUNT(t.respuesta4) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta4 = 0 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr4o1,
+            (SELECT COUNT(t.respuesta4) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta4 = 1 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr4o2,
+            (SELECT COUNT(t.respuesta4) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta4 = 2 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr4o3,
+            (SELECT COUNT(t.respuesta5) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta5 = 0 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr5o1,
+            (SELECT COUNT(t.respuesta5) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta5 = 1 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr5o2,
+            (SELECT COUNT(t.respuesta5) FROM test as t 
+            INNER JOIN usuario AS u ON t.idUsuario = u.idUsuario WHERE t.estado = 1 AND u.idDepartamento = ".$idDepartamento."
+            AND t.idNombre = ".$idNombre." AND t.respuesta5 = 2 AND t.fechaRegistro BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59')AS totalr5o3
+            ");
+        }
+        
         return $this->db->get();
     }
 }

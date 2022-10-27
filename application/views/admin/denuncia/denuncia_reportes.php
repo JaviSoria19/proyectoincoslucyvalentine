@@ -35,6 +35,8 @@
                                     <?php //inicio de los foreach
                                     foreach ($totaldenunciaporcategoria->result() as $rowtotaldenunciaporcategoria)
                                     {
+                                    foreach ($totaldenunciaporprocesodenuncia->result() as $rowtotaldenunciaporprocesodenuncia)
+                                    {
                                     ?>
                                     <br><br>
                                     <h2>Estadísticas: </h2>
@@ -47,9 +49,20 @@
                                         <button id="saveBarPDF" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> PDF
                                         </button>
                                         <button id="saveBarIMG" class="btn btn-info"><i class="fa fa-file-photo-o"></i> JPG
-                                        </button> 
+                                        </button>
+                                        <br><br>
                                     </div>
-                                    
+                                    <div class="card col-md-12 text-center" id='exportarBar2'>
+                                        <h2 class="font-weight-bold text-dark">Denuncias según el proceso:</h2>
+                                        <div id="grafico_bar_total_por_proceso_denuncia" style="width:100%; height:300px;"></div>
+                                    </div>
+                                    <div class="col-md-12" align="center">
+                                        <br>
+                                        <button id="saveBarPDF2" class="btn btn-danger"><i class="fa fa-file-pdf-o"></i> PDF
+                                        </button>
+                                        <button id="saveBarIMG2" class="btn btn-info"><i class="fa fa-file-photo-o"></i> JPG
+                                        </button>
+                                    </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
@@ -71,9 +84,26 @@
             labels: ['Violencia Física','Violencia Psicológica','Violencia Económica','Violencia Sexual','Violencia Emocional','Otro'],
             barColors: ['#800000','#380062','#FF8F00','#FF0000','#004162','#808080']
         });
+        Morris.Bar({
+            element: 'grafico_bar_total_por_proceso_denuncia',
+            data: [
+                { y: 'Procesos', 
+                    a:<?php echo $rowtotaldenunciaporprocesodenuncia->d0;?>,
+                    b:<?php echo $rowtotaldenunciaporprocesodenuncia->d1;?>,
+                    c:<?php echo $rowtotaldenunciaporprocesodenuncia->d2;?>,
+                    d:<?php echo $rowtotaldenunciaporprocesodenuncia->d3;?>,
+                    e:<?php echo $rowtotaldenunciaporprocesodenuncia->d4;?>,
+                    f:<?php echo $rowtotaldenunciaporprocesodenuncia->d5;?>
+                }
+            ],
+            xkey: 'y',
+            ykeys: ['a','b','c','d','e','f'],
+            labels: ['Denuncias descartadas','Denuncias enviadas','Denuncias recibidas','Citadas a brindar declaración','Denuncias en seguimiento','Denuncias finalizadas'],
+            barColors: ['#707b7c','#f1c40f','#aeff00','#00ffc1','#0059ff','#ec00ff']
+        });
     </script>
                                     <?php //fin de los foreach
-                                    }
+                                    }}
                                     ?>         
                                 </div><!-- Inicio Div card-box table-responsive -->
                             </div><!-- Fin Div col-sm-12 2 -->
@@ -104,6 +134,22 @@
     });
 })
 </script>
+<script type="text/javascript">
+    $("#saveBarPDF2").click(function() {
+    html2canvas(document.getElementById('exportarBar2')).then(canvas => {
+        var w = document.getElementById("exportarBar2").offsetWidth;
+        var h = document.getElementById("exportarBar2").offsetHeight;
+
+        var img = canvas.toDataURL("image/jpeg", 1);
+
+        var doc = new jsPDF('L', 'pt', [w, h]);
+        doc.addImage(img, 'JPEG', 0, 0, w, h);
+        doc.save('DenunciasPorProceso_<?php echo date('d_m_Y_H_i_s'); ?>.pdf');
+    }).catch(function(e) {
+        console.log(e.message);
+    });
+})
+</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
 <script type="text/javascript">
@@ -111,6 +157,15 @@
     html2canvas(document.querySelector("#exportarBar")).then(canvas => {
         canvas.toBlob(function(blob) {
           window.saveAs(blob, 'DenunciasRegistradasPorCategoria_<?php echo date('d_m_Y_H_i_s'); ?>.jpg');
+        });
+        });
+})
+</script>
+<script type="text/javascript">
+    $("#saveBarIMG2").click(function() {
+    html2canvas(document.querySelector("#exportarBar2")).then(canvas => {
+        canvas.toBlob(function(blob) {
+          window.saveAs(blob, 'DenunciasPorProceso_<?php echo date('d_m_Y_H_i_s'); ?>.jpg');
         });
         });
 })
