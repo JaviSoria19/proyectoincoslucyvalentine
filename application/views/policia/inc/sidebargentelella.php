@@ -84,7 +84,14 @@
                     <li>
                         <?php echo form_open_multipart('denuncia/index');?>
                           <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Denuncias
+                            Todas las Denuncias
+                          </button>
+                        <?php echo form_close();?>
+                    </li>
+                    <li>
+                        <?php echo form_open_multipart('denuncia/asignados');?>
+                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            Denuncias asignadas
                           </button>
                         <?php echo form_close();?>
                     </li>

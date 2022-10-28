@@ -89,7 +89,10 @@
                     </tr>
                     <?php } ?>
                 </tbody>
-            </table>
+            </table>                    
+                                        <?php if (($_SESSION['nombres'].' '.$_SESSION['primerapellido'])==$rowProceso->idUsuarioResponsable || $_SESSION['rol']=='admin'): ?>
+                                            
+                                        
                                         <h2 class="font-weight-bold">Acciones:</h2>
                                         <?php echo form_open_multipart('proceso_denuncia/agregarbd'); ?>
                                         <input type="hidden" name="iddenuncia" value="<?php echo $row->idDenuncia;?>">
@@ -150,6 +153,8 @@
                                             <i class="fa fa-arrow-circle-o-up"></i> Actualizar Caso de Violencia
                                             </button>
                                         <?php echo form_close(); ?>
+
+                                        <?php endif ?>
                                     </div>
                                 </div>
 

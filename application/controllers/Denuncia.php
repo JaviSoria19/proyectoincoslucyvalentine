@@ -49,6 +49,42 @@ class Denuncia extends CI_Controller {
             redirect('usuarios/panel','refresh');
         }
 	}
+    public function asignados()
+    {
+        if($this->session->userdata('rol')=='policia'){
+            $lista=$this->denuncia_model->listadenunciasAsignadas($_SESSION['nombres'],$_SESSION['primerapellido']);
+            $data['denuncia']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('admin/denuncia/denuncia_read',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        elseif($this->session->userdata('rol')=='autoridad'){
+            $lista=$this->denuncia_model->listadenunciasAsignadas($_SESSION['nombres'],$_SESSION['primerapellido']);
+            $data['denuncia']=$lista;
+            $this->load->view('policia/inc/headergentelella');
+            $this->load->view('policia/inc/sidebargentelella');
+            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('admin/denuncia/denuncia_read',$data);
+            $this->load->view('policia/inc/creditosgentelella');
+            $this->load->view('policia/inc/footergentelella');
+        }
+        elseif($this->session->userdata('rol')=='admin'){
+            $lista=$this->denuncia_model->listadenunciasAsignadas($_SESSION['nombres'],$_SESSION['primerapellido']);
+            $data['denuncia']=$lista;
+            $this->load->view('admin/inc/headergentelella');
+            $this->load->view('admin/inc/sidebargentelella');
+            $this->load->view('admin/inc/topbargentelella');
+            $this->load->view('admin/denuncia/denuncia_read',$data);
+            $this->load->view('admin/inc/creditosgentelella');
+            $this->load->view('admin/inc/footergentelella');
+        }
+        else{
+            redirect('usuarios/panel','refresh');
+        }
+    }
     public function descartados()
     {
         if($this->session->userdata('rol')=='admin'){
@@ -155,7 +191,7 @@ class Denuncia extends CI_Controller {
             $this->load->view('policia/inc/headergentelella');
             $this->load->view('policia/inc/sidebargentelella');
             $this->load->view('policia/inc/topbargentelella');
-            $this->load->view('policia/denuncia/denuncia_read_detalles',$data);
+            $this->load->view('admin/denuncia/denuncia_read_detalles',$data);
             $this->load->view('policia/inc/creditosgentelella');
             $this->load->view('policia/inc/footergentelella');
         }
@@ -166,7 +202,7 @@ class Denuncia extends CI_Controller {
             $this->load->view('autoridad/inc/headergentelella');
             $this->load->view('autoridad/inc/sidebargentelella');
             $this->load->view('autoridad/inc/topbargentelella');
-            $this->load->view('autoridad/denuncia/denuncia_read_detalles',$data);
+            $this->load->view('admin/denuncia/denuncia_read_detalles',$data);
             $this->load->view('autoridad/inc/creditosgentelella');
             $this->load->view('autoridad/inc/footergentelella');
         }

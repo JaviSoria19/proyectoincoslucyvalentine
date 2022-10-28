@@ -316,12 +316,12 @@ class Test extends CI_Controller {
             $fecha_fin=$_POST['date_fin'];
             $numeroTest=$_POST['numerotest'];
             $data['numeroTest']=$numeroTest;
-            $totalfases=$this->test_model->filtro_total_test_todas_las_fases($fecha_inicio,$fecha_fin);
+            $totalfases=$this->test_model->filtro_total_test_todas_las_fases($fecha_inicio,$fecha_fin,$idDepartamento);
             $data['totalfases']=$totalfases;
-            $totaldonuts=$this->test_model->filtro_total_respuestas_por_fase_donut($numeroTest,$fecha_inicio,$fecha_fin);
-            $totalt1=$this->test_model->filtro_total_respuestas_por_fase(1,$fecha_inicio,$fecha_fin);
-            $totalt2=$this->test_model->filtro_total_respuestas_por_fase(2,$fecha_inicio,$fecha_fin);
-            $totalt3=$this->test_model->filtro_total_respuestas_por_fase(3,$fecha_inicio,$fecha_fin);
+            $totaldonuts=$this->test_model->filtro_total_respuestas_por_fase_donut($numeroTest,$fecha_inicio,$fecha_fin,$idDepartamento);
+            $totalt1=$this->test_model->filtro_total_respuestas_por_fase(1,$fecha_inicio,$fecha_fin,$idDepartamento);
+            $totalt2=$this->test_model->filtro_total_respuestas_por_fase(2,$fecha_inicio,$fecha_fin,$idDepartamento);
+            $totalt3=$this->test_model->filtro_total_respuestas_por_fase(3,$fecha_inicio,$fecha_fin,$idDepartamento);
             $data['totaldonuts']=$totaldonuts;
             $data['totalt1']=$totalt1;
             $data['totalt2']=$totalt2;

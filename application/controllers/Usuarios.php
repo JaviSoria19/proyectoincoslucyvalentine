@@ -556,6 +556,8 @@ class Usuarios extends CI_Controller {
                         $this->session->set_userdata('foto',$row->foto);
                         $this->session->set_userdata('rol',$row->rol);
                         $this->session->set_userdata('sexo',$row->sexo);
+                        $this->session->set_userdata('nombres',$row->nombres);
+                        $this->session->set_userdata('primerapellido',$row->primerApellido);
                         redirect('usuarios/panel','refresh');
                         }            
                 }
