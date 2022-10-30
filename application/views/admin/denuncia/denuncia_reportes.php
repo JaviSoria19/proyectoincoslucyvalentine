@@ -62,7 +62,28 @@
                                         </button>
                                         <button id="saveBarIMG2" class="btn btn-info"><i class="fa fa-file-photo-o"></i> JPG
                                         </button>
+                                        <br><br>
                                     </div>
+
+                                <div class="col-md-4 text-center">
+                                <div class="x_panel rounded">
+                                    <div class="x_title">
+                                        <h2 class="font-weight-bold text-dark">De los cuales:</h2>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content2">
+                                        <div class="item justify-content-center text-dark">
+                                        <h2 style="color:#A4A4A4;">■</h2><h2>Denuncias descartadas⠀</h2>
+                                        <h2 style="color:#EA00AE;">■</h2><h2>Denuncias finalizadas⠀</h2>
+                                        </div>
+                                        <div id="grafico_donut_d0_d5" style="width:100%; height:300px;"></div>
+                                        <div class="justify-content-center text-dark">
+                                        <h2 style="color:#A4A4A4;">■ <?php echo $rowtotaldenunciaporprocesodenuncia->d0;?></h2>
+                                        <h2 style="color:#EA00AE;">■ <?php echo $rowtotaldenunciaporprocesodenuncia->d5;?></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
@@ -87,19 +108,24 @@
         Morris.Bar({
             element: 'grafico_bar_total_por_proceso_denuncia',
             data: [
-                { y: 'Procesos', 
-                    a:<?php echo $rowtotaldenunciaporprocesodenuncia->d0;?>,
-                    b:<?php echo $rowtotaldenunciaporprocesodenuncia->d1;?>,
-                    c:<?php echo $rowtotaldenunciaporprocesodenuncia->d2;?>,
-                    d:<?php echo $rowtotaldenunciaporprocesodenuncia->d3;?>,
-                    e:<?php echo $rowtotaldenunciaporprocesodenuncia->d4;?>,
-                    f:<?php echo $rowtotaldenunciaporprocesodenuncia->d5;?>
+                { y: 'Procesos',
+                    a:<?php echo ($rowtotaldenunciaporprocesodenuncia->d1-$rowtotaldenunciaporprocesodenuncia->d2-$rowtotaldenunciaporprocesodenuncia->d0);?>,
+                    b:<?php echo ($rowtotaldenunciaporprocesodenuncia->d2-$rowtotaldenunciaporprocesodenuncia->d3);?>,
+                    c:<?php echo ($rowtotaldenunciaporprocesodenuncia->d3-$rowtotaldenunciaporprocesodenuncia->d4);?>,
+                    d:<?php echo ($rowtotaldenunciaporprocesodenuncia->d4-$rowtotaldenunciaporprocesodenuncia->d5);?>
                 }
             ],
             xkey: 'y',
-            ykeys: ['a','b','c','d','e','f'],
-            labels: ['Denuncias descartadas','Denuncias enviadas','Denuncias recibidas','Citadas a brindar declaración','Denuncias en seguimiento','Denuncias finalizadas'],
-            barColors: ['#707b7c','#f1c40f','#aeff00','#00ffc1','#0059ff','#ec00ff']
+            ykeys: ['a','b','c','d'],
+            labels: ['Denuncias enviadas','Denuncias recepcionadas','Citadas a brindar declaración','Denuncias en seguimiento'],
+            barColors: ['#f1c40f','#aeff00','#00ffc1','#0059ff']
+        });
+        Morris.Donut({
+            element:'grafico_donut_d0_d5',
+            data:[
+            {label:"Denuncias descartadas",value:<?php echo $rowtotaldenunciaporprocesodenuncia->d0;?>,color:'#A4A4A4'},
+            {label:"Denuncias finalizadas",value:<?php echo $rowtotaldenunciaporprocesodenuncia->d5;?>,color:'#EA00AE'}
+            ]
         });
     </script>
                                     <?php //fin de los foreach

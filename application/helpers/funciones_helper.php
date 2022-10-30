@@ -181,4 +181,16 @@ function retornarSaludoPerGenero($genero,$caso)
         return 'error';
     }
 }
+function formatearUltimoProcesoDenuncia($ultimoProceso)
+{
+    if ($ultimoProceso=='Denuncia finalizada') {
+        return '<p class="text-success font-weight-bold"">'.$ultimoProceso.'</p>';
+    }
+    elseif($ultimoProceso=='Denuncia enviada'){
+        return '<p class="text-warning font-weight-bold">'.$ultimoProceso.'</p>';
+    }
+    else{
+        return '<p class="text-info font-weight-bold">'.$ultimoProceso.'</p>';
+    } 
+}
 ?>

@@ -97,10 +97,6 @@
                             <i class="fa fa-eye"></i>
                             </button>
                             <?php echo form_close();?>
-
-                            <button class="btn btn-outline-warning" data-toggle="tooltip"  onclick="return confirm_modal_verificar(<?php echo $row->idDenuncia; ?>)"  data-placement="top" title="Descartar denuncia">
-                                <i class="fa fa-trash"></i>
-                            </button>
                         </div>
                     </td>
                     </tr>
@@ -118,36 +114,6 @@
         </div><!-- Fin Div row -->
     </div><!-- Fin Div container md-3 -->
 </div><!-- Fin Right Col Role Main -->
-
-<!-- Modal -->
-<div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header alert-success">
-        <h5 class="modal-title font-weight-bold">CONFIRMAR ACCIÓN</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         ¿Está seguro de descartar esta denuncia? Presione Confirmar.
-      </div>
-      <div class="modal-footer">
-        <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-        <a id="url-delete" type="submit" class="btn btn-outline-warning"><i class="fa fa-trash"></i> Si, descartar</a>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-     function confirm_modal_verificar(id) 
-        {
-            var url = '<?php echo base_url() . "index.php/denuncia/deshabilitarbd/"; ?>';
-            $("#url-delete").attr('href', url + id);
-            // jQuery('#confirmar').modal('show', {backdrop: 'static'});
-            $('#modalConfirmacion').modal('show');
-        } 
-</script>
 
 <div class="modal fade" id="gallery-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
