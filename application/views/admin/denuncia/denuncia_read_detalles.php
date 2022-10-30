@@ -83,7 +83,7 @@
                     <?php foreach($proceso->result() as $rowProceso) { ?>
                     <tr>
                         <td><?php echo $rowProceso->estado; ?></td>
-                        <td><?php echo $rowProceso->fechaRegistro; ?></td>
+                        <td class="text-center"><?php echo formatearFechaMasHora($rowProceso->fechaRegistro); ?></td>
                         <td><?php echo $rowProceso->idUsuarioResponsable; ?></td>
                         <td><?php echo $rowProceso->comentario; ?></td>
                     </tr>

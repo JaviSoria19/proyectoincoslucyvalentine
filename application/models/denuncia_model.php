@@ -168,12 +168,32 @@ class Denuncia_model extends CI_Model {
             DEP.nombreDepartamento,DC.descripcionCategoria,
             U.nombres,U.primerApellido,U.segundoApellido,U.numeroCI,U.numeroCelular,U.sexo,
             (SELECT idUsuarioResponsable FROM proceso_denuncia WHERE idDenuncia = D.idDenuncia ORDER BY idProceso DESC LIMIT 1) AS responsable,
-            D.idUsuario,D.fechaRegistro,D.foto
+            D.idUsuario,D.fechaRegistro,D.foto,
+            (SELECT estado FROM proceso_denuncia WHERE idDenuncia = D.idDenuncia ORDER BY idProceso DESC LIMIT 1) AS ultimoEstado
             FROM usuario U
             INNER JOIN denuncia D ON U.idUsuario=D.idUsuario
             INNER JOIN denuncia_categoria DC ON DC.idCategoria=D.idcategoria
             INNER JOIN departamento DEP ON U.idDepartamento=DEP.idDepartamento
             WHERE (SELECT idUsuarioResponsable FROM proceso_denuncia WHERE idDenuncia = D.idDenuncia ORDER BY idProceso DESC LIMIT 1) = '".$nombres." ".$primerApellido."'
+            ORDER BY D.fechaRegistro DESC
+            ");
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
+    public function filtrolistadenunciasAsignadas($nombres,$primerApellido,$fecha_inicio,$fecha_fin)//select
+    {
+        $this->db->select("
+            D.idDenuncia,
+            DEP.nombreDepartamento,DC.descripcionCategoria,
+            U.nombres,U.primerApellido,U.segundoApellido,U.numeroCI,U.numeroCelular,U.sexo,
+            (SELECT idUsuarioResponsable FROM proceso_denuncia WHERE idDenuncia = D.idDenuncia ORDER BY idProceso DESC LIMIT 1) AS responsable,
+            D.idUsuario,D.fechaRegistro,D.foto,
+            (SELECT estado FROM proceso_denuncia WHERE idDenuncia = D.idDenuncia ORDER BY idProceso DESC LIMIT 1) AS ultimoEstado
+            FROM usuario U
+            INNER JOIN denuncia D ON U.idUsuario=D.idUsuario
+            INNER JOIN denuncia_categoria DC ON DC.idCategoria=D.idcategoria
+            INNER JOIN departamento DEP ON U.idDepartamento=DEP.idDepartamento
+            WHERE (SELECT idUsuarioResponsable FROM proceso_denuncia WHERE idDenuncia = D.idDenuncia ORDER BY idProceso DESC LIMIT 1) = '".$nombres." ".$primerApellido."' AND D.fechaRegistro 
+            BETWEEN '".$fecha_inicio."' AND '".$fecha_fin." 23:59:59'
             ORDER BY D.fechaRegistro DESC
             ");
         return $this->db->get(); //devolucion del resultado de la consulta

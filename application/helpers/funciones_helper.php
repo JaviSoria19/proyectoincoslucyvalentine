@@ -177,7 +177,14 @@ function retornarSaludoPerGenero($genero,$caso)
     }
     elseif($genero=='F' && $caso=='2'){
         return 'BIENVENIDA!';
-    }else{
+    }
+    elseif($genero=='M' && $caso=='3'){
+        return 'Sr.';
+    }
+    elseif($genero=='F' && $caso=='3'){
+        return 'Sra.';
+    }
+    else{
         return 'error';
     }
 }
