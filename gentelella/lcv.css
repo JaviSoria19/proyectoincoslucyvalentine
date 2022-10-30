@@ -1,13 +1,19 @@
+/*Background Gentelella*/
 .bg-lcv {
   background: #d81b60 !important;
 }
+
+/*Side Bar Gentelella, color de fondo*/
 .nav.side-menu > li.active > a {
   background: -webkit-gradient(linear, left top, left bottom, from(#f06292), to(#f06292)), #f06292;
   background: linear-gradient(#f06292, #f06292), #f06292;
 }
+
+/*Side Bar Gentelella, puntos del unordered list*/
 .nav-md ul.nav.child_menu li:before{
   background: #E7E7E7;
 }
+
 .cbba{
   opacity: 0.5;
 }
@@ -40,4 +46,14 @@
   border-style: solid;
   border-color: #00a32e;
   opacity: 1.0;
+}
+
+/*Side Bar Gentelella, borde de la derecha*/
+.nav.side-menu>li.current-page, .nav.side-menu>li.active {
+    border-right: 5px solid #FF00EC;
+}
+
+/*Side Bar Gentelella, línea blanca al desplegar unordered list*/
+.nav-md ul.nav.child_menu li:after {
+    border-left: 1px solid #E7E7E7;
 }

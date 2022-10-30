@@ -90,7 +90,9 @@
                     <?php } ?>
                 </tbody>
             </table>                    
-                                        <?php if (($_SESSION['nombres'].' '.$_SESSION['primerapellido'])==$rowProceso->idUsuarioResponsable || $_SESSION['rol']=='admin'): ?>
+                                        <?php if (
+                                            ($_SESSION['nombres'].' '.$_SESSION['primerapellido'])==$rowProceso->idUsuarioResponsable && $rowProceso->estado !='Denuncia finalizada'
+                                            || $_SESSION['rol']=='admin' && $rowProceso->estado !='Denuncia finalizada' && $rowProceso->estado !='Denuncia descartada'): ?>
                                             
                                         
                                         <h2 class="font-weight-bold">Acciones:</h2>

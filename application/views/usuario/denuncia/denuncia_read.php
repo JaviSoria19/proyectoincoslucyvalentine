@@ -32,6 +32,7 @@
                         <th>Tipo de Denuncia</th>
                         <th>Declaración</th>
                         <th>Fecha</th>
+                        <th>Proceso</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -61,6 +62,7 @@
                     <td><?php echo $row->descripcionCategoria; ?></td>
                     <td><?php echo $row->declaracion; ?></td>
                     <td class="text-center"><?php echo formatearFechaMasHora($row->fechaRegistro); ?></td>
+                    <td><?php echo formatearUltimoProcesoDenuncia($row->ultimoEstado); ?></td>
                     <td class="text-center">
                         <div class="btn-group">
                             <?php echo form_open_multipart('denuncia/visualizar_detalles');?>

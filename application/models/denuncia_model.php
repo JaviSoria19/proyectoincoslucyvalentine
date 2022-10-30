@@ -49,7 +49,8 @@ class Denuncia_model extends CI_Model {
     }
     public function recuperardenunciasusuario($idusuario)//get
     {
-        $this->db->select('d.idDenuncia,d.idUsuario,d.idCategoria,d.declaracion,d.foto,d.audio,d.video,d.estado,d.fechaRegistro,d.fechaActualizacion,c.descripcionCategoria,u.idDepartamento,u.correo,u.nombres,u.primerApellido,u.segundoApellido,u.numeroCI,u.numeroCelular,u.sexo, u.estado AS estadoUsuario,dep.nombreDepartamento');
+        $this->db->select('d.idDenuncia,d.idUsuario,d.idCategoria,d.declaracion,d.foto,d.audio,d.video,d.estado,d.fechaRegistro,d.fechaActualizacion,c.descripcionCategoria,u.idDepartamento,u.correo,u.nombres,u.primerApellido,u.segundoApellido,u.numeroCI,u.numeroCelular,u.sexo, u.estado AS estadoUsuario,dep.nombreDepartamento,
+            (SELECT estado FROM proceso_denuncia WHERE idDenuncia = d.idDenuncia ORDER BY idProceso DESC LIMIT 1) AS ultimoEstado');
         $this->db->from('denuncia AS d');
         $this->db->where('d.idUsuario',$idusuario);
         $this->db->join('denuncia_categoria as c', 'd.idCategoria = c.idCategoria');

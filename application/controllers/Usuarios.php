@@ -389,6 +389,19 @@ class Usuarios extends CI_Controller {
                 $this->load->view('admin/inc/creditosgentelella');
                 $this->load->view('admin/inc/footergentelella');
                 }
+                elseif($this->session->userdata('rol')=='moderador')
+                {
+                $idusuario=$_POST['idusuario'];
+                $data['infousuario']=$this->usuario_model->recuperarusuarios($idusuario);
+                $lista=$this->departamento_model->listadepartamentos();
+                $data['departamento']=$lista;
+                $this->load->view('moderador/inc/headergentelella');
+                $this->load->view('moderador/inc/sidebargentelella');
+                $this->load->view('moderador/inc/topbargentelella');
+                $this->load->view('admin/usuario/usuario_update',$data);
+                $this->load->view('moderador/inc/creditosgentelella');
+                $this->load->view('moderador/inc/footergentelella');
+                }
                 elseif ($this->session->userdata('rol')=='usuario') {
                 $idusuario=$_POST['idusuario'];
                 $data['infousuario']=$this->usuario_model->recuperarusuarios($idusuario);

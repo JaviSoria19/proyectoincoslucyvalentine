@@ -99,10 +99,11 @@
                             <i class="fa fa-eye"></i>
                             </button>
                             <?php echo form_close();?>
-
-                            <button class="btn btn-outline-warning" data-toggle="tooltip"  onclick="return confirm_modal_verificar(<?php echo $row->idDenuncia; ?>)"  data-placement="top" title="Descartar denuncia">
+                            <?php if ($row->ultimoEstado=='Denuncia enviada'): ?>
+                                <button class="btn btn-outline-warning" data-toggle="tooltip"  onclick="return confirm_modal_verificar(<?php echo $row->idDenuncia; ?>)"  data-placement="top" title="Descartar denuncia">
                                 <i class="fa fa-trash"></i>
-                            </button>
+                                </button>
+                            <?php endif ?>
                         </div>
                     </td>
                     </tr>

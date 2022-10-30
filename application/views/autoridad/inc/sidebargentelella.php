@@ -38,18 +38,10 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexStaff');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Publicaciones Oficiales
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexStaff";?>">Publicaciones Oficiales</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexComunidad');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Comunidad
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexComunidad";?>">Comunidad</a>
                     </li>
                   </ul>
                 </li>
@@ -60,25 +52,13 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('denuncia/index');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Todas las Denuncias
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/denuncia/index";?>">Todas las denuncias</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('denuncia/asignados');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Denuncias asignadas
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/denuncia/asignados";?>">Denuncias asignadas</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('denuncia/reportes');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Reportes
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/denuncia/reportes";?>">Reportes</a>
                     </li>
                   </ul>
                 </li>
@@ -89,25 +69,13 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexInformacionEducativa');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Información Educativa
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexInformacionEducativa";?>">Información Educativa</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexPautasdeSeguridad');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Pautas de Seguridad
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexPautasdeSeguridad";?>">Pautas de Seguridad</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexPromociondeActitudesIgualitarias');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Promoción de Actitudes Igualitarias.
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexPromociondeActitudesIgualitarias";?>">Promoción de Actitudes Igualitarias.</a>
                     </li>
                   </ul>
                 </li>
@@ -118,18 +86,10 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('test/registros');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Registros
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/test/registros";?>">Registros</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('test/reportes');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Reportes
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/test/reportes";?>">Reportes</a>
                     </li>
                   </ul>
                 </li>
@@ -140,11 +100,7 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('institucion/inicio');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Instituciones
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/institucion/inicio";?>">Instituciones</a>
                     </li>
                   </ul>
                 </li>

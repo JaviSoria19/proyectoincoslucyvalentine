@@ -64,12 +64,12 @@ class Denuncia extends CI_Controller {
         elseif($this->session->userdata('rol')=='autoridad'){
             $lista=$this->denuncia_model->listadenunciasAsignadas($_SESSION['nombres'],$_SESSION['primerapellido']);
             $data['denuncia']=$lista;
-            $this->load->view('policia/inc/headergentelella');
-            $this->load->view('policia/inc/sidebargentelella');
-            $this->load->view('policia/inc/topbargentelella');
+            $this->load->view('autoridad/inc/headergentelella');
+            $this->load->view('autoridad/inc/sidebargentelella');
+            $this->load->view('autoridad/inc/topbargentelella');
             $this->load->view('admin/denuncia/denuncia_read_asignados',$data);
-            $this->load->view('policia/inc/creditosgentelella');
-            $this->load->view('policia/inc/footergentelella');
+            $this->load->view('autoridad/inc/creditosgentelella');
+            $this->load->view('autoridad/inc/footergentelella');
         }
         elseif($this->session->userdata('rol')=='admin'){
             $lista=$this->denuncia_model->listadenunciasAsignadas($_SESSION['nombres'],$_SESSION['primerapellido']);

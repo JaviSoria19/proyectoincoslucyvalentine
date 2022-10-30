@@ -38,18 +38,10 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('usuarios/inicio');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Usuarios
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/usuarios/inicio";?>">Usuarios</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('usuarios/vetados');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            U. Vetados
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/usuarios/vetados";?>">Usuarios Vetados</a>
                     </li>
                   </ul>
                 </li>
@@ -60,18 +52,10 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexStaff');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Publicaciones Oficiales
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexStaff";?>">Publicaciones Oficiales</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexComunidad');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Comunidad
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexComunidad";?>">Comunidad</a>
                     </li>
                   </ul>
                 </li>
@@ -82,25 +66,13 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexInformacionEducativa');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Información Educativa
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexInformacionEducativa";?>">Información Educativa</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexPautasdeSeguridad');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Pautas de Seguridad
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexPautasdeSeguridad";?>">Pautas de Seguridad</a>
                     </li>
                     <li>
-                        <?php echo form_open_multipart('publicacion/indexPromociondeActitudesIgualitarias');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Promoción de Actitudes Igualitarias.
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexPromociondeActitudesIgualitarias";?>">Promoción de Actitudes Igualitarias.</a>
                     </li>
                   </ul>
                 </li>
@@ -111,11 +83,7 @@
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                        <?php echo form_open_multipart('institucion/inicio');?>
-                          <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                            Instituciones
-                          </button>
-                        <?php echo form_close();?>
+                      <a href="<?php echo base_url()."index.php/institucion/inicio";?>">Instituciones</a>
                     </li>
                   </ul>
                 </li>
