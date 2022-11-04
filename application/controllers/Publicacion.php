@@ -366,10 +366,12 @@ class Publicacion extends CI_Controller {
     {
         if($this->session->userdata('rol')=='admin')
         {
+            $next=$this->publicacion_model->siguienteID();
+            $data['next']=$next;
             $this->load->view('admin/inc/headergentelella');
             $this->load->view('admin/inc/sidebargentelella');
             $this->load->view('admin/inc/topbargentelella');
-            $this->load->view('admin/publicacion/publicacion_insert_staff');
+            $this->load->view('admin/publicacion/publicacion_insert_staff',$data);
             $this->load->view('admin/inc/creditosgentelella');
             $this->load->view('admin/inc/footergentelella');
         }elseif ($this->session->userdata('rol')=='usuario') {
@@ -406,8 +408,34 @@ class Publicacion extends CI_Controller {
             $this->load->view('admin/inc/footergentelella');
         }
         else{
+            $idpublicacion=$_POST['siguienteid'];
+            if ( $_FILES AND $_FILES['userfile']['name'] ) 
+            {
+                //inicio lógica de guardado de archivos
+                $nombrearchivo="publicacion_".$idpublicacion.".jpg";
+                $config['upload_path']='./uploads';
+                $config['file_name']=$nombrearchivo;
+                $direccion="./uploads/".$nombrearchivo;
+                if(file_exists($direccion))
+                {
+                    unlink($direccion);
+                }
+                $config['allowed_types']='jpg|png|jpeg';
+                $this->load->library('upload',$config);
+                if(!$this->upload->do_upload())
+                {
+                    $data['error']=$this->upload->display_errors();
+                }
+                else
+                {
+                    $data['fotoPublicacion']=base_url().'uploads/'.$nombrearchivo;
+                    $this->upload->data();
+                }
+            }
+            else{
+                $data['fotoPublicacion']=base_url().'uploads/publicacion_default.jpg';
+            }
             $data['idUsuario']=$this->session->userdata('idusuario');
-            $data['fotoPublicacion']=base_url().'uploads/publicacion_default.jpg';
             $data['titulo']=trim($_POST['titulo']);
             $data['contenido']=$_POST['contenido'];
             $data['tipo']=$_POST['tipo'];
@@ -492,27 +520,30 @@ class Publicacion extends CI_Controller {
         else
         {
             $idpublicacion=$_POST['idpublicacion'];
-            //inicio lógica de guardado de archivos
-            $nombrearchivo="publicacion_".$idpublicacion.".jpg";
-            $config['upload_path']='./uploads';
-            $config['file_name']=$nombrearchivo;
-            $direccion="./uploads/".$nombrearchivo;
-            if(file_exists($direccion))
-            {
-                unlink($direccion);
-            }
-            $config['allowed_types']='jpg|png|jpeg';
-            $this->load->library('upload',$config);
-            if(!$this->upload->do_upload())
-            {
-                $data['error']=$this->upload->display_errors();
-            }
-            else
-            {
-                $data['fotoPublicacion']=base_url().'uploads/'.$nombrearchivo;
-                $this->upload->data();
-            }
 
+            if ( $_FILES AND $_FILES['userfile']['name'] ) 
+            {
+                //inicio lógica de guardado de archivos
+                $nombrearchivo="publicacion_".$idpublicacion.".jpg";
+                $config['upload_path']='./uploads';
+                $config['file_name']=$nombrearchivo;
+                $direccion="./uploads/".$nombrearchivo;
+                if(file_exists($direccion))
+                {
+                    unlink($direccion);
+                }
+                $config['allowed_types']='jpg|png|jpeg';
+                $this->load->library('upload',$config);
+                if(!$this->upload->do_upload())
+                {
+                    $data['error']=$this->upload->display_errors();
+                }
+                else
+                {
+                    $data['fotoPublicacion']=base_url().'uploads/'.$nombrearchivo;
+                    $this->upload->data();
+                }
+            }
             $data['titulo']=$_POST['titulo'];
             $data['contenido']=$_POST['contenido'];
             $data['fechaActualizacion']=date('Y-m-d H:i:s');

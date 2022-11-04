@@ -15,6 +15,13 @@ class Publicacion_model extends CI_Model {
         $this->db->order_by('p.fechaRegistro', 'DESC');
         return $this->db->get(); //devolucion del resultado de la consulta
     }
+    public function siguienteID()
+    {
+        $this->db->select("
+            MAX(idPublicacion)+1 AS siguienteID FROM publicacion
+            ");
+        return $this->db->get();
+    }
     public function listaPublicacionesEliminadas($tipo)//select
     {
         $this->db->select('p.idPublicacion,p.idUsuario,fotoPublicacion,titulo,contenido,tipo,p.estado,p.fechaRegistro,p.fechaActualizacion,u.correo,u.rol,u.estado AS estadoUsuario'); //select *

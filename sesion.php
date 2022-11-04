@@ -7,7 +7,7 @@ if(isset($_GET["correo"]) &&  isset($_GET["contrasenha"])){
     $correo=$_GET['correo'];
     $contrasenha=MD5($_GET['contrasenha']);
 
-    $consulta="SELECT * FROM usuario WHERE correo='{$correo}' AND contrasenha='{$contrasenha}'";
+    $consulta="SELECT * FROM usuario WHERE correo='{$correo}' AND contrasenha='{$contrasenha}' AND estado IN('1','2')";
     $resultado = mysqli_query($conexion,$consulta);
 
     if($consulta){

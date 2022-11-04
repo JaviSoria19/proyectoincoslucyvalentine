@@ -60,6 +60,17 @@
                                 <textarea class="form-control" name="contenido"></textarea>
                             </div>
                         </div>
+                        <div class="item form-group has-feedback">
+                            <label class="col-form-label col-md-1 label-align" for="userfile">Foto:</label>
+                            <div class="col-md-5">
+                                <input type="file" name="userfile" class="form-control has-feedback-left">
+                                <span class="fa fa-image form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <?php foreach ($next->result() as $rowID): ?>
+                            <input type="hidden" name="siguienteid" value="<?php echo $rowID->siguienteID;?>">
+                        <?php endforeach ?>
+                        
                             <button type="submit" class="btn btn-success"> <i class="fa fa-plus-circle"></i> Insertar
                             </button> 
                         <?php 

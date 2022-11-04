@@ -11,7 +11,7 @@ $contrasena="brenda123";
 */
 
 
-$sentencia=$conexion->prepare("SELECT * FROM usuario WHERE correo=? AND contrasenha=?");
+$sentencia=$conexion->prepare("SELECT * FROM usuario WHERE correo=? AND contrasenha=? AND estado IN('1','2')");
 $sentencia->bind_param('ss',$correo,$contrasena);
 $sentencia->execute();
 
