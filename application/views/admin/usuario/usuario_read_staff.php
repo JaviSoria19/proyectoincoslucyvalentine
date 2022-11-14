@@ -27,7 +27,7 @@
                                         echo form_open_multipart('usuarios/adminAgregar');
                                     ?>
                                         <button type="submit" class="btn btn-success">
-                                        <i class="fa fa-plus-circle"></i> Insertar Usuario de Staff
+                                        <i class="fa fa-plus-circle"></i> Insertar Usuario de Personal
                                         </button>
                                     <?php 
                                         echo form_close();
@@ -37,7 +37,7 @@
                                     <br><br>
                                     <p class="text-dark font-weight-bold font-13 m-b-30">
                                         Actualmente contamos con <?php echo $usuario->num_rows(); ?>
-                                        usuarios activos que forman parte del staff!<br>
+                                        usuarios activos que forman parte del personal!<br>
                                         Estimado administrador, recuerde verificar todas las medidas de seguridad de una Cédula de Identidad para validar a un usuario.
                                     </p>
                         <?php echo form_open_multipart('usuarios/adminVerStaff_filtro');?>

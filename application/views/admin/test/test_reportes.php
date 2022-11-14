@@ -4,7 +4,7 @@
             <div class="col-md-12 col-sm-12"><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel bg-dark text-white rounded"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2><i class="fa fa-list-alt"></i> Test - Reportes.</h2>
+                        <h2><i class="fa fa-list-alt"></i> Pruebas de Violencia - Reportes.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -13,7 +13,7 @@
                             <div class="col-sm-12"><!-- Inicio Div col-sm-12 2 -->
                                 <div class="card-box table-responsive"><!-- Inicio Div card-box table-responsive -->
                         <?php echo form_open_multipart('test/reportes_filtro');?>
-                        <h2>Realizar una búsqueda por fechas y por Test</h2>
+                        <h2>Realizar una búsqueda por fechas y por pruebas de violencia</h2>
                         <div class="item form-group col-md-12">
                             <div class="col-md-2 form-group">
                                 <label>Inicio</label>
@@ -24,14 +24,14 @@
                                 <input type="date" name="date_fin" class="form-control" value="<?php echo date('Y-m-d'); ?>">
                             </div>
                             <div class="col-md-3 form-group">
-                                <label>Test</label>
+                                <label>Prueba</label>
                                 <select class="form-control" name="numerotest" required>
                                     <option selected disabled value="">
-                                        Seleccione un test para las donas; Test de Violencia actual: <?php echo $numeroTest;?>
+                                        Seleccione una prueba para las DONAS; Prueba de Violencia actual: <?php echo $numeroTest;?>
                                     </option>
-                                    <option value="1">Test de Violencia - Fase 1</option>
-                                    <option value="2">Test de Violencia - Fase 2</option>
-                                    <option value="3">Test de Violencia - Fase 3</option>
+                                    <option value="1">Prueba de Violencia - Fase 1</option>
+                                    <option value="2">Prueba de Violencia - Fase 2</option>
+                                    <option value="3">Prueba de Violencia - Fase 3</option>
                                 </select>
                             </div>
                             <div class="col-md-3 form-group">
@@ -86,7 +86,7 @@
                                 <div class="col-md-4 text-center">
                                 <div class="x_panel rounded">
                                     <div class="x_title">
-                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 1: </h2>
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Prueba Fase <?php echo $numeroTest; ?>, Pregunta 1: </h2>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content2">
@@ -107,7 +107,7 @@
                                 <div class="col-md-4 text-center">
                                 <div class="x_panel rounded">
                                     <div class="x_title">
-                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 2: </h2>
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Prueba Fase <?php echo $numeroTest; ?>, Pregunta 2: </h2>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content2">
@@ -129,7 +129,7 @@
                                 <div class="col-md-4 text-center">
                                 <div class="x_panel rounded">
                                     <div class="x_title">
-                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 3: </h2>
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Prueba Fase <?php echo $numeroTest; ?>, Pregunta 3: </h2>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content2">
@@ -150,7 +150,7 @@
                                 <div class="col-md-4 text-center">
                                 <div class="x_panel rounded">
                                     <div class="x_title">
-                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 4: </h2>
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Prueba Fase <?php echo $numeroTest; ?>, Pregunta 4: </h2>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content2">
@@ -171,7 +171,7 @@
                                 <div class="col-md-4 text-center">
                                 <div class="x_panel rounded">
                                     <div class="x_title">
-                                        <h2 class="font-weight-bold text-dark">Respuestas de Test Fase <?php echo $numeroTest; ?>, Pregunta 5: </h2>
+                                        <h2 class="font-weight-bold text-dark">Respuestas de Prueba Fase <?php echo $numeroTest; ?>, Pregunta 5: </h2>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content2">
@@ -191,7 +191,7 @@
                                 </div>
                                 ⠀<!--caracter en blanco--><br>
                                 <div class="card col-md-12 text-center" id='exportarBar1'>
-                                    <h2 class="font-weight-bold text-dark">Respuestas de Test de Violencia - Fase 1: </h2>
+                                    <h2 class="font-weight-bold text-dark">Respuestas de Prueba de Violencia - Fase 1: </h2>
                                     <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
                                         <h2 style="color:#FFFB00;">■</h2><h2>En ocasiones⠀</h2>
@@ -208,7 +208,7 @@
                                     </div>
                                 ⠀<!--caracter en blanco--><br>
                                 <div class="card col-md-12 text-center" id='exportarBar2'>
-                                    <h2 class="font-weight-bold text-dark">Respuestas de Test de Violencia - Fase 2: </h2>
+                                    <h2 class="font-weight-bold text-dark">Respuestas de Prueba de Violencia - Fase 2: </h2>
                                     <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
                                         <h2 style="color:#FF9300;">■</h2><h2>En ocasiones⠀</h2>
@@ -225,7 +225,7 @@
                                     </div>
                                 ⠀<!--caracter en blanco--><br>
                                 <div class="card col-md-12 text-center" id='exportarBar3'>
-                                    <h2 class="font-weight-bold text-dark">Respuestas de Test de Violencia - Fase 3: </h2>
+                                    <h2 class="font-weight-bold text-dark">Respuestas de Prueba de Violencia - Fase 3: </h2>
                                     <div class="item justify-content-center text-dark">
                                         <h2 style="color:#42FF00;">■</h2><h2>Nunca⠀</h2>
                                         <h2 style="color:#FF9300;">■</h2><h2>En ocasiones⠀</h2>

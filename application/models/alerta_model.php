@@ -11,6 +11,7 @@ class Alerta_model extends CI_Model {
         $this->db->where('a.estado','1');
         $this->db->join('usuario AS u', 'a.idUsuario = u.idUsuario');
         $this->db->join('departamento AS d', 'u.idDepartamento = d.idDepartamento');
+        $this->db->order_by('a.fechaRegistro', 'DESC');
         return $this->db->get(); //devolucion del resultado de la consulta
     }
     public function agregarAlerta($data)//create

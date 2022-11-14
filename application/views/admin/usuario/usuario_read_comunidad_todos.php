@@ -23,7 +23,7 @@
                                     <?php if ($this->session->userdata('rol')=='admin'): ?>
                                     <?php echo form_open_multipart('usuarios/adminVerStaff'); ?>
                                         <button type="submit" class="btn btn-outline-success">
-                                        <i class="fa fa-eye"></i> Usuarios del Staff
+                                        <i class="fa fa-eye"></i> Personal de LCV
                                         </button>
                                     <?php echo form_close(); ?>
                                     ⠀<!--caracter en blanco-->

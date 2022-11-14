@@ -4,13 +4,13 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <title> | Test - Registros.</title>
-                        <h2><i class="fa fa-list-alt"></i> Test - Registros.</h2>
+                        <title> | Pruebas de Violencia - Registros.</title>
+                        <h2><i class="fa fa-list-alt"></i> Pruebas de Violencia - Registros.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
-                        <p class="text-dark font-weight-bold font-13 m-b-30">Estimado <?php echo formatearRol($this->session->userdata('rol')); ?>, aquí encontrará usted los test realizadas por los usuarios que están utilizando el sistema, considere estas opciones para realizar un análisis psicológico superficial.</p>
+                        <p class="text-dark font-weight-bold font-13 m-b-30">Estimado <?php echo formatearRol($this->session->userdata('rol')); ?>, aquí encontrará usted las pruebas de violencia realizadas por los usuarios que están utilizando el sistema, considere estas opciones para realizar un análisis psicológico superficial.</p>
                         <br>
 
                         <?php echo form_open_multipart('test/registros_filtro');?>

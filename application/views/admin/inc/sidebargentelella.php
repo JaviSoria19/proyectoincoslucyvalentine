@@ -44,7 +44,7 @@
                       <a href="<?php echo base_url()."index.php/usuarios/vetados";?>">Usuarios Vetados</a>
                     </li>
                     <li>
-                      <a href="<?php echo base_url()."index.php/usuarios/adminVerStaff";?>">Staff</a>
+                      <a href="<?php echo base_url()."index.php/usuarios/adminVerStaff";?>">Personal</a>
                     </li>
                     <li>
                       <a href="<?php echo base_url()."index.php/usuarios/reportes";?>">Reportes</a>
@@ -115,7 +115,7 @@
                 </li>
                 <li>
                   <a>
-                    <i class="fa fa-list-alt"></i>Test
+                    <i class="fa fa-list-alt"></i>Pruebas de Violencia
                     <span class="fa fa-chevron-down"></span>
                   </a>
                   <ul class="nav child_menu">
@@ -135,6 +135,17 @@
                   <ul class="nav child_menu">
                     <li>
                       <a href="<?php echo base_url()."index.php/institucion/inicio";?>">Instituciones</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a>
+                    <i class="fa fa-database"></i>Respaldo
+                    <span class="fa fa-chevron-down"></span>
+                  </a>
+                  <ul class="nav child_menu">
+                    <li>
+                      <a href="<?php echo base_url()."index.php/respaldo/inicio";?>">Respaldar Base de Datos</a>
                     </li>
                   </ul>
                 </li>
