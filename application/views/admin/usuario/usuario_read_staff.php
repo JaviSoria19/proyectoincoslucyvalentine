@@ -4,7 +4,7 @@
             <div class="col-md-12 col-sm-12 "><!-- Inicio Div col-md-12 col-sm-12  -->
                 <div class="x_panel"><!-- Inicio Div x_panel -->
                     <div class="x_title">
-                        <h2><i class="fa fa-users"></i> Staff.</h2>
+                        <h2><i class="fa fa-users"></i> Personal de LCV.</h2>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -141,8 +141,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body text-dark">
-         ¿Está seguro de verificar este perfil? Presione Verificar.
+      <div class="modal-body font-weight-bold text-dark">
+        Atención: Esta acción conlleva a que el usuario podrá:<br>
+        - Realizar comentarios en las publicaciones de comunidad.<br>
+        - Realizar publicaciones en la comunidad.<br>
+        ¿Está seguro de verificar este perfil? Presione Verificar.
       </div>
       <div class="modal-footer">
         <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
@@ -171,8 +174,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body text-dark">
-         ¿Está seguro de quitar el atributo verificado de este perfil? Presione Confirmar.
+      <div class="modal-body font-weight-bold text-dark">
+        Atención: Esta acción conlleva a que el usuario ya no podrá:<br>
+        - Realizar comentarios en las publicaciones de comunidad.<br>
+        - Realizar publicaciones en la comunidad.<br>
+        ¿Está seguro de quitar el atributo verificado de este perfil? Presione Confirmar.
       </div>
       <div class="modal-footer">
         <button type="button"  class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>

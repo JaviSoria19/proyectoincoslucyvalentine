@@ -47,6 +47,23 @@
                 </li>
                 <li>
                   <a>
+                    <i class="fa fa-info"></i>Información
+                    <span class="fa fa-chevron-down"></span>
+                  </a>
+                  <ul class="nav child_menu">
+                    <li>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexInformacionEducativa";?>">Información Educativa</a>
+                    </li>
+                    <li>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexPautasdeSeguridad";?>">Pautas de Seguridad</a>
+                    </li>
+                    <li>
+                      <a href="<?php echo base_url()."index.php/publicacion/indexPromociondeActitudesIgualitarias";?>">Promoción de Actitudes Igualitarias.</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a>
                     <i class="fa fa-folder-open-o"></i>Denuncias
                     <span class="fa fa-chevron-down"></span>
                   </a>
@@ -69,29 +86,12 @@
                 </li>
                 <li>
                   <a>
-                    <i class="fa fa-info"></i>Información
+                    <i class="fa fa-list-alt"></i>Prueba de Violencia
                     <span class="fa fa-chevron-down"></span>
                   </a>
                   <ul class="nav child_menu">
                     <li>
-                      <a href="<?php echo base_url()."index.php/publicacion/indexInformacionEducativa";?>">Información Educativa</a>
-                    </li>
-                    <li>
-                      <a href="<?php echo base_url()."index.php/publicacion/indexPautasdeSeguridad";?>">Pautas de Seguridad</a>
-                    </li>
-                    <li>
-                      <a href="<?php echo base_url()."index.php/publicacion/indexPromociondeActitudesIgualitarias";?>">Promoción de Actitudes Igualitarias.</a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a>
-                    <i class="fa fa-list-alt"></i>Test
-                    <span class="fa fa-chevron-down"></span>
-                  </a>
-                  <ul class="nav child_menu">
-                    <li>
-                      <a href="<?php echo base_url()."index.php/test/inicio";?>">Test de Violencia</a>
+                      <a href="<?php echo base_url()."index.php/test/inicio";?>">Realizar prueba de Violencia</a>
                     </li>
                     <li>
                       <a href="<?php echo base_url()."index.php/test/registros";?>">Mi Historial</a>

@@ -76,9 +76,14 @@
                 <?php echo form_error('correo');?>
               </div>
               <div class="col-md-10 form-group has-feedback">
-                <input id="contrasenha" type="password" class="form-control has-feedback-left"  name="contrasenha" placeholder="Contraseña">
-                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                <input id="contrasenha" type="password" class="form-control has-feedback-left"  name="contrasenha" placeholder="Contraseña" required>
+                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
                 <?php echo form_error('contrasenha');?>
+              </div>
+              <div class="col-md-10 form-group has-feedback">
+                <input id="recontrasenha" type="password" class="form-control has-feedback-left"  name="recontrasenha" placeholder="Repita contraseña" required>
+                <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                <?php echo form_error('recontrasenha');?>
               </div>
               <button id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"> <span class="fa fa-eye-slash icon"></span> </button>
               <div>
@@ -108,4 +113,19 @@
           </section>
   </div>
 </div>
-      
+
+<script type="text/javascript">
+var password = document.getElementById("contrasenha")
+  , confirm_password = document.getElementById("recontrasenha");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Las contraseñas no coinciden, por favor reintente");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>

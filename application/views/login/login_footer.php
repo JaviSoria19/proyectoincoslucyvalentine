@@ -2,11 +2,14 @@
     <script type="text/javascript">
     function mostrarPassword(){
         var cambio = document.getElementById("contrasenha");
+        var recambio = document.getElementById("recontrasenha");
         if(cambio.type == "password"){
           cambio.type = "text";
+          recambio.type = "text";
           $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
         }else{
           cambio.type = "password";
+          recambio.type = "password";
           $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
         }
       } 

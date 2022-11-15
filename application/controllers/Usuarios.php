@@ -215,6 +215,15 @@ class Usuarios extends CI_Controller {
                         )
                 );
                 $this->form_validation->set_rules(
+                        'recontrasenha',
+                        'Contraseña repetida del Usuario',
+                        'required|min_length[8]',
+                        array(
+                        'required'=>'¡Se requiere repetir la contraseña del usuario!.',
+                        'min_length'=>'¡La contraseña debe tener al menos 8 caracteres!.'
+                        )
+                );
+                $this->form_validation->set_rules(
                         'primerapellido',
                         'Primer apellido del usuario',
                         'required|min_length[4]|max_length[30]|alpha',
@@ -252,7 +261,7 @@ class Usuarios extends CI_Controller {
                         'is_natural'=>'¡No ingrese caracteres que no sean números!.'
                         )
                     );
-                if($this->form_validation->run()==FALSE)
+                if($this->form_validation->run()==FALSE || $_POST['contrasenha'] != $_POST['recontrasenha'])
                 {
                         $lista=$this->departamento_model->listadepartamentos();
                         $data['departamento']=$lista;

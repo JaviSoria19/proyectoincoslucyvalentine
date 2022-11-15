@@ -36,11 +36,11 @@
                         <table id="datatable-buttons" class="table table-striped table-dark table-bordered" style="width:100%">
                 <thead>
                     <tr class="text-center">
+                        <th>Ubicación</th>
                         <th>Departamento</th>
                         <th>Usuario</th>
                         <th>Correo</th>
                         <th>Nro. Celular</th>
-                        <th>Mapa</th>
                         <th>F. Registro</th>
                     </tr>
                 </thead>
@@ -51,12 +51,11 @@
                         {
                     ?>
                     <tr class="text-center">
+                    <td class="w-25" align="center"><div id="map<?php echo $indice; ?>" style="width: 320px; height:320px;"></div></td>
                     <td><?php echo $row->nombreDepartamento; ?></td>
                     <td><?php echo $row->nombres; ?> <?php echo $row->primerApellido; ?> <?php echo $row->segundoApellido; ?></td>
                     <td><?php echo $row->correo; ?></td>
                     <td><?php echo $row->numeroCelular; ?></td>
-                    <td class="w-25" align="center"><div id="map<?php echo $indice; ?>" style="width: 320px; height:320px;"></div></td>
-                    
                     <td class="text-center"><?php echo formatearFechaMasHora($row->fechaRegistro); ?></td>
                     </tr>
                     <?php

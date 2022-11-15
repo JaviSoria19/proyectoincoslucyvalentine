@@ -10,7 +10,7 @@
                     </div>
                     <div class="x_content"><!-- Inicio Div x_content -->
                         <p class="text-dark font-weight-bold font-13 m-b-30">
-                            <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),2); ?> aquí puedes seleccionar un test de violencia para que puedas reconocer si sufres de algún tipo de violencia, considera que estos test son a nivel general, para realizar uno más específico que tenga el objetivo de <u>identificar el tipo de violencia, el entorno social y el perfil del agresor</u>  contáctese con el SLIM más cercano de su ciudad.
+                            <?php echo retornarSaludoPerGenero($this->session->userdata('sexo'),2); ?> aquí puedes seleccionar una prueba de violencia para que puedas reconocer si sufres de algún tipo de violencia, considera que estas pruebas son a nivel general, para realizar uno más específico que tenga el objetivo de <u>identificar el tipo de violencia, el entorno social y el perfil del agresor</u>  contáctese con el SLIM más cercano de su ciudad.
                         </p>
                         <br>
                         <?php
